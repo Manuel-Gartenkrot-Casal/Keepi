@@ -1,1 +1,1 @@
-# Keepi
+Keepi busca una manera de evitar el desperdicio de comida durante el periodo en el que está en la heladera, buscando recordarte la fecha de vencimiento de estos productos, además de esto ofrece funciones como ver recetas que puedes hacer con la comida que se está por vencer.
