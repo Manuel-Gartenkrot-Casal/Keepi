@@ -1,11 +1,59 @@
-<div style="background:linear-gradient(135deg,#a8e063 0%,#56ab2f 100%);border-radius:15px;padding:24px 18px 24px 18px;margin:20px 0;box-shadow:0 2px 8px rgba(56, 183, 70, 0.12);">
+<h1 align="center">♻️ Keepi</h1>
 
-<h2 align="center" style="color:#26713a;">🌱 <span style="color:#26713a;">Keepi</span> 🌱</h2>
-
-<p style="color:#185c2b;font-size:18px;">
-Keepi busca una manera de <b>evitar el desperdicio de comida</b> durante el periodo en el que está en la heladera, recordándote la <span style="color:#26713a;"><b>fecha de vencimiento</b></span> de tus productos. <br>
-Además, te ofrece <b>funcionalidades</b> para que puedas organizarte mejor y ser más consciente con el consumo. <br><br>
-<span style="color:#2ecc40;">♻️ ¡Cuidá tu comida, ahorrá dinero y ayudá al planeta!</span>
+<p align="center">
+  <img src="https://img.shields.io/badge/version-1.0.0-brightgreen" alt="version" />
+  <img src="https://img.shields.io/badge/status-active-success" alt="status" />
 </p>
 
-</div>
+<p align="center" style="color: #2e7d32; font-size: 18px;">
+  <strong>Don't waste it, Keepi</strong>
+</p>
+
+<p align="center">
+  <img src="https://your-image-url.com/banner.png" alt="Keepi Banner" width="600"/>
+</p>
+
+---
+
+## 🌱 ¿Qué es Keepi?
+
+**Keepi** es una plataforma enfocada en la sostenibilidad y la reutilización responsable de recursos. Nuestra misión es ayudarte a reducir el desperdicio y fomentar hábitos más sostenibles.
+
+---
+
+## 🚀 Funcionalidades Principales
+
+- Gestión de productos reutilizables
+- Registro de ciclos de vida de los objetos
+- Notificaciones para reutilización o reciclaje
+- Reportes de impacto ecológico
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- Frontend: React / Next.js
+- Backend: Node.js / Express
+- Base de datos: MongoDB
+- Hosting: Vercel / Heroku
+
+---
+
+## 🎨 Paleta de Colores
+
+| Color | Hex      | Uso                |
+|-------|----------|--------------------|
+| Verde Primario | `#2e7d32` | Fondo principal, botones |
+| Verde Claro    | `#a5d6a7` | Detalles, iconos         |
+| Blanco         | `#ffffff` | Texto, fondo alternativo |
+| Gris Claro     | `#f5f5f5` | Bordes, separadores      |
+
+---
+
+## 📦 Instalación
+
+```bash
+git clone https://github.com/tuusuario/keepi.git
+cd keepi
+npm install
+npm start
