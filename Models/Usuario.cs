@@ -5,7 +5,6 @@ class Usuario
     public string Password { get; set; }
     public string Nombre { get; set; }
     public string Apellido { get; set; }
-
     public string Email { get; set; }
 
     public Usuario(int ID, string Username, string Password, string Nombre, string Apellido, string Email)
