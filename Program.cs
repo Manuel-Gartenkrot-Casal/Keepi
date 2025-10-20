@@ -3,6 +3,10 @@ builder.Services.AddSession();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Registrar el servicio de chat
+builder.Services.AddScoped<semantic_kernel.Services.IChatService, semantic_kernel.Services.ChatService>();
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

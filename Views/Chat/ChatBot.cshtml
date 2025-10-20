@@ -25,9 +25,16 @@
     </div>
 
     <!-- Barra de entrada -->
-    <div class="input-container">
-        <input type="text" id="messageInput" placeholder="Escribe tu mensaje..." maxlength="1000">
-        <button type="button" id="sendBtn">Enviar</button>
-        <button type="button" id="clearBtn">Limpiar</button>
-    </div>
+    <form asp-controller="Chat" asp-action="SendMessage" method="post">
+        <div class="input-container">
+            <input 
+                type="text" 
+                name="message" 
+                id="messageInput" 
+                placeholder="Escribe tu mensaje..." 
+                maxlength="1000" />
+            <button type="submit">Enviar</button>
+            <button type="button" id="clearBtn" asp-controller="Chat" asp-action="ClearHistory">Limpiar</button>
+        </div>
+    </form>
 </div>

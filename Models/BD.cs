@@ -26,7 +26,7 @@ public class BD
                     Conservantes = conservantes, //  
                     Alcohol = alcohol, //porcentajeAlcohol  
                     PorcentajeCambio = porcentajeCambio, //hay una variable llamada así, es lo rápido que se alterará el producto   
-                    DiasAbierto = diasAbierto, //los días que lleva abierto desde el inicio así se le resta
+                    DiasAbierto = diasAbiertos, //los días que lleva abierto desde el inicio así se le resta
                     f_promedio_base = fPromedioBase //un avg entre todos los promedios conseguido en el segundo sp
                 },
                 commandType: CommandType.StoredProcedure
@@ -37,7 +37,7 @@ public class BD
     public static double calcularFPromedioBase()
     {
 
-        var fPromedioBase = -1;
+        double fPromedioBase = -1;
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string StoredProcedure = "CalcularFPromedioBase";
