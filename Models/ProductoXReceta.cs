@@ -1,4 +1,4 @@
-class ProductoXReceta {
+ public class ProductoXReceta {
     public int ID {get;set;}
     public int IdProducto {get;set;}
     public int IdReceta {get;set;}

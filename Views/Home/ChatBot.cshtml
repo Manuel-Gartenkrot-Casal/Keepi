@@ -1,0 +1,33 @@
+@model List<semantic_kernel.Models.ChatMessage>
+
+@{
+    ViewData["Title"] = "ChatBot";
+}
+
+<!-- Contenedor principal minimalista -->
+<div class="chat-container">
+    <!-- Mensajes del chat -->
+    <div class="chat-messages" id="chatMessages">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var message in Model)
+            {
+                <div class="message @(message.IsUser ? "user" : "bot")">
+                    @Html.Raw(message.Content.Replace("\n", "<br>"))
+                </div>
+            }
+        }
+        
+        <!-- Indicador de escritura -->
+        <div class="typing-indicator" id="typingIndicator">
+            Escribiendo...
+        </div>
+    </div>
+
+    <!-- Barra de entrada -->
+    <div class="input-container">
+        <input type="text" id="messageInput" placeholder="Escribe tu mensaje..." maxlength="1000">
+        <button type="button" id="sendBtn">Enviar</button>
+        <button type="button" id="clearBtn">Limpiar</button>
+    </div>
+</div>

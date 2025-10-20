@@ -1,4 +1,4 @@
-class Usuario
+ public class Usuario
 {
     public int ID { get; set; }
     public string Username { get; set; }

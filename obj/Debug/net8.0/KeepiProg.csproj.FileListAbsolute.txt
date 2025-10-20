@@ -27,3 +27,4 @@ C:\Users\49319223\Downloads\Keepi\obj\Debug\net8.0\refint\KeepiProg.dll
 C:\Users\49319223\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.pdb
 C:\Users\49319223\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.genruntimeconfig.cache
 C:\Users\49319223\Downloads\Keepi\obj\Debug\net8.0\ref\KeepiProg.dll
+C:\Users\49319223\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.csproj.AssemblyReference.cache

@@ -1,4 +1,4 @@
-class ProductoXHeladera {
+public class ProductoXHeladera {
     public int ID {get;set;}
     public int IdHeladera {get;set;}
     public int IdUsuario {get;set;}
@@ -7,7 +7,6 @@ class ProductoXHeladera {
     public bool Eliminado {get;set;}
     public bool Abierto {get;set;}
     public string Foto {get;set;}
-
     public ProductoXHeladera(int ID, int IdHeladera, int IdUsuario, string NombreEsp, DateTime FechaVencimiento, bool Eliminado, bool Abierto, string Foto) {
         this.ID = ID;
         this.IdHeladera = IdHeladera;
@@ -19,4 +18,3 @@ class ProductoXHeladera {
         this.Foto = Foto;
     }
 }
-

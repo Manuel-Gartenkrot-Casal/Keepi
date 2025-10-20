@@ -1,4 +1,4 @@
-class Producto {
+public class Producto {
     public int ID {get;set;}
     public int IdCategoria {get;set;}
     public string Nombre {get;set;}
@@ -20,5 +20,8 @@ class Producto {
         this.PorcAzucar = PorcAzucar;
         this.PorcConservantes = PorcConservantes;
         this.PorcAlcohol = PorcAlcohol;
+    }
+    public void ponerFavorito() {
+        Favorito = true;
     }
 }

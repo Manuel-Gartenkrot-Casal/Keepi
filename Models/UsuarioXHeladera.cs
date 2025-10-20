@@ -1,4 +1,4 @@
-class UsuarioXHeladera {
+public class UsuarioXHeladera {
     public int ID {get;set;}
     public int IdUsuario {get;set;}
     public int IdHeladera {get;set;}

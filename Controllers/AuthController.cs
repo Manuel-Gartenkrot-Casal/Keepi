@@ -13,6 +13,8 @@ public class AuthController : Controller
     {
         return View();
     }
+
+    [HttpPost]
     public IActionResult verificarCuenta(string Username, string Password)
     {
         Usuario user = BD.verificarUsuario(Username, Password);
@@ -27,6 +29,8 @@ public class AuthController : Controller
             return RedirectToAction("Index", "Home");
         }
     }
+    
+    [HttpPost]
     public IActionResult Registrarse(string Username, string Password)
     {
         int sePudo = BD.crearUsuario(Username, Password);
