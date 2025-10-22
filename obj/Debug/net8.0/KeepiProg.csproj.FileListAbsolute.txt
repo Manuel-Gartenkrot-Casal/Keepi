@@ -217,3 +217,16 @@ C:\Users\48792944\Downloads\Keepi\obj\Debug\net8.0\refint\KeepiProg.dll
 C:\Users\48792944\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.pdb
 C:\Users\48792944\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.genruntimeconfig.cache
 C:\Users\48792944\Downloads\Keepi\obj\Debug\net8.0\ref\KeepiProg.dll
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.csproj.AssemblyReference.cache
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.AssemblyInfoInputs.cache
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.AssemblyInfo.cs
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.csproj.CoreCompileInputs.cache
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.RazorAssemblyInfo.cache
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.RazorAssemblyInfo.cs
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.sourcelink.json
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.dll
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\refint\KeepiProg.dll
+C:\Users\juana\Downloads\Keepi\obj\Debug\net8.0\KeepiProg.pdb
