@@ -7,6 +7,7 @@ public class ProductoXHeladera {
     public bool Eliminado {get;set;}
     public bool Abierto {get;set;}
     public string Foto {get;set;}
+    
     public ProductoXHeladera(int ID, int IdHeladera, int IdUsuario, string NombreEsp, DateTime FechaVencimiento, bool Eliminado, bool Abierto, string Foto) {
         this.ID = ID;
         this.IdHeladera = IdHeladera;

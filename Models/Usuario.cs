@@ -15,6 +15,5 @@
         this.Nombre = Password;
         this.Apellido = Password;
         this.Email = Password;
-
     }
 }

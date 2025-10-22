@@ -3,6 +3,12 @@ using semantic_kernel.Models;
 using semantic_kernel.Services;
 using System.Text.Json;
 
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+
 namespace semantic_kernel.Controllers
 {
     public class ChatController : Controller
@@ -22,14 +28,34 @@ namespace semantic_kernel.Controllers
             return View(chatHistory);
         }
 
+        // Quité [FromBody] para permitir que el model binder acepte JSON o form data según el cliente.
         [HttpPost]
-        public async Task<IActionResult> SendMessage([FromBody] ChatRequest request)
+        public async Task<IActionResult> SendMessage(ChatRequest request)
         {
             try
             {
+                // Debug info: content type and model state can help diagnosticar 415/400
+                var contentType = Request.ContentType;
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new ChatResponse
+                    {
+                        Message = "Request model is invalid",
+                        Success = false
+                    });
+                }
+
+                if (request == null)
+                {
+                    return BadRequest(new ChatResponse
+                    {
+                        Message = "Request body is missing or could not be bound",
+                        Success = false
+                    });
+                }
+
                 var chatHistory = GetChatHistory();
-                
-                // Agrega el mensaje del usuario al historial
+
                 var userMessage = new ChatMessage
                 {
                     Content = request.Message,
@@ -38,10 +64,8 @@ namespace semantic_kernel.Controllers
                 };
                 chatHistory.Add(userMessage);
 
-                // Obtiene la respuesta del chatbot
                 var botResponse = await _chatService.GetChatResponseAsync(request.Message, chatHistory);
-                
-                // Agrega la respuesta del bot al historial
+
                 var botMessage = new ChatMessage
                 {
                     Content = botResponse,
@@ -50,7 +74,6 @@ namespace semantic_kernel.Controllers
                 };
                 chatHistory.Add(botMessage);
 
-                // Guarda el historial actualizado en la sesión
                 SaveChatHistory(chatHistory);
 
                 return Json(new ChatResponse
@@ -86,11 +109,11 @@ namespace semantic_kernel.Controllers
                 {
                     try
                     {
-                        return JsonSerializer.Deserialize<List<ChatMessage>>(historyJson) ?? new List<ChatMessage>();
+                        return Objeto.StringToObject<List<ChatMessage>>(historyJson) ?? new List<ChatMessage>();
                     }
                     catch
                     {
-                        // Si hay error al deserializar, retorna una lista vacía
+                        // Si la deserialización falla, devolvemos historial vacío
                     }
                 }
             }
@@ -102,7 +125,7 @@ namespace semantic_kernel.Controllers
             var session = _httpContextAccessor.HttpContext?.Session;
             if (session != null)
             {
-                var historyJson = JsonSerializer.Serialize(chatHistory);
+                var historyJson = Objeto.ObjectToString(chatHistory);
                 session.SetString("ChatHistory", historyJson);
             }
         }

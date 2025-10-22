@@ -1,0 +1,9 @@
+<div class="Heladera">
+        @foreach (var producto in Productos)
+        {
+            <div class="productoEnHeladera">
+                <img src="@Url.Content($"~/images/{producto.Foto}")" alt="@producto.Nombre"/>
+                <h1>@producto.NombreEsp</h1>
+            </div>
+        }
+</div>

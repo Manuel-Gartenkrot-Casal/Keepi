@@ -3,6 +3,7 @@ public class Heladera {
     public string Color {get;set;}
     public string Nombre {get;set;}
     public bool Eliminado {get;set;}
+
     public Heladera(int ID, string Color, string Nombre)
     {
         this.ID = ID;
@@ -16,8 +17,19 @@ public class Heladera {
     public void CambiarNombre(string nombre){
         Nombre = nombre;
     }
-    public void EliminarHeladera(){
-        Eliminado = true;
+    public int EliminarHeladera(string nombreUsuario)
+    {
+        int resultado = BD.borrarHeladera(Nombre, nombreUsuario);
+        
+        if (resultado == -1) 
+        {
+            Eliminado = false;
+        }
+        else {
+            Eliminado = true;
+        }
+        
+        return resultado;
     }
 }
 
