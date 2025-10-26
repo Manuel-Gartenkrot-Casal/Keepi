@@ -1,11 +1,24 @@
+﻿using semantic_kernel.Services;
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSession();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Registrar el servicio de chat
-builder.Services.AddScoped<semantic_kernel.Services.IChatService, semantic_kernel.Services.ChatService>();
+// Add session support
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+// Add HTTP context accessor
 builder.Services.AddHttpContextAccessor();
+
+// Register ChatService
+builder.Services.AddScoped<IChatService, ChatService>();
 
 var app = builder.Build();
 
@@ -13,7 +26,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -22,10 +34,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
 app.UseSession();
+
+app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Chat}/{action=Index}/{id?}");
 
 app.Run();
+ 

@@ -1,9 +1,16 @@
+@using System.Collections.Generic
+@using Keepi.Models
+
+@{
+    var Productos = ViewBag.Productos as List<ProductoXHeladera> ?? new List<ProductoXHeladera>();
+}
+
 <div class="Heladera">
-        @foreach (var producto in Productos)
-        {
-            <div class="productoEnHeladera">
-                <img src="@Url.Content($"~/images/{producto.Foto}")" alt="@producto.Nombre"/>
-                <h1>@producto.NombreEsp</h1>
-            </div>
-        }
+    @foreach (ProductoXHeladera producto in Productos)
+    {
+        <div class="productoEnHeladera">
+            <img src="@Url.Content($"~/images/{producto.Foto}")" alt="@producto.NombreEsp" />
+            <h1>@producto.NombreEsp</h1>
+        </div>
+    }
 </div>

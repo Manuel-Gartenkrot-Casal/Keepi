@@ -1,3 +1,4 @@
+namespace Keepi.Models;
 public class ProductoXHeladera {
     public int ID {get;set;}
     public int IdHeladera {get;set;}

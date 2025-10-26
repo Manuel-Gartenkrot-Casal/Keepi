@@ -6,22 +6,22 @@ public class HeladeraController : Controller
 
     public HeladeraController()
     {
-        // Inicializar en el constructor si es necesario
-    }
 
-    public IActionResult AgregarHeladera(string nombre, string color) {
-        Objeto.ObjectToString<Heladera>(HttpContext.Session.SetString(nombre));
     }
-
+    public IActionResult InicializarHeladera(){
+        Heladera = BD.GetHeladeraByUsuarioId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
+        HttpContext.Session.SetString("nombreHeladera", Heladera.Nombre);
+        return RedirectToAction("CargarProductos");
+    }
     public IActionResult CambiarColor(){
         // Obtener la heladera desde la sesión cuando se necesite
-        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString(nombreHeladera));
+        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
         return View();
     }
     
     [HttpPost]
     public IActionResult CambiarColor(string color, string nombreHeladera){
-        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString(nombreHeladera));
+        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
         if (Heladera != null)
         {
             Heladera.CambiarColor(color);
@@ -31,7 +31,7 @@ public class HeladeraController : Controller
 
     public IActionResult EliminarHeladera(string nombreHeladera, string username) {
 
-        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString(nombreHeladera));
+        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
 
         int resultado = Heladera.EliminarHeladera(username);
 
@@ -46,5 +46,10 @@ public class HeladeraController : Controller
         }
 
     return View("MiHeladera");
+    }
+    public IActionResult CargarProductos(){
+        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
+        ViewBag.Productos = BD.GetProductosByHeladeraId(Heladera.ID);
+        return View("MiHeladera");
     }
 }

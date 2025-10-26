@@ -243,7 +243,7 @@ public class BD
                 commandType: CommandType.StoredProcedure
             );
         }
-        return heladera;
+        return heladera; //aca creo que iria una lista de heladeras en lugar de una sola
     }
 
     public static List<Producto> GetProductosByHeladeraId(int idHeladera)
