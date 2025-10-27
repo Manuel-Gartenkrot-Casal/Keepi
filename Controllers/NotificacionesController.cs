@@ -35,5 +35,6 @@ public class NotificacionesController : Controller {
             string mensaje = "Falta " + DiasRestantes + " día para el vencimiento de su " + nombreProducto + ". Presione aquí abajo si quiere ver recetas para hacer con ésto:";
         }
         ViewBag.mensaje = mensaje;
+        //poner enlace a una shared view que muestre el panel de notis
     }
 }
