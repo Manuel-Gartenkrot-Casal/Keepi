@@ -4,7 +4,7 @@ using Dapper;
 
 public class BD
 {
-    private static string _connectionString = @"Server=localhost; DataBase=Nombre Base; Integrated Security=True; TrustServerCertificate=True;";
+    private static string _connectionString = @"Server=localhost; DataBase=Keepi_DataBase; TrustServerCertificate=True;";
 
     public static double CalcularDuracionProducto(string producto, double D0, double acidez, double agua, double azucar, double conservantes, double alcohol, double porcentajeCambio, int diasAbiertos, double fPromedioBase)
     {

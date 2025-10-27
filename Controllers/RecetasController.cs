@@ -1,13 +1,12 @@
 using KeepiProg.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-// No se usa System.Linq, como pediste
+
 
 namespace KeepiProg.Controllers
 {
     public class RecetasController : Controller
     {
-        // --- MÉTODO DE AYUDA PARA AUTENTICACIÓN ---
         
         private int? GetCurrentUserId()
         {
@@ -22,8 +21,6 @@ namespace KeepiProg.Controllers
             }
             return null;
         }
-
-        // --- ACCIONES CRUD (Create, Read, Update, Delete) ---
 
         public IActionResult Index()
         {
@@ -42,7 +39,6 @@ namespace KeepiProg.Controllers
                 return RedirectToAction("Login", "Auth");
             }
             
-            // Usamos el 'id' que llega como parámetro
             Receta receta = BD.GetRecetaById(id); 
             if (receta == null)
             {
@@ -133,8 +129,6 @@ namespace KeepiProg.Controllers
             return RedirectToAction("Index");
         }
 
-        // --- ACCIÓN PERSONALIZADA: SUGERIR RECETAS (Corregida) ---
-
         public IActionResult SugerirRecetas()
         {
             int? idUsuario = GetCurrentUserId();
@@ -150,13 +144,11 @@ namespace KeepiProg.Controllers
                 return View(new List<Receta>()); 
             }
 
-            // CORRECCIÓN: heladera.ID en lugar de heladera.IdHeladera
             List<Producto> productosEnHeladera = BD.GetProductosByHeladeraId(heladera.ID); 
             
             HashSet<int> idsProductosEnHeladera = new HashSet<int>();
             foreach (Producto prod in productosEnHeladera)
             {
-                // CORRECCIÓN: prod.ID en lugar de prod.IdProducto
                 idsProductosEnHeladera.Add(prod.ID); 
             }
 
@@ -165,7 +157,7 @@ namespace KeepiProg.Controllers
 
             foreach (var receta in todasLasRecetas)
             {
-                // CORRECCIÓN: receta.ID en lugar de receta.IdReceta
+
                 List<Producto> productosRequeridos = BD.GetProductosByRecetaId(receta.ID); 
                 
                 bool sePuedeHacer = true; 
@@ -178,7 +170,7 @@ namespace KeepiProg.Controllers
                 {
                     foreach (var prodRequerido in productosRequeridos)
                     {
-                        // CORRECCIÓN: prodRequerido.ID en lugar de prodRequerido.IdProducto
+
                         if (!idsProductosEnHeladera.Contains(prodRequerido.ID)) 
                         {
                             sePuedeHacer = false;
@@ -194,9 +186,6 @@ namespace KeepiProg.Controllers
             
             return View(recetasSugeridas);
         }
-
-        // --- Acciones para AJAX (Opcional) ---
-
         [HttpPost]
         public IActionResult AgregarProductoAReceta(int idReceta, int idProducto)
         {
