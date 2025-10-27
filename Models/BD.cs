@@ -243,7 +243,7 @@ public class BD
                 commandType: CommandType.StoredProcedure
             );
         }
-        return heladera; //aca creo que iria una lista de heladeras en lugar de una sola
+        return heladera;
     }
 
     public static List<Producto> GetProductosByHeladeraId(int idHeladera)
@@ -286,4 +286,20 @@ public class BD
             );
         }
     }
+    public static List<string> TraerNombresHeladeraById(int idUsuario){
+        List<string> nombresHeladera;
+        string storedProcedure = "sp_getNombresHeladeraByUser";
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Execute(
+                storedProcedure,
+                new { IdUsuario= idUsuario},
+                commandType: CommandType.StoredProcedure
+            );
+        }
+        return nombresHeladera;
+    }
 }
+
+
+    // [dbo].[getNombresHeladeraByUser] ESTO VA EN LA BD traer lista de nombres de las heladeras de el user pasado el id por parametros

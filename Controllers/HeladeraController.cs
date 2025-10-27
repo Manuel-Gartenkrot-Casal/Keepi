@@ -14,7 +14,6 @@ public class HeladeraController : Controller
         return RedirectToAction("CargarProductos");
     }
     public IActionResult CambiarColor(){
-        // Obtener la heladera desde la sesión cuando se necesite
         Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
         return View();
     }
@@ -51,5 +50,13 @@ public class HeladeraController : Controller
         Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
         ViewBag.Productos = BD.GetProductosByHeladeraId(Heladera.ID);
         return View("MiHeladera");
+    }
+    public IActionResult TraerNombresHeladera(){
+        ViewBag.NombresHeladeras = TraerNombresHeladeraById(int IdUsuario)
+    }
+
+    [HttpPost]
+    public IActionResult CambiarHeladera(string NombreHeladera){
+        
     }
 }
