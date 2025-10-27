@@ -11,6 +11,7 @@ public string Dificultad{get;set;}
     this.nombre = nombre;
     this.favorito = favorito;
     this.duracion = duracion;
+    this.Popularidad = Popularidad;
     this.Raciones = Raciones;
     this.Dificultad = Dificultad;
     }

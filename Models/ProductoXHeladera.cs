@@ -24,14 +24,21 @@ public class ProductoXHeladera {
         int diasRestantes = (FechaVencimiento.Date - DateTime.Now.Date).Days;
 
         if (diasRestantes < 0)
-            return -1;
-            Console.WriteLine("Hay menos de cero días restantes");
-        else if (diasRestantes == 0)
-            return diasRestantes;
-            Console.WriteLine("Hay cero días restantes");
-        else
-            Console.WriteLine("Se lograron pasar los días restantes");
-            return diasRestantes;
+            {
+                Console.WriteLine("Hay menos de cero días restantes");
+                return -1;
+            }
+            else if (diasRestantes == 0)
+            {
+                Console.WriteLine("Hay cero días restantes");
+                return diasRestantes;
+            }
+            else
+            {
+                Console.WriteLine("Se lograron pasar los días restantes");
+                return diasRestantes;
+            }
+
     }
     public double CalcularPorcentajeRestante() //Para barra de progreso, otros calculos como notificaciones
     {
@@ -44,3 +51,4 @@ public class ProductoXHeladera {
     public void ProductoVencido() { //hacer para que se pueda vencer el producto y cambiar el mensaje de quedan x dias por Producto Vencido en caso de que el usuario no elija descartar el producto
 
     }
+}

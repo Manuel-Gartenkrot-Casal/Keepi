@@ -52,7 +52,7 @@ public class HeladeraController : Controller
         return View("MiHeladera");
     }
     public IActionResult TraerNombresHeladera(){
-        ViewBag.NombresHeladeras = TraerNombresHeladeraById(int IdUsuario)
+        ViewBag.NombresHeladeras = TraerNombresHeladeraById(int.Parse(HttpContext.Session.GetString("IdUsuario")));
     }
 
     [HttpPost]
