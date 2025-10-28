@@ -3,6 +3,8 @@ public class ProductoXHeladera {
     public int ID {get;set;}
     public int IdHeladera {get;set;}
     public int IdProducto {get;set;}
+        public int IdUsuario {get;set;}
+
     public string NombreEsp {get;set;}
     public DateTime FechaVencimiento {get;set;}
     public bool Eliminado {get;set;}
@@ -40,14 +42,14 @@ public class ProductoXHeladera {
             }
 
     }
-    public double CalcularPorcentajeRestante() //Para barra de progreso, otros calculos como notificaciones
+    /*public double CalcularPorcentajeRestante() //Para barra de progreso, otros calculos como notificaciones
     {
         Producto productoBase = Objeto.StringToObject<Producto>(HttpContext.Session.GetString("IdProducto"));
         int DiasBase = productoBase.Duracion;
         int DiasRestantes = ObtenerDiasRestantes();
         double porcentaje = ((double)DiasRestantes / DiasBase) * 100;
         return porcentaje;
-    }
+    }*/
     public void ProductoVencido() { //hacer para que se pueda vencer el producto y cambiar el mensaje de quedan x dias por Producto Vencido en caso de que el usuario no elija descartar el producto
 
     }

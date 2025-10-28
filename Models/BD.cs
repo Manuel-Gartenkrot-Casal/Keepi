@@ -287,7 +287,7 @@ public class BD
         }
     }
     public static List<string> TraerNombresHeladeraById(int idUsuario){
-        List<string> nombresHeladera;
+        List<string> nombresHeladera = new List<string>();
         string storedProcedure = "sp_getNombresHeladeraByUser";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
