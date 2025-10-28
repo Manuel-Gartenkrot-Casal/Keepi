@@ -10,14 +10,11 @@ html {
 }
 
 body {
-  margin: 10px;
-  padding: 10px;
+
 }
 
 
 footer {
-  margin-top: 10px;
-  padding: 10px;
   background-color: #f8f9fa;
   border-top: 1px solid #e9ecef;
 }
