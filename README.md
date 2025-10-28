@@ -32,10 +32,10 @@
 
 ## 🛠️ Tecnologías Utilizadas
 
-- Frontend: React / Next.js
-- Backend: Node.js / Express
-- Base de datos: MongoDB
-- Hosting: Vercel / Heroku
+- Frontend: JS / HTML / CSS
+- Backend: C#
+- Base de datos: Microsoft SQL Server
+- Hosting: Non Defined
 
 ---
 
