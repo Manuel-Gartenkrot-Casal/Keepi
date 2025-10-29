@@ -11,9 +11,10 @@ public class AuthController : Controller
     }
     public IActionResult Login()
     {
+        
         return View();
     }
-
+    public BD BD = new BD();
     [HttpPost]
     public IActionResult verificarCuenta(string Username, string Password)
     {
@@ -21,7 +22,7 @@ public class AuthController : Controller
         if (user != null)
         {
             HttpContext.Session.SetString("usuario", Objeto.ObjectToString(user));
-            return RedirectToAction("Logged", "Home");
+            return RedirectToAction("InicializarHeladera", "Heladera");
         }
         else
         {
@@ -38,7 +39,7 @@ public class AuthController : Controller
         {
             Usuario user = BD.verificarUsuario(Username, Password);
             HttpContext.Session.SetString("usuario", Objeto.ObjectToString(user));
-            return RedirectToAction("Logged", "Home");
+            return RedirectToAction("InicializarHeladera", "Heladera");
         }
         else{
              ViewBag.Error = "Usuario o contraseña ya existentes";

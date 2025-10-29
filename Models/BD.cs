@@ -49,16 +49,19 @@ public class BD
         }
         return fPromedioBase;
     }
-    public static Usuario verificarUsuario(string userIngresado, string passwordIngresada)
+    public Usuario verificarUsuario(string Username, string Password)
     {
-        Usuario user = null;
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            string StoredProcedure = "verificarUsuario";
-            user = connection.Query<Usuario>(StoredProcedure, new { Username = userIngresado, Password = passwordIngresada }, commandType: CommandType.StoredProcedure).FirstOrDefault();
-        }
-        return user;
-
+    Usuario user = null;
+    using (SqlConnection connection = new SqlConnection(_connectionString))
+    {
+        var parameters = new { Username = Username, Password = Password };
+        user = connection.QueryFirstOrDefault<Usuario>(
+            "[dbo].[verificarUsuario]",
+            parameters,
+            commandType: CommandType.StoredProcedure
+        );
+    }
+    return user;
     }
     public static Producto buscarProducto(string nombre)
     {

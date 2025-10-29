@@ -14,5 +14,9 @@
     <PackageReference Include="Microsoft.SemanticKernel.Connectors.Google" Version="1.66.0-alpha" />
     <PackageReference Include="NewtonSoft.Json" Version="13.0.4" />
   </ItemGroup>
+  <ItemGroup>
+  <Content Remove="wwwroot\css\site.css" />
+</ItemGroup>
+
 
 </Project>
