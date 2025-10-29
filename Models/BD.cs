@@ -4,7 +4,9 @@ using Dapper;
 
 public class BD
 {
-    private static string _connectionString = @"Server=localhost; DataBase=Keepi_DataBase; TrustServerCertificate=True;";
+    private static string _connectionString =
+    @"Server=localhost; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
+
 
     public static double CalcularDuracionProducto(string producto, double D0, double acidez, double agua, double azucar, double conservantes, double alcohol, double porcentajeCambio, int diasAbiertos, double fPromedioBase)
     {
@@ -49,20 +51,24 @@ public class BD
         }
         return fPromedioBase;
     }
-    public Usuario verificarUsuario(string Username, string Password)
-    {
-    Usuario user = null;
+   public static Usuario verificarUsuario(string Username, string Password)
+{
     using (SqlConnection connection = new SqlConnection(_connectionString))
     {
+        connection.Open();
         var parameters = new { Username = Username, Password = Password };
-        user = connection.QueryFirstOrDefault<Usuario>(
+        var user = connection.QueryFirstOrDefault<Usuario>(
             "[dbo].[verificarUsuario]",
             parameters,
             commandType: CommandType.StoredProcedure
         );
+
+        // Si el SP devolviera una fila con Username = null, lo tratamos como no encontrado
+        if (user == null || string.IsNullOrEmpty(user.Username)) return null;
+        return user;
     }
-    return user;
-    }
+}
+
     public static Producto buscarProducto(string nombre)
     {
 
