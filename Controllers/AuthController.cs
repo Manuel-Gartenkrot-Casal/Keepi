@@ -9,7 +9,7 @@ public class AuthController : Controller
     {
         _logger = logger;
     }
-    public IActionResult Index()
+    public IActionResult Login()
     {
         return View();
     }

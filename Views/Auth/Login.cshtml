@@ -1,0 +1,82 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Login";
+}
+
+<h2 id="pageTitle">Iniciar sesión</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Error as string))
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form id="loginForm" asp-controller="Auth" asp-action="verificarCuenta" method="post" class="mb-3">
+    @Html.AntiForgeryToken()
+    <div class="form-group mb-2">
+        <label for="Username">Usuario</label>
+        <input type="text" name="Username" id="Username" class="form-control" required />
+    </div>
+    <div class="form-group mb-2">
+        <label for="Password">Contraseña</label>
+        <input type="password" name="Password" id="Password" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
+
+<button id="toggleBtn" class="btn btn-outline-secondary mb-3">Registrarse</button>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorRegistro as string))
+{
+    <div id="registroError" class="alert alert-danger" style="display:none;">@ViewBag.ErrorRegistro</div>
+}
+
+<form id="registerForm" asp-controller="Auth" asp-action="Registrarse" method="post" style="display:none;">
+    @Html.AntiForgeryToken()
+    <div class="form-group mb-2">
+        <label for="RegUsername">Usuario</label>
+        <input type="text" name="Username" id="RegUsername" class="form-control" required />
+    </div>
+    <div class="form-group mb-2">
+        <label for="RegPassword">Contraseña</label>
+        <input type="password" name="Password" id="RegPassword" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Crear cuenta</button>
+    <button type="button" id="backBtn" class="btn btn-link">Volver a iniciar sesión</button>
+</form>
+
+@section Scripts {
+    <script>
+        (function () {
+            var toggleBtn = document.getElementById('toggleBtn');
+            var backBtn = document.getElementById('backBtn');
+            var loginForm = document.getElementById('loginForm');
+            var registerForm = document.getElementById('registerForm');
+            var pageTitle = document.getElementById('pageTitle');
+            var registroError = document.getElementById('registroError');
+
+            function showRegister() {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                toggleBtn.style.display = 'none';
+                pageTitle.textContent = 'Registrarse';
+                if (registroError) registroError.style.display = 'block';
+            }
+
+            function showLogin() {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                toggleBtn.style.display = 'inline-block';
+                pageTitle.textContent = 'Iniciar sesión';
+                if (registroError) registroError.style.display = 'none';
+            }
+
+            toggleBtn.addEventListener('click', showRegister);
+            if (backBtn) backBtn.addEventListener('click', showLogin);
+
+            // Si el servidor dejó un mensaje de error de registro, abrir registro directamente
+            if (registroError && registroError.textContent.trim().length > 0) {
+                showRegister();
+            }
+        })();
+    </script>
+}

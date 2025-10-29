@@ -8,11 +8,19 @@ public class HeladeraController : Controller
     {
 
     }
-    public IActionResult InicializarHeladera(){
-        Heladera = BD.GetHeladeraByUsuarioId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
-        HttpContext.Session.SetString("nombreHeladera", Heladera.Nombre);
-        return RedirectToAction("CargarProductos");
+    public IActionResult InicializarHeladera()
+{
+    var idUsuarioStr = HttpContext.Session.GetString("IdUsuario");
+    if (idUsuarioStr == null)
+    {
+        return RedirectToAction("Login", "Auth");
     }
+
+    Heladera = BD.GetHeladeraByUsuarioId(int.Parse(idUsuarioStr));
+    HttpContext.Session.SetString("nombreHeladera", Heladera.Nombre);
+    return RedirectToAction("CargarProductos");
+}
+
     public IActionResult CambiarColor(){
         Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
         return View();
