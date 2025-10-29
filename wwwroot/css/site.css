@@ -46,7 +46,7 @@ footer {
 }
 
 .message.user {
-  background-color: #007bff;
+  background-color: none;
   color: white;
   margin-left: auto;
   text-align: right;
