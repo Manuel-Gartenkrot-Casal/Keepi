@@ -28,14 +28,21 @@ namespace semantic_kernel.Controllers
             return View(chatHistory);
         }
 
-        // Quité [FromBody] para permitir que el model binder acepte JSON o form data según el cliente.
+        // Aceptamos el JSON del body explícitamente para requests AJAX
         [HttpPost]
-        public async Task<IActionResult> SendMessage(ChatRequest request)
+        public async Task<IActionResult> SendMessage([FromBody] ChatRequest request)
         {
             try
             {
-                // Debug info: content type and model state can help diagnosticar 415/400
+                // Debug info: content type and model state pueden ayudar a diagnosticar problemas de binding
                 var contentType = Request.ContentType;
+                Console.WriteLine($"[ChatController] Content-Type: {contentType}");
+                try {
+                    // Intentar leer el body raw para depuración (solo si el binding falla)
+                    Request.Body.Position = 0;
+                } catch { }
+                Console.WriteLine($"[ChatController] ModelState.IsValid: {ModelState.IsValid}");
+                Console.WriteLine($"[ChatController] Request bound: {JsonConvert.SerializeObject(request)}");
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(new ChatResponse
