@@ -1,0 +1,25 @@
+@{
+    var lista = ViewBag.Notificaciones as List<Keepi.Models.Notificacion>;
+}
+
+<div class="notificaciones-contenido">
+    <h3>Notificaciones</h3>
+
+    <ul>
+        @if (lista != null && lista.Any())
+        {
+            foreach (var n in lista)
+            {
+                <li class="notificacion-item @(n.Leida ? "leida" : "nueva")">
+                    <strong>@n.Titulo</strong>
+                    <p>@n.Mensaje</p>
+                    <small>@n.Fecha.ToString("dd/MM/yyyy HH:mm")</small>
+                </li>
+            }
+        }
+        else
+        {
+            <li class="sin-notificaciones">No hay notificaciones nuevas</li>
+        }
+    </ul>
+</div>
