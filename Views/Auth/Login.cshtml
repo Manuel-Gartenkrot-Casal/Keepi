@@ -2,7 +2,24 @@
     Layout = "_Layout";
     ViewData["Title"] = "Login";
 }
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class= "login">
+ <header>
+        <h1 class="logo">Keepi</h1>
+       <nav>
+       <a>Home</a>
+       <a>El problema</a>
+       <a>La solución</a>
+       </nav>
 
+    </header>
+<main>
+<section>
 <h2 id="pageTitle">Iniciar sesión</h2>
 
 @if (!string.IsNullOrEmpty(ViewBag.Error as string))
@@ -43,6 +60,12 @@
     <button type="submit" class="btn btn-success">Crear cuenta</button>
     <button type="button" id="backBtn" class="btn btn-link">Volver a iniciar sesión</button>
 </form>
+
+</section>
+
+</main>
+</body>
+
 
 @section Scripts {
     <script>
