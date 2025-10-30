@@ -51,20 +51,17 @@ public class BD
         }
         return fPromedioBase;
     }
-   public static Usuario verificarUsuario(string Username, string Password)
+   public static string verificarUsuario(string Username, string Password)
 {
     using (SqlConnection connection = new SqlConnection(_connectionString))
     {
         connection.Open();
         var parameters = new { Username = Username, Password = Password };
-        var user = connection.QueryFirstOrDefault<Usuario>(
+        string user = connection.QueryFirstOrDefault<string>(
             "[dbo].[verificarUsuario]",
             parameters,
             commandType: CommandType.StoredProcedure
         );
-
-        // Si el SP devolviera una fila con Username = null, lo tratamos como no encontrado
-        if (user == null || string.IsNullOrEmpty(user.Username)) return null;
         return user;
     }
 }
