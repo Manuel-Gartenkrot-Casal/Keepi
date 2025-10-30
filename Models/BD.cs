@@ -51,13 +51,13 @@ public class BD
         }
         return fPromedioBase;
     }
-    public static string verificarUsuario(string Username, string Password)
+    public static Usuario verificarUsuario(string Username, string Password)
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             connection.Open();
             var parameters = new { Username = Username, Password = Password };
-            string user = connection.QueryFirstOrDefault<string>(
+            Usuario user = connection.QueryFirstOrDefault<Usuario>(
                 "[dbo].[verificarUsuario]",
                 parameters,
                 commandType: CommandType.StoredProcedure

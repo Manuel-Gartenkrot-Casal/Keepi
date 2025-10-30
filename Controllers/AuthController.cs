@@ -18,15 +18,16 @@ public class AuthController : Controller
     [HttpPost]
     public IActionResult verificarCuenta(string Username, string Password)
     {
-        string user = BD.verificarUsuario(Username, Password);
-        if (user == "Error")
+        Usuario user = BD.verificarUsuario(Username, Password);
+        if (user == null)
         {
             ViewBag.Error = "Usuario o contraseña incorrectos";
             return RedirectToAction("Index", "Home");
         }
         else
         {
-            HttpContext.Session.SetString("usuario", user);
+            string usuario = Objeto.ObjectToString(user);
+            HttpContext.Session.SetString("usuario", usuario);
             return RedirectToAction("InicializarHeladera", "Heladera");
         }
     }
@@ -37,8 +38,8 @@ public class AuthController : Controller
         int sePudo = BD.crearUsuario(Username, Password);
         if (sePudo == 1)
         {
-            string user = BD.verificarUsuario(Username, Password);
-            HttpContext.Session.SetString("usuario", user);
+            Usuario user = BD.verificarUsuario(Username, Password);
+            HttpContext.Session.SetString("usuario", Objeto.ObjectToString(user));
             return RedirectToAction("InicializarHeladera", "Heladera");
         }
         else{

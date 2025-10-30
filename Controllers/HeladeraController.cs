@@ -9,15 +9,16 @@ public class HeladeraController : Controller
 
     }
     public BD BD = new BD();
-    public IActionResult InicializarHeladera(int idUsuario)
+    public IActionResult InicializarHeladera()
     {
-        HttpContext.Session.SetString("IdUsuario", idUsuario.ToString());
-        var idUsuarioStr = HttpContext.Session.GetString("IdUsuario");
-        if (idUsuarioStr == null)
+        string user = HttpContext.Session.GetString("usuario");
+        if (user == null)
         {
-            return RedirectToAction("Index", "Home");
+            
+            return RedirectToAction("Login", "Auth");
         }
-            Console.WriteLine(idUsuario);
+            Usuario usuario = Objeto.StringToObject<Usuario>(user);
+            int idUsuario = usuario.ID;
 
         List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
         if (nombresHeladeras == null || nombresHeladeras.Count == 0)
@@ -25,15 +26,16 @@ public class HeladeraController : Controller
             Console.WriteLine("entro");
             return RedirectToAction("Login", "Auth");
         }
+        else {
+            return RedirectToAction ("Heladeras");
+        }
 
         Heladera Heladera = BD.SeleccionarHeladeraByNombre(idUsuario, nombresHeladeras[0]);
         HttpContext.Session.SetString("nombreHeladera", Heladera.Nombre);
         return RedirectToAction("CargarProductos");
+    
     }
 
-   // public IActionResult Heladeras(int idUsuario){
-       // List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
-   // }
 
 
     public IActionResult CambiarColor()
