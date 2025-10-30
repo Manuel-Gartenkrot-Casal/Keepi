@@ -329,7 +329,29 @@ public class BD
         }
         return heladera;
     }
+    public static void agregarProductoExistente(int idHeladera, int idProducto, string nombreEsp, DateTime fechaVencimiento, string foto)
+    {
+        string storedProcedure = "sp_AgregarProductoXHeladera"; 
+        
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Execute(
+                storedProcedure,
+                new { 
+                    IdHeladera = idHeladera,
+                    IdProducto = idProducto,
+                    NombreEsp = nombreEsp,
+                    FechaVencimiento = fechaVencimiento,
+                    Eliminado = 0, 
+                    Abierto = 0,  
+                    Foto = foto
+                },
+                commandType: CommandType.StoredProcedure
+            );
+        }
+    }
 }
+
 
 
 

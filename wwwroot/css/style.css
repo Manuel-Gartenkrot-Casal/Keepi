@@ -56,7 +56,7 @@ p {
  section {
   display: inline-block;
   width: 100%;
-  padding: 12% 0%;
+  padding: 10% 0%;
 }
 
 .index section:first-of-type {
@@ -283,4 +283,90 @@ section h3 {
   color: #5d4ef8;
   text-decoration: underline;
   cursor: pointer;
+}
+
+
+/* producto en heladera*/
+ .Heladera {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+    background: #fff;
+}
+
+.Heladera .productoEnHeladera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Heladera .productoEnHeladera:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Heladera .productoEnHeladera img {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.Heladera .productoEnHeladera h1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    flex: 1;
+    margin: 0;
+}
+
+.Heladera .productoEnHeladera h1::after {
+    content: "Comprado hace X días"; /* Podés reemplazar dinámicamente en el backend */
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: #777;
+    margin-top: 3px;
+}
+
+.Heladera .productoEnHeladera progress {
+    width: 100%;
+    height: 6px;
+    border-radius: 5px;
+    overflow: hidden;
+    appearance: none;
+}
+
+.Heladera .productoEnHeladera progress::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+.Heladera .productoEnHeladera progress::-webkit-progress-value {
+    background: linear-gradient(90deg, #6cc04a, #b4df33);
+    border-radius: 5px;
+}
+.Heladera .productoEnHeladera span {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: #fff;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+.Heladera .productoEnHeladera span:nth-of-type(1) {
+    background: #4653a2; /* botón “Usar / Abrir” */
+}
+
+.Heladera .productoEnHeladera span:nth-of-type(2) {
+    background: #9da6c2; /* estado: “Estado / Congelado / Alacena” */
 }

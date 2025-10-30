@@ -2,32 +2,38 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 public class HeladeraController : Controller
 {
+    private Heladera? Heladera;
+
     public HeladeraController()
     {
 
     }
-    private Heladera? Heladera;
-
-
     public BD BD = new BD();
     public IActionResult InicializarHeladera(int idUsuario)
-{
-    HttpContext.Session.SetString("IdUsuario", idUsuario.ToString());
-
-    List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
-
-    if (nombresHeladeras == null || nombresHeladeras.Count == 0)
     {
-        TempData["Error"] = "No se encontraron heladeras para este usuario.";
-        return RedirectToAction("Index", "Home");
+        HttpContext.Session.SetString("IdUsuario", idUsuario.ToString());
+        var idUsuarioStr = HttpContext.Session.GetString("IdUsuario");
+        if (idUsuarioStr == null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+            Console.WriteLine(idUsuario);
+
+        List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
+        if (nombresHeladeras == null || nombresHeladeras.Count == 0)
+        {
+            Console.WriteLine("entro");
+            return RedirectToAction("Login", "Auth");
+        }
+
+        Heladera Heladera = BD.SeleccionarHeladeraByNombre(idUsuario, nombresHeladeras[0]);
+        HttpContext.Session.SetString("nombreHeladera", Heladera.Nombre);
+        return RedirectToAction("CargarProductos");
     }
 
-    Heladera heladera = BD.SeleccionarHeladeraByNombre(idUsuario, nombresHeladeras[0]);
-    HttpContext.Session.SetString("heladera", JsonConvert.SerializeObject(heladera));
-
-    return RedirectToAction("Index", "Home");
-}
-
+   // public IActionResult Heladeras(int idUsuario){
+       // List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
+   // }
 
 
     public IActionResult CambiarColor()

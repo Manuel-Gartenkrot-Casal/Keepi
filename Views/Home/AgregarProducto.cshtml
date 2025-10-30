@@ -1,0 +1,115 @@
+@model Keepi.Models.ProductoXHeladera
+@{
+    ViewData["Title"] = "Agregar Producto";
+    // 1. Serializamos la lista de productos que viene del controller
+    // para que JavaScript pueda leerla.
+    var productosJson = Json.Serialize(ViewBag.ListaProductos);
+}
+
+<link rel="stylesheet" href="~/css/style.css" />
+
+<div class="login-page">
+    <div class="form-container">
+        <form class="form" method="post" asp-action="Guardar" asp-controller="AgregarProducto">
+            
+            <h1>KEEPI</h1>
+            <h2>Agregar Producto</h2>
+            
+            <label for="product-search" style="text-align: left; display: block; width: 100%; margin-bottom: 5px;">Buscar Producto Base</label>
+            <input type="text" id="product-search" placeholder="Escribe (ej: Leche, Huevo...)" list="productos-list" autocomplete="off">
+            
+            <datalist id="productos-list">
+            </datalist>
+
+            <img id="product-image" src="" alt="Vista previa del producto" 
+                 style="display: none; width: 100px; height: 100px; margin: 10px auto; border-radius: 5px; object-fit: cover; border: 1px solid #ddd;"/>
+
+            <input type="hidden" id="idProducto" name="idProducto" />
+            <input type="hidden" id="foto-hidden" name="foto" />
+
+            <label for="nombreEsp" style="text-align: left; display: block; width: 100%; margin-bottom: 5px;">Nombre Específico</label>
+            <input type="text" id="nombreEsp" name="nombreEsp" placeholder="Ej: Leche Sancor 1L" required>
+            
+            <label for="fechaVencimiento" style="text-align: left; display: block; width: 100%; margin-bottom: 5px;">Fecha de Vencimiento</label>
+            <input type="date" id="fechaVencimiento" name="fechaVencimiento" required>
+
+            <button type="submit">Agregar a Heladera</button>
+            
+             @if (TempData["Error"] != null)
+            {
+                <div classd="error-message" style="color: red; margin-top: 10px;">@TempData["Error"]</div>
+            }
+            @if (TempData["Success"] != null)
+            {
+                <div class="success-message" style="color: #4CAF50; margin-top: 10px;">@TempData["Success"]</div>
+            }
+
+            <p class="message"><a asp-action="MiHeladera" asp-controller="Home">Volver a Mi Heladera</a></p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Obtenemos la lista de productos del ViewBag
+        const productosBase = @Html.Raw(productosJson);
+
+        // Obtenemos los elementos del DOM
+        const searchInput = document.getElementById('product-search');
+        const dataList = document.getElementById('productos-list');
+        const productImage = document.getElementById('product-image');
+        const idProductoInput = document.getElementById('idProducto');
+        const nombreEspInput = document.getElementById('nombreEsp');
+        const fotoInput = document.getElementById('foto-hidden');
+        const fechaInput = document.getElementById('fechaVencimiento');
+
+        // Evento que se dispara CADA VEZ que el usuario teclea
+        searchInput.addEventListener('input', function(e) {
+            const inputVal = e.target.value.toLowerCase();
+            
+            dataList.innerHTML = ''; // Limpiamos sugerencias anteriores
+
+            if (inputVal.length < 1) {
+                productImage.style.display = 'none';
+                return;
+            }
+
+            // Filtramos la lista de productos
+            const matches = productosBase.filter(p => p.Nombre.toLowerCase().includes(inputVal));
+            
+            // Agregamos las coincidencias como <option> a la <datalist>
+            matches.forEach(prod => {
+                const option = document.createElement('option');
+                option.value = prod.Nombre;
+                dataList.appendChild(option);
+            });
+        });
+
+        // Evento que se dispara CUANDO el usuario selecciona un item
+        searchInput.addEventListener('change', function(e) {
+            const selectedName = e.target.value;
+            
+            // Buscamos el producto completo que coincida con el nombre
+            const selectedProduct = productosBase.find(p => p.Nombre === selectedName);
+
+            if (selectedProduct) {
+                // Si se encontró, rellenamos los campos
+                idProductoInput.value = selectedProduct.ID;
+                fotoInput.value = selectedProduct.Foto;
+                nombreEspInput.value = selectedProduct.Nombre; // Autorellena el nombre específico
+
+                // Mostramos la imagen
+                productImage.src = selectedProduct.Foto;
+                productImage.style.display = 'block';
+            } else {
+                // Si el usuario escribió algo que no existe, limpiamos
+                productImage.style.display = 'none';
+                idProductoInput.value = '';
+                fotoInput.value = '';
+            }
+        });
+
+        // Poner la fecha mínima del input de vencimiento en el día de hoy
+        fechaInput.min = new Date().toISOString().split("T")[0];
+    </script>
+}
