@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Keepi.Models;
 
 namespace semantic_kernel.Controllers
 {
@@ -70,8 +71,20 @@ namespace semantic_kernel.Controllers
                     Timestamp = DateTime.Now
                 };
                 chatHistory.Add(userMessage);
+                HttpContext.Session.GetString("nombreHeladera");
+                string user = HttpContext.Session.GetString("usuario");
+                    if (user == null)
+                    {
+                    
+                    return RedirectToAction("Login", "Auth");
+                    }
+                    Usuario usuario = Objeto.StringToObject<Usuario>(user);
+                    int idUsuario = usuario.ID;
+                
+                string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
 
-                var botResponse = await _chatService.GetChatResponseAsync(request.Message, chatHistory);
+                List<ProductoXHeladera> heladeraJson = BD.getProductosByNombreHeladeraAndIdUsuario(nombreHeladera, idUsuario);
+                var botResponse = await _chatService.GetChatResponseAsync(request.Message, chatHistory, heladeraJson);
 
                 var botMessage = new ChatMessage
                 {

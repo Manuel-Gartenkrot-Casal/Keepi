@@ -1,6 +1,7 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
 using Dapper;
+using Keepi.Models;
 
 public class BD
 {
@@ -193,6 +194,17 @@ public class BD
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             lista = connection.Query<Producto>(storedProcedure, commandType: CommandType.StoredProcedure).ToList();
+        }
+        return lista;
+    }
+    public static List<ProductoXHeladera> getProductosByNombreHeladeraAndIdUsuario(string nombreHeladera, int idUsuario)
+    {
+        List<ProductoXHeladera> lista = new List<ProductoXHeladera>();
+        string storedProcedure = "getProductosByNombreHeladeraAndIdUsuario";
+        var parameters = new { nombre = nombreHeladera, IdUsuario = idUsuario };
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            lista = connection.Query<ProductoXHeladera>(storedProcedure, parameters, commandType: CommandType.StoredProcedure).ToList();
         }
         return lista;
     }

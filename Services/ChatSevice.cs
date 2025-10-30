@@ -2,12 +2,13 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.Google;
 using semantic_kernel.Models;
+using Keepi.Models;
 
 namespace semantic_kernel.Services
 {
     public interface IChatService
     {
-        Task<string> GetChatResponseAsync(string userMessage, List<ChatMessage> chatHistory);
+        Task<string> GetChatResponseAsync(string userMessage, List<ChatMessage> chatHistory, List<ProductoXHeladera> heladeraJson);
     }
 
     public class ChatService : IChatService
@@ -34,13 +35,13 @@ namespace semantic_kernel.Services
             };
         }
 
-        public async Task<string> GetChatResponseAsync(string userMessage, List<ChatMessage> chatHistory)
+        public async Task<string> GetChatResponseAsync(string userMessage, List<ChatMessage> chatHistory, List<ProductoXHeladera> heladeraJson)
         {
             var chat = _kernel.GetRequiredService<IChatCompletionService>();
             var history = new ChatHistory();
 
             // Prompt de sistema
-            var systemPrompt = """
+            var systemPromptBase = """
                 Eres un asistente conversacional amigable y servicial de Keepi, tu nombre es "Mr. Keepi".
                 Responde siempre en español y mantén el contexto de la conversación.
                 No menciones el nombre del usuario.
@@ -50,6 +51,8 @@ namespace semantic_kernel.Services
                 Si el usuario te pregunta sobre algo que no sabes, responde que no lo sabes y ofrece ayuda para encontrar la información.
                 Tus respuestas deben ser cortas y directas, el usuario esta hablando contigo porque le falta tiempo.
                 """;
+                string systemPrompt = systemPromptBase + Environment.NewLine
+    + "heladeraJson = \"" + heladeraJson + "\"";
             history.AddSystemMessage(systemPrompt);
 
             // Agrega el historial de conversación
