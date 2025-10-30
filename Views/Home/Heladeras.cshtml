@@ -1,17 +1,239 @@
-@{
-    ViewData["Title"] = "Keepi";
-}
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heladeras Interactivas</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f9f9f9;
+            text-align: center;
+            margin: 0;
+            padding: 3%;
+        }
+
+        .heladeras-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5%;
+            padding: 1%;
+            margin-top: 4%;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Oculta barra en Firefox */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .heladeras-container::-webkit-scrollbar {
+            display: none; /* Oculta barra en Chrome/Safari */
+        }
+
+        .heladera {
+            flex: 0 0 15%;
+            height: 370px; /*No se porque no funciona en porcentaje*/
+            background: #c0c0c0;
+            border-radius: 8px;
+            position: relative;
+            opacity: 0.5;
+            transform: scale(0.9);
+            transition: all 0.4s ease;
+            scroll-snap-align: center;
+            cursor: default;
+        }
+
+        .heladera.active {
+            opacity: 1;
+            transform: scale(1.05);
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .nota {
+            position: absolute;
+            top: 3%;
+            right: 4%;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 6%;
+            font-size: 15px; /*No se porque no funciona en porcentaje*/
+            width: 25%;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .decoracion {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+        }
+
+        .decoracion.estrella { background: gold; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+        .decoracion.triangulo { background: green; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+        .decoracion.cuadrado { background: blue; }
+        .decoracion.circulo { background: red; border-radius: 50%; }
+
+        .controles {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .decoraciones-panel {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #opcionesDecoracion.oculto {
+            display: none;
+        }
+
+        .freezer {
+            width: 100%;
+            height: 40%;
+            border-radius: 8px;
+            background-color: rgb(105, 105, 105);
+        }
+
+        .heladeraAbajo {
+            width: 100%;
+            height: 60%;
+            margin-top: 2%;
+            border-radius: 8px;
+            background-color: rgb(105, 105, 105);
+        }
+    </style>
 </head>
-<body class="heladeras">
-<main>
-<div class="heladeraSeleccionada">
+<body>
 
-</div>
+    <h1>Heladeras Interactivas</h1>
 
-</main>
+    <div class="carousel-container">
+            <div class="heladeras-container" id="heladerasContainer">
+                <div class="heladera" id="heladera-0">
+                    <section class="freezer">
+                        <div class="nota">Lista de Compras _______ _______ _______</div>
+                    </section>
+                    <section class="heladeraAbajo"></section>
+                </div>
+                <div class="heladera" id="heladera-1">
+                    <section class="freezer">
+                        <div class="nota">Lista de Compras _______ _______ _______</div>
+                    </section>
+                    <section class="heladeraAbajo"></section>
+                </div>
+                <div class="heladera active" id="heladera-2">
+                    <section class="freezer">
+                        <div class="nota">Lista de Compras _______ _______ _______</div>
+                    </section>
+                    <section class="heladeraAbajo"></section>
+                </div>
+                <div class="heladera" id="heladera-3">
+                    <section class="freezer">
+                        <div class="nota">Lista de Compras _______ _______ _______</div>
+                    </section>
+                    <section class="heladeraAbajo"></section>
+                </div>
+                <div class="heladera" id="heladera-4">
+                    <section class="freezer">
+                        <div class="nota">Lista de Compras _______ _______ _______</div>
+                    </section>
+                    <section class="heladeraAbajo"></section>
+                </div>
+            </div>
+        <div class="controles">
+            <button id="prev">⬅</button>
+            <span id="titulo">Heladera 1</span>
+            <button id="next">➡</button>
+        </div>
+      </div>
+
+    <div class="decoraciones-panel">
+        <button id="modoDecoracion">🎨 Agregar Decoración</button>
+
+        <div id="opcionesDecoracion" class="oculto">
+            <p>Elegí una forma:</p>
+            <button class="forma" data-tipo="estrella">⭐</button>
+            <button class="forma" data-tipo="triangulo">🔺</button>
+            <button class="forma" data-tipo="cuadrado">🟦</button>
+            <button class="forma" data-tipo="circulo">🔴</button>
+            <p>(Luego hacé clic en la heladera)</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const heladerasContainer = document.getElementById("heladerasContainer");
+            const heladeras = document.querySelectorAll(".heladera");
+            const titulo = document.getElementById("titulo");
+
+            const visibles = 5;
+            const totalHeladeras = heladeras.length;
+            let indice;
+
+            if (totalHeladeras <= 2) {
+                indice = 0;
+            } else if (totalHeladeras <= 4) {
+                indice = 1;
+            } else {
+                indice = 2;
+            }
+
+            let modoDecoracion = false;
+            let decoracionSeleccionada = null;
+
+            function actualizar() {
+                heladeras.forEach((h, i) => h.classList.toggle("active", i === indice));
+                titulo.textContent = `Heladera ${indice - 1}`;
+                heladeras[indice].scrollIntoView({behavior: 'smooth', inline: 'center'});
+            }
+
+            document.getElementById("prev").addEventListener("click", () => {
+                indice = (indice - 1 + heladeras.length) % heladeras.length;
+                actualizar();
+            });
+
+            document.getElementById("next").addEventListener("click", () => {
+                indice = (indice + 1) % heladeras.length;
+                actualizar();
+            });
+
+            document.getElementById("modoDecoracion").addEventListener("click", () => {
+                modoDecoracion = !modoDecoracion;
+                document.getElementById("opcionesDecoracion").classList.toggle("oculto", !modoDecoracion);
+                decoracionSeleccionada = null;
+            });
+
+            document.querySelectorAll(".forma").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    decoracionSeleccionada = btn.dataset.tipo;
+                });
+            });
+
+            heladeras.forEach(heladera => {
+                heladera.addEventListener("click", e => {
+                    if (!modoDecoracion || !heladera.classList.contains("active") || !decoracionSeleccionada) return;
+
+                    const rect = heladera.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const deco = document.createElement("div");
+                    deco.classList.add("decoracion", decoracionSeleccionada);
+                    deco.style.left = `${x - 10}px`;
+                    deco.style.top = `${y - 10}px`;
+
+                    heladera.appendChild(deco);
+                });
+            });
+        });
+    </script>
 </body>
+</html>
