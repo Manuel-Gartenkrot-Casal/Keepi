@@ -292,7 +292,7 @@ public class BD
             );
         }
     }
-    public static List<string> TraerNombresHeladeraById(int idUsuario){
+    public static List<string> traerNombresHeladerasById(int idUsuario){
         List<string> nombresHeladera = new List<string>();
         string storedProcedure = "sp_traerNombresHeladerasById";
         using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -305,4 +305,21 @@ public class BD
         }
         return nombresHeladera;
     }
+     public static Heladera SeleccionarHeladeraByNombre(int idUsuario, string nombreHeladera){
+        Heladera heladera;
+        string storedProcedure = "sp_SeleccionarHeladeraByNombre";
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            heladera = connection.QueryFirstOrDefault(
+                storedProcedure,
+                new { IdUsuario= idUsuario, Nombre = nombreHeladera},
+                commandType: CommandType.StoredProcedure
+            );
+        }
+        return heladera;
+    }
 }
+
+
+
+

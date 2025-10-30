@@ -8,15 +8,17 @@ public class HeladeraController : Controller
     {
 
     }
-    public IActionResult InicializarHeladera()
+    public BD BD = new BD();
+    public IActionResult InicializarHeladera(int idUsuario)
 {
+    HttpContext.Session.SetString("IdUsuario", idUsuario.ToString());
     var idUsuarioStr = HttpContext.Session.GetString("IdUsuario");
     if (idUsuarioStr == null)
     {
         return RedirectToAction("Login", "Auth");
     }
-    List<string> nombresHeladeras = BD.TraerNombresHeladeraById(idUsuario);
-    Heladera = BD.SeleccionarHeladeraByNombre(idUsuario, nombresHeladeras[0]);
+    List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
+    Heladera Heladera = BD.SeleccionarHeladeraByNombre(idUsuario, nombresHeladeras[0]);
     HttpContext.Session.SetString("nombreHeladera", Heladera.Nombre);
     return RedirectToAction("CargarProductos");
 }
@@ -60,7 +62,7 @@ public class HeladeraController : Controller
         return View("MiHeladera");
     }
     public IActionResult TraerNombresHeladera(){
-        ViewBag.NombresHeladeras = BD.TraerNombresHeladeraById(int.Parse(HttpContext.Session.GetString("IdUsuario")));
+        ViewBag.NombresHeladeras = BD.traerNombresHeladerasById(int.Parse(HttpContext.Session.GetString("IdUsuario")));
             return View("MiHeladera");
 
     }
