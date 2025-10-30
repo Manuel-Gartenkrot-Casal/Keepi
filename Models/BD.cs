@@ -16,23 +16,23 @@ public class BD
         {
             string StoredProcedure = "TeoremaHevia";
 
-             duracionRestante = connection.QueryFirstOrDefault<double>(
-                StoredProcedure,
-                new
-                {
-                    Producto = producto, //producto siendo el producto al que se le calculará  
-                    D0 = D0, //D0 siendo los días que le quedaban inicialmente al producto  
-                    Acidez = acidez, //Acidez siendo el porcentaje de acidez del product
-                    Agua = agua, //porcentajeAgua  
-                    Azucar = azucar, //porcentajeAzucar  
-                    Conservantes = conservantes, //porcentajeConservantes
-                    Alcohol = alcohol, //porcentajeAlcohol  
-                    PorcentajeCambio = porcentajeCambio, //hay una variable llamada así, es lo rápido que se alterará el producto   
-                    DiasAbierto = diasAbiertos, //los días que lleva abierto desde el inicio así se le resta
-                    f_promedio_base = fPromedioBase //un avg entre todos los promedios conseguido en el segundo sp
-                },
-                commandType: CommandType.StoredProcedure
-            );
+            duracionRestante = connection.QueryFirstOrDefault<double>(
+               StoredProcedure,
+               new
+               {
+                   Producto = producto, //producto siendo el producto al que se le calculará  
+                   D0 = D0, //D0 siendo los días que le quedaban inicialmente al producto  
+                   Acidez = acidez, //Acidez siendo el porcentaje de acidez del product
+                   Agua = agua, //porcentajeAgua  
+                   Azucar = azucar, //porcentajeAzucar  
+                   Conservantes = conservantes, //porcentajeConservantes
+                   Alcohol = alcohol, //porcentajeAlcohol  
+                   PorcentajeCambio = porcentajeCambio, //hay una variable llamada así, es lo rápido que se alterará el producto   
+                   DiasAbierto = diasAbiertos, //los días que lleva abierto desde el inicio así se le resta
+                   f_promedio_base = fPromedioBase //un avg entre todos los promedios conseguido en el segundo sp
+               },
+               commandType: CommandType.StoredProcedure
+           );
         }
         return duracionRestante;
     }
@@ -51,20 +51,20 @@ public class BD
         }
         return fPromedioBase;
     }
-   public static string verificarUsuario(string Username, string Password)
-{
-    using (SqlConnection connection = new SqlConnection(_connectionString))
+    public static string verificarUsuario(string Username, string Password)
     {
-        connection.Open();
-        var parameters = new { Username = Username, Password = Password };
-        string user = connection.QueryFirstOrDefault<string>(
-            "[dbo].[verificarUsuario]",
-            parameters,
-            commandType: CommandType.StoredProcedure
-        );
-        return user;
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+            var parameters = new { Username = Username, Password = Password };
+            string user = connection.QueryFirstOrDefault<string>(
+                "[dbo].[verificarUsuario]",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+            return user;
+        }
     }
-}
 
     public static Producto buscarProducto(string nombre)
     {
@@ -82,10 +82,12 @@ public class BD
             return producto;
         }
     }
-    public static int agregarHeladera(string nombre, string color) {
+    public static int agregarHeladera(string nombre, string color)
+    {
         int resultado = -1;
-        
-        using (SqlConnection connection = new SqlConnection(_connectionString)) {
+
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
             string StoredProcedure = "crearHeladera";
 
             resultado = connection.QueryFirstOrDefault<int>(
@@ -96,10 +98,12 @@ public class BD
             return resultado;
         }
     }
-    public static int borrarHeladera(string nombre, string username) {
+    public static int borrarHeladera(string nombre, string username)
+    {
         int resultado = -1;
-    //modificar agregando que tambien se tenga que tener el username adecuado antes de borrar para no borrar la heladera de otro si tiene el mismo nombre
-        using (SqlConnection connection = new SqlConnection(_connectionString)) {
+        //modificar agregando que tambien se tenga que tener el username adecuado antes de borrar para no borrar la heladera de otro si tiene el mismo nombre
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
             string StoredProcedure = "eliminarHeladera";
 
             resultado = connection.QueryFirstOrDefault<int>(
@@ -171,10 +175,11 @@ public class BD
             // Asumo los campos de tu modelo Receta.cs
             connection.Execute(
                 storedProcedure,
-                new { 
-                    nombre = receta.nombre, 
-                    favorito = receta.favorito, 
-                    duracion = receta.duracion 
+                new
+                {
+                    nombre = receta.nombre,
+                    favorito = receta.favorito,
+                    duracion = receta.duracion
                 },
                 commandType: CommandType.StoredProcedure
             );
@@ -200,11 +205,12 @@ public class BD
             // Asumo los campos de tu modelo Receta.cs
             connection.Execute(
                 storedProcedure,
-                new { 
+                new
+                {
                     ID = receta.ID,
-                    nombre = receta.nombre, 
-                    favorito = receta.favorito, 
-                    duracion = receta.duracion 
+                    nombre = receta.nombre,
+                    favorito = receta.favorito,
+                    duracion = receta.duracion
                 },
                 commandType: CommandType.StoredProcedure
             );
@@ -292,27 +298,32 @@ public class BD
             );
         }
     }
-    public static List<string> traerNombresHeladerasById(int idUsuario){
+    public static List<string> traerNombresHeladerasById(int idUsuario)
+    {
         List<string> nombresHeladera = new List<string>();
-        string storedProcedure = "sp_traerNombresHeladerasById";
+        string storedProcedure = "traerNombresHeladerasById";
+
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            connection.Execute(
+            nombresHeladera = connection.Query<string>(
                 storedProcedure,
-                new { IdUsuario= idUsuario},
+                new { IdUsuario = idUsuario },
                 commandType: CommandType.StoredProcedure
-            );
+            ).ToList();
         }
+
         return nombresHeladera;
     }
-     public static Heladera SeleccionarHeladeraByNombre(int idUsuario, string nombreHeladera){
+
+    public static Heladera SeleccionarHeladeraByNombre(int idUsuario, string nombreHeladera)
+    {
         Heladera heladera;
         string storedProcedure = "sp_SeleccionarHeladeraByNombre";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             heladera = connection.QueryFirstOrDefault(
                 storedProcedure,
-                new { IdUsuario= idUsuario, Nombre = nombreHeladera},
+                new { IdUsuario = idUsuario, Nombre = nombreHeladera },
                 commandType: CommandType.StoredProcedure
             );
         }
