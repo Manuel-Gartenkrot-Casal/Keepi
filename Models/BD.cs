@@ -294,7 +294,7 @@ public class BD
     }
     public static List<string> TraerNombresHeladeraById(int idUsuario){
         List<string> nombresHeladera = new List<string>();
-        string storedProcedure = "sp_getNombresHeladeraByUser";
+        string storedProcedure = "sp_traerNombresHeladerasById";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             connection.Execute(
@@ -306,6 +306,3 @@ public class BD
         return nombresHeladera;
     }
 }
-
-
-    // [dbo].[getNombresHeladeraByUser] ESTO VA EN LA BD traer lista de nombres de las heladeras de el user pasado el id por parametros
