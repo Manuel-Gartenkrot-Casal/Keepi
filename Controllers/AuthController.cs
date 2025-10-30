@@ -19,15 +19,15 @@ public class AuthController : Controller
     public IActionResult verificarCuenta(string Username, string Password)
     {
         string user = BD.verificarUsuario(Username, Password);
-        if (user != "Error")
-        {
-            HttpContext.Session.SetString("usuario", user);
-            return RedirectToAction("InicializarHeladera", "Heladera");
-        }
-        else
+        if (user == "Error")
         {
             ViewBag.Error = "Usuario o contraseña incorrectos";
             return RedirectToAction("Index", "Home");
+        }
+        else
+        {
+            HttpContext.Session.SetString("usuario", user);
+            return RedirectToAction("InicializarHeladera", "Heladera");
         }
     }
     

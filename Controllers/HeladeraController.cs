@@ -15,7 +15,7 @@ public class HeladeraController : Controller
     {
         return RedirectToAction("Login", "Auth");
     }
-
+    List<string> nombresHeladeras = BD.TraerNombresHeladeraById(idUsuario);
     Heladera = BD.GetHeladeraByUsuarioId(int.Parse(idUsuarioStr));
     HttpContext.Session.SetString("nombreHeladera", Heladera.Nombre);
     return RedirectToAction("CargarProductos");
