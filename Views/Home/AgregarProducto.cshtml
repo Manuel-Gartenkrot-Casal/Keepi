@@ -1,60 +1,64 @@
 @model Keepi.Models.ProductoXHeladera
 @{
     ViewData["Title"] = "Agregar Producto";
-    // 1. Serializamos la lista de productos que viene del controller
-    // para que JavaScript pueda leerla.
     var productosJson = Json.Serialize(ViewBag.ListaProductos);
 }
 
-<link rel="stylesheet" href="~/css/style.css" />
-
-<div class="login-page">
-    <div class="form-container">
-        <form class="form" method="post" asp-action="Guardar" asp-controller="AgregarProducto">
+<div style="display: flex; justify-content: center; align-items: flex-start; min-height: calc(100vh - 80px); padding-top: 50px; background-color: #f2f2f2;"> @* Ajusta min-height y padding-top según la altura de tu header *@
+    <div class="form-container" style="background-color: #f9f9f9; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); max-width: 400px; width: 100%;">
+        <form method="post" asp-action="Guardar" asp-controller="AgregarProducto">
             
-            <h1>KEEPI</h1>
-            <h2>Agregar Producto</h2>
+            <h2 style="text-align: center; color: #333; margin-bottom: 25px; font-weight: bold;">Agregar Producto</h2>
             
-            <label for="product-search" style="text-align: left; display: block; width: 100%; margin-bottom: 5px;">Buscar Producto Base</label>
-            <input type="text" id="product-search" placeholder="Escribe (ej: Leche, Huevo...)" list="productos-list" autocomplete="off">
-            
-            <datalist id="productos-list">
-            </datalist>
+            <div style="margin-bottom: 20px;">
+                <label for="product-search" style="display: block; margin-bottom: 8px; color: #555; font-weight: 600;">Buscar Producto Base</label>
+                <input type="text" id="product-search" placeholder="Escribe (ej: Leche, Huevo...)" list="productos-list" autocomplete="off" 
+                       style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                <datalist id="productos-list">
+                    </datalist>
+            </div>
 
             <img id="product-image" src="" alt="Vista previa del producto" 
-                 style="display: none; width: 100px; height: 100px; margin: 10px auto; border-radius: 5px; object-fit: cover; border: 1px solid #ddd;"/>
+                 style="display: none; width: 120px; height: 120px; margin: 15px auto; border-radius: 10px; object-fit: cover; border: 2px solid #ddd;"/>
 
             <input type="hidden" id="idProducto" name="idProducto" />
             <input type="hidden" id="foto-hidden" name="foto" />
 
-            <label for="nombreEsp" style="text-align: left; display: block; width: 100%; margin-bottom: 5px;">Nombre Específico</label>
-            <input type="text" id="nombreEsp" name="nombreEsp" placeholder="Ej: Leche Sancor 1L" required>
+            <div style="margin-bottom: 20px;">
+                <label for="nombreEsp" style="display: block; margin-bottom: 8px; color: #555; font-weight: 600;">Nombre Específico</label>
+                <input type="text" id="nombreEsp" name="nombreEsp" placeholder="Ej: Leche Sancor 1L" required
+                       style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+            </div>
             
-            <label for="fechaVencimiento" style="text-align: left; display: block; width: 100%; margin-bottom: 5px;">Fecha de Vencimiento</label>
-            <input type="date" id="fechaVencimiento" name="fechaVencimiento" required>
+            <div style="margin-bottom: 30px;">
+                <label for="fechaVencimiento" style="display: block; margin-bottom: 8px; color: #555; font-weight: 600;">Fecha de Vencimiento</label>
+                <input type="date" id="fechaVencimiento" name="fechaVencimiento" required
+                       style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+            </div>
 
-            <button type="submit">Agregar a Heladera</button>
+            <button type="submit" 
+                    style="width: 100%; padding: 14px 20px; background-color: #6a6ad9; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: background-color 0.3s ease;">
+                Agregar a Heladera
+            </button>
             
              @if (TempData["Error"] != null)
             {
-                <div classd="error-message" style="color: red; margin-top: 10px;">@TempData["Error"]</div>
+                <div class="error-message" style="color: red; margin-top: 15px; text-align: center; font-weight: 500;">@TempData["Error"]</div>
             }
             @if (TempData["Success"] != null)
             {
-                <div class="success-message" style="color: #4CAF50; margin-top: 10px;">@TempData["Success"]</div>
+                <div class="success-message" style="color: #4CAF50; margin-top: 15px; text-align: center; font-weight: 500;">@TempData["Success"]</div>
             }
 
-            <p class="message"><a asp-action="MiHeladera" asp-controller="Home">Volver a Mi Heladera</a></p>
+            <p class="message" style="text-align: center; margin-top: 25px;"><a asp-action="MiHeladera" asp-controller="Home" style="color: #6a6ad9; text-decoration: none;">Volver a Mi Heladera</a></p>
         </form>
     </div>
 </div>
 
 @section Scripts {
     <script>
-        // Obtenemos la lista de productos del ViewBag
         const productosBase = @Html.Raw(productosJson);
 
-        // Obtenemos los elementos del DOM
         const searchInput = document.getElementById('product-search');
         const dataList = document.getElementById('productos-list');
         const productImage = document.getElementById('product-image');
@@ -63,21 +67,17 @@
         const fotoInput = document.getElementById('foto-hidden');
         const fechaInput = document.getElementById('fechaVencimiento');
 
-        // Evento que se dispara CADA VEZ que el usuario teclea
         searchInput.addEventListener('input', function(e) {
             const inputVal = e.target.value.toLowerCase();
-            
-            dataList.innerHTML = ''; // Limpiamos sugerencias anteriores
+            dataList.innerHTML = ''; 
 
             if (inputVal.length < 1) {
                 productImage.style.display = 'none';
                 return;
             }
 
-            // Filtramos la lista de productos
             const matches = productosBase.filter(p => p.Nombre.toLowerCase().includes(inputVal));
             
-            // Agregamos las coincidencias como <option> a la <datalist>
             matches.forEach(prod => {
                 const option = document.createElement('option');
                 option.value = prod.Nombre;
@@ -85,31 +85,23 @@
             });
         });
 
-        // Evento que se dispara CUANDO el usuario selecciona un item
         searchInput.addEventListener('change', function(e) {
             const selectedName = e.target.value;
-            
-            // Buscamos el producto completo que coincida con el nombre
             const selectedProduct = productosBase.find(p => p.Nombre === selectedName);
 
             if (selectedProduct) {
-                // Si se encontró, rellenamos los campos
                 idProductoInput.value = selectedProduct.ID;
                 fotoInput.value = selectedProduct.Foto;
-                nombreEspInput.value = selectedProduct.Nombre; // Autorellena el nombre específico
-
-                // Mostramos la imagen
+                nombreEspInput.value = selectedProduct.Nombre; 
                 productImage.src = selectedProduct.Foto;
                 productImage.style.display = 'block';
             } else {
-                // Si el usuario escribió algo que no existe, limpiamos
                 productImage.style.display = 'none';
                 idProductoInput.value = '';
                 fotoInput.value = '';
             }
         });
 
-        // Poner la fecha mínima del input de vencimiento en el día de hoy
         fechaInput.min = new Date().toISOString().split("T")[0];
     </script>
 }
