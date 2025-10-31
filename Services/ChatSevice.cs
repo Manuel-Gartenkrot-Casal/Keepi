@@ -51,7 +51,18 @@ namespace semantic_kernel.Services
                 Si el usuario te pregunta sobre algo que no sabes, responde que no lo sabes y ofrece ayuda para encontrar la información.
                 Tus respuestas deben ser cortas y directas, el usuario esta hablando contigo porque le falta tiempo.
                 """;
-                string systemPrompt = systemPromptBase + "heladeraJson = \"" + Objeto.ObjectToString(heladeraJson) + "\"";
+            
+            // Validar que heladeraJson no esté vacío antes de agregarlo al prompt
+            string systemPrompt = systemPromptBase;
+            if (heladeraJson != null && heladeraJson.Count > 0)
+            {
+                systemPrompt += "heladeraJson = \"" + Objeto.ObjectToString(heladeraJson) + "\"";
+            }
+            else
+            {
+                systemPrompt += "heladeraJson está vacío. El usuario no tiene productos en la heladera actualmente.";
+            }
+            
             history.AddSystemMessage(systemPrompt);
 
             // Agrega el historial de conversación

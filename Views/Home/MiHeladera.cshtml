@@ -1,17 +1,449 @@
 @using System.Collections.Generic
 @using Keepi.Models
 
+@using System.Linq
 @{
     var Productos = ViewBag.Productos as List<ProductoXHeladera> ?? new List<ProductoXHeladera>();
+    var BD = new BD();
+    var todosProductos = BD.GetAllProductos();
 }
 
-<div class="Heladera">
-    @foreach (ProductoXHeladera producto in Productos)
-    {
-        <div class="productoEnHeladera">
-            <img src="@Url.Content($"~/images/{producto.Foto}")" alt="@producto.NombreEsp" />
-            <h1>@producto.NombreEsp</h1>
-           <!--progressidporcentajeVencimientovalueproductoCalcularPorcentajeRestantemax100-->
-        </div>
-    }
+<div class="mi-heladera-container">
+    <div class="productos-scroll-container">
+        @if (Productos != null && Productos.Count > 0)
+        {
+            @foreach (ProductoXHeladera producto in Productos)
+            {
+                var productoBase = todosProductos.FirstOrDefault(p => p.ID == producto.IdProducto);
+                int duracionTotal = productoBase?.Duracion ?? 30; // Default 30 días si no se encuentra
+                int diasRestantes = producto.ObtenerDiasRestantes();
+                int diasDesdeCarga = producto.ObtenerDiasDesdeCarga(duracionTotal);
+                double porcentaje = producto.CalcularPorcentajeVencimiento(duracionTotal);
+                var fechaCarga = producto.FechaVencimiento.AddDays(-duracionTotal);
+                if (fechaCarga > DateTime.Now) fechaCarga = DateTime.Now; // No puede ser futura
+                
+                <div class="producto-card" data-producto-id="@producto.ID" data-producto-base-id="@producto.IdProducto">
+                    <button class="btn-eliminar" onclick="eliminarProducto(@producto.ID, @producto.IdProducto)" title="Eliminar producto">
+                        ✕
+                    </button>
+                    
+                    <div class="producto-imagen">
+                        <img src="@Url.Content($"~/images/{producto.Foto}")" alt="@producto.NombreEsp" />
+                    </div>
+                    
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">@producto.NombreEsp</h3>
+                        
+                        <div class="producto-fecha">
+                            <span class="label">Cargado:</span>
+                            <span class="valor">@fechaCarga.ToString("dd/MM/yyyy")</span>
+                        </div>
+                        
+                        <div class="producto-dias">
+                            @if (diasRestantes < 0)
+                            {
+                                <span class="dias-vencido">Vencido hace @Math.Abs(diasRestantes) días</span>
+                            }
+                            else if (diasRestantes == 0)
+                            {
+                                <span class="dias-venciendo">Vence hoy</span>
+                            }
+                            else
+                            {
+                                <span class="dias-restantes">@diasRestantes día@(diasRestantes != 1 ? "s" : "") restante@(diasRestantes != 1 ? "s" : "")</span>
+                            }
+                        </div>
+                        
+                        <div class="producto-progress">
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: @porcentaje%; background: @(porcentaje > 50 ? "linear-gradient(90deg, #6cc04a, #b4df33)" : porcentaje > 25 ? "linear-gradient(90deg, #f5a623, #f5d123)" : "linear-gradient(90deg, #e74c3c, #c0392b)")"></div>
+                            </div>
+                            <span class="progress-text">@porcentaje.ToString("F0")% restante</span>
+                        </div>
+                        
+                        <div class="producto-acciones">
+                            <button class="btn-abrir @(producto.Abierto ? "activo" : "")" onclick="cambiarEstadoAbierto(@producto.ID, @(!producto.Abierto).ToString().ToLower())" title="@(producto.Abierto ? "Cerrar" : "Abrir") producto">
+                                @(producto.Abierto ? "✓ Abierto" : "Abrir")
+                            </button>
+                            
+                            <div class="dropdown-estado">
+                                <button class="btn-estado" onclick="toggleDropdown(@producto.ID)" title="Cambiar estado">
+                                    Estado ▼
+                                </button>
+                                <div class="dropdown-menu" id="dropdown-@producto.ID">
+                                    <a href="#" onclick="cambiarEstado(@producto.ID, 'alacena'); return false;">Alacena</a>
+                                    <a href="#" onclick="cambiarEstado(@producto.ID, 'refrigerado'); return false;">Refrigerado</a>
+                                    <a href="#" onclick="cambiarEstado(@producto.ID, 'congelado'); return false;">Congelado</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="sin-productos">
+                <p>No hay productos en la heladera</p>
+            </div>
+        }
+    </div>
 </div>
+
+<script>
+function eliminarProducto(idProductoXHeladera, idProducto) {
+    if (!confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+        return;
+    }
+    
+    const formData = new FormData();
+    formData.append('idProductoXHeladera', idProductoXHeladera);
+    formData.append('idProducto', idProducto);
+    
+    fetch('@Url.Action("EliminarProducto", "Heladera")', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.querySelector(`[data-producto-id="${idProductoXHeladera}"]`).remove();
+        } else {
+            alert('Error al eliminar el producto: ' + (data.message || 'Error desconocido'));
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al eliminar el producto');
+    });
+}
+
+function cambiarEstadoAbierto(idProductoXHeladera, abierto) {
+    const formData = new FormData();
+    formData.append('idProductoXHeladera', idProductoXHeladera);
+    formData.append('abierto', abierto);
+    
+    fetch('@Url.Action("CambiarEstadoAbierto", "Heladera")', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            alert('Error al cambiar el estado: ' + (data.message || 'Error desconocido'));
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al cambiar el estado');
+    });
+}
+
+function toggleDropdown(productoId) {
+    const dropdown = document.getElementById('dropdown-' + productoId);
+    // Cerrar otros dropdowns
+    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        if (menu.id !== 'dropdown-' + productoId) {
+            menu.classList.remove('show');
+        }
+    });
+    dropdown.classList.toggle('show');
+}
+
+function cambiarEstado(productoId, estado) {
+    // TODO: Implementar cambio de estado (alacena, refrigerado, congelado)
+    // Esto requeriría agregar un campo Estado en la base de datos o usar otro mecanismo
+    alert('Estado cambiado a: ' + estado);
+    document.getElementById('dropdown-' + productoId).classList.remove('show');
+}
+
+// Cerrar dropdowns al hacer click fuera
+document.addEventListener('click', function(event) {
+    if (!event.target.matches('.btn-estado') && !event.target.closest('.dropdown-menu')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.classList.remove('show');
+        });
+    }
+});
+</script>
+
+<style>
+.mi-heladera-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.productos-scroll-container {
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.productos-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.productos-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.productos-scroll-container::-webkit-scrollbar-thumb {
+    background: #59ad44;
+    border-radius: 10px;
+}
+
+.productos-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #4a8d38;
+}
+
+.producto-card {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.producto-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-eliminar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-eliminar:hover {
+    background: #c0392b;
+    transform: scale(1.1);
+}
+
+.producto-imagen {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.producto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.producto-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.producto-nombre {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.producto-fecha {
+    font-size: 14px;
+    color: #666;
+}
+
+.producto-fecha .label {
+    font-weight: 500;
+}
+
+.producto-dias {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.dias-restantes {
+    color: #6cc04a;
+}
+
+.dias-venciendo {
+    color: #f5a623;
+}
+
+.dias-vencido {
+    color: #e74c3c;
+}
+
+.producto-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.progress-text {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+}
+
+.producto-acciones {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-abrir {
+    padding: 8px 16px;
+    border: 2px solid #59ad44;
+    background: white;
+    color: #59ad44;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-abrir:hover {
+    background: #59ad44;
+    color: white;
+}
+
+.btn-abrir.activo {
+    background: #59ad44;
+    color: white;
+}
+
+.dropdown-estado {
+    position: relative;
+}
+
+.btn-estado {
+    padding: 8px 16px;
+    border: 2px solid #4653a2;
+    background: white;
+    color: #4653a2;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-estado:hover {
+    background: #4653a2;
+    color: white;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    z-index: 1000;
+    margin-top: 5px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background: #f5f5f5;
+}
+
+.sin-productos {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-size: 18px;
+}
+
+@@media (max-width: 768px) {
+    .productos-scroll-container {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .producto-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .producto-imagen {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .producto-acciones {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-abrir,
+    .btn-estado {
+        width: 100%;
+    }
+}
+</style>

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using Keepi.Models;
 public class HeladeraController : Controller
 {
     private Heladera? Heladera;
@@ -78,10 +80,61 @@ public class HeladeraController : Controller
     }
     public IActionResult CargarProductos()
     {
-        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
-        ViewBag.Productos = BD.GetProductosByHeladeraId(Heladera.ID);
+        string user = HttpContext.Session.GetString("usuario");
+        if (user == null)
+        {
+            return RedirectToAction("Login", "Auth");
+        }
+        Usuario usuario = Objeto.StringToObject<Usuario>(user);
+        string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
+        if (string.IsNullOrEmpty(nombreHeladera))
+        {
+            return RedirectToAction("InicializarHeladera");
+        }
+        Heladera Heladera = BD.SeleccionarHeladeraByNombre(usuario.ID, nombreHeladera);
+        if (Heladera != null)
+        {
+            ViewBag.Productos = BD.GetProductosXHeladeraByHeladeraId(Heladera.ID);
+        }
+        else
+        {
+            ViewBag.Productos = new List<ProductoXHeladera>();
+        }
         return View("MiHeladera");
     }
+
+    [HttpPost]
+    public IActionResult EliminarProducto([FromForm] int idProductoXHeladera, [FromForm] int idProducto)
+    {
+        string user = HttpContext.Session.GetString("usuario");
+        if (user == null)
+        {
+            return Json(new { success = false, message = "No autorizado" });
+        }
+        Usuario usuario = Objeto.StringToObject<Usuario>(user);
+        string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
+        Heladera Heladera = BD.SeleccionarHeladeraByNombre(usuario.ID, nombreHeladera);
+        
+        if (Heladera != null)
+        {
+            BD.EliminarProductoXHeladera(Heladera.ID, idProducto);
+            return Json(new { success = true });
+        }
+        return Json(new { success = false, message = "Heladera no encontrada" });
+    }
+
+    [HttpPost]
+    public IActionResult CambiarEstadoAbierto([FromForm] int idProductoXHeladera, [FromForm] bool abierto)
+    {
+        string user = HttpContext.Session.GetString("usuario");
+        if (user == null)
+        {
+            return Json(new { success = false, message = "No autorizado" });
+        }
+        BD.ActualizarAbiertoProducto(idProductoXHeladera, abierto);
+        return Json(new { success = true });
+    }
+
     public IActionResult TraerNombresHeladera()
     {
         ViewBag.NombresHeladeras = BD.traerNombresHeladerasById(int.Parse(HttpContext.Session.GetString("IdUsuario")));

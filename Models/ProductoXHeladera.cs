@@ -11,6 +11,10 @@ public class ProductoXHeladera {
     public bool Abierto {get;set;}
     public string Foto {get;set;}
     
+    // Constructor sin parámetros requerido por Dapper para materialización
+    public ProductoXHeladera() {
+    }
+    
     public ProductoXHeladera(int ID, int IdHeladera, int IdUsuario, string NombreEsp, DateTime FechaVencimiento, bool Eliminado, bool Abierto, string Foto) {
         this.ID = ID;
         this.IdHeladera = IdHeladera;
@@ -41,6 +45,22 @@ public class ProductoXHeladera {
                 return diasRestantes;
             }
 
+    }
+
+    public double CalcularPorcentajeVencimiento(int duracionTotal)
+    {
+        if (duracionTotal <= 0) return 0;
+        int diasRestantes = ObtenerDiasRestantes();
+        if (diasRestantes < 0) return 0;
+        double porcentaje = ((double)diasRestantes / duracionTotal) * 100;
+        return Math.Max(0, Math.Min(100, porcentaje));
+    }
+
+    public int ObtenerDiasDesdeCarga(int duracionTotal)
+    {
+        int diasRestantes = ObtenerDiasRestantes();
+        if (diasRestantes < 0) return duracionTotal;
+        return duracionTotal - diasRestantes;
     }
     /*public double CalcularPorcentajeRestante() //Para barra de progreso, otros calculos como notificaciones
     {

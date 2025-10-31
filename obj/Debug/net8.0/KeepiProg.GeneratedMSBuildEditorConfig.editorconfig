@@ -9,83 +9,77 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = KeepiProg
 build_property.RootNamespace = KeepiProg
-build_property.ProjectDir = C:\Users\49194194\Desktop\Keepi\
+build_property.ProjectDir = c:\Users\Manuel\Desktop\Keepi\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\49194194\Desktop\Keepi
+build_property.MSBuildProjectDirectory = c:\Users\Manuel\Desktop\Keepi
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Auth/Login.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Chat/ChatBot.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Chat/ChatBot.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxDaGF0Qm90LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Home/AgregarProducto.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Home/AgregarProducto.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZ3JlZ2FyUHJvZHVjdG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Home/FinalizarTarea.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Home/FinalizarTarea.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGaW5hbGl6YXJUYXJlYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Home/Heladeras.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Home/Heladeras.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIZWxhZGVyYXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Home/Index.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Home/ListaDeSuper.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Home/ListaDeSuper.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0YURlU3VwZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Home/MiHeladera.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Home/MiHeladera.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaUhlbGFkZXJhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Home/Perfil.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Home/Perfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZXJmaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Home/Receta.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Home/Receta.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNldGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Home/Recetas.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Home/Recetas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNldGFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Shared/_Layout.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-<<<<<<< HEAD
-[C:/Users/49194194/Desktop/Keepi/Views/Shared/_Notificaciones.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/Shared/_Notificaciones.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYWNpb25lcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/Shared/_ValidationScriptsPartial.cshtml]
-=======
-[C:/Users/48792944/Downloads/Keepi/Views/Shared/_Notificaciones.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYWNpb25lcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/48792944/Downloads/Keepi/Views/Shared/_ValidationScriptsPartial.cshtml]
->>>>>>> 675f99c (Update chatbot)
+[c:/Users/Manuel/Desktop/Keepi/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/_ViewImports.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49194194/Desktop/Keepi/Views/_ViewStart.cshtml]
+[c:/Users/Manuel/Desktop/Keepi/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

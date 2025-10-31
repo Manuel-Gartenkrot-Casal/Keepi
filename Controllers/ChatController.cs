@@ -85,6 +85,13 @@ namespace semantic_kernel.Controllers
                 string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
 
                 List<ProductoXHeladera> heladeraJson = BD.getProductosByNombreHeladeraAndIdUsuario(nombreHeladera, idUsuario);
+                
+                // Validar que heladeraJson no sea null (si es null, inicializar como lista vacía)
+                if (heladeraJson == null)
+                {
+                    heladeraJson = new List<ProductoXHeladera>();
+                }
+                
                 var botResponse = await _chatService.GetChatResponseAsync(request.Message, chatHistory, heladeraJson);
 
                 var botMessage = new ChatMessage

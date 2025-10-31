@@ -2,6 +2,7 @@ using Microsoft.Data.SqlClient;
 using System.Data;
 using Dapper;
 using Keepi.Models;
+using System.Linq;
 
 public class BD
 {
@@ -204,7 +205,29 @@ public class BD
         var parameters = new { nombre = nombreHeladera, IdUsuario = idUsuario };
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            lista = connection.Query<ProductoXHeladera>(storedProcedure, parameters, commandType: CommandType.StoredProcedure).ToList();
+            // Usar Query con mapeo dinámico para evitar conflictos con columnas de otras tablas en los JOINs
+            var results = connection.Query(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            foreach (var row in results)
+            {
+                var rowDict = (IDictionary<string, object>)row;
+                var producto = new ProductoXHeladera
+                {
+                    ID = rowDict.ContainsKey("Id") && rowDict["Id"] != null ? Convert.ToInt32(rowDict["Id"]) : 0,
+                    IdHeladera = rowDict.ContainsKey("IdHeladera") && rowDict["IdHeladera"] != null ? Convert.ToInt32(rowDict["IdHeladera"]) : 0,
+                    IdProducto = rowDict.ContainsKey("IdProducto") && rowDict["IdProducto"] != null ? Convert.ToInt32(rowDict["IdProducto"]) : 0,
+                    NombreEsp = rowDict.ContainsKey("NombreEspecifico") && rowDict["NombreEspecifico"] != null ? rowDict["NombreEspecifico"].ToString() : string.Empty,
+                    FechaVencimiento = rowDict.ContainsKey("FechaVencimiento") && rowDict["FechaVencimiento"] != null ? Convert.ToDateTime(rowDict["FechaVencimiento"]) : DateTime.MinValue,
+                    Eliminado = rowDict.ContainsKey("Eliminado") && rowDict["Eliminado"] != null ? Convert.ToBoolean(rowDict["Eliminado"]) : false,
+                    Abierto = rowDict.ContainsKey("Abierto") && rowDict["Abierto"] != null ? Convert.ToBoolean(rowDict["Abierto"]) : false,
+                    Foto = rowDict.ContainsKey("Foto") && rowDict["Foto"] != null ? rowDict["Foto"].ToString() : string.Empty
+                };
+                // Intentar obtener IdUsuario si está en el resultado (puede venir del JOIN con UsuarioXHeladera)
+                if (rowDict.ContainsKey("IdUsuario") && rowDict["IdUsuario"] != null)
+                {
+                    producto.IdUsuario = Convert.ToInt32(rowDict["IdUsuario"]);
+                }
+                lista.Add(producto);
+            }
         }
         return lista;
     }
@@ -360,6 +383,55 @@ public class BD
                 },
                 commandType: CommandType.StoredProcedure
             );
+        }
+    }
+
+    public static List<ProductoXHeladera> GetProductosXHeladeraByHeladeraId(int idHeladera)
+    {
+        List<ProductoXHeladera> lista = new List<ProductoXHeladera>();
+        string storedProcedure = "sp_GetProductosByHeladeraId";
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            var results = connection.Query(storedProcedure, new { IdHeladera = idHeladera }, commandType: CommandType.StoredProcedure);
+            foreach (var row in results)
+            {
+                var rowDict = (IDictionary<string, object>)row;
+                var producto = new ProductoXHeladera
+                {
+                    ID = rowDict.ContainsKey("Id") && rowDict["Id"] != null ? Convert.ToInt32(rowDict["Id"]) : 0,
+                    IdHeladera = idHeladera,
+                    IdProducto = rowDict.ContainsKey("IdProducto") && rowDict["IdProducto"] != null ? Convert.ToInt32(rowDict["IdProducto"]) : 0,
+                    NombreEsp = rowDict.ContainsKey("NombreEspecifico") && rowDict["NombreEspecifico"] != null ? rowDict["NombreEspecifico"].ToString() : string.Empty,
+                    FechaVencimiento = rowDict.ContainsKey("FechaVencimiento") && rowDict["FechaVencimiento"] != null ? Convert.ToDateTime(rowDict["FechaVencimiento"]) : DateTime.MinValue,
+                    Eliminado = rowDict.ContainsKey("Eliminado") && rowDict["Eliminado"] != null ? Convert.ToBoolean(rowDict["Eliminado"]) : false,
+                    Abierto = rowDict.ContainsKey("Abierto") && rowDict["Abierto"] != null ? Convert.ToBoolean(rowDict["Abierto"]) : false,
+                    Foto = rowDict.ContainsKey("Foto") && rowDict["Foto"] != null ? rowDict["Foto"].ToString() : string.Empty
+                };
+                lista.Add(producto);
+            }
+        }
+        return lista.Where(p => !p.Eliminado).ToList();
+    }
+
+    public static void EliminarProductoXHeladera(int idHeladera, int idProducto)
+    {
+        string storedProcedure = "eliminarProductoHeladera";
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Execute(
+                storedProcedure,
+                new { idHeladera = idHeladera, idProducto = idProducto },
+                commandType: CommandType.StoredProcedure
+            );
+        }
+    }
+
+    public static void ActualizarAbiertoProducto(int idProductoXHeladera, bool abierto)
+    {
+        string sql = "UPDATE ProductoXHeladera SET Abierto = @Abierto WHERE Id = @Id";
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Execute(sql, new { Id = idProductoXHeladera, Abierto = abierto });
         }
     }
 }
