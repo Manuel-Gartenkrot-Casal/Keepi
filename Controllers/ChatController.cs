@@ -25,7 +25,8 @@ namespace semantic_kernel.Controllers
 
         public IActionResult ChatBot()
         {
-            var chatHistory = GetChatHistory();
+            ChatMessage vacio = null;
+            var chatHistory = GetChatHistory(vacio);
             return View(chatHistory);
         }
 
@@ -61,16 +62,16 @@ namespace semantic_kernel.Controllers
                         Success = false
                     });
                 }
-
-                var chatHistory = GetChatHistory();
-
                 var userMessage = new ChatMessage
                 {
                     Content = request.Message,
                     IsUser = true,
                     Timestamp = DateTime.Now
                 };
-                chatHistory.Add(userMessage);
+                
+                List<ChatMessage> chatHistory = GetChatHistory(userMessage);
+
+                
                 HttpContext.Session.GetString("nombreHeladera");
                 string user = HttpContext.Session.GetString("usuario");
                     if (user == null)
@@ -119,22 +120,23 @@ namespace semantic_kernel.Controllers
             return Json(new { success = true });
         }
 
-        private List<ChatMessage> GetChatHistory()
+        private List<ChatMessage> GetChatHistory(ChatMessage chatHistory)
         {
             var session = _httpContextAccessor.HttpContext?.Session;
             if (session != null)
             {
-                var historyJson = session.GetString("ChatHistory");
-                if (!string.IsNullOrEmpty(historyJson))
+                var Json = session.GetString("ChatHistory");
+                List<ChatMessage> historyJson = Objeto.StringToObject<List<ChatMessage>>(Json);
+
+                if (historyJson != null && historyJson.Any())
                 {
                     try
-                    {
-                        return Objeto.StringToObject<List<ChatMessage>>(historyJson) ?? new List<ChatMessage>();
+                    {   
+                        historyJson.Add(chatHistory);
+                        return (historyJson);
                     }
                     catch
-                    {
-                        // Si la deserialización falla, devolvemos historial vacío
-                    }
+                    {   }
                 }
             }
             return new List<ChatMessage>();
