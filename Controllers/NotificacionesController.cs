@@ -49,6 +49,3 @@ public class NotificacionesController : Controller {
         return RedirectToAction(returnUrl);
     }*/
 }
-
-
-*/
