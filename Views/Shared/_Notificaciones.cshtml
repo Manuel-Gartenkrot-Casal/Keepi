@@ -1,5 +1,6 @@
+@using Keepi.Models;
 @{
-    var lista = ViewBag.Notificaciones as List<Keepi.Models.Notificacion>;
+    var lista = ViewBag.Notificaciones as List<Notificacion>;
 }
 
 <div class="notificaciones-contenido">
@@ -8,12 +9,11 @@
     <ul>
         @if (lista != null && lista.Any())
         {
-            foreach (var n in lista)
+            foreach (Notificacion n in lista)
             {
-                <li class="notificacion-item @(n.Leida ? "leida" : "nueva")">
-                    <strong>@n.Titulo</strong>
+                <li class="notificacion-item">
                     <p>@n.Mensaje</p>
-                    <small>@n.Fecha.ToString("dd/MM/yyyy HH:mm")</small>
+                    <small>@n.FechaNotificacion.ToString("dd/MM/yyyy HH:mm")</small>
                 </li>
             }
         }
