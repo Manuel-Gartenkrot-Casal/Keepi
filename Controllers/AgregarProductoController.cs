@@ -12,7 +12,7 @@ namespace Keepi.Controllers
         public IActionResult Formulario()
         {
             // --- Verificación de Sesión (Comentada para testear) ---
-            /* int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+             int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
             if (idUsuario == null)
             {
                 return RedirectToAction("Login", "Auth"); //
@@ -24,7 +24,7 @@ namespace Keepi.Controllers
                 TempData["Error"] = "Por favor, selecciona una heladera antes de agregar productos.";
                 return RedirectToAction("Seleccionar", "Heladera"); //
             }
-            */
+            
             // --- Fin Verificación de Sesión ---
             
             try
@@ -46,13 +46,9 @@ namespace Keepi.Controllers
         [HttpPost]
         public IActionResult Guardar(int idProducto, string nombreEsp, DateTime fechaVencimiento, string foto)
         {
-            // --- VALOR FIJO PARA TESTEAR ---
-            // Pon aquí un ID de heladera que SÍ exista en tu base de datos.
-            int? idHeladera = 1; 
-            // --- FIN VALOR FIJO ---
 
             // --- Verificación de Sesión (Comentada para testear) ---
-            /*
+            
             int? idHeladera = HttpContext.Session.GetInt32("IdHeladeraActual"); 
             int? idUsuario = HttpContext.Session.GetInt32("IdUsuario"); 
 
@@ -65,7 +61,7 @@ namespace Keepi.Controllers
                 TempData["Error"] = "Tu sesión ha expirado o no has seleccionado una heladera.";
                 return RedirectToAction("Seleccionar", "Heladera"); //
             }
-            */
+            
             // --- Fin Verificación de Sesión ---
 
             try
