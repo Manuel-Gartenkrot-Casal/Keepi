@@ -22,9 +22,9 @@
 <section>
 <h2 id="pageTitle">Iniciar sesión</h2>
 
-@if (!string.IsNullOrEmpty(ViewBag.Error as string))
+@if (TempData["Error"] != null)
 {
-    <div class="alert alert-danger">@ViewBag.Error</div>
+    <div class="alert alert-danger">@TempData["Error"]</div>
 }
 
 <form id="loginForm" asp-controller="Auth" asp-action="verificarCuenta" method="post" class="mb-3">
@@ -42,9 +42,9 @@
 
 <button id="toggleBtn" class="btn btn-outline-secondary mb-3">Registrarse</button>
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorRegistro as string))
+@if (TempData["ErrorRegistro"] != null)
 {
-    <div id="registroError" class="alert alert-danger" style="display:none;">@ViewBag.ErrorRegistro</div>
+    <div id="registroError" class="alert alert-danger" style="display:none;">@TempData["ErrorRegistro"]</div>
 }
 
 <form id="registerForm" asp-controller="Auth" asp-action="Registrarse" method="post" style="display:none;">

@@ -354,7 +354,7 @@ public class BD
     public static Heladera SeleccionarHeladeraByNombre(int idUsuario, string nombreHeladera)
     {
         Heladera heladera;
-        string storedProcedure = "sp_SeleccionarHeladeraByNombre";
+        string storedProcedure = "SeleccionarHeladeraByNombre";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             heladera = connection.QueryFirstOrDefault(

@@ -24,8 +24,16 @@
                 <p>Organizá tu heladera, recibí alertas de vencimiento y encontrá las mejores recetas.</p>
 
             <div>
-            <a href="/Chat/ChatBot" class="cta">Hablá con Mr. Keep</a>
-            <a href="@Url.Action("InicializarHeladera", "Heladera")">Ir a Heladera</a>
+            @if (Context.Session.GetString("usuario") != null)
+            {
+                <a href="@Url.Action("ChatBot", "Chat")" class="cta">Hablá con Mr. Keep</a>
+                <a href="@Url.Action("InicializarHeladera", "Heladera")">Ir a Heladera</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Login", "Auth")" class="cta">Iniciar Sesión</a>
+                <a href="@Url.Action("Login", "Auth")">Registrarse</a>
+            }
             </div>
 
         </section>

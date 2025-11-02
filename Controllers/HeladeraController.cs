@@ -172,7 +172,82 @@ public class HeladeraController : Controller
 
     }
 
-    /*public IActionResult CambiarHeladera(string NombreHeladera){
-        
-    }*/
+    public IActionResult Heladeras()
+    {
+        try
+        {
+            string user = HttpContext.Session.GetString("usuario");
+            if (user == null)
+            {
+                Console.WriteLine("[HeladeraController] Usuario no autenticado en Heladeras");
+                TempData["Error"] = "Sesión expirada. Por favor, inicia sesión.";
+                return RedirectToAction("Login", "Auth");
+            }
+            
+            Usuario usuario = Objeto.StringToObject<Usuario>(user);
+            if (usuario == null)
+            {
+                Console.WriteLine("[HeladeraController] Error al deserializar usuario");
+                return RedirectToAction("Login", "Auth");
+            }
+            
+            int idUsuario = usuario.ID;
+            Console.WriteLine($"[HeladeraController] Cargando heladeras para usuario ID: {idUsuario}");
+
+            List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
+            if (nombresHeladeras == null || nombresHeladeras.Count == 0)
+            {
+                Console.WriteLine($"[HeladeraController] Usuario {idUsuario} no tiene heladeras");
+                TempData["Error"] = "No tienes heladeras creadas. Por favor, crea una heladera primero.";
+                return RedirectToAction("Index", "Home");
+            }
+            
+            ViewBag.NombresHeladeras = nombresHeladeras;
+            ViewBag.HeladeraActual = HttpContext.Session.GetString("nombreHeladera");
+            
+            return View();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[HeladeraController] Error en Heladeras: {ex.Message}");
+            TempData["Error"] = "Error al cargar las heladeras.";
+            return RedirectToAction("Index", "Home");
+        }
+    }
+
+    [HttpPost]
+    public IActionResult CambiarHeladera(string nombreHeladera)
+    {
+        try
+        {
+            string user = HttpContext.Session.GetString("usuario");
+            if (user == null)
+            {
+                return Json(new { success = false, message = "No autorizado" });
+            }
+            
+            Usuario usuario = Objeto.StringToObject<Usuario>(user);
+            if (usuario == null)
+            {
+                return Json(new { success = false, message = "Error de sesión" });
+            }
+            
+            // Verificar que la heladera pertenece al usuario
+            Heladera heladera = BD.SeleccionarHeladeraByNombre(usuario.ID, nombreHeladera);
+            if (heladera == null)
+            {
+                return Json(new { success = false, message = "Heladera no encontrada" });
+            }
+            
+            HttpContext.Session.SetString("nombreHeladera", heladera.Nombre);
+            Console.WriteLine($"[HeladeraController] Heladera cambiada a '{heladera.Nombre}' para usuario {usuario.ID}");
+            
+            return Json(new { success = true, message = "Heladera cambiada exitosamente" });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[HeladeraController] Error en CambiarHeladera: {ex.Message}");
+            return Json(new { success = false, message = "Error al cambiar heladera" });
+        }
+    }
 }
