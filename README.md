@@ -50,10 +50,6 @@
 
 ---
 
-## 📦 Instalación
-
-```bash
-git clone https://github.com/tuusuario/keepi.git
-cd keepi
-npm install
-npm start
+## Enlaces
+[Figma](https://www.figma.com/design/xMYFRMO86UkjmlMHHPTOqi/pagina-web?node-id=729-2&t=Kn4MhljASupG8Tpd-1)
+[Trello](https://trello.com/invite/b/684b137ffcbe0e0be7e30694/ATTI74d2dd3496a4aa60b58d2b4ba0d6dadd2E19A023/keepi)
