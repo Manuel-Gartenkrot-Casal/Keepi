@@ -27,12 +27,12 @@
             @if (Context.Session.GetString("usuario") != null)
             {
                 <a href="@Url.Action("ChatBot", "Chat")" class="cta">Hablá con Mr. Keep</a>
-                <a href="@Url.Action("InicializarHeladera", "Heladera")">Ir a Heladera</a>
+                <a href="@Url.Action("InicializarHeladera", "Heladera")">Probar</a>
             }
             else
             {
-                <a href="@Url.Action("Login", "Auth")" class="cta">Iniciar Sesión</a>
-                <a href="@Url.Action("Login", "Auth")">Registrarse</a>
+                <a href="@Url.Action("Login", "Auth")" class="cta">Hablá con Mr. Keep</a>
+                <a href="@Url.Action("Login", "Auth")">Probar</a>
             }
             </div>
 
