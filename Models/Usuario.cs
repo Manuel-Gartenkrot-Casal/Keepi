@@ -12,8 +12,8 @@
         this.ID = ID;
         this.Username = Username;
         this.Password = Password;
-        this.Nombre = Password;
-        this.Apellido = Password;
-        this.Email = Password;
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Email = Email;
     }
 }

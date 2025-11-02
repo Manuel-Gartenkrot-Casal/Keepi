@@ -18,34 +18,76 @@ public class AuthController : Controller
     [HttpPost]
     public IActionResult verificarCuenta(string Username, string Password)
     {
-        Usuario user = BD.verificarUsuario(Username, Password);
-        if (user == null)
+        if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
         {
-            ViewBag.Error = "Usuario o contraseña incorrectos";
-            return RedirectToAction("Index", "Home");
+            TempData["Error"] = "Usuario y contraseña son requeridos";
+            return RedirectToAction("Login");
         }
-        else
+
+        try
         {
+            Usuario user = BD.verificarUsuario(Username, Password);
+            if (user == null)
+            {
+                Console.WriteLine($"[AuthController] Login fallido para usuario: {Username}");
+                TempData["Error"] = "Usuario o contraseña incorrectos";
+                return RedirectToAction("Login");
+            }
+            
+            Console.WriteLine($"[AuthController] Login exitoso - Usuario ID: {user.ID}, Username: {user.Username}");
             string usuario = Objeto.ObjectToString(user);
             HttpContext.Session.SetString("usuario", usuario);
+            HttpContext.Session.SetInt32("IdUsuario", user.ID);
+            
             return RedirectToAction("InicializarHeladera", "Heladera");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AuthController] Error en verificarCuenta: {ex.Message}");
+            TempData["Error"] = "Error al iniciar sesión. Intente nuevamente.";
+            return RedirectToAction("Login");
         }
     }
     
     [HttpPost]
     public IActionResult Registrarse(string Username, string Password)
     {
-        int sePudo = BD.crearUsuario(Username, Password);
-        if (sePudo == 1)
+        if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
         {
-            Usuario user = BD.verificarUsuario(Username, Password);
-            HttpContext.Session.SetString("usuario", Objeto.ObjectToString(user));
-            return RedirectToAction("InicializarHeladera", "Heladera");
+            TempData["Error"] = "Usuario y contraseña son requeridos";
+            return RedirectToAction("Login");
         }
-        else{
-             ViewBag.Error = "Usuario o contraseña ya existentes";
-            return View("Index");
 
+        try
+        {
+            int sePudo = BD.crearUsuario(Username, Password);
+            if (sePudo == 1)
+            {
+                Usuario user = BD.verificarUsuario(Username, Password);
+                if (user != null)
+                {
+                    Console.WriteLine($"[AuthController] Registro exitoso - Usuario ID: {user.ID}, Username: {user.Username}");
+                    HttpContext.Session.SetString("usuario", Objeto.ObjectToString(user));
+                    HttpContext.Session.SetInt32("IdUsuario", user.ID);
+                    return RedirectToAction("InicializarHeladera", "Heladera");
+                }
+                else
+                {
+                    TempData["Error"] = "Error al crear el usuario";
+                    return RedirectToAction("Login");
+                }
+            }
+            else
+            {
+                TempData["Error"] = "Usuario ya existente";
+                return RedirectToAction("Login");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AuthController] Error en Registrarse: {ex.Message}");
+            TempData["Error"] = "Error al registrar usuario. Intente nuevamente.";
+            return RedirectToAction("Login");
         }
     }
 

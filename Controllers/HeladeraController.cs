@@ -13,29 +13,59 @@ public class HeladeraController : Controller
     public BD BD = new BD();
     public IActionResult InicializarHeladera()
     {
-        string user = HttpContext.Session.GetString("usuario");
-        if (user == null)
+        try
         {
+            string user = HttpContext.Session.GetString("usuario");
+            if (user == null)
+            {
+                Console.WriteLine("[HeladeraController] Usuario no autenticado en InicializarHeladera");
+                TempData["Error"] = "Sesión expirada. Por favor, inicia sesión.";
+                return RedirectToAction("Login", "Auth");
+            }
             
-            return RedirectToAction("Login", "Auth");
-        }
             Usuario usuario = Objeto.StringToObject<Usuario>(user);
+            if (usuario == null)
+            {
+                Console.WriteLine("[HeladeraController] Error al deserializar usuario");
+                return RedirectToAction("Login", "Auth");
+            }
+            
             int idUsuario = usuario.ID;
+            Console.WriteLine($"[HeladeraController] Inicializando heladera para usuario ID: {idUsuario}");
 
-        List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
-        if (nombresHeladeras == null || nombresHeladeras.Count == 0)
+            List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
+            if (nombresHeladeras == null || nombresHeladeras.Count == 0)
+            {
+                Console.WriteLine($"[HeladeraController] Usuario {idUsuario} no tiene heladeras");
+                TempData["Error"] = "No tienes heladeras creadas. Por favor, crea una heladera primero.";
+                // TODO: Redirigir a una página para crear heladera
+                return RedirectToAction("Index", "Home");
+            }
+            
+            // Establecer la primera heladera como la heladera actual
+            string nombrePrimeraHeladera = nombresHeladeras[0];
+            Console.WriteLine($"[HeladeraController] Seleccionando heladera: {nombrePrimeraHeladera}");
+            
+            Heladera heladera = BD.SeleccionarHeladeraByNombre(idUsuario, nombrePrimeraHeladera);
+            if (heladera == null)
+            {
+                Console.WriteLine($"[HeladeraController] Error: No se pudo obtener la heladera {nombrePrimeraHeladera}");
+                TempData["Error"] = "Error al cargar la heladera.";
+                return RedirectToAction("Index", "Home");
+            }
+            
+            HttpContext.Session.SetString("nombreHeladera", heladera.Nombre);
+            Console.WriteLine($"[HeladeraController] Heladera '{heladera.Nombre}' establecida en sesión para usuario {idUsuario}");
+            
+            return RedirectToAction("CargarProductos");
+        }
+        catch (Exception ex)
         {
-            Console.WriteLine("entro");
-            return RedirectToAction("Login", "Auth");
+            Console.WriteLine($"[HeladeraController] Error en InicializarHeladera: {ex.Message}");
+            Console.WriteLine($"[HeladeraController] StackTrace: {ex.StackTrace}");
+            TempData["Error"] = "Error al inicializar la heladera.";
+            return RedirectToAction("Index", "Home");
         }
-        else {
-            return RedirectToAction ("Heladeras");
-        }
-
-        Heladera Heladera = BD.SeleccionarHeladeraByNombre(idUsuario, nombresHeladeras[0]);
-        HttpContext.Session.SetString("nombreHeladera", Heladera.Nombre);
-        return RedirectToAction("CargarProductos");
-    
     }
 
 

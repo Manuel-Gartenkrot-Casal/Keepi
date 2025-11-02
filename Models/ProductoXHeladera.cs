@@ -6,6 +6,7 @@ public class ProductoXHeladera {
         public int IdUsuario {get;set;}
 
     public string NombreEsp {get;set;}
+    public string? NombreProducto {get;set;} // Nombre del producto base (opcional)
     public DateTime FechaVencimiento {get;set;}
     public bool Eliminado {get;set;}
     public bool Abierto {get;set;}

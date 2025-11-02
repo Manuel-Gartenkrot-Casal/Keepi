@@ -72,19 +72,58 @@ namespace semantic_kernel.Controllers
                 List<ChatMessage> chatHistory = GetChatHistory(userMessage);
 
                 
-                HttpContext.Session.GetString("nombreHeladera");
                 string user = HttpContext.Session.GetString("usuario");
-                    if (user == null)
+                if (user == null)
+                {
+                    Console.WriteLine("[ChatController] Usuario no autenticado");
+                    return Json(new ChatResponse
                     {
-                    
-                    return RedirectToAction("Login", "Auth");
-                    }
-                    Usuario usuario = Objeto.StringToObject<Usuario>(user);
-                    int idUsuario = usuario.ID;
+                        Message = "Sesión expirada. Por favor, inicia sesión nuevamente.",
+                        Success = false
+                    });
+                }
                 
+                Usuario usuario = Objeto.StringToObject<Usuario>(user);
+                if (usuario == null)
+                {
+                    Console.WriteLine("[ChatController] Error al deserializar usuario");
+                    return Json(new ChatResponse
+                    {
+                        Message = "Error de sesión. Por favor, inicia sesión nuevamente.",
+                        Success = false
+                    });
+                }
+                
+                int idUsuario = usuario.ID;
                 string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
+                
+                Console.WriteLine($"[ChatController] nombreHeladera: {nombreHeladera ?? "NULL"}");
+                Console.WriteLine($"[ChatController] idUsuario: {idUsuario}");
 
-                List<ProductoXHeladera> heladeraJson = BD.getProductosByNombreHeladeraAndIdUsuario(nombreHeladera, idUsuario);
+                List<ProductoXHeladera> heladeraJson = new List<ProductoXHeladera>();
+                
+                if (string.IsNullOrEmpty(nombreHeladera))
+                {
+                    Console.WriteLine("[ChatController] nombreHeladera es null o vacío - usuario no tiene heladera inicializada");
+                    // Intentar inicializar la heladera automáticamente
+                    List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
+                    if (nombresHeladeras != null && nombresHeladeras.Count > 0)
+                    {
+                        nombreHeladera = nombresHeladeras[0];
+                        HttpContext.Session.SetString("nombreHeladera", nombreHeladera);
+                        Console.WriteLine($"[ChatController] Heladera inicializada automáticamente: {nombreHeladera}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("[ChatController] Usuario no tiene heladeras");
+                    }
+                }
+                
+                if (!string.IsNullOrEmpty(nombreHeladera))
+                {
+                    heladeraJson = BD.getProductosByNombreHeladeraAndIdUsuario(nombreHeladera, idUsuario);
+                    Console.WriteLine($"[ChatController] heladeraJson count: {heladeraJson?.Count ?? 0}");
+                }
                 
                 // Validar que heladeraJson no sea null (si es null, inicializar como lista vacía)
                 if (heladeraJson == null)
