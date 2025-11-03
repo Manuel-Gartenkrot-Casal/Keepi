@@ -357,12 +357,13 @@ public class BD
         string storedProcedure = "SeleccionarHeladeraByNombre";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            heladera = connection.QueryFirstOrDefault(
+            heladera = connection.QueryFirstOrDefault<Heladera>(
                 storedProcedure,
                 new { IdUsuario = idUsuario, Nombre = nombreHeladera },
                 commandType: CommandType.StoredProcedure
             );
         }
+        
         return heladera;
     }
     public static void agregarProductoExistente(int idHeladera, int idProducto, string nombreEsp, DateTime fechaVencimiento, string foto)

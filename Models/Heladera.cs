@@ -4,6 +4,9 @@ public class Heladera {
     public string Nombre {get;set;}
     public bool Eliminado {get;set;}
 
+    public Heladera(){
+        
+    }
     public Heladera(int ID, string Color, string Nombre)
     {
         this.ID = ID;
