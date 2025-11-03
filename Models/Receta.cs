@@ -5,7 +5,7 @@ public bool favorito{get; set;}
 public int duracion{get; set;}
 public int Popularidad{get; set;}
 public int Raciones{get; set;}
-public string Dificultad{get;set;}
+public string Dificultad{get;set;}  
     public Receta(int ID, string nombre, bool favorito, int duracion, int Popularidad, int Raciones, string Dificultad){
     this.ID = ID;
     this.nombre = nombre;
