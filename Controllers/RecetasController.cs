@@ -1,7 +1,7 @@
-using KeepiProg.Models;
+using KeepiProg.Models; // Asegúrate que el namespace sea el correcto
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-
+using System.Linq; // Necesario para .Select() y .All()
 
 namespace KeepiProg.Controllers
 {
@@ -22,16 +22,27 @@ namespace KeepiProg.Controllers
             return null;
         }
 
+        /// <summary>
+        /// Muestra el listado de TODAS las recetas.
+        /// Usa la vista: /Views/Home/Recetas.cshtml
+        /// </summary>
         public IActionResult Index()
         {
             if (GetCurrentUserId() == null)
             {
                 return RedirectToAction("Login", "Auth");
             }
+
             ViewBag.ListaRecetas = BD.GetAllRecetas();
-            return View();
+            
+            // ¡IMPORTANTE! Renderizamos la vista específica de la carpeta Home
+            return View("~/Views/Home/Recetas.cshtml");
         }
 
+        /// <summary>
+        /// Muestra los detalles de UNA receta.
+        /// Usa la vista: /Views/Home/Detalles.cshtml
+        /// </summary>
         public IActionResult Detalles(int id)
         {
             if (GetCurrentUserId() == null)
@@ -45,90 +56,32 @@ namespace KeepiProg.Controllers
                 return NotFound();
             }
             ViewBag.ProductosDeLaReceta = BD.GetProductosByRecetaId(id);
-            return View(receta);
+
+            // ¡IMPORTANTE! Renderizamos la vista específica de la carpeta Home
+            return View("~/Views/Home/Detalles.cshtml", receta);
         }
 
-        public IActionResult Crear()
-        {
-            if (GetCurrentUserId() == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-            return View();
-        }
-
+        /// <summary>
+        /// Acción para sumar +1 a la popularidad.
+        /// </summary>
         [HttpPost]
-        public IActionResult Crear(Receta receta)
+        public IActionResult FinalizarReceta(int id)
         {
             if (GetCurrentUserId() == null)
             {
                 return RedirectToAction("Login", "Auth");
             }
-            if (ModelState.IsValid)
-            {
-                BD.CrearReceta(receta);
-                return RedirectToAction("Index");
-            }
-            return View(receta);
+            
+            BD.IncrementarPopularidadReceta(id);
+            
+            // Redirige de vuelta a la vista de Detalles de esa receta
+            return RedirectToAction("Detalles", new { id = id });
         }
 
-        public IActionResult Editar(int id)
-        {
-            if (GetCurrentUserId() == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-            Receta receta = BD.GetRecetaById(id);
-            if (receta == null)
-            {
-                return NotFound();
-            }
-            ViewBag.TodosLosProductos = BD.GetAllProductos();
-            ViewBag.ProductosEnReceta = BD.GetProductosByRecetaId(id);
-            return View(receta);
-        }
-
-        [HttpPost]
-        public IActionResult Editar(Receta receta)
-        {
-            if (GetCurrentUserId() == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-            if (ModelState.IsValid)
-            {
-                BD.UpdateReceta(receta);
-                return RedirectToAction("Index");
-            }
-            return View(receta);
-        }
-
-        public IActionResult Eliminar(int id)
-        {
-            if (GetCurrentUserId() == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-            Receta receta = BD.GetRecetaById(id);
-            if (receta == null)
-            {
-                return NotFound();
-            }
-            return View(receta);
-        }
-
-        [HttpPost, ActionName("Eliminar")]
-        public IActionResult ConfirmarEliminar(int id)
-        {
-            if (GetCurrentUserId() == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-            BD.DeleteProductosXRecetaByIdReceta(id);
-            BD.DeleteReceta(id);
-            return RedirectToAction("Index");
-        }
-
+        /// <summary>
+        /// Muestra solo las recetas que el usuario puede hacer.
+        /// Usa la vista: /Views/Home/SugerirRecetas.cshtml
+        /// </summary>
         public IActionResult SugerirRecetas()
         {
             int? idUsuario = GetCurrentUserId();
@@ -141,71 +94,29 @@ namespace KeepiProg.Controllers
             if (heladera == null)
             {
                 ViewBag.Error = "No tienes ninguna heladera asignada.";
-                return View(new List<Receta>()); 
+                // ¡IMPORTANTE! Renderizamos la vista específica de la carpeta Home
+                return View("~/Views/Home/SugerirRecetas.cshtml", new List<Receta>()); 
             }
 
             List<Producto> productosEnHeladera = BD.GetProductosByHeladeraId(heladera.ID); 
-            
-            HashSet<int> idsProductosEnHeladera = new HashSet<int>();
-            foreach (Producto prod in productosEnHeladera)
-            {
-                idsProductosEnHeladera.Add(prod.ID); 
-            }
+            HashSet<int> idsProductosEnHeladera = new HashSet<int>(productosEnHeladera.Select(p => p.ID));
 
             List<Receta> todasLasRecetas = BD.GetAllRecetas();
             List<Receta> recetasSugeridas = new List<Receta>();
 
             foreach (var receta in todasLasRecetas)
             {
-
                 List<Producto> productosRequeridos = BD.GetProductosByRecetaId(receta.ID); 
+                bool sePuedeHacer = productosRequeridos.Count > 0 && productosRequeridos.All(pr => idsProductosEnHeladera.Contains(pr.ID));
                 
-                bool sePuedeHacer = true; 
-                
-                if (productosRequeridos.Count == 0)
-                {
-                    sePuedeHacer = false; 
-                }
-                else
-                {
-                    foreach (var prodRequerido in productosRequeridos)
-                    {
-
-                        if (!idsProductosEnHeladera.Contains(prodRequerido.ID)) 
-                        {
-                            sePuedeHacer = false;
-                            break;
-                        }
-                    }
-                }
                 if (sePuedeHacer)
                 {
                     recetasSugeridas.Add(receta);
                 }
             }
             
-            return View(recetasSugeridas);
-        }
-        [HttpPost]
-        public IActionResult AgregarProductoAReceta(int idReceta, int idProducto)
-        {
-             if (GetCurrentUserId() == null)
-            {
-                return Json(new { success = false, message = "No autorizado" });
-            }
-            BD.AgregarProductoAReceta(idReceta, idProducto);
-            return Json(new { success = true });
-        }
-
-        [HttpPost]
-        public IActionResult QuitarProductoDeReceta(int idReceta, int idProducto)
-        {
-             if (GetCurrentUserId() == null)
-            {
-                return Json(new { success = false, message = "No autorizado" });
-            }
-            BD.QuitarProductoDeReceta(idReceta, idProducto);
-            return Json(new { success = true });
+            // ¡IMPORTANTE! Renderizamos la vista específica de la carpeta Home
+            return View("~/Views/Home/SugerirRecetas.cshtml", recetasSugeridas);
         }
     }
-}  
+}

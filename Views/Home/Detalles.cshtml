@@ -1,0 +1,59 @@
+@model Receta 
+
+@{
+    ViewData["Title"] = Model.nombre;
+    var productos = ViewBag.ProductosDeLaReceta as List<Producto>;
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h2>@Model.nombre</h2>
+            @if (Model.favorito)
+            {
+                <span class="badge badge-warning" style="font-size: 1.5rem;">⭐ Favorito</span>
+            }
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <strong>Duración:</strong> @Model.duracion minutos
+                </div>
+                <div class="col-md-4">
+                    <strong>Raciones:</strong> @Model.Raciones
+                </div>
+                <div class="col-md-4">
+                    <strong>Popularidad:</strong> @Model.Popularidad
+                </div>
+            </div>
+
+            <hr />
+
+            <h4>Ingredientes Requeridos</h4>
+            @if (productos != null && productos.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var producto in productos)
+                    {
+                        <li class="list-group-item">@producto.Nombre</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div class="alert alert-secondary">
+                    Esta receta no tiene productos asignados.
+                </div>
+            }
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <a href="@Url.Action("Index", "Recetas")" class="btn btn-outline-secondary">Volver al Menú</a>
+            
+            <form method="post" action="@Url.Action("FinalizarReceta", "Recetas", new { id = Model.ID })" style="margin: 0;">
+                <button type="submit" class="btn btn-success">
+                    ¡La cociné! (+1 Popularidad)
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

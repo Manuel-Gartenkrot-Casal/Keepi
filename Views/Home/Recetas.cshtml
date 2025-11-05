@@ -1,16 +1,50 @@
 @{
-    ViewData["Title"] = "Keepi";
+    ViewData["Title"] = "Menú de Recetas";
+    var listaRecetas = ViewBag.ListaRecetas as List<Receta>;
 }
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="recetas">
-    <main>
-   <section>
 
-    </section>
-    </main>
-</body>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>@ViewData["Title"]</h2>
+        <div>
+            <a href="@Url.Action("SugerirRecetas", "Recetas")" class="btn btn-info">
+                Sugerir Recetas (con mi heladera)
+            </a>
+        </div>
+    </div>
+
+    @if (listaRecetas != null && listaRecetas.Any())
+    {
+        <table class="table table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Duración (min)</th>
+                    <th>Raciones</th>
+                    <th>Popularidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var receta in listaRecetas)
+                {
+                    <tr>
+                        <td>@receta.nombre</td>
+                        <td>@receta.duracion min</td>
+                        <td>@receta.Raciones</td>
+                        <td>@receta.Popularidad</td>
+                        <td>
+                            <a href="@Url.Action("Detalles", "Recetas", new { id = receta.ID })" class="btn btn-sm btn-info">Ver</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            No hay recetas cargadas en la base de datos.
+        </div>
+    }
+</div>
