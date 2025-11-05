@@ -10,7 +10,7 @@ public class Producto {
     public double PorcConservantes {get;set;}
     public double PorcAlcohol {get;set;}
 
-public Producto() {
+    public Producto() {
     }
     public Producto(int ID, string Nombre, int Duracion, bool Favorito, double PorcAcidez, double PorcAgua, double PorcAzucar, double PorcConservantes, double PorcAlcohol) {
         this.ID = ID;

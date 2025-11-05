@@ -394,25 +394,13 @@ public class BD
         string storedProcedure = "sp_GetProductosByHeladeraId";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            var results = connection.Query(storedProcedure, new { IdHeladera = idHeladera }, commandType: CommandType.StoredProcedure);
-            foreach (var row in results)
-            {
-                var rowDict = (IDictionary<string, object>)row;
-                var producto = new ProductoXHeladera
-                {
-                    ID = rowDict.ContainsKey("Id") && rowDict["Id"] != null ? Convert.ToInt32(rowDict["Id"]) : 0,
-                    IdHeladera = idHeladera,
-                    IdProducto = rowDict.ContainsKey("IdProducto") && rowDict["IdProducto"] != null ? Convert.ToInt32(rowDict["IdProducto"]) : 0,
-                    NombreEsp = rowDict.ContainsKey("NombreEspecifico") && rowDict["NombreEspecifico"] != null ? rowDict["NombreEspecifico"].ToString() : string.Empty,
-                    FechaVencimiento = rowDict.ContainsKey("FechaVencimiento") && rowDict["FechaVencimiento"] != null ? Convert.ToDateTime(rowDict["FechaVencimiento"]) : DateTime.MinValue,
-                    Eliminado = rowDict.ContainsKey("Eliminado") && rowDict["Eliminado"] != null ? Convert.ToBoolean(rowDict["Eliminado"]) : false,
-                    Abierto = rowDict.ContainsKey("Abierto") && rowDict["Abierto"] != null ? Convert.ToBoolean(rowDict["Abierto"]) : false,
-                    Foto = rowDict.ContainsKey("Foto") && rowDict["Foto"] != null ? rowDict["Foto"].ToString() : string.Empty
-                };
-                lista.Add(producto);
+            lista = connection.Query<ProductoXHeladera>(
+                storedProcedure,
+                new { IdHeladera = idHeladera },
+                commandType: CommandType.StoredProcedure
+            ).ToList();
             }
-        }
-        return lista.Where(p => !p.Eliminado).ToList();
+        return lista;
     }
 
     public static void EliminarProductoXHeladera(int idHeladera, int idProducto)
