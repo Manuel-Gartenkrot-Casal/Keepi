@@ -8,6 +8,7 @@
 h2,
 p {
   color: #383838;
+  display: block;
 }
 
 .index h1 {
@@ -24,19 +25,23 @@ p {
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(100deg, #61ba4b, #cfd518);
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 
- header nav {
-  float: left;
-  width: 50%;
-  margin-top: 1.2%;
-  text-align: center;
+.layout {
+  width: 100%;
   display: flex;
-  width: 50%;
-  margin-left: 17.5%;
-  justify-content: center;
+  gap: 16px;
 }
 
+.grow1 { flex-grow: 1; }
+.grow9 { flex-grow: 9; }
+
+ header img {
+  width: 14%;
+ }
+/*Se mezcla en index con el header, crear cosos del header para reemplazar*/
  header a {
   margin: 0%;
   list-style: none;
@@ -44,13 +49,6 @@ p {
   border: none;
   color: white;
   font-weight:600;
-}
-
- .index header h1, header h1 {
-  color: #ffffff;
-  font-size: 32px;
-  margin: 1%;
-  float: left;
 }
 
  section {
@@ -369,4 +367,279 @@ section h3 {
 
 .Heladera .productoEnHeladera span:nth-of-type(2) {
     background: #9da6c2; /* estado: “Estado / Congelado / Alacena” */
+}
+.mi-heladera-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.productos-scroll-container {
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.productos-scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.productos-scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.productos-scroll-container::-webkit-scrollbar-thumb {
+  background: #59ad44;
+  border-radius: 10px;
+}
+
+.productos-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #4a8d38;
+}
+
+.producto-card {
+  position: relative;
+  background-color:#f0efe6;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.producto-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-eliminar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  color: #939393;
+  background-color: #f0efe6;
+  border:none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-eliminar:hover {
+color:#5f5f5f;
+  transform: scale(1.1);
+}
+
+.producto-imagen {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.producto-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.producto-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.producto-nombre {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.producto-fecha {
+  font-size: 14px;
+  color: #666;
+}
+
+.producto-fecha .label {
+  font-weight: 500;
+}
+
+.producto-dias {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dias-restantes {
+  color: #6cc04a;
+}
+
+.dias-venciendo {
+  color: #f5a623;
+}
+
+.dias-vencido {
+  color: #e74c3c;
+}
+
+.producto-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.producto-acciones {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-abrir {
+  padding: 8px 16px;
+  border: 2px solid #59ad44;
+  background: white;
+  color: #59ad44;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-abrir:hover {
+  background: #59ad44;
+  color: white;
+}
+
+.btn-abrir.activo {
+  background: #59ad44;
+  color: white;
+}
+
+.dropdown-estado {
+  position: relative;
+}
+
+.btn-estado {
+  padding: 8px 16px;
+  border: 2px solid #4653a2;
+  background: white;
+  color: #4653a2;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-estado:hover {
+  background: #4653a2;
+  color: white;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 1000;
+  margin-top: 5px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #f5f5f5;
+}
+
+.sin-productos {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .productos-scroll-container {
+      width: 95%;
+      padding: 15px;
+  }
+  
+  .producto-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+  
+  .producto-imagen {
+      width: 120px;
+      height: 120px;
+  }
+  
+  .producto-acciones {
+      flex-direction: column;
+      width: 100%;
+  }
+  
+  .btn-abrir,
+  .btn-estado {
+      width: 100%;
+  }
 }
