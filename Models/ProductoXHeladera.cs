@@ -5,7 +5,7 @@ public class ProductoXHeladera {
     public int IdProducto {get;set;}
         public int IdUsuario {get;set;}
 
-    public string NombreEsp {get;set;}
+    public string NombreEspecifico {get;set;}
     public string? NombreProducto {get;set;} // Nombre del producto base (opcional)
     public DateTime FechaVencimiento {get;set;}
     public bool Eliminado {get;set;}
@@ -16,11 +16,11 @@ public class ProductoXHeladera {
     public ProductoXHeladera() {
     }
     
-    public ProductoXHeladera(int ID, int IdHeladera, int IdUsuario, string NombreEsp, DateTime FechaVencimiento, bool Eliminado, bool Abierto, string Foto) {
+    public ProductoXHeladera(int ID, int IdHeladera, int IdUsuario, string NombreEspecifico, DateTime FechaVencimiento, bool Eliminado, bool Abierto, string Foto) {
         this.ID = ID;
         this.IdHeladera = IdHeladera;
         this.IdUsuario = IdUsuario;
-        this.NombreEsp = NombreEsp;
+        this.NombreEspecifico = NombreEspecifico;
         this.FechaVencimiento = FechaVencimiento;  
         this.Eliminado = Eliminado;
         this.Abierto = Abierto;

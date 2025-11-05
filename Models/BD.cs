@@ -215,7 +215,7 @@
                         ID = rowDict.ContainsKey("Id") && rowDict["Id"] != null ? Convert.ToInt32(rowDict["Id"]) : 0,
                         IdHeladera = rowDict.ContainsKey("IdHeladera") && rowDict["IdHeladera"] != null ? Convert.ToInt32(rowDict["IdHeladera"]) : 0,
                         IdProducto = rowDict.ContainsKey("IdProducto") && rowDict["IdProducto"] != null ? Convert.ToInt32(rowDict["IdProducto"]) : 0,
-                        NombreEsp = rowDict.ContainsKey("NombreEspecifico") && rowDict["NombreEspecifico"] != null ? rowDict["NombreEspecifico"].ToString() : string.Empty,
+                        NombreEspecifico = rowDict.ContainsKey("NombreEspecifico") && rowDict["NombreEspecifico"] != null ? rowDict["NombreEspecifico"].ToString() : string.Empty,
                         NombreProducto = rowDict.ContainsKey("NombreProducto") && rowDict["NombreProducto"] != null ? rowDict["NombreProducto"].ToString() : null,
                         FechaVencimiento = rowDict.ContainsKey("FechaVencimiento") && rowDict["FechaVencimiento"] != null ? Convert.ToDateTime(rowDict["FechaVencimiento"]) : DateTime.MinValue,
                         Eliminado = rowDict.ContainsKey("Eliminado") && rowDict["Eliminado"] != null ? Convert.ToBoolean(rowDict["Eliminado"]) : false,
