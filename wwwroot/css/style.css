@@ -5,6 +5,11 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 h2,
 p {
   color: #383838;
@@ -16,45 +21,140 @@ p {
   font-size: 64px;
 }
 
- header {
+/*Principio del header*/
+
+header {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  display: inline-block;
+  display: block;
   backdrop-filter: blur(10px);
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(100deg, #61ba4b, #cfd518);
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
+  border: none;
+  border-top: none;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  box-sizing: border-box;
 }
 
-.layout {
+header section.layout {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   display: flex;
   gap: 16px;
+  padding: 0;
+  border-radius: 0px 0px 40px 40px;
+  margin: 0;
+  align-items: center;
+  min-height: fit-content;
+  height: auto;
 }
 
-.grow1 { flex-grow: 1; }
-.grow9 { flex-grow: 9; }
+.layout .grow1 { 
+  flex-grow: 1; 
+  border: none;
+  border-radius: 0px 0px 0px 0px; 
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
 
- header img {
-  width: 14%;
- }
-/*Se mezcla en index con el header, crear cosos del header para reemplazar*/
- header a {
+.layout .grow9 { 
+  flex-grow: 9; 
+  border: none; 
+  border-radius: 0px 0px 0px 0px; 
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+/* Asegurar que el menú del header no se vea afectado. No se porque pero esta fue la unica forma que funcionó */
+header .layout .grow1 a.menu {
+  font-size: 360%;
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+}
+
+header .layout .grow1 a.notis {
+  background-color: transparent;
+  border: none;
+}
+
+header .layout .grow9 a.logo {
+  background-color: transparent;
+  border: none;
+}
+
+header .layout .grow9 a.logo img {
+  border: none;
+  background-color: transparent;
+}
+
+header .layout .grow1 a.perfil {
+  background-color: transparent;
+  border: none;
+}
+
+
+.layout .notis {
+  width: 10%;
+  background-color: none;
+}
+
+.layout .logo {
+  width: 30%;
+  background-color: transparent;
+  border: none;
+}
+
+.layout img {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+.layout .perfil {
+  width: 10%;
+  background-color: none;
+}
+
+.layout a {
   margin: 0%;
   list-style: none;
   width: 20%;
   border: none;
-  color: white;
+  color: transparent;
   font-weight:600;
+  border-radius: 0px 0px 0px 0px;
+  margin-top: 0px;
+  background-color: none;
 }
 
- section {
+/*Final del header*/
+
+section {
   display: inline-block;
   width: 100%;
   padding: 10% 0%;
+}
+
+header section.layout,
+header section {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
 }
 
 .index section:first-of-type {
@@ -83,7 +183,7 @@ p {
 }
 .index div a:last-of-type{
   background-color: white;
-color: #59ad44;
+  color: #59ad44;
 }
 
 .index section:first-of-type div {
