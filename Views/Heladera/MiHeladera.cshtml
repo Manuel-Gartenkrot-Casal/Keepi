@@ -171,6 +171,14 @@ document.addEventListener('click', function(event) {
 </script>
 
 <style>
+* {
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+span{
+    font-size:14px
+}
 .mi-heladera-container {
     width: 100%;
     height: 100vh;
@@ -213,7 +221,7 @@ document.addEventListener('click', function(event) {
 
 .producto-card {
     position: relative;
-    background: white;
+    background-color: #f0efe6;
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 20px;
@@ -236,8 +244,8 @@ document.addEventListener('click', function(event) {
     width: 30px;
     height: 30px;
     border: none;
-    background: #e74c3c;
-    color: white;
+    background: #f0efe6;
+    color: gray;
     border-radius: 50%;
     cursor: pointer;
     font-size: 18px;
@@ -249,7 +257,7 @@ document.addEventListener('click', function(event) {
 }
 
 .btn-eliminar:hover {
-    background: #c0392b;
+    color: black;
     transform: scale(1.1);
 }
 
@@ -277,7 +285,7 @@ document.addEventListener('click', function(event) {
 
 .producto-nombre {
     margin: 0;
-    font-size: 20px;
+    font-size:18px;
     font-weight: 600;
     color: #333;
 }
@@ -343,8 +351,10 @@ document.addEventListener('click', function(event) {
 .btn-abrir {
     padding: 8px 16px;
     border: 2px solid #59ad44;
-    background: white;
-    color: #59ad44;
+  
+    
+    background: #59ad44;
+    color: white;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
@@ -353,8 +363,8 @@ document.addEventListener('click', function(event) {
 }
 
 .btn-abrir:hover {
-    background: #59ad44;
-    color: white;
+  background: white;
+    color: #59ad44;
 }
 
 .btn-abrir.activo {
@@ -369,8 +379,8 @@ document.addEventListener('click', function(event) {
 .btn-estado {
     padding: 8px 16px;
     border: 2px solid #4653a2;
-    background: white;
-    color: #4653a2;
+      background: #4653a2;
+    color: white;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
@@ -379,8 +389,9 @@ document.addEventListener('click', function(event) {
 }
 
 .btn-estado:hover {
-    background: #4653a2;
-    color: white;
+ 
+     background: white;
+    color: #4653a2;
 }
 
 .dropdown-menu {
