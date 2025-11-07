@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
 @{
-    ViewData["Title"] = "Keepi";
-    Layout = "_Layout";
+    int contador = 0;
 }
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heladeras Interactivas</title>
-    <style>
+
+<style>
         body {
             font-family: sans-serif;
             background: #f9f9f9;
@@ -154,6 +148,7 @@
                 font-size: 45%;
                 margin-top: 1%;
             }
+
             .heladeras-container {
                 flex-direction: column; 
                 overflow-x: visible; 
@@ -168,9 +163,8 @@
                 margin: 2%;
             }
         }
+</style>
 
-    </style>
-</head>
 <body>
 
     <h1>Heladeras Interactivas</h1>
@@ -178,36 +172,22 @@
 
     <div class="carousel-container">
             <div class="heladeras-container" id="heladerasContainer">
-                <div class="heladera" id="heladera-0">
-                    <section class="freezer">
-                        <div class="nota"></div>
-                    </section>
-                    <section class="heladeraAbajo"></section>
-                </div>
-                <div class="heladera" id="heladera-1">
-                    <section class="freezer">
-                        <div class="nota"></div>
-                    </section>
-                    <section class="heladeraAbajo"></section>
-                </div>
-                <div class="heladera active" id="heladera-2">
-                    <section class="freezer">
-                        <div class="nota"></div>
-                    </section>
-                    <section class="heladeraAbajo"></section>
-                </div>
-                <div class="heladera" id="heladera-3">
-                    <section class="freezer">
-                        <div class="nota"></div>
-                    </section>
-                    <section class="heladeraAbajo"></section>
-                </div>
-                <div class="heladera" id="heladera-4">
-                    <section class="freezer">
-                        <div class="nota"></div>
-                    </section>
-                    <section class="heladeraAbajo"></section>
-                </div>
+                @foreach (Heladera heladera in ViewBag.Heladeras)
+                {
+                    string color = heladera.Color;
+                    string nombre = heladera.Nombre;
+                    bool eliminado = heladera.Eliminado;
+
+                    @if (eliminado = false) {
+                        <div class="heladera" id="heladera-@contador">
+                            <section class="freezer">
+                            <div class="nota"></div>
+                            </section>
+                            <section class="heladeraAbajo"></section>
+                        </div>
+                        contador++;
+                    }
+                }
             </div>
         <div class="controles">
             <button id="prev">⬅</button>
