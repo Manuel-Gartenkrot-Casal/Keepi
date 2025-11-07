@@ -68,6 +68,17 @@ public class HeladeraController : Controller
         }
     }
 
+    public IActionResult Heladeras() {
+        string user = HttpContext.Session.GetString("usuario");
+        if (user == null)
+        {
+            return RedirectToAction("Login", "Auth");
+        }
+        List<Heladera> lista = new List<Heladera>();
+        lista = BuscarHeladeraDeUsuario(user);
+        ViewBag.Heladeras = lista;
+        return View();
+    }
 
 
     public IActionResult CambiarColor()
