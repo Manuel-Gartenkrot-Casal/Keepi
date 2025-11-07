@@ -425,16 +425,30 @@
             }
         }
         public static void IncrementarPopularidadReceta(int idReceta)
-    {
-        string storedProcedure = "sp_IncrementarPopularidadReceta";
-        using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            connection.Execute(
-                storedProcedure,
-                new { IdReceta = idReceta },
-                commandType: CommandType.StoredProcedure
-            );
+            string storedProcedure = "sp_IncrementarPopularidadReceta";
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Execute(
+                    storedProcedure,
+                    new { IdReceta = idReceta },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
-    }
-    
+
+        public static List<Heladera> BuscarHeladeraDeUsuario(string nombreUsuario)
+        {
+            List<Heladera> lista = new List<Heladera>();
+            string storedProcedure = "BuscarHeladeras";
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                lista = connection.Query<Heladera>(
+                    storedProcedure,
+                    new { Nombre = nombreUsuario },
+                    commandType: CommandType.StoredProcedure
+                ).ToList();
+                }
+            return lista;
+        }
     }
