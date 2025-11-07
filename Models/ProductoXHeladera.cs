@@ -12,7 +12,6 @@ public class ProductoXHeladera {
     public bool Abierto {get;set;}
     public string Foto {get;set;}
     
-    // Constructor sin parámetros requerido por Dapper para materialización
     public ProductoXHeladera() {
     }
     

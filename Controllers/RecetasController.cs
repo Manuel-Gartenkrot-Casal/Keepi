@@ -1,7 +1,7 @@
-using KeepiProg.Models; // Asegúrate que el namespace sea el correcto
+using KeepiProg.Models; 
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq; // Necesario para .Select() y .All()
+using System.Linq;
 
 namespace KeepiProg.Controllers
 {
@@ -9,23 +9,13 @@ namespace KeepiProg.Controllers
     {
         
         private int? GetCurrentUserId()
+
+
+        
         {
-            string idUsuarioStr = HttpContext.Session.GetString("IdUsuario");
-            if (string.IsNullOrEmpty(idUsuarioStr))
-            {
-                return null;
-            }
-            if (int.TryParse(idUsuarioStr, out int idUsuario))
-            {
-                return idUsuario;
-            }
-            return null;
+          return HttpContext.Session.GetInt32("IdUsuario");
         }
 
-        /// <summary>
-        /// Muestra el listado de TODAS las recetas.
-        /// Usa la vista: /Views/Home/Recetas.cshtml
-        /// </summary>
         public IActionResult Index()
         {
             if (GetCurrentUserId() == null)
@@ -35,14 +25,10 @@ namespace KeepiProg.Controllers
 
             ViewBag.ListaRecetas = BD.GetAllRecetas();
             
-            // ¡IMPORTANTE! Renderizamos la vista específica de la carpeta Home
+
             return View("~/Views/Home/Recetas.cshtml");
         }
 
-        /// <summary>
-        /// Muestra los detalles de UNA receta.
-        /// Usa la vista: /Views/Home/Detalles.cshtml
-        /// </summary>
         public IActionResult Detalles(int id)
         {
             if (GetCurrentUserId() == null)
@@ -57,13 +43,11 @@ namespace KeepiProg.Controllers
             }
             ViewBag.ProductosDeLaReceta = BD.GetProductosByRecetaId(id);
 
-            // ¡IMPORTANTE! Renderizamos la vista específica de la carpeta Home
+
             return View("~/Views/Home/Detalles.cshtml", receta);
         }
 
-        /// <summary>
-        /// Acción para sumar +1 a la popularidad.
-        /// </summary>
+
         [HttpPost]
         public IActionResult FinalizarReceta(int id)
         {
@@ -78,10 +62,6 @@ namespace KeepiProg.Controllers
             return RedirectToAction("Detalles", new { id = id });
         }
 
-        /// <summary>
-        /// Muestra solo las recetas que el usuario puede hacer.
-        /// Usa la vista: /Views/Home/SugerirRecetas.cshtml
-        /// </summary>
         public IActionResult SugerirRecetas()
         {
             int? idUsuario = GetCurrentUserId();
@@ -114,8 +94,7 @@ namespace KeepiProg.Controllers
                     recetasSugeridas.Add(receta);
                 }
             }
-            
-            // ¡IMPORTANTE! Renderizamos la vista específica de la carpeta Home
+
             return View("~/Views/Home/SugerirRecetas.cshtml", recetasSugeridas);
         }
     }
