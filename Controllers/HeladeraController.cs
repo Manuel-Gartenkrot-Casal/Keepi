@@ -183,7 +183,7 @@ public class HeladeraController : Controller
 
     }
 
-    public IActionResult Heladeras()
+    public IActionResult RuletaHeladeras()
     {
         try
         {
@@ -216,7 +216,7 @@ public class HeladeraController : Controller
             ViewBag.NombresHeladeras = nombresHeladeras;
             ViewBag.HeladeraActual = HttpContext.Session.GetString("nombreHeladera");
             
-            return View();
+            return View(Heladeras);
         }
         catch (Exception ex)
         {
