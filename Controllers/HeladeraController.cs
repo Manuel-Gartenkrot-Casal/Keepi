@@ -74,8 +74,15 @@ public class HeladeraController : Controller
         {
             return RedirectToAction("Login", "Auth");
         }
+        Usuario usuario = Objeto.StringToObject<Usuario>(user);
+        int idUsuario = usuario.ID;
+        List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
+        if (nombresHeladeras == null || nombresHeladeras.Count == 0)
+        {
+            return RedirectToAction("CrearHeladera", "Heladera"); //Si no hay heladera, se crea una o te vas
+        }
         List<Heladera> lista = new List<Heladera>();
-        lista = BuscarHeladeraDeUsuario(user);
+        lista = BD.BuscarHeladeraDeUsuario(user);
         ViewBag.Heladeras = lista;
         return View();
     }*/
@@ -184,6 +191,8 @@ public class HeladeraController : Controller
 
     }
 
+
+/*
     public IActionResult Heladeras()
     {
         try
@@ -217,7 +226,7 @@ public class HeladeraController : Controller
             ViewBag.NombresHeladeras = nombresHeladeras;
             ViewBag.HeladeraActual = HttpContext.Session.GetString("nombreHeladera");
             
-            return View();
+            return View("Heladeras");
         }
         catch (Exception ex)
         {
@@ -226,6 +235,7 @@ public class HeladeraController : Controller
             return RedirectToAction("Index", "Home");
         }
     }
+*/
 
     [HttpPost]
     public IActionResult CambiarHeladera(string nombreHeladera)
