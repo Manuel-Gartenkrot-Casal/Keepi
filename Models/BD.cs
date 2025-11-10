@@ -451,4 +451,18 @@
                 }
             return lista;
         }
+
+        public static void CambiarEstado(string nombreEsp, string nuevoEstado)
+        {
+            string storedProcedure = "CambiarEstadoProducto";
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Execute(
+                    storedProcedure,
+                    new { NombreEspecifico = nombreEsp, NuevoEstado = nuevoEstado },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+            return nuevoEstado;
+        }
     }
