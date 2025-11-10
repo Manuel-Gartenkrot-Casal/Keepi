@@ -35,122 +35,96 @@
             <button type="button" id="sendBtn">Enviar</button>
             <button type="button" id="clearBtn" asp-controller="Chat" asp-action="ClearHistory">Limpiar</button>
         </div>
-        <script>
-            const sendBtn = document.getElementById('sendBtn');
-            const messageInput = document.getElementById('messageInput');
+<script>
+    const sendBtn = document.getElementById('sendBtn');
+    const messageInput = document.getElementById('messageInput');
+    const chatMessages = document.getElementById('chatMessages');
 
-            // Estado de escritura/espera
-            let typingTimer = null;
-            let isWaitingForResponse = false;
+    let isWaitingForResponse = false;
 
-            function showTypingIndicator() {
-                const typingIndicator = document.getElementById('typingIndicator');
-                const chatMessages = document.getElementById('chatMessages');
-                // Asegurar que el indicador esté al final
-                if (typingIndicator.parentElement !== chatMessages) {
-                    chatMessages.appendChild(typingIndicator);
-                }
-                typingIndicator.style.display = 'block';
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+    function showTypingIndicator() {
+        const typingIndicator = document.getElementById('typingIndicator');
+        typingIndicator.style.display = 'block';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-            function hideTypingIndicator() {
-                const typingIndicator = document.getElementById('typingIndicator');
-                typingIndicator.style.display = 'none';
-            }
+    function hideTypingIndicator() {
+        const typingIndicator = document.getElementById('typingIndicator');
+        typingIndicator.style.display = 'none';
+    }
 
-            // Mostrar "escribiendo" mientras el usuario teclea
-            messageInput.addEventListener('input', function () {
-                const v = messageInput.value.trim();
-                if (v.length === 0) {
-                    if (!isWaitingForResponse) hideTypingIndicator();
-                    if (typingTimer) { clearTimeout(typingTimer); typingTimer = null; }
-                    return;
-                }
-                // Si ya estamos esperando respuesta del servidor, mantenemos indicador
-                if (isWaitingForResponse) return;
+    async function sendMessage() {
+        const message = messageInput.value.trim();
+        if (!message) return;
 
-                showTypingIndicator();
-                if (typingTimer) clearTimeout(typingTimer);
-                typingTimer = setTimeout(() => {
-                    if (!isWaitingForResponse) hideTypingIndicator();
-                    typingTimer = null;
-                }, 1200);
+        // Mostrar el mensaje del usuario en pantalla
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message user';
+        userMessage.textContent = message;
+        chatMessages.appendChild(userMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Mostrar indicador de escritura del bot
+        isWaitingForResponse = true;
+        showTypingIndicator();
+
+        // Limpiar el input
+        messageInput.value = '';
+
+        try {
+            const response = await fetch('/Chat/SendMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ Message: message })
             });
 
-            async function sendMessage() {
-                const message = messageInput.value.trim();
-                if (!message) return;
+            const data = await response.json();
 
-                const chatMessages = document.getElementById('chatMessages');
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot';
 
-                // Mostrar el mensaje del usuario inmediatamente (seguro)
-                const messageElement = document.createElement('div');
-                messageElement.className = 'message user';
-                messageElement.textContent = message;
-                chatMessages.appendChild(messageElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-
-                // Mostrar indicador de escritura y marcar que estamos esperando respuesta
-                isWaitingForResponse = true;
-                if (typingTimer) { clearTimeout(typingTimer); typingTimer = null; }
-                showTypingIndicator();
-
-                // Limpiar el input
-                messageInput.value = '';
-
-                try {
-                    const response = await fetch('/Chat/SendMessage', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ Message: message })
-                    });
-
-                    const data = await response.json();
-
-                    if (data.success) {
-                        const botMessage = document.createElement('div');
-                        botMessage.className = 'message bot';
-                        botMessage.innerHTML = data.message.replace(/\n/g, '<br>');
-                        chatMessages.appendChild(botMessage);
-                    } else {
-                        const errorMessage = document.createElement('div');
-                        errorMessage.className = 'message bot error';
-                        errorMessage.textContent = `Error: ${data.message}`;
-                        chatMessages.appendChild(errorMessage);
-                    }
-                } catch (error) {
-                    const errorMessage = document.createElement('div');
-                    errorMessage.className = 'message bot error';
-                    errorMessage.textContent = 'Error al enviar el mensaje';
-                    chatMessages.appendChild(errorMessage);
-                } finally {
-                    isWaitingForResponse = false;
-                    hideTypingIndicator();
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
+            if (data.success) {
+                botMessage.innerHTML = data.message.replace(/\n/g, '<br>');
+            } else {
+                botMessage.classList.add('error');
+                botMessage.textContent = `Error: ${data.message}`;
             }
 
-            sendBtn.addEventListener('click', sendMessage);
+            chatMessages.appendChild(botMessage);
+        } catch (error) {
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'message bot error';
+            errorMessage.textContent = 'Error al enviar el mensaje';
+            chatMessages.appendChild(errorMessage);
+        } finally {
+            isWaitingForResponse = false;
+            hideTypingIndicator();
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }
 
-            // Limpiar historial
-            const clearBtn = document.getElementById('clearBtn');
-            clearBtn.addEventListener('click', async function() {
-                const response = await fetch('/Chat/ClearHistory', { method: 'POST' });
-                const data = await response.json();
-                if (data.success) {
-                    document.getElementById('chatMessages').innerHTML = '';
-                }
-            });
+    sendBtn.addEventListener('click', sendMessage);
 
-            // Enviar con Enter
-            messageInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-        </script>
+    messageInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    const clearBtn = document.getElementById('clearBtn');
+    clearBtn.addEventListener('click', async function() {
+        const response = await fetch('/Chat/ClearHistory', { method: 'POST' });
+        const data = await response.json();
+        if (data.success) {
+            chatMessages.innerHTML = '';
+        }
+    });
+</script>
+
+
 </div>
+
+

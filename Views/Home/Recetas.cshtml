@@ -1,49 +1,161 @@
+@model Receta 
 @{
     ViewData["Title"] = "Menú de Recetas";
     var listaRecetas = ViewBag.ListaRecetas as List<Receta>;
 }
 
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
+<style>
+    /* Contenedor principal de la página */
+    .recipe-container {
+        max-width: 1200px;
+        margin: 0 auto; /* Centra el contenido */
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Encabezado con el título y el botón */
+    .recipe-header {
+        display: flex;
+        justify-content: space-between; /* Título a la izq, botón a la der */
+        align-items: center;
+        margin-bottom: 25px;
+        flex-wrap: wrap; /* Para celulares */
+    }
+
+    .recipe-header h2 {
+        margin: 0 15px 10px 0; /* Espacio para que no se pegue al botón en celulares */
+    }
+
+    /* La grilla de tarjetas responsiva */
+    .recipe-grid {
+        display: grid;
+        /* Magia responsiva:
+           Crea columnas que tengan un mínimo de 280px.
+           En celulares (ej: 360px), solo cabe 1.
+           En tablets (ej: 700px), caben 2.
+           En desktops (ej: 1000px), caben 3.
+           'auto-fill' crea tantas como quepan.
+        */
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px; /* Espacio entre tarjetas */
+    }
+
+    /* Estilo de cada tarjeta */
+    .recipe-card {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column; /* Organiza el contenido verticalmente */
+        height: 100%; /* Ocupa toda la altura de la celda de la grilla */
+        overflow: hidden; /* Para que el borde redondeado funcione */
+    }
+
+    .recipe-card-content {
+        padding: 20px;
+        flex-grow: 1; /* Hace que esta sección crezca y ocupe el espacio */
+    }
+
+    .recipe-card-content h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .recipe-info {
+        display: flex;
+        justify-content: space-between; /* Duración a la izq, Raciones a la der */
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .recipe-info span {
+        font-weight: 500;
+    }
+
+
+    .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .btn-info {
+        background-color: #0dcaf0;
+        color: #000;
+    }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+    
+    .btn-primary-full {
+        display: block; /* Ocupa todo el ancho */
+        padding: 12px;
+        background-color: #0d6efd;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 600;
+        border-top: 1px solid #e0e0e0;
+        transition: background-color 0.2s;
+    }
+
+    .btn-primary-full:hover {
+        background-color: #0b5ed7;
+    }
+
+</style>
+
+<div class="recipe-container">
+    <div class="recipe-header">
         <h2>@ViewData["Title"]</h2>
         <div>
             <a href="@Url.Action("SugerirRecetas", "Recetas")" class="btn btn-info">
-                Sugerir Recetas (con mi heladera)
+                Sugerir Recetas
             </a>
         </div>
     </div>
 
     @if (listaRecetas != null && listaRecetas.Any())
     {
-        <table class="table table-hover table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Duración (min)</th>
-                    <th>Raciones</th>
-                    <th>Popularidad</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var receta in listaRecetas)
-                {
-                    <tr>
-                        <td>@receta.nombre</td>
-                        <td>@receta.duracion min</td>
-                        <td>@receta.Raciones</td>
-                        <td>@receta.Popularidad</td>
-                        <td>
-                            <a href="@Url.Action("Detalles", "Recetas", new { id = receta.ID })" class="btn btn-sm btn-info">Ver</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="recipe-grid">
+            @foreach (var receta in listaRecetas)
+            {
+                <div class="recipe-card">
+                    <div class="recipe-card-content">
+                        <h3>@receta.nombre</h3>
+                        
+                        <div class="recipe-info">
+                            <span>
+                                <strong>Duración:</strong> @receta.duracion min
+                            </span>
+                            <span>
+                                <strong>Raciones:</strong> @receta.Raciones
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <a href="@Url.Action("Detalles", "Recetas", new { id = receta.ID })" class="btn-primary-full">
+                        Ver Receta
+                    </a>
+                </div>
+            }
+        </div>
     }
     else
     {
-        <div class="alert alert-info" role="alert">
+        <div style="padding: 20px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px;">
             No hay recetas cargadas en la base de datos.
         </div>
     }

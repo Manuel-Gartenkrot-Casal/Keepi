@@ -58,10 +58,20 @@ namespace KeepiProg.Controllers
             
             BD.IncrementarPopularidadReceta(id);
             
-            // Redirige de vuelta a la vista de Detalles de esa receta
+            return RedirectToAction("Detalles", new { id = id });
+        }   
+[HttpPost]
+        public IActionResult ToggleFavorito(int id)
+        {
+            if (GetCurrentUserId() == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            BD.ToggleFavoritoReceta(id);
+
             return RedirectToAction("Detalles", new { id = id });
         }
-
         public IActionResult SugerirRecetas()
         {
             int? idUsuario = GetCurrentUserId();

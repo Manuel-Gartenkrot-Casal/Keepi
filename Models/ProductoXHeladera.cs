@@ -3,10 +3,9 @@ public class ProductoXHeladera {
     public int ID {get;set;}
     public int IdHeladera {get;set;}
     public int IdProducto {get;set;}
-        public int IdUsuario {get;set;}
-
+    public int IdUsuario {get;set;}
     public string NombreEspecifico {get;set;}
-    public string? NombreProducto {get;set;} // Nombre del producto base (opcional)
+    public string? NombreProducto {get;set;} 
     public DateTime FechaVencimiento {get;set;}
     public bool Eliminado {get;set;}
     public bool Abierto {get;set;}

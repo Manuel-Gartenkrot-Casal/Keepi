@@ -68,7 +68,7 @@ public class HeladeraController : Controller
         }
     }
 
-    public IActionResult Heladeras() {
+    /*public IActionResult Heladeras() {
         string user = HttpContext.Session.GetString("usuario");
         if (user == null)
         {
@@ -78,7 +78,7 @@ public class HeladeraController : Controller
         lista = BuscarHeladeraDeUsuario(user);
         ViewBag.Heladeras = lista;
         return View();
-    }
+    }*/
 
 
     public IActionResult CambiarColor()
@@ -141,6 +141,7 @@ public class HeladeraController : Controller
         {
             ViewBag.Productos = new List<ProductoXHeladera>();
         }
+        ViewBag.ColorHeladera = Heladera.Color;
         return View("MiHeladera");
     }
 

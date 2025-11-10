@@ -23,12 +23,13 @@ namespace semantic_kernel.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public IActionResult ChatBot()
-        {
-            ChatMessage vacio = null;
-            var chatHistory = GetChatHistory(vacio);
-            return View(chatHistory);
-        }
+       public IActionResult ChatBot()
+{
+    var chatHistory = GetChatHistory(null); // No agregar mensaje nuevo
+    return View(chatHistory);
+}
+
+
 
         // Aceptamos el JSON del body explícitamente para requests AJAX
         [HttpPost]
@@ -39,10 +40,12 @@ namespace semantic_kernel.Controllers
                 // Debug info: content type and model state pueden ayudar a diagnosticar problemas de binding
                 var contentType = Request.ContentType;
                 Console.WriteLine($"[ChatController] Content-Type: {contentType}");
-                try {
+                try
+                {
                     // Intentar leer el body raw para depuración (solo si el binding falla)
                     Request.Body.Position = 0;
-                } catch { }
+                }
+                catch { }
                 Console.WriteLine($"[ChatController] ModelState.IsValid: {ModelState.IsValid}");
                 Console.WriteLine($"[ChatController] Request bound: {JsonConvert.SerializeObject(request)}");
                 if (!ModelState.IsValid)
@@ -68,10 +71,11 @@ namespace semantic_kernel.Controllers
                     IsUser = true,
                     Timestamp = DateTime.Now
                 };
-                
-                List<ChatMessage> chatHistory = GetChatHistory(userMessage);
 
-                
+                List<ChatMessage> chatHistory = GetChatHistory(userMessage);
+                SaveChatHistory(chatHistory); // Guarda el mensaje del usuario
+
+
                 string user = HttpContext.Session.GetString("usuario");
                 if (user == null)
                 {
@@ -82,7 +86,7 @@ namespace semantic_kernel.Controllers
                         Success = false
                     });
                 }
-                
+
                 Usuario usuario = Objeto.StringToObject<Usuario>(user);
                 if (usuario == null)
                 {
@@ -93,15 +97,15 @@ namespace semantic_kernel.Controllers
                         Success = false
                     });
                 }
-                
+
                 int idUsuario = usuario.ID;
                 string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
-                
+
                 Console.WriteLine($"[ChatController] nombreHeladera: {nombreHeladera ?? "NULL"}");
                 Console.WriteLine($"[ChatController] idUsuario: {idUsuario}");
 
                 List<ProductoXHeladera> heladeraJson = new List<ProductoXHeladera>();
-                
+
                 if (string.IsNullOrEmpty(nombreHeladera))
                 {
                     Console.WriteLine("[ChatController] nombreHeladera es null o vacío - usuario no tiene heladera inicializada");
@@ -118,19 +122,19 @@ namespace semantic_kernel.Controllers
                         Console.WriteLine("[ChatController] Usuario no tiene heladeras");
                     }
                 }
-                
+
                 if (!string.IsNullOrEmpty(nombreHeladera))
                 {
                     heladeraJson = BD.getProductosByNombreHeladeraAndIdUsuario(nombreHeladera, idUsuario);
                     Console.WriteLine($"[ChatController] heladeraJson count: {heladeraJson?.Count ?? 0}");
                 }
-                
+
                 // Validar que heladeraJson no sea null (si es null, inicializar como lista vacía)
                 if (heladeraJson == null)
                 {
                     heladeraJson = new List<ProductoXHeladera>();
                 }
-                
+
                 var botResponse = await _chatService.GetChatResponseAsync(request.Message, chatHistory, heladeraJson);
 
                 var botMessage = new ChatMessage
@@ -165,28 +169,35 @@ namespace semantic_kernel.Controllers
             _httpContextAccessor.HttpContext?.Session.Remove("ChatHistory");
             return Json(new { success = true });
         }
+       private List<ChatMessage> GetChatHistory(ChatMessage chatMessage)
+{
+    var session = _httpContextAccessor.HttpContext?.Session;
+    List<ChatMessage> historyJson = new List<ChatMessage>();
 
-        private List<ChatMessage> GetChatHistory(ChatMessage chatHistory)
+    if (session != null)
+    {
+        var json = session.GetString("ChatHistory");
+        if (!string.IsNullOrEmpty(json))
         {
-            var session = _httpContextAccessor.HttpContext?.Session;
-            if (session != null)
-            {
-                var Json = session.GetString("ChatHistory");
-                List<ChatMessage> historyJson = Objeto.StringToObject<List<ChatMessage>>(Json);
-
-                if (historyJson != null && historyJson.Any())
-                {
-                    try
-                    {   
-                        historyJson.Add(chatHistory);
-                        return (historyJson);
-                    }
-                    catch
-                    {   }
-                }
-            }
-            return new List<ChatMessage>();
+            historyJson = Objeto.StringToObject<List<ChatMessage>>(json);
         }
+
+        // Asegurar que la lista esté inicializada
+        if (historyJson == null)
+        {
+            historyJson = new List<ChatMessage>();
+        }
+
+        if (chatMessage != null)
+        {
+            historyJson.Add(chatMessage);
+        }
+    }
+
+    return historyJson;
+}
+
+
 
         private void SaveChatHistory(List<ChatMessage> chatHistory)
         {

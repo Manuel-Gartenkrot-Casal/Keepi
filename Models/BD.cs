@@ -451,4 +451,16 @@
                 }
             return lista;
         }
+        public static void ToggleFavoritoReceta(int idReceta)
+    {
+        string storedProcedure = "sp_ToggleFavoritoReceta";
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Execute(
+                storedProcedure,
+                new { IdReceta = idReceta },
+                commandType: CommandType.StoredProcedure
+            );
+        }
+    }
     }
