@@ -451,7 +451,7 @@
                 }
             return lista;
         }
-<<<<<<< HEAD
+
         public static void ToggleFavoritoReceta(int idReceta)
     {
         string storedProcedure = "sp_ToggleFavoritoReceta";
@@ -464,8 +464,6 @@
             );
         }
     }
-=======
-
         public static void CambiarEstado(string nombreEsp, string nuevoEstado)
         {
             string storedProcedure = "CambiarEstadoProducto";
@@ -477,7 +475,5 @@
                     commandType: CommandType.StoredProcedure
                 );
             }
-            return nuevoEstado;
         }
->>>>>>> ca90a1d2506c410a9e1bbc54d0360423c1f53529
     }

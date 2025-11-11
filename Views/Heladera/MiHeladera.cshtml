@@ -1,13 +1,17 @@
 @using System.Collections.Generic
 @using Keepi.Models
 @using System.Linq
+
 @{
     var Productos = ViewBag.Productos as List<ProductoXHeladera> ?? new List<ProductoXHeladera>();
     var BD = new BD();
     var todosProductos = BD.GetAllProductos();
     var ColorHeladera = ViewBag.ColorHeladera;
-}
+    
+    
 
+}
+<link rel="stylesheet" href="/css/style.css">
 <div class="mi-heladera-container">
     <div class="productos-scroll-container">
         @if (Productos != null && Productos.Count > 0)
@@ -171,14 +175,6 @@ document.addEventListener('click', function(event) {
 </script>
 
 <style>
-* {
-
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-span{
-    font-size:14px
-}
 .mi-heladera-container {
     width: 100%;
     height: 100vh;
@@ -284,13 +280,13 @@ span{
     gap: 10px;
 }
 
-contenedor-nombre-fecha{
+.contenedor-nombre-fecha{
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-contenedor-nombre-dias{
+.contenedor-nombre-dias{
     display: flex;
     align-items: center;
     gap: 20px;

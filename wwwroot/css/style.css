@@ -1,6 +1,8 @@
+/*Final del header*/
+
 * {
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
   border: 1px solid gray;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -8,6 +10,7 @@
 body {
   margin: 0;
   padding: 0;
+  padding-top: 120px !important;
 }
 
 h2,
@@ -22,7 +25,6 @@ p {
 }
 
 /*Principio del header*/
-
 header {
   position: fixed;
   top: 0;
@@ -30,139 +32,160 @@ header {
   right: 0;
   width: 100%;
   display: block;
-  backdrop-filter: blur(10px);
-  justify-content: space-between;
-  align-items: center;
   background: linear-gradient(100deg, #61ba4b, #cfd518);
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  border: none;
-  border-top: none;
+  border: none !important;
   margin: 0;
   padding: 0;
-  line-height: 0;
   box-sizing: border-box;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-header .logo {
-  font-size: 40px;
-  margin-left: 3%;
-  margin-top: 2%;
-  position: absolute;
-}
 header section.layout {
   position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   width: 100%;
   display: flex;
   gap: 16px;
-  padding: 0;
-  border-radius: 0px 0px 40px 40px;
+  padding: 0 30px;
   margin: 0;
   align-items: center;
-  min-height: fit-content;
+  min-height: 100px;
   height: auto;
+  border: none !important;
 }
 
-.layout .grow1 { 
-  flex-grow: 3; 
-  border: none;
-  border-radius: 0px 0px 0px 0px; 
+header .layout .grow1 { 
+  flex-grow: 1;
+  border: none !important;
   background-color: transparent;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 
-.layout .grow9 { 
-  flex-grow: 5; 
-  border: none; 
-  border-radius: 0px 0px 0px 0px; 
+header .layout .grow1:last-child {
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+header .layout .grow9 { 
+  flex-grow: 3;
+  border: none !important;
   background-color: transparent;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Asegurar que el menú del header no se vea afectado. No se porque pero esta fue la unica forma que funcionó */
 header .layout .grow1 a.menu {
-  font-size: 360%;
+  font-size: 36px;
   background-color: transparent;
   color: #ffffff;
-  border: none;
+  border: none !important;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.2s ease;
 }
 
-header .layout .grow1 a.notis {
+header .layout .grow1 a.menu:hover {
+  transform: scale(1.1);
+}
+
+header .layout .grow1 a.notis,
+header .layout .grow1 a.perfil {
   background-color: transparent;
-  border: none;
+  border: none !important;
+  transition: transform 0.2s ease;
+}
+
+header .layout .grow1 a.notis:hover,
+header .layout .grow1 a.perfil:hover {
+  transform: scale(1.1);
 }
 
 header .layout .grow9 a.logo {
   background-color: transparent;
-  border: none;
+  border: none !important;
 }
 
 header .layout .grow9 a.logo img {
-  border: none;
+  border: none !important;
   background-color: transparent;
+  height: 60px;
+  width: auto;
 }
 
-header .layout .grow1 a.perfil {
-  background-color: transparent;
-  border: none;
+header .layout .grow1 .notis img,
+header .layout .grow1 .perfil img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: none !important;
 }
 
-
-.layout .notis {
-  width: 5%;
-  background-color: none;
+/* MENÚ LATERAL */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background: linear-gradient(180deg, #59ad44, #4a8d38);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease;
+    z-index: 2000;
+    overflow-y: auto;
+    border: none !important;
 }
 
-.layout .logo {
-  width: 5%;
-  background-color: transparent;
-  border: none;
+.menu-lateral.active {
+    left: 0;
 }
 
-.layout img {
-  width: 100%;
-  background-color: transparent;
-  border: none;
+.menu-lateral-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    background: rgba(0, 0, 0, 0.1);
+    border: none !important;
 }
 
-.layout .perfil {
-  width: 5%;
-  background-color: none;
+.menu-lateral-header h2 {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+    border: none !important;
 }
 
-.layout a {
-  margin: 0%;
-  list-style: none;
-  width: 20%;
-  border: none;
-  color: transparent;
-  font-weight:600;
-  border-radius: 0px 0px 0px 0px;
-  margin-top: 0px;
-  background-color: none;
+.btn-cerrar {
+    background: transparent;
+    border: none !important;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
+.btn-cerrar:hover {
+    transform: rotate(90deg);
+}
+
+.menu-lateral nav {
+    padding: 20px 0;
+    border: none !important;
+}
+
+.menu-lateral nav a {
+    display: flex
+}
 /*Final del header*/
-
-section {
-  display: inline-block;
-  width: 100%;
-  padding: 10% 0%;
-}
-
-header section.layout,
-header section {
-  padding: 0 !important;
-  margin: 0 !important;
-  display: flex;
-}
-
 .index section:first-of-type {
   align-items: center;
   justify-content: center;
@@ -720,6 +743,122 @@ color:#5f5f5f;
   padding: 40px;
   color: #999;
   font-size: 18px;
+}
+
+
+.chat-container {
+  width: 90%;
+  max-width: 600px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 5%;
+  
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: white;
+}
+
+.message {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message.user {
+  background-color: none;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+}
+
+.message.bot {
+  background-color: #f1f1f1;
+  color: #333;
+  margin-right: auto;
+}
+
+.typing-indicator {
+  display: none;
+  color: #666;
+  font-style: italic;
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  max-width: 200px;
+}
+
+.input-container {
+  background-color: #333;
+  padding: 15px 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: white;
+  color: #333;
+}
+
+.input-container input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+.input-container button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.input-container button:hover {
+  background-color: #0056b3;
+}
+
+.input-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Scrollbar personalizada */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 
 @media (max-width: 768px) {

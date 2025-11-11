@@ -26,15 +26,16 @@
 
     <!-- Barra de entrada -->
     <div class="input-container" id="inputContainer">
-            <input 
-                type="text" 
-                name="Message" 
-                id="messageInput" 
-                placeholder="Escribe tu mensaje..." 
-                maxlength="1000" />
-            <button type="button" id="sendBtn">Enviar</button>
-            <button type="button" id="clearBtn" asp-controller="Chat" asp-action="ClearHistory">Limpiar</button>
-        </div>
+        <input 
+            type="text" 
+            name="Message" 
+            id="messageInput" 
+            placeholder="Escribe tu mensaje..." 
+            maxlength="1000" />
+        <button type="button" id="sendBtn">Enviar</button>
+        <button type="button" id="clearBtn" asp-controller="Chat" asp-action="ClearHistory">Limpiar</button>
+    </div>
+</div>
 <script>
     const sendBtn = document.getElementById('sendBtn');
     const messageInput = document.getElementById('messageInput');
@@ -123,8 +124,3 @@
         }
     });
 </script>
-
-
-</div>
-
-

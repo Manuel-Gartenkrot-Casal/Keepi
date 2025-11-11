@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using semantic_kernel.Models;
 using semantic_kernel.Services;
 using System.Text.Json;
-
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
