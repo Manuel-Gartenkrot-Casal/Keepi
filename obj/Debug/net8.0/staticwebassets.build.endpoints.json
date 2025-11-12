@@ -1,640 +1,101 @@
 {
   "Version": 1,
-  "Hash": "RbG2V4tCOJRteErSmXp1q+NXEWR7oIWe0dL7R0G0Wjw=",
-  "Source": "KeepiProg",
-  "BasePath": "_content/KeepiProg",
-  "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [
-    {
-      "Name": "KeepiProg\\wwwroot",
-      "Source": "KeepiProg",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "Pattern": "**"
-    }
-  ],
-  "Assets": [
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\css\\style.css",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "css/style#[.{fingerprint}]?.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "kgl0x87dft",
-      "Integrity": "XAIXyreFnNOJ/qVzf5AuX3MxhSuD5S+o0uoaOYLpXIc=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\style.css"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\favicon.ico",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "favicon#[.{fingerprint}]?.ico",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "61n19gt1b8",
-      "Integrity": "Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\LogoKeepi.jpg",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/LogoKeepi#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "o3d5tfcp3n",
-      "Integrity": "bFUtq/r7PwrLrcwGlL3Dng8ciGjZdZmNpfw0butYU7w=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\LogoKeepi.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Notis.png",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Notis#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "jdw0r65p7v",
-      "Integrity": "5wYHYMesuLJoR2duf/2gFCC0jDfibTGecaYw/G/YjDc=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Notis.png"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Perfil.png",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Perfil#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "lkdamuyhqh",
-      "Integrity": "yy41+qirPxaKIqyfIzantrESWh+BteR/QrYk8HYJGq8=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Perfil.png"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\carne.jpg",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/carne#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "7jk8v9kuu9",
-      "Integrity": "8xwb9PA9daoU35Gh7/cfXg3aPpiVxXqIXU0gHmLURw0=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\carne.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cerveza.jpg",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/cerveza#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "plx9a3kxs6",
-      "Integrity": "ozch0uQ8nj2Lt28P4B5HPPaL3Qa8nwlebGt8Ev+edrI=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\cerveza.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cocacola.webp",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/cocacola#[.{fingerprint}]?.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "u6wv7pux19",
-      "Integrity": "SsD83kHW4HjYoJcupmaunznH3D8sHj/CLDqEp1LBC6s=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\cocacola.webp"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\leche.jpg",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/leche#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "djhxpeyxj5",
-      "Integrity": "Cehqgr8dEO5Gsl35KWAANQ2wv7g09NidnhZzSJ0qBjM=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\leche.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\lechuga.jpg",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/lechuga#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "bt8fzljpd7",
-      "Integrity": "oT75BIHhy3L0NdnCq4NwlhUS2ivk1lkkOAW0HVN887c=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\lechuga.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\manzana.jpeg",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/manzana#[.{fingerprint}]?.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "ulvpjj1b80",
-      "Integrity": "vqSoTYogLEq2x8dpQISpeKukIn4OD92iV0QbelgGNKM=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\manzana.jpeg"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pan.webp",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/pan#[.{fingerprint}]?.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "b78seaiueq",
-      "Integrity": "h+61CBCObj5YJXZHaoBIryAnf/rTxpdVA53/RbHWLFI=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\pan.webp"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pollo.jpg",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/pollo#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "vabtumpvey",
-      "Integrity": "iduXrAbXt+ex5e3UgWp56IynjEzW25jyfZRVhBoxsG8=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\pollo.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\queso.webp",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/queso#[.{fingerprint}]?.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "uuybm0gcvw",
-      "Integrity": "yqT4fRCF5D3500oqi+hV4I4t7IjHOAu0LCTKr6yq34M=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\queso.webp"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\yogur.webp",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "imagenes/Productos/yogur#[.{fingerprint}]?.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "5rot9g5vvw",
-      "Integrity": "b+TlNFSFWPGBMexZGFPdZ7TBCYf4qOc2xHkv6YjPDxo=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\yogur.webp"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\js\\site.js",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "js/site#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "xtxxf3hu2r",
-      "Integrity": "hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\site.js"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\Keepi_DataBase.sql",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "Keepi_DataBase#[.{fingerprint}]?.sql",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "f5neq9z0a0",
-      "Integrity": "s7ptsdq4w8FiVnoXv3498Thn1sXRwvpTKwvCZAqcIxw=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Keepi_DataBase.sql"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "03hjc8e09r",
-      "Integrity": "xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "48y08845bh",
-      "Integrity": "RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE#[.{fingerprint}]?.txt",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "356vix0kms",
-      "Integrity": "16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery-validation/dist/additional-methods#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "ay5nd8zt9x",
-      "Integrity": "4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery-validation/dist/additional-methods.min#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "9oaff4kq20",
-      "Integrity": "N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery-validation/dist/jquery.validate#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "6d0lkjaslc",
-      "Integrity": "5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery-validation/dist/jquery.validate.min#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "l1zq2mitth",
-      "Integrity": "6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery-validation/LICENSE#[.{fingerprint}]?.md",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "x0q3zqp4vz",
-      "Integrity": "geHEkw/WGPdaHQMRq5HuNY9snliNzU/y2OW8ycnhGXw=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.js",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery/dist/jquery#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "7s2n0ol71w",
-      "Integrity": "KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "ehgnz7f14e",
-      "Integrity": "zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "5pze98is44",
-      "Integrity": "OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
-    },
-    {
-      "Identity": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "SourceId": "KeepiProg",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\",
-      "BasePath": "_content/KeepiProg",
-      "RelativePath": "lib/jquery/LICENSE#[.{fingerprint}]?.txt",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "mlv21k5csn",
-      "Integrity": "hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
-    }
-  ],
   "Endpoints": [
     {
-      "Route": "css/style.css",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\css\\style.css",
+      "Route": "Keepi_DataBase.f5neq9z0a0.sql",
+      "AssetFile": "Keepi_DataBase.sql",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "43446"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"s7ptsdq4w8FiVnoXv3498Thn1sXRwvpTKwvCZAqcIxw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "f5neq9z0a0"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-s7ptsdq4w8FiVnoXv3498Thn1sXRwvpTKwvCZAqcIxw="
+        },
+        {
+          "Name": "label",
+          "Value": "Keepi_DataBase.sql"
+        }
+      ]
+    },
+    {
+      "Route": "Keepi_DataBase.sql",
+      "AssetFile": "Keepi_DataBase.sql",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "43446"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"s7ptsdq4w8FiVnoXv3498Thn1sXRwvpTKwvCZAqcIxw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-s7ptsdq4w8FiVnoXv3498Thn1sXRwvpTKwvCZAqcIxw="
+        }
+      ]
+    },
+    {
+      "Route": "css/style.css",
+      "AssetFile": "css/style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Length",
@@ -651,10 +112,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
@@ -666,12 +123,16 @@
     },
     {
       "Route": "css/style.kgl0x87dft.css",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\css\\style.css",
+      "AssetFile": "css/style.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -688,10 +149,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -700,23 +157,27 @@
           "Value": "kgl0x87dft"
         },
         {
-          "Name": "label",
-          "Value": "css/style.css"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-XAIXyreFnNOJ/qVzf5AuX3MxhSuD5S+o0uoaOYLpXIc="
+        },
+        {
+          "Name": "label",
+          "Value": "css/style.css"
         }
       ]
     },
     {
       "Route": "favicon.61n19gt1b8.ico",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\favicon.ico",
+      "AssetFile": "favicon.ico",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -733,10 +194,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -745,23 +202,27 @@
           "Value": "61n19gt1b8"
         },
         {
-          "Name": "label",
-          "Value": "favicon.ico"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        },
+        {
+          "Name": "label",
+          "Value": "favicon.ico"
         }
       ]
     },
     {
       "Route": "favicon.ico",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\favicon.ico",
+      "AssetFile": "favicon.ico",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -778,10 +239,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -793,12 +250,16 @@
     },
     {
       "Route": "imagenes/LogoKeepi.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\LogoKeepi.jpg",
+      "AssetFile": "imagenes/LogoKeepi.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -815,10 +276,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -830,12 +287,16 @@
     },
     {
       "Route": "imagenes/LogoKeepi.o3d5tfcp3n.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\LogoKeepi.jpg",
+      "AssetFile": "imagenes/LogoKeepi.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -852,10 +313,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -864,23 +321,27 @@
           "Value": "o3d5tfcp3n"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/LogoKeepi.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-bFUtq/r7PwrLrcwGlL3Dng8ciGjZdZmNpfw0butYU7w="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/LogoKeepi.jpg"
         }
       ]
     },
     {
       "Route": "imagenes/Notis.jdw0r65p7v.png",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Notis.png",
+      "AssetFile": "imagenes/Notis.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -897,10 +358,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -909,23 +366,27 @@
           "Value": "jdw0r65p7v"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Notis.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-5wYHYMesuLJoR2duf/2gFCC0jDfibTGecaYw/G/YjDc="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Notis.png"
         }
       ]
     },
     {
       "Route": "imagenes/Notis.png",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Notis.png",
+      "AssetFile": "imagenes/Notis.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -942,10 +403,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -957,12 +414,16 @@
     },
     {
       "Route": "imagenes/Perfil.lkdamuyhqh.png",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Perfil.png",
+      "AssetFile": "imagenes/Perfil.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -979,10 +440,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -991,23 +448,27 @@
           "Value": "lkdamuyhqh"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Perfil.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-yy41+qirPxaKIqyfIzantrESWh+BteR/QrYk8HYJGq8="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Perfil.png"
         }
       ]
     },
     {
       "Route": "imagenes/Perfil.png",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Perfil.png",
+      "AssetFile": "imagenes/Perfil.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1024,10 +485,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1039,12 +496,16 @@
     },
     {
       "Route": "imagenes/Productos/carne.7jk8v9kuu9.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\carne.jpg",
+      "AssetFile": "imagenes/Productos/carne.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1061,10 +522,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1073,23 +530,27 @@
           "Value": "7jk8v9kuu9"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/carne.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-8xwb9PA9daoU35Gh7/cfXg3aPpiVxXqIXU0gHmLURw0="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/carne.jpg"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/carne.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\carne.jpg",
+      "AssetFile": "imagenes/Productos/carne.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1106,10 +567,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1121,12 +578,16 @@
     },
     {
       "Route": "imagenes/Productos/cerveza.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cerveza.jpg",
+      "AssetFile": "imagenes/Productos/cerveza.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1143,10 +604,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1158,12 +615,16 @@
     },
     {
       "Route": "imagenes/Productos/cerveza.plx9a3kxs6.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cerveza.jpg",
+      "AssetFile": "imagenes/Productos/cerveza.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1180,10 +641,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1192,23 +649,27 @@
           "Value": "plx9a3kxs6"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/cerveza.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-ozch0uQ8nj2Lt28P4B5HPPaL3Qa8nwlebGt8Ev+edrI="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/cerveza.jpg"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/cocacola.u6wv7pux19.webp",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cocacola.webp",
+      "AssetFile": "imagenes/Productos/cocacola.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1225,10 +686,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1237,23 +694,27 @@
           "Value": "u6wv7pux19"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/cocacola.webp"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-SsD83kHW4HjYoJcupmaunznH3D8sHj/CLDqEp1LBC6s="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/cocacola.webp"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/cocacola.webp",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cocacola.webp",
+      "AssetFile": "imagenes/Productos/cocacola.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1270,10 +731,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1285,12 +742,16 @@
     },
     {
       "Route": "imagenes/Productos/leche.djhxpeyxj5.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\leche.jpg",
+      "AssetFile": "imagenes/Productos/leche.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1307,10 +768,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1319,23 +776,27 @@
           "Value": "djhxpeyxj5"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/leche.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-Cehqgr8dEO5Gsl35KWAANQ2wv7g09NidnhZzSJ0qBjM="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/leche.jpg"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/leche.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\leche.jpg",
+      "AssetFile": "imagenes/Productos/leche.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1352,10 +813,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1367,12 +824,16 @@
     },
     {
       "Route": "imagenes/Productos/lechuga.bt8fzljpd7.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\lechuga.jpg",
+      "AssetFile": "imagenes/Productos/lechuga.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1389,10 +850,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1401,23 +858,27 @@
           "Value": "bt8fzljpd7"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/lechuga.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-oT75BIHhy3L0NdnCq4NwlhUS2ivk1lkkOAW0HVN887c="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/lechuga.jpg"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/lechuga.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\lechuga.jpg",
+      "AssetFile": "imagenes/Productos/lechuga.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1434,10 +895,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1449,12 +906,16 @@
     },
     {
       "Route": "imagenes/Productos/manzana.jpeg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\manzana.jpeg",
+      "AssetFile": "imagenes/Productos/manzana.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1471,10 +932,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1486,12 +943,16 @@
     },
     {
       "Route": "imagenes/Productos/manzana.ulvpjj1b80.jpeg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\manzana.jpeg",
+      "AssetFile": "imagenes/Productos/manzana.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1508,10 +969,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1520,23 +977,27 @@
           "Value": "ulvpjj1b80"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/manzana.jpeg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-vqSoTYogLEq2x8dpQISpeKukIn4OD92iV0QbelgGNKM="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/manzana.jpeg"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/pan.b78seaiueq.webp",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pan.webp",
+      "AssetFile": "imagenes/Productos/pan.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1553,10 +1014,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1565,23 +1022,27 @@
           "Value": "b78seaiueq"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/pan.webp"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-h+61CBCObj5YJXZHaoBIryAnf/rTxpdVA53/RbHWLFI="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/pan.webp"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/pan.webp",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pan.webp",
+      "AssetFile": "imagenes/Productos/pan.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1598,10 +1059,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1613,12 +1070,16 @@
     },
     {
       "Route": "imagenes/Productos/pollo.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pollo.jpg",
+      "AssetFile": "imagenes/Productos/pollo.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1635,10 +1096,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1650,12 +1107,16 @@
     },
     {
       "Route": "imagenes/Productos/pollo.vabtumpvey.jpg",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pollo.jpg",
+      "AssetFile": "imagenes/Productos/pollo.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1672,10 +1133,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1684,23 +1141,27 @@
           "Value": "vabtumpvey"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/pollo.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-iduXrAbXt+ex5e3UgWp56IynjEzW25jyfZRVhBoxsG8="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/pollo.jpg"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/queso.uuybm0gcvw.webp",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\queso.webp",
+      "AssetFile": "imagenes/Productos/queso.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1717,10 +1178,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1729,23 +1186,27 @@
           "Value": "uuybm0gcvw"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/queso.webp"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-yqT4fRCF5D3500oqi+hV4I4t7IjHOAu0LCTKr6yq34M="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/queso.webp"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/queso.webp",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\queso.webp",
+      "AssetFile": "imagenes/Productos/queso.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1762,10 +1223,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1777,12 +1234,16 @@
     },
     {
       "Route": "imagenes/Productos/yogur.5rot9g5vvw.webp",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\yogur.webp",
+      "AssetFile": "imagenes/Productos/yogur.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1799,10 +1260,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1811,23 +1268,27 @@
           "Value": "5rot9g5vvw"
         },
         {
-          "Name": "label",
-          "Value": "imagenes/Productos/yogur.webp"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-b+TlNFSFWPGBMexZGFPdZ7TBCYf4qOc2xHkv6YjPDxo="
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/Productos/yogur.webp"
         }
       ]
     },
     {
       "Route": "imagenes/Productos/yogur.webp",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\yogur.webp",
+      "AssetFile": "imagenes/Productos/yogur.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1844,10 +1305,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1859,12 +1316,16 @@
     },
     {
       "Route": "js/site.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\js\\site.js",
+      "AssetFile": "js/site.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Length",
@@ -1881,10 +1342,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
@@ -1896,12 +1353,16 @@
     },
     {
       "Route": "js/site.xtxxf3hu2r.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\js\\site.js",
+      "AssetFile": "js/site.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1918,10 +1379,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1930,18 +1387,18 @@
           "Value": "xtxxf3hu2r"
         },
         {
-          "Name": "label",
-          "Value": "js/site.js"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo="
+        },
+        {
+          "Name": "label",
+          "Value": "js/site.js"
         }
       ]
     },
     {
-      "Route": "Keepi_DataBase.f5neq9z0a0.sql",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\Keepi_DataBase.sql",
+      "Route": "lib/jquery-validation-unobtrusive/LICENSE.356vix0kms.txt",
+      "AssetFile": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1949,44 +1406,44 @@
           "Value": "bytes"
         },
         {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
           "Name": "Content-Length",
-          "Value": "43446"
+          "Value": "1139"
         },
         {
           "Name": "Content-Type",
-          "Value": "application/octet-stream"
+          "Value": "text/plain"
         },
         {
           "Name": "ETag",
-          "Value": "\"s7ptsdq4w8FiVnoXv3498Thn1sXRwvpTKwvCZAqcIxw=\""
+          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
         },
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "f5neq9z0a0"
-        },
-        {
-          "Name": "label",
-          "Value": "Keepi_DataBase.sql"
+          "Value": "356vix0kms"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-s7ptsdq4w8FiVnoXv3498Thn1sXRwvpTKwvCZAqcIxw="
+          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation-unobtrusive/LICENSE.txt"
         }
       ]
     },
     {
-      "Route": "Keepi_DataBase.sql",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\Keepi_DataBase.sql",
+      "Route": "lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "AssetFile": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1994,41 +1451,45 @@
           "Value": "bytes"
         },
         {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
           "Name": "Content-Length",
-          "Value": "43446"
+          "Value": "1139"
         },
         {
           "Name": "Content-Type",
-          "Value": "application/octet-stream"
+          "Value": "text/plain"
         },
         {
           "Name": "ETag",
-          "Value": "\"s7ptsdq4w8FiVnoXv3498Thn1sXRwvpTKwvCZAqcIxw=\""
+          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
         },
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-s7ptsdq4w8FiVnoXv3498Thn1sXRwvpTKwvCZAqcIxw="
+          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
         }
       ]
     },
     {
       "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.03hjc8e09r.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "AssetFile": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -2045,10 +1506,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -2057,23 +1514,27 @@
           "Value": "03hjc8e09r"
         },
         {
-          "Name": "label",
-          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
         }
       ]
     },
     {
       "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "AssetFile": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Length",
@@ -2090,10 +1551,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
@@ -2105,12 +1562,16 @@
     },
     {
       "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.48y08845bh.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "AssetFile": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -2127,10 +1588,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -2139,23 +1596,27 @@
           "Value": "48y08845bh"
         },
         {
-          "Name": "label",
-          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
         }
       ]
     },
     {
       "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "AssetFile": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Length",
@@ -2172,10 +1633,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
@@ -2186,423 +1643,17 @@
       ]
     },
     {
-      "Route": "lib/jquery-validation-unobtrusive/LICENSE.356vix0kms.txt",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1139"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "356vix0kms"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation-unobtrusive/LICENSE.txt"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation-unobtrusive/LICENSE.txt",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1139"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/additional-methods.ay5nd8zt9x.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "52977"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ay5nd8zt9x"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation/dist/additional-methods.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/additional-methods.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "52977"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/additional-methods.min.9oaff4kq20.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "22177"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "9oaff4kq20"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation/dist/additional-methods.min.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/additional-methods.min.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "22177"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/jquery.validate.6d0lkjaslc.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "52831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6d0lkjaslc"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation/dist/jquery.validate.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/jquery.validate.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "52831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/jquery.validate.min.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "24604"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/jquery.validate.min.l1zq2mitth.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "24604"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "l1zq2mitth"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation/dist/jquery.validate.min.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w="
-        }
-      ]
-    },
-    {
       "Route": "lib/jquery-validation/LICENSE.md",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "AssetFile": "lib/jquery-validation/LICENSE.md",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Length",
@@ -2619,10 +1670,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
@@ -2634,12 +1681,16 @@
     },
     {
       "Route": "lib/jquery-validation/LICENSE.x0q3zqp4vz.md",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "AssetFile": "lib/jquery-validation/LICENSE.md",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -2656,10 +1707,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -2668,23 +1715,437 @@
           "Value": "x0q3zqp4vz"
         },
         {
-          "Name": "label",
-          "Value": "lib/jquery-validation/LICENSE.md"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-geHEkw/WGPdaHQMRq5HuNY9snliNzU/y2OW8ycnhGXw="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation/LICENSE.md"
         }
       ]
     },
     {
-      "Route": "lib/jquery/dist/jquery.7s2n0ol71w.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Route": "lib/jquery-validation/dist/additional-methods.ay5nd8zt9x.js",
+      "AssetFile": "lib/jquery-validation/dist/additional-methods.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "52977"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ay5nd8zt9x"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation/dist/additional-methods.js"
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation/dist/additional-methods.js",
+      "AssetFile": "lib/jquery-validation/dist/additional-methods.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "52977"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation/dist/additional-methods.min.9oaff4kq20.js",
+      "AssetFile": "lib/jquery-validation/dist/additional-methods.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22177"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "9oaff4kq20"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation/dist/additional-methods.min.js"
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation/dist/additional-methods.min.js",
+      "AssetFile": "lib/jquery-validation/dist/additional-methods.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22177"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation/dist/jquery.validate.6d0lkjaslc.js",
+      "AssetFile": "lib/jquery-validation/dist/jquery.validate.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "52831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6d0lkjaslc"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation/dist/jquery.validate.js"
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation/dist/jquery.validate.js",
+      "AssetFile": "lib/jquery-validation/dist/jquery.validate.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "52831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation/dist/jquery.validate.min.js",
+      "AssetFile": "lib/jquery-validation/dist/jquery.validate.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "24604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation/dist/jquery.validate.min.l1zq2mitth.js",
+      "AssetFile": "lib/jquery-validation/dist/jquery.validate.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "24604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l1zq2mitth"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation/dist/jquery.validate.min.js"
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery/LICENSE.mlv21k5csn.txt",
+      "AssetFile": "lib/jquery/LICENSE.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mlv21k5csn"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery/LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery/LICENSE.txt",
+      "AssetFile": "lib/jquery/LICENSE.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery/dist/jquery.7s2n0ol71w.js",
+      "AssetFile": "lib/jquery/dist/jquery.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -2701,10 +2162,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -2713,23 +2170,27 @@
           "Value": "7s2n0ol71w"
         },
         {
-          "Name": "label",
-          "Value": "lib/jquery/dist/jquery.js"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery/dist/jquery.js"
         }
       ]
     },
     {
       "Route": "lib/jquery/dist/jquery.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "AssetFile": "lib/jquery/dist/jquery.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Length",
@@ -2746,10 +2207,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
@@ -2761,12 +2218,16 @@
     },
     {
       "Route": "lib/jquery/dist/jquery.min.5pze98is44.map",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "AssetFile": "lib/jquery/dist/jquery.min.map",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -2783,10 +2244,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -2795,23 +2252,27 @@
           "Value": "5pze98is44"
         },
         {
-          "Name": "label",
-          "Value": "lib/jquery/dist/jquery.min.map"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery/dist/jquery.min.map"
         }
       ]
     },
     {
       "Route": "lib/jquery/dist/jquery.min.ehgnz7f14e.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "AssetFile": "lib/jquery/dist/jquery.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -2828,10 +2289,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -2840,23 +2297,27 @@
           "Value": "ehgnz7f14e"
         },
         {
-          "Name": "label",
-          "Value": "lib/jquery/dist/jquery.min.js"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs="
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery/dist/jquery.min.js"
         }
       ]
     },
     {
       "Route": "lib/jquery/dist/jquery.min.js",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "AssetFile": "lib/jquery/dist/jquery.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Length",
@@ -2873,10 +2334,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
@@ -2888,12 +2345,16 @@
     },
     {
       "Route": "lib/jquery/dist/jquery.min.map",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "AssetFile": "lib/jquery/dist/jquery.min.map",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Length",
@@ -2910,98 +2371,12 @@
         {
           "Name": "Last-Modified",
           "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
           "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/LICENSE.mlv21k5csn.txt",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1117"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "mlv21k5csn"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery/LICENSE.txt"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/LICENSE.txt",
-      "AssetFile": "C:\\Users\\49002406\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1117"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Nov 2025 16:26:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
         }
       ]
     }
