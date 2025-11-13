@@ -1,62 +1,69 @@
 @{
     ViewData["Title"] = "Keepi";
 }
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="index">
-    <main>
-        <section>
-                <h1>Keepi</h1>
-                <p>Organizá tu heladera, recibí alertas de vencimiento y encontrá las mejores recetas.</p>
 
+<div class="index">
+    <section>
+        <h1>Keepi</h1>
+        <p>Organizá tu heladera, recibí alertas de vencimiento y encontrá las mejores recetas.</p>
+
+        <div>
+        @if (Context.Session.GetString("usuario") != null)
+        {
+            <a href="@Url.Action("ChatBot", "Chat")" class="cta">Hablá con Mr. Keep</a>
+            <a href="@Url.Action("InicializarHeladera", "Heladera")">Probar</a>
+        }
+        else
+        {
+            <a href="@Url.Action("Login", "Auth")" class="cta">Hablá con Mr. Keep</a>
+            <a href="@Url.Action("Login", "Auth")">Probar</a>
+        }
+        </div>
+    </section>
+
+    <section>
+        <h2>La problemática</h2>
+        <p>1 de cada 3 alimentos producidos termina en la basura...</p>
+        <div>
             <div>
-            @if (Context.Session.GetString("usuario") != null)
-            {
-                <a href="@Url.Action("ChatBot", "Chat")" class="cta">Hablá con Mr. Keep</a>
-                <a href="@Url.Action("InicializarHeladera", "Heladera")">Probar</a>
-            }
-            else
-            {
-                <a href="@Url.Action("Login", "Auth")" class="cta">Hablá con Mr. Keep</a>
-                <a href="@Url.Action("Login", "Auth")">Probar</a>
-            }
+                <h3>1/3</h3>
+                <p>de los alimentos producidos se desperdician</p>
             </div>
+            <div>
+                <h3>800M+</h3>
+                <p>de personas sufren hambre</p>
+            </div>
+            <div>
+                <h3>30%</h3>
+                <p>de los recursos naturales se pierden con la comida</p>
+            </div>
+        </div>
+    </section>
 
-        </section>
+    <section>
+        <h2>Nuestra solución</h2>
+        <p>Keepi es una web simple e intuitiva que te ayuda a organizar tu cocina y reducir tu impacto ambiental.</p>
 
-    <section> <h2>La problemática</h2> <p>1 de cada 3 alimentos producidos termina en la basura...</p> <div > <div> <h3>1/3</h3> <p>de los alimentos producidos se desperdician</p> </div> <div> <h3>800M+</h3> <p>de personas sufren hambre</p> </div> <div> <h3>30%</h3> <p>de los recursos naturales se pierden con la comida</p> </div> </div> </section>
-
-        <section>
-            <h2>Nuestra solución</h2>
-            <p>Keepi es una web simple e intuitiva que te ayuda a organizar tu cocina y reducir tu impacto ambiental.</p>
-
-            <ul >
-                <li>
-                    <span>1</span>
-                    <p>Registrá tus alimentos</p>
-                </li>
-                <li>
-                    <span>2</span>
-                    <p>Recibí alertas inteligentes</p>
-                </li>
-                <li>
-                    <span>3</span>
-                    <p>Descubrí recetas con lo que ya tenés</p>
-                </li>
-                <li>
-                    <span>4</span>
-                    <p>Charlá con Mr. Keep</p>
-                </li>
-            </ul>
-
-            <!-- ACÁ IRÍA UN VIDEO TUTORIAL O ALGO... NO SE-->
-        </section>
-    </main>
-</body>
+        <ul>
+            <li>
+                <span>1</span>
+                <p>Registrá tus alimentos</p>
+            </li>
+            <li>
+                <span>2</span>
+                <p>Recibí alertas inteligentes</p>
+            </li>
+            <li>
+                <span>3</span>
+                <p>Descubrí recetas con lo que ya tenés</p>
+            </li>
+            <li>
+                <span>4</span>
+                <p>Charlá con Mr. Keep</p>
+            </li>
+        </ul>
+    </section>
+</div>
 
 
 

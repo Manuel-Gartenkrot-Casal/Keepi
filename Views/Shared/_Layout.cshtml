@@ -5,258 +5,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - NombreProyecto</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 </head>
 
 <body>
-    <!-- CSS para agregar a tu site.css -->
-<style>
-/* HEADER */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(100deg, #61ba4b, #cfd518);
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    padding: 0 30px;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
 
-.header .grow1 {
-    flex: 1;
-    display: flex;
-    align-items: center;
-}
-
-.header .grow9 {
-    flex: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.header .grow1:last-child {
-    justify-content: flex-end;
-    gap: 15px;
-}
-
-.header a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    transition: transform 0.2s ease;
-    background: none;
-    border: none;
-}
-
-.header a:hover {
-    transform: scale(1.1);
-}
-
-.header .menu {
-    font-size: 36px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: white;
-    padding: 10px;
-}
-
-.header .logo img {
-    height: 60px;
-    width: auto;
-    border: none;
-}
-
-.header .notis img,
-.header .perfil img {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: none;
-}
-
-/* MENÚ LATERAL */
-.menu-lateral {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100vh;
-    background: linear-gradient(180deg, #59ad44, #4a8d38);
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
-    transition: left 0.3s ease;
-    z-index: 2000;
-    overflow-y: auto;
-}
-
-.menu-lateral.active {
-    left: 0;
-}
-
-.menu-lateral-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 20px;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.menu-lateral-header h2 {
-    color: white;
-    font-size: 24px;
-    margin: 0;
-}
-
-.btn-cerrar {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 32px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.btn-cerrar:hover {
-    transform: rotate(90deg);
-}
-
-.menu-lateral nav {
-    padding: 20px 0;
-}
-
-.menu-lateral nav a {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: all 0.2s ease;
-    border-left: 4px solid transparent;
-    border-top: none;
-    border-right: none;
-    border-bottom: none;
-}
-
-.menu-lateral nav a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-left-color: white;
-    padding-left: 30px;
-}
-
-.menu-lateral nav a span {
-    margin-right: 15px;
-    font-size: 24px;
-}
-
-/* OVERLAY */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1500;
-}
-
-.overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-</style>
-
-<!-- HTML para tu _Layout.cshtml -->
-<!-- Overlay -->
-<div class="overlay" id="overlay"></div>
-
-<!-- Menú Lateral -->
-<div class="menu-lateral" id="menuLateral">
-    <div class="menu-lateral-header">
-        <h2>Menú</h2>
-        <button class="btn-cerrar" id="btnCerrar">×</button>
+    <!-- Menú Lateral -->
+    <div class="menu-lateral" id="menuLateral">
+        <div class="menu-lateral-header">
+            <h2>Menú</h2>
+            <button class="btn-cerrar" id="btnCerrar">×</button>
+        </div>
+        <nav>
+            <a href="/Home/Index"><span>🏠</span> Inicio</a>
+            <a href="/Heladera/MiHeladera"><span>❄️</span> Mi Heladera</a>
+            <a href="/Home/Recetas"><span>🍽️</span> Recetas</a>
+            <a href="#"><span>📊</span> Estadísticas</a>
+            <a href="/Home/ListaDeSuper"><span>🛒</span> Lista de Compras</a>
+            <a href="#"><span>⚙️</span> Configuración</a>
+            <a href="/Chat/ChatBot"><span>💬</span> Soporte</a>
+            <a href="/Auth/Login"><span>🚪</span> Cerrar Sesión</a>
+        </nav>
     </div>
-    <nav>
-        <a href="#"><span>🏠</span> Inicio</a>
-        <a href="#"><span>❄️</span> Mi Heladera</a>
-        <a href="#"><span>🍽️</span> Recetas</a>
-        <a href="#"><span>📊</span> Estadísticas</a>
-        <a href="#"><span>🛒</span> Lista de Compras</a>
-        <a href="#"><span>⚙️</span> Configuración</a>
-        <a href="#"><span>💬</span> Soporte</a>
-        <a href="#"><span>🚪</span> Cerrar Sesión</a>
-    </nav>
-</div>
 
-<!-- Header -->
-<header class="header">
-    <div class="grow1">
-        <a class="menu" href="#" id="btnMenu">☰</a>
-    </div>
-    <div class="grow9">
-        <a class="logo" href="#">
-            <img src="~/imagenes/LogoKeepi.png" alt="Logo Keepi">
-        </a>
-    </div>
-    <div class="grow1">
-        <a class="notis" href="#">
-            <img src="~/imagenes/Notis.png" alt="Notificaciones">
-        </a>
-        <a class="perfil" href="#">
-            <img src="~/imagenes/Perfil.png" alt="Perfil">
-        </a>
-    </div>
-</header>
+    <!-- Header -->
+    <header>
+        <section class="layout">
+            <div class="grow1">
+                <a class="menu" href="#" id="btnMenu">☰</a>
+            </div>
+            <div class="grow9">
+                <a class="logo" href="/Home/Index">
+                    <img src="~/imagenes/LogoKeepi.png" alt="Logo Keepi">
+                </a>
+            </div>
+            <div class="grow1">
+                <a class="notis" href="#">
+                    <img src="~/imagenes/Notis.png" alt="Notificaciones">
+                </a>
+                <a class="perfil" href="/Home/Perfil">
+                    <img src="~/imagenes/Perfil.png" alt="Perfil">
+                </a>
+            </div>
+        </section>
+    </header>
 
-<!-- JavaScript al final del body o en tu site.js -->
-<script>
-    const btnMenu = document.getElementById('btnMenu');
-    const btnCerrar = document.getElementById('btnCerrar');
-    const menuLateral = document.getElementById('menuLateral');
-    const overlay = document.getElementById('overlay');
+    <script>
+        const btnMenu = document.getElementById('btnMenu');
+        const btnCerrar = document.getElementById('btnCerrar');
+        const menuLateral = document.getElementById('menuLateral');
+        const overlay = document.getElementById('overlay');
 
-    // Abrir menú
-    btnMenu.addEventListener('click', (e) => {
-        e.preventDefault();
-        menuLateral.classList.add('active');
-        overlay.classList.add('active');
-    });
+        // Abrir menú
+        btnMenu.addEventListener('click', (e) => {
+            e.preventDefault();
+            menuLateral.classList.add('active');
+            overlay.classList.add('active');
+        });
 
-    // Cerrar menú con botón X
-    btnCerrar.addEventListener('click', () => {
-        menuLateral.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-
-    // Cerrar menú al hacer clic en overlay
-    overlay.addEventListener('click', () => {
-        menuLateral.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-
-    // Cerrar menú al hacer clic en un enlace
-    const menuLinks = document.querySelectorAll('.menu-lateral nav a');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        // Cerrar menú con botón X
+        btnCerrar.addEventListener('click', () => {
             menuLateral.classList.remove('active');
             overlay.classList.remove('active');
         });
-    });
-</script>
+
+        // Cerrar menú al hacer clic en overlay
+        overlay.addEventListener('click', () => {
+            menuLateral.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const menuLinks = document.querySelectorAll('.menu-lateral nav a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuLateral.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+    </script>
 
     <main role="main">
         @RenderBody()
