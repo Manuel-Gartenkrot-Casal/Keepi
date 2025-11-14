@@ -6,11 +6,11 @@ public int duracion{get; set;}
 public int Popularidad{get; set;}
 public int Raciones{get; set;}
 public string Dificultad{get;set;}
-
+public string Instrucciones { get; set; }
 public Receta (){}
 
 
-    public Receta(int ID, string nombre, bool favorito, int duracion, int Popularidad, int Raciones, string Dificultad){
+    public Receta(int ID, string nombre, bool favorito, int duracion, int Popularidad, int Raciones, string Dificultad, string Instrucciones){
     this.ID = ID;
     this.nombre = nombre;
     this.favorito = favorito;
@@ -18,6 +18,7 @@ public Receta (){}
     this.Popularidad = Popularidad;
     this.Raciones = Raciones;
     this.Dificultad = Dificultad;
+    this.Instrucciones = Instrucciones;
     }
     public void PonerFavorito(){
         favorito = true;
