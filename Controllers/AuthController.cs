@@ -90,5 +90,8 @@ public class AuthController : Controller
             return RedirectToAction("Login");
         }
     }
-
+    public IActionResult cerrarSesion(){
+        HttpContext.Session.Clear();
+        return RedirectToAction("Login");
+    }
 }
