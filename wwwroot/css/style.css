@@ -848,13 +848,18 @@ color:#5f5f5f;
   color: #000000;
   margin-left: auto;
   text-align: right;
+  border-radius: 17px 17px 4px 17px;
+
 }
 
 .message.bot {
   background-color: #59ad44;
   color: #ffffff;
   margin-right: auto;
+  border-radius: 17px 17px 17px 4px;
 }
+
+
 
 .typing-indicator {
   display: none;
