@@ -969,4 +969,61 @@ main {
   .btn-estado {
       width: 100%;
   }
+
+/*Notificaciones*/
+
+  .notificaciones-panel {
+    position: fixed;
+    top: 0;
+    right: -24%;
+    width: 24%;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -0.8vw 0 2vw rgba(0,0,0,0.2);
+    transition: right 0.4s ease;
+    padding: 2%;
+    z-index: 1001;
+    overflow-y: auto;
+    border-top-left-radius: 2%;
+    border-bottom-left-radius: 2%;
+  }
+  
+  .notificaciones-panel.abierto {
+      right: 0;
+  }
+  
+  .notificaciones-panel .cerrar-sidebar {
+      position: absolute;
+      top: 1%;
+      left: 1%;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+  }
+  
+  .notificaciones-panel .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: none;
+  }
+  
+  .notificaciones-panel .overlay.active {
+      display: block;
+  }
+  
+  .notificaciones-panel .main-content {
+      transition: filter 0.4s ease;
+  }
+  
+  .notificaciones-panel .main-content.atenuado {
+      filter: brightness(0.8);
+  }
+  
 }
+
