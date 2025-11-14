@@ -15,12 +15,6 @@ public class NotificacionesController : Controller {
         _logger = logger;
     }
 
-    public IActionResult Panel() 
-    {
-        ViewBag.Notificaciones = Notis;
-        return PartialView("_Notificacion");
-    }
-
     /* public IActionResult CrearNotificacion(string nombreProducto) { //el nombreProducto siendo NombreEsp
         
         ProductoXHeladera product = Objeto.StringToObject<ProductoXHeladera>(HttpContext.Session.GetString("ID")); //Guarden los productos con ID porque son y todos distintos (porque tienen distinta heladera por ejemplo)
