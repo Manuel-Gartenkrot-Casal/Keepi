@@ -84,13 +84,15 @@ header .layout .grow9 {
 }
 
 header .layout .grow1 a.menu {
-  font-size: 36px;
+  font-size: 40px;
   background-color: transparent;
   color: #ffffff;
   border: none !important;
   cursor: pointer;
   padding: 10px;
   transition: transform 0.2s ease;
+  text-decoration: none;
+  margin-left: 1%;
 }
 
 header .layout .grow1 a.menu:hover {
@@ -102,6 +104,7 @@ header .layout .grow1 a.perfil {
   background-color: transparent;
   border: none !important;
   transition: transform 0.2s ease;
+  margin-right: 3%;
 }
 
 header .layout .grow1 a.notis:hover,
@@ -1028,4 +1031,5 @@ main {
   }
   
 }
+
 

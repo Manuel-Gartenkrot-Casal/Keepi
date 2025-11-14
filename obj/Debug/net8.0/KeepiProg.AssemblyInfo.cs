@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KeepiProg")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d1ed8eacd7b778814fbb429ebdc65082295999a")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3af7270f9e519b4b4a4a6bbce0b099073043ae69")]
+>>>>>>> 691a2fdebef8c2b04fffb934952d6a6a3ad6c6ab
 [assembly: System.Reflection.AssemblyProductAttribute("KeepiProg")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KeepiProg")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
