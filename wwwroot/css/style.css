@@ -807,6 +807,7 @@ color:#5f5f5f;
   font-size: 18px;
 }
 
+/*Inicio ChatBot*/
 
 .chat-container {
   width: 90%;
@@ -820,6 +821,7 @@ color:#5f5f5f;
   overflow: hidden;
   margin: auto;
   margin-bottom: 5%;
+  margin-top: 1%;
   
 }
 
@@ -839,15 +841,15 @@ color:#5f5f5f;
 }
 
 .message.user {
-  background-color: none;
-  color: white;
+  background-color: #f5f2de;
+  color: #000000;
   margin-left: auto;
   text-align: right;
 }
 
 .message.bot {
-  background-color: #f1f1f1;
-  color: #333;
+  background-color: #59ad44;
+  color: #ffffff;
   margin-right: auto;
 }
 
@@ -882,14 +884,14 @@ color:#5f5f5f;
 
 .input-container input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #007bff;
+  box-shadow: 0 0 0 2px #4a8d38;
 }
 
 .input-container button {
   padding: 12px 20px;
   border: none;
   border-radius: 6px;
-  background-color: #007bff;
+  background-color: #59ad44;
   color: white;
   cursor: pointer;
   font-size: 14px;
@@ -897,14 +899,14 @@ color:#5f5f5f;
 }
 
 .input-container button:hover {
-  background-color: #0056b3;
+  background-color: #4a8d38;
 }
 
 .input-container button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
-
+/*Fin ChatBot*/
 /* Scrollbar personalizada */
 .chat-messages::-webkit-scrollbar {
   width: 6px;

@@ -81,7 +81,7 @@ namespace semantic_kernel.Controllers
                     Console.WriteLine("[ChatController] Usuario no autenticado");
                     return Json(new ChatResponse
                     {
-                        Message = "Sesión expirada. Por favor, inicia sesión nuevamente.",
+                        Message = "Inicia sesión para usar el ChatBot",
                         Success = false
                     });
                 }
