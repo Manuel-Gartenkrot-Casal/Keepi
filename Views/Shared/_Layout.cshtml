@@ -20,14 +20,39 @@
         </div>
         <nav>
             <a href="/Home/Index"><span>🏠</span> Inicio</a>
-            <a href="/Heladera/CargarProductos"><span>❄️</span> Mi Heladera</a>
-            <a href="/Recetas"><span>🍽️</span> Recetas</a>
-            <a href="/Chat/ChatBot"><span>🤖</span> ChatBot</a>
+            <a href="/Heladera/MiHeladera"><span>❄️</span> Mi Heladera</a>
+            <a href="/Home/Recetas"><span>🍽️</span> Recetas</a>
+            <a href="#"><span>📊</span> Estadísticas</a>
             <a href="/Home/ListaDeSuper"><span>🛒</span> Lista de Compras</a>
             <a href="#"><span>⚙️</span> Configuración</a>
-            <a href="#"><span>💬</span> Soporte</a>
-            <a href="/Auth/cerrarSesion"><span>🚪</span> Cerrar Sesión</a>
+            <a href="/Chat/ChatBot"><span>💬</span> Mr. Keep</a>
+            <a href="/Auth/Login"><span>🚪</span> Cerrar Sesión</a>
         </nav>
+    </div>
+
+    <!-- Notificaciones, lo puse aca -->
+    <div class="notificaciones-panel" id="panel">
+
+        <button class="cerrar-sidebar" id="btnCerrar">✖</button>
+
+        <h3>Notificaciones</h3>
+
+        <ul>
+            @if (lista != null && lista.Any())
+            {
+                foreach (Notificacion n in lista)
+                {
+                    <li class="notificacion-item">
+                        <p>@n.Mensaje</p>
+                        <small>@n.FechaNotificacion.ToString("dd/MM/yyyy HH:mm")</small>
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="sin-notificaciones">No hay notificaciones</li>
+            }
+        </ul>
     </div>
 
     <!-- Header -->
@@ -42,8 +67,8 @@
                 </a>
             </div>
             <div class="grow1">
-                <a class="notis" href="#">
-                    <img src="~/imagenes/Notis.png" alt="Notificaciones">
+                <a class="notis" href="/Notificaciones/Panel">
+                    <img src="~/imagenes/Notis.png" alt="Notificaciones" id="btnNoti">
                 </a>
                 <a class="perfil" href="/Home/Perfil">
                     <img src="~/imagenes/Perfil.png" alt="Perfil">
@@ -56,6 +81,9 @@
         const btnMenu = document.getElementById('btnMenu');
         const btnCerrar = document.getElementById('btnCerrar');
         const menuLateral = document.getElementById('menuLateral');
+        const btnNoti = document.getElementById('btnNoti');
+        const panel = document.getElementById('panel');
+        const btnCerrarPanel = document.getElementById('btnCerrarPanel');
         const overlay = document.getElementById('overlay');
 
         // Abrir menú
@@ -74,6 +102,7 @@
         // Cerrar menú al hacer clic en overlay
         overlay.addEventListener('click', () => {
             menuLateral.classList.remove('active');
+            panel.classList.remove('active');
             overlay.classList.remove('active');
         });
 
@@ -82,6 +111,27 @@
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 menuLateral.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+
+        //Notis
+
+        btnNoti.addEventListener('click', (e) => {
+            e.preventDefault();
+            panel.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        btnCerrarPanel.addEventListener('click', () => {
+            panel.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        const notisLinks = document.querySelectorAll('.notificaciones-panel ul li a');
+        notisLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                panel.classList.remove('active');
                 overlay.classList.remove('active');
             });
         });
@@ -101,4 +151,6 @@
 </body>
 
 </html>
+
+
 
