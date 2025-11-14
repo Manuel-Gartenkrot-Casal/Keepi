@@ -1,12 +1,12 @@
 USE [master]
 GO
-/****** Object:  Database [Keepi_DataBase]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Database [Keepi_DataBase]    Script Date: 14/11/2025 08:09:24 ******/
 CREATE DATABASE [Keepi_DataBase]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'Keepi_DataBase', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\Keepi_DataBase.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+( NAME = N'Keepi_DataBase', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\Keepi_DataBase.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
  LOG ON 
-( NAME = N'Keepi_DataBase_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\Keepi_DataBase_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'Keepi_DataBase_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\Keepi_DataBase_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
 GO
 ALTER DATABASE [Keepi_DataBase] SET COMPATIBILITY_LEVEL = 140
 GO
@@ -79,10 +79,10 @@ ALTER DATABASE [Keepi_DataBase] SET QUERY_STORE = OFF
 GO
 USE [Keepi_DataBase]
 GO
-/****** Object:  User [alumno]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  User [alumno]    Script Date: 14/11/2025 08:09:24 ******/
 CREATE USER [alumno] FOR LOGIN [alumno] WITH DEFAULT_SCHEMA=[dbo]
 GO
-/****** Object:  Table [dbo].[Categoria]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Table [dbo].[Categoria]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ CREATE TABLE [dbo].[Categoria](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Heladera]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Table [dbo].[Heladera]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,7 +113,7 @@ CREATE TABLE [dbo].[Heladera](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Notificacion]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Table [dbo].[Notificacion]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -130,7 +130,7 @@ CREATE TABLE [dbo].[Notificacion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Producto]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Table [dbo].[Producto]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +152,7 @@ CREATE TABLE [dbo].[Producto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductoXHeladera]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Table [dbo].[ProductoXHeladera]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -173,7 +173,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductoXReceta]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Table [dbo].[ProductoXReceta]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -189,7 +189,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Receta]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Table [dbo].[Receta]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,7 +207,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -225,7 +225,7 @@ CREATE TABLE [dbo].[Usuario](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UsuarioXHeladera]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  Table [dbo].[UsuarioXHeladera]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -430,7 +430,7 @@ ALTER TABLE [dbo].[ProductoXHeladera]  WITH CHECK ADD  CONSTRAINT [CK_ProductoXH
 GO
 ALTER TABLE [dbo].[ProductoXHeladera] CHECK CONSTRAINT [CK_ProductoXHeladera_Estado]
 GO
-/****** Object:  StoredProcedure [dbo].[buscarProducto]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[buscarProducto]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -459,7 +459,7 @@ IF EXISTS (SELECT 1 FROM Producto WHERE Nombre = @Nombre)
     END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[CalcularFPromedioBase]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[CalcularFPromedioBase]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -494,7 +494,7 @@ BEGIN
     SELECT @f_promedio_base AS f_promedio_base;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[CambiarEstadoProducto]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[CambiarEstadoProducto]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -535,7 +535,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[crearHeladera]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[crearHeladera]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -571,7 +571,7 @@ ROLLBACK TRANSACTION
 END CATCH
 end
 GO
-/****** Object:  StoredProcedure [dbo].[crearUsuario]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[crearUsuario]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -593,7 +593,7 @@ select '1'
 end
 end
 GO
-/****** Object:  StoredProcedure [dbo].[eliminarHeladera]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[eliminarHeladera]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -625,7 +625,7 @@ print @resultado
 END CATCH
 end
 GO
-/****** Object:  StoredProcedure [dbo].[eliminarProductoHeladera]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[eliminarProductoHeladera]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -657,7 +657,7 @@ print @resultado
 end catch
 end
 GO
-/****** Object:  StoredProcedure [dbo].[getProductosByNombreHeladeraAndIdUsuario]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[getProductosByNombreHeladeraAndIdUsuario]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -688,7 +688,7 @@ BEGIN
         AND (PH.Eliminado = 0 OR PH.Eliminado IS NULL)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SeleccionarHeladeraByNombre]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[SeleccionarHeladeraByNombre]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -703,7 +703,7 @@ inner join UsuarioXHeladera UxH on UxH.IdHeladera = H.Id
 where UxH.IdUsuario = @IdUsuario and H.Nombre = @Nombre
 end
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AgregarProductoXHeladera]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AgregarProductoXHeladera]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -744,7 +744,7 @@ BEGIN
            );
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetAllProductos]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetAllProductos]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -768,7 +768,7 @@ BEGIN
      
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetHeladeraByUsuarioId]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetHeladeraByUsuarioId]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -791,14 +791,14 @@ BEGIN
         H.Nombre,
         H.Color
     FROM 
-        Heladeras H
+        Heladera H
     INNER JOIN 
-        UsuariosXHeladera UXH ON H.ID = UXH.IdHeladera
+        UsuarioXHeladera UXH ON H.ID = UXH.IdHeladera
     WHERE 
         UXH.IdUsuario = @IdUsuario;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetProductosByHeladeraId]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetProductosByHeladeraId]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -821,7 +821,7 @@ BEGIN
         AND PXH.Eliminado = 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetProductosByRecetaId]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetProductosByRecetaId]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -849,7 +849,7 @@ BEGIN
         PXR.IdReceta = @IdReceta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetRecetaById]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetRecetaById]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -878,7 +878,7 @@ BEGIN
         ID = @IdReceta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetRecetas]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetRecetas]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -905,7 +905,7 @@ BEGIN
         Receta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_IncrementarPopularidadReceta]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[sp_IncrementarPopularidadReceta]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -928,7 +928,7 @@ BEGIN
         ID = @IdReceta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[TeoremaHevia]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[TeoremaHevia]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1004,7 +1004,7 @@ BEGIN CATCH
 END CATCH
 END
 GO
-/****** Object:  StoredProcedure [dbo].[traerNombresHeladerasById]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[traerNombresHeladerasById]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1018,7 +1018,7 @@ inner join UsuarioXHeladera UxH on H.Id = UxH.IdHeladera
 where UxH.IdUsuario = @IdUsuario
 end
 GO
-/****** Object:  StoredProcedure [dbo].[traerNotificacionesNoLeidas]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[traerNotificacionesNoLeidas]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1035,7 +1035,7 @@ BEGIN
     WHERE N.Leida = 0;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[verificarUsuario]    Script Date: 10/11/2025 09:05:13 ******/
+/****** Object:  StoredProcedure [dbo].[verificarUsuario]    Script Date: 14/11/2025 08:09:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1060,4 +1060,3 @@ USE [master]
 GO
 ALTER DATABASE [Keepi_DataBase] SET  READ_WRITE 
 GO
-
