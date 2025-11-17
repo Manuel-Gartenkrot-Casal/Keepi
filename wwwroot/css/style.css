@@ -382,19 +382,21 @@ section h3 {
 }
 
 .login section {
-  margin-top: 6%;
-  padding: 2%;
+   margin-top: 4%;
+  padding: 3%;
   width: 25%;
   justify-content: center;
   justify-self: center;
   background-color: #f0efe6;
-  border-radius: 20px;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
   text-align: center;
+  width: 30%;
 }
+
 .login h2 {
   color: #333;
   margin-bottom: 20px;
@@ -436,16 +438,18 @@ section h3 {
 }
 
 .login .btn-primary {
-  width: 30%;
-  background-color: #5d4ef8;
+  background: #6c47ff;
   color: white;
-  margin-bottom: 5%;
-  margin-top: 2%;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(108,71,255,0.4);
+  width: 40%;  
+  margin-top: 4%;
 
 }
 
 .login .btn-primary:hover {
   background-color: #4c3fd6;
+  box-shadow: inset;
 }
 
 .login .btn-success {
@@ -1026,6 +1030,7 @@ main {
 
   
 }
+
 
 
 
