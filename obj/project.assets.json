@@ -2991,11 +2991,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\48792944\\Keepi\\KeepiProg.csproj",
+      "projectUniqueName": "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj",
       "projectName": "KeepiProg",
-      "projectPath": "C:\\Users\\48792944\\Keepi\\KeepiProg.csproj",
+      "projectPath": "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj",
       "packagesPath": "C:\\Users\\48792944\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\48792944\\Keepi\\obj\\",
+      "outputPath": "C:\\Users\\48792944\\Downloads\\Keepi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

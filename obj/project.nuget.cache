@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x2k680gUCr+WvXqthCmDsjH0dv7HvGaLVEJrmJOyk1WUquS2IQvcT5Akz52InG4Bd/Dr47xVTo0RL1MGOBtxhw==",
+  "dgSpecHash": "s71nfUSKrQ64XVc8CYpgUkKdJqy1wCdL81qh+Q7bvkT2YivYQYvZAgWifC1d1kG6cYwN/iewpkXW52s8ZQg1EQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\48792944\\Keepi\\KeepiProg.csproj",
+  "projectFilePath": "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\48792944\\.nuget\\packages\\azure.ai.openai\\2.5.0-beta.1\\azure.ai.openai.2.5.0-beta.1.nupkg.sha512",
     "C:\\Users\\48792944\\.nuget\\packages\\azure.core\\1.49.0\\azure.core.1.49.0.nupkg.sha512",
