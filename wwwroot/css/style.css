@@ -852,6 +852,41 @@ color:#5f5f5f;
   text-decoration: none;
   color: #ffffff;
   font-size: 2rem;
+  font-weight: bolder;
+}
+
+.cambiarHeladera{
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  top: 650px;
+  left: 45%;
+  background-color: #21212180;
+  backdrop-filter: blur(6px);
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.buscadorHeladera{
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  top: 225px;
+  right: 27%;
+  background-color: #21212180;
+  backdrop-filter: blur(6px);
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bolder;
 }
 
 /*Inicio ChatBot*/
