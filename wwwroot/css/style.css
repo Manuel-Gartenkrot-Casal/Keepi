@@ -686,6 +686,7 @@ color:#5f5f5f;
 }
 
 .producto-dias {
+  display: block;
   font-size: 16px;
   font-weight: 600;
 }
@@ -720,12 +721,6 @@ color:#5f5f5f;
   height: 100%;
   border-radius: 10px;
   transition: width 0.3s ease, background 0.3s ease;
-}
-
-.progress-text {
-  font-size: 12px;
-  color: #666;
-  font-weight: 500;
 }
 
 .producto-acciones {
@@ -813,6 +808,36 @@ color:#5f5f5f;
   color: #999;
   font-size: 18px;
 }
+
+.contenedor-nombre-dias {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: nowrap; 
+  box-sizing: border-box;
+}
+
+
+.contenedor-nombre-fecha,
+.producto-dias {
+  width: auto;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  margin: 0;
+  margin-right: 30px;
+  padding: 0;
+}
+
+.contenedor-nombre-fecha.expandible {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.producto-dias.fijo {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
 
 /*Inicio ChatBot*/
 
@@ -942,14 +967,15 @@ footer {
   background: linear-gradient(100deg, #59ad44, #cfd518);
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 1.2%;
   margin-top: 50px;
 }
 
 footer p {
   color: white;
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;
+font-weight: 400;
 }
 
 /* MAIN CONTENT */
@@ -982,6 +1008,19 @@ main {
   .btn-abrir,
   .btn-estado {
       width: 100%;
+  }
+
+  .agregarProductos{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    background-color: #21212180;
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 2rem;
   }
 
 /*Notificaciones*/
