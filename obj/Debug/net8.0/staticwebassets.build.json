@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KqiJBdg83hC/9xi4G+fh49akTCuNAufnCFsRbstZl5E=",
+  "Hash": "xlB2dSv3xlJJkmhENm3mrjlH9MRWEjkGyFExyJJ3bH8=",
   "Source": "KeepiProg",
   "BasePath": "_content/KeepiProg",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "KeepiProg\\wwwroot",
       "Source": "KeepiProg",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\css\\style.css",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\css\\style.css",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\favicon.ico",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\logokeepi.png",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\logokeepi.png",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/logokeepi.png",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\logokeepi.png"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Notis.png",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Notis.png",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Notis.png",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Notis.png"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Perfil.png",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Perfil.png",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Perfil.png",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Perfil.png"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\carne.jpg",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\carne.jpg",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/carne.jpg",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\carne.jpg"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\cerveza.jpg",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cerveza.jpg",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/cerveza.jpg",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\cerveza.jpg"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\cocacola.webp",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cocacola.webp",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/cocacola.webp",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\cocacola.webp"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\leche.jpg",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\leche.jpg",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/leche.jpg",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\leche.jpg"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\lechuga.jpg",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\lechuga.jpg",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/lechuga.jpg",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\lechuga.jpg"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\manzana.jpeg",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\manzana.jpeg",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/manzana.jpeg",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\manzana.jpeg"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\pan.webp",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pan.webp",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/pan.webp",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\pan.webp"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\pollo.jpg",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pollo.jpg",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/pollo.jpg",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\pollo.jpg"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\queso.webp",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\queso.webp",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/queso.webp",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\queso.webp"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\imagenes\\Productos\\yogur.webp",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\yogur.webp",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "imagenes/Productos/yogur.webp",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Productos\\yogur.webp"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\js\\site.js",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\Keepi_DataBase.sql",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\Keepi_DataBase.sql",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "Keepi_DataBase.sql",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\Keepi_DataBase.sql"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -359,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -378,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -397,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -435,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -454,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -473,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -492,10 +492,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -511,10 +511,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -530,10 +530,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -549,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\49319223\\Keepi\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49319223\\Keepi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
       "BasePath": "_content/KeepiProg",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
