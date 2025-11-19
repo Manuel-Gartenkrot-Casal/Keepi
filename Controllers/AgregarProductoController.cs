@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Keepi.Models; //
+using Keepi.Models; 
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http; 
@@ -8,28 +8,37 @@ namespace Keepi.Controllers
 {
     public class AgregarProductoController : Controller
     {
+        // El método Formulario ya está correcto al manejar errores.
         [HttpGet]
         public IActionResult Formulario()
         {
-            // --- Verificación de Sesión (Comentada para testear) ---
+            // --- Verificación de Sesión de Usuario ---
              int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
             if (idUsuario == null)
             {
-                return RedirectToAction("Login", "Auth"); //
+                return RedirectToAction("Login", "Auth");
             }
 
-            int? idHeladera = HttpContext.Session.GetInt32("IdHeladeraActual");
-            if (idHeladera == null)
+            string? nombreHeladera = HttpContext.Session.GetString("nombreHeladera"); 
+            
+            if (string.IsNullOrEmpty(nombreHeladera))
             {
                 TempData["Error"] = "Por favor, selecciona una heladera antes de agregar productos.";
-                return RedirectToAction("Seleccionar", "Heladera"); //
+                return RedirectToAction("Seleccionar", "Heladera"); 
             }
             
-            // --- Fin Verificación de Sesión ---
+            Heladera heladeraActual = BD.SeleccionarHeladeraByNombre(idUsuario.Value, nombreHeladera);
             
+            if (heladeraActual == null)
+            {
+                TempData["Error"] = "Error al cargar la heladera actual.";
+                return RedirectToAction("Seleccionar", "Heladera"); 
+            }
+            
+            // --- Lógica de carga de productos (ya incluye try-catch) ---
             try
             {
-                List<Producto> productosBase = BD.GetAllProductos(); //
+                List<Producto> productosBase = BD.GetAllProductos();
                 ViewBag.ListaProductos = productosBase;
             }
             catch (Exception ex)
@@ -38,37 +47,63 @@ namespace Keepi.Controllers
                 TempData["Error"] = "Error al cargar la lista de productos: " + ex.Message;
             }
 
-            // --- CAMBIO ---
-            // Le decimos que busque la vista en la ruta específica que mencionaste.
             return View("~/Views/Home/AgregarProducto.cshtml");
         }
 
         [HttpPost]
         public IActionResult Guardar(int idProducto, string nombreEsp, DateTime fechaVencimiento, string foto)
         {
-
-            // --- Verificación de Sesión (Comentada para testear) ---
-            
-            int? idHeladera = HttpContext.Session.GetInt32("IdHeladeraActual"); 
+            // --- Verificación de Sesión y Heladera ---
             int? idUsuario = HttpContext.Session.GetInt32("IdUsuario"); 
 
             if (idUsuario == null)
             {
-                return RedirectToAction("Login", "Auth"); //
-            }
-            if (idHeladera == null)
-            {
-                TempData["Error"] = "Tu sesión ha expirado o no has seleccionado una heladera.";
-                return RedirectToAction("Seleccionar", "Heladera"); //
+                return RedirectToAction("Login", "Auth"); 
             }
             
-            // --- Fin Verificación de Sesión ---
+            string? nombreHeladera = HttpContext.Session.GetString("nombreHeladera"); 
+
+            if (string.IsNullOrEmpty(nombreHeladera))
+            {
+                TempData["Error"] = "Tu sesión ha expirado o no has seleccionado una heladera.";
+                return RedirectToAction("Seleccionar", "Heladera"); 
+            }
+            
+            Heladera heladeraActual = BD.SeleccionarHeladeraByNombre(idUsuario.Value, nombreHeladera);
+            
+            if (heladeraActual == null)
+            {
+                TempData["Error"] = "Error al cargar la heladera actual o la heladera no existe.";
+                return RedirectToAction("Seleccionar", "Heladera"); 
+            }
+            
+            int idHeladera = heladeraActual.ID; 
+            
+            // --- CORRECCIÓN CLAVE: Validación y Manejo de Recarga de Vista ---
+            if (idProducto <= 0)
+            {
+                TempData["Error"] = "Por favor, selecciona un producto válido de la lista.";
+                
+                // Aseguramos que ViewBag.ListaProductos se cargue, incluso si la BD falla.
+                try 
+                {
+                    ViewBag.ListaProductos = BD.GetAllProductos(); 
+                }
+                catch (Exception dbEx)
+                {
+                    ViewBag.ListaProductos = new List<Producto>(); 
+                    // Añadimos el error de BD al error principal si ocurre.
+                    TempData["Error"] += " (Error al recargar productos: " + dbEx.Message + ")"; 
+                }
+                
+                return View("~/Views/Home/AgregarProducto.cshtml");
+            }
+            // -----------------------------------------------------------------
 
             try
             {
-                // La llamada al método de 5 argumentos
                 BD.agregarProductoExistente(
-                    idHeladera.Value,
+                    idHeladera, 
                     idProducto,
                     nombreEsp,
                     fechaVencimiento,
@@ -79,15 +114,23 @@ namespace Keepi.Controllers
             }
             catch (Exception ex)
             {
+                // Si la inserción falla, también aseguramos la recarga de la lista
                 TempData["Error"] = "No se pudo agregar el producto: " + ex.Message;
-                ViewBag.ListaProductos = BD.GetAllProductos(); //
                 
-                // --- CAMBIO ---
-                // Si hay un error, debe volver a la misma vista.
+                try 
+                {
+                    ViewBag.ListaProductos = BD.GetAllProductos(); 
+                }
+                catch (Exception dbEx)
+                {
+                    ViewBag.ListaProductos = new List<Producto>(); 
+                    TempData["Error"] += " (Error al recargar productos: " + dbEx.Message + ")";
+                }
+
                 return View("~/Views/Home/AgregarProducto.cshtml");
             }
 
-            return RedirectToAction("MiHeladera", "Home"); //
+            return RedirectToAction("MiHeladera", "Home"); 
         }
     }
 }
