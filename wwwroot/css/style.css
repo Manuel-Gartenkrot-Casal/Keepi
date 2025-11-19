@@ -840,17 +840,19 @@ color:#5f5f5f;
 
 .agregarProductos{
   display: inline-block;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   position: absolute;
-  top: 800px;
-  left: 500px;
+  top: 600px;
+  right: 500px;
+  background-color: #21212180;
+  backdrop-filter: blur(6px);
+  border-radius: 50px;
 }
 
 .agregarProductos a{
   text-decoration: none;
-  background-color: #21212180;
-  backdrop-filter: blur(6px);
+  
   color: #ffffff;
   font-size: 2rem;
 }
