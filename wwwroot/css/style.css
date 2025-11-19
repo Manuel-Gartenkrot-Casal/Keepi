@@ -240,7 +240,7 @@ header .layout .grow1 .perfil img {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(100deg, #59ad44, #e7e417);
+  background: linear-gradient(135deg, #59ad44 0%, #cbe928 45%, #ebeb62 100%);
   color: #ffffff;
   padding-top: 8%;
   padding-bottom: 10%;
@@ -253,12 +253,15 @@ header .layout .grow1 .perfil img {
 }
 
 .index div a {
-  display: block;
+  display: flex;
+  align-items: center;
+  text-align: center;
+justify-content: center;
   background-color: transparent;
   color: #ffffff;
   width: 26%;
-  padding: 1.75%;
-  border-radius: 15px;
+  padding: 1.2%;
+  border-radius: 20px;
   text-decoration: none;
   font-weight: 600;
   border: 3px solid white;
@@ -276,7 +279,7 @@ header .layout .grow1 .perfil img {
 }
 
 .index div a:last-of-type:hover {
-  background-color: #f0f0f0;
+  background-color: #f7f7f7;
 }
 
 .index section:first-of-type div {
