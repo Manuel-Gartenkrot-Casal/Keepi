@@ -942,14 +942,15 @@ footer {
   background: linear-gradient(100deg, #59ad44, #cfd518);
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 1.5%;
   margin-top: 50px;
 }
 
 footer p {
   color: white;
   margin: 0;
-  font-size: 14px;
+  font-size: 23px;
+font-weight: 500;
 }
 
 /* MAIN CONTENT */
