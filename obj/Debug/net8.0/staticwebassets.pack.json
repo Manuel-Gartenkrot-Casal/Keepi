@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\imagenes\\Productos\\yogur.webp"
     },
     {
+      "Id": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\heladera.png",
+      "PackagePath": "staticwebassets\\imagenes\\heladera.png"
+    },
+    {
       "Id": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\logokeepi.png",
       "PackagePath": "staticwebassets\\imagenes\\logokeepi.png"
     },

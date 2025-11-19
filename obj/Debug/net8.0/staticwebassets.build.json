@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xlB2dSv3xlJJkmhENm3mrjlH9MRWEjkGyFExyJJ3bH8=",
+  "Hash": "I/2wj/K0sYyycHeORnCUav6hFDhXxjpOomSgxXok+4o=",
   "Source": "KeepiProg",
   "BasePath": "_content/KeepiProg",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\heladera.png",
+      "SourceId": "KeepiProg",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
+      "BasePath": "_content/KeepiProg",
+      "RelativePath": "imagenes/heladera.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\heladera.png"
     },
     {
       "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\logokeepi.png",

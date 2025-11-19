@@ -6,7 +6,7 @@
     <section>
         <h1>Keepi</h1>
         <p>Organizá tu heladera, recibí alertas de vencimiento y encontrá las mejores recetas.</p>
-
+        
         <div>
         @if (Context.Session.GetString("usuario") != null)
         {
@@ -19,6 +19,7 @@
             <a href="@Url.Action("Login", "Auth")">Probar</a>
         }
         </div>
+        <img src = "/imagenes/heladera.png" alt="heladera"/>
     </section>
 
     <section>

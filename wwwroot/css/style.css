@@ -329,6 +329,11 @@ section:nth-of-type(3) ul li span{
   width: 50%;
   justify-self: center;
 }
+.index section img{
+  position: absolute;
+  top: 150px;
+  right: 100px;
+}
 
 /* ==== SECCIÓN LA PROBLEMÁTICA ==== */
 .index section {
