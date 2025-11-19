@@ -8,11 +8,10 @@ namespace Keepi.Controllers
 {
     public class AgregarProductoController : Controller
     {
-        // El método Formulario ya está correcto al manejar errores.
         [HttpGet]
         public IActionResult Formulario()
         {
-            // --- Verificación de Sesión de Usuario ---
+
              int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
             if (idUsuario == null)
             {
@@ -34,8 +33,7 @@ namespace Keepi.Controllers
                 TempData["Error"] = "Error al cargar la heladera actual.";
                 return RedirectToAction("Seleccionar", "Heladera"); 
             }
-            
-            // --- Lógica de carga de productos (ya incluye try-catch) ---
+
             try
             {
                 List<Producto> productosBase = BD.GetAllProductos();
@@ -53,7 +51,7 @@ namespace Keepi.Controllers
         [HttpPost]
         public IActionResult Guardar(int idProducto, string nombreEsp, DateTime fechaVencimiento, string foto)
         {
-            // --- Verificación de Sesión y Heladera ---
+
             int? idUsuario = HttpContext.Session.GetInt32("IdUsuario"); 
 
             if (idUsuario == null)
@@ -78,13 +76,11 @@ namespace Keepi.Controllers
             }
             
             int idHeladera = heladeraActual.ID; 
-            
-            // --- CORRECCIÓN CLAVE: Validación y Manejo de Recarga de Vista ---
+
             if (idProducto <= 0)
             {
                 TempData["Error"] = "Por favor, selecciona un producto válido de la lista.";
                 
-                // Aseguramos que ViewBag.ListaProductos se cargue, incluso si la BD falla.
                 try 
                 {
                     ViewBag.ListaProductos = BD.GetAllProductos(); 
@@ -92,13 +88,12 @@ namespace Keepi.Controllers
                 catch (Exception dbEx)
                 {
                     ViewBag.ListaProductos = new List<Producto>(); 
-                    // Añadimos el error de BD al error principal si ocurre.
                     TempData["Error"] += " (Error al recargar productos: " + dbEx.Message + ")"; 
                 }
                 
                 return View("~/Views/Home/AgregarProducto.cshtml");
             }
-            // -----------------------------------------------------------------
+
 
             try
             {
@@ -114,7 +109,6 @@ namespace Keepi.Controllers
             }
             catch (Exception ex)
             {
-                // Si la inserción falla, también aseguramos la recarga de la lista
                 TempData["Error"] = "No se pudo agregar el producto: " + ex.Message;
                 
                 try 
@@ -130,7 +124,7 @@ namespace Keepi.Controllers
                 return View("~/Views/Home/AgregarProducto.cshtml");
             }
 
-            return RedirectToAction("MiHeladera", "Home"); 
+            return RedirectToAction("CargarProductos","heladera"); 
         }
     }
 }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj": {}
+    "C:\\Users\\49194194\\Downloads\\Keepi\\KeepiProg.csproj": {}
   },
   "projects": {
-    "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj": {
+    "C:\\Users\\49194194\\Downloads\\Keepi\\KeepiProg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj",
+        "projectUniqueName": "C:\\Users\\49194194\\Downloads\\Keepi\\KeepiProg.csproj",
         "projectName": "KeepiProg",
-        "projectPath": "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj",
-        "packagesPath": "C:\\Users\\48792944\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\48792944\\Downloads\\Keepi\\obj\\",
+        "projectPath": "C:\\Users\\49194194\\Downloads\\Keepi\\KeepiProg.csproj",
+        "packagesPath": "C:\\Users\\49194194\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\49194194\\Downloads\\Keepi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\48792944\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\49194194\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
