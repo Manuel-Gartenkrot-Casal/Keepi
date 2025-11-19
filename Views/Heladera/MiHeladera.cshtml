@@ -31,7 +31,7 @@
                     </button>
                     
                     <div class="producto-imagen">
-                        <img src="@Url.Content($"~/images/{producto.Foto}")" alt="@producto.NombreEspecifico" />
+                        <img src="@Url.Content($"~/imagenes/Productos/{producto.Foto}")" alt="@producto.NombreEspecifico" />
                     </div>
                     
                     <div class="producto-info">
@@ -39,10 +39,7 @@
                             <div class="contenedor-nombre-fecha">
                                 <h3 class="producto-nombre">@producto.NombreEspecifico</h3>
                                 
-                                <div class="producto-fecha">
-                                    <span class="label">Cargado:</span>
-                                    <span class="valor">@fechaCarga.ToString("dd/MM/yyyy")</span>
-                                </div>
+                                
                             </div>
                             <div class="producto-dias">
                                 @if (diasRestantes < 0)
@@ -59,12 +56,15 @@
                                 }
                             </div>
                         </div>
+                        <div class="producto-fecha">
+                                    <span class="label">Cargado:</span>
+                                    <span class="valor">@fechaCarga.ToString("dd/MM/yyyy")</span>
+                                </div>
                         <div class="contenedor-progress-acciones">
                             <div class="producto-progress">
                                 <div class="progress-bar-container">
                                     <div class="progress-bar" style="width: @porcentaje%; background: @(porcentaje > 50 ? "linear-gradient(90deg, #6cc04a, #b4df33)" : porcentaje > 25 ? "linear-gradient(90deg, #f5a623, #f5d123)" : "linear-gradient(90deg, #e74c3c, #c0392b)")"></div>
                                 </div>
-                                <span class="progress-text">@porcentaje.ToString("F0")% restante</span>
                             </div>
                             
                             <div class="producto-acciones">
@@ -95,6 +95,7 @@
             </div>
         }
     </div>
+    <a href="#" class="agregarProductos">+</a>
 </div>
 
 <script>
@@ -281,18 +282,6 @@ document.addEventListener('click', function(event) {
     gap: 10px;
 }
 
-.contenedor-nombre-fecha{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.contenedor-nombre-dias{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
 .producto-nombre {
     margin: 0;
     font-size:18px;
@@ -351,12 +340,6 @@ document.addEventListener('click', function(event) {
     height: 100%;
     border-radius: 10px;
     transition: width 0.3s ease, background 0.3s ease;
-}
-
-.progress-text {
-    font-size: 12px;
-    color: #666;
-    font-weight: 500;
 }
 
 .producto-acciones {
