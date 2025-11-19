@@ -51,58 +51,76 @@
                 <div class="success-message" style="color: #4CAF50; margin-top: 15px; text-align: center; font-weight: 500;">@TempData["Success"]</div>
             }
 
-            <p class="message" style="text-align: center; margin-top: 25px;"><a asp-action="MiHeladera" asp-controller="Home" style="color: #6a6ad9; text-decoration: none;">Volver a Mi Heladera</a></p>
+            <p class="message" style="text-align: center; margin-top: 25px;"><a asp-action="CargarProductos" asp-controller="Heladera" style="color: #6a6ad9; text-decoration: none;">Volver a Mi Heladera</a></p>
         </form>
     </div>
 </div>
 
 @section Scripts {
     <script>
-        const productosBase = @Html.Raw(productosJson);
+    // Usamos '|| []' por seguridad, aunque ya vimos que sí llegan datos.
+    const productosBase = @Html.Raw(productosJson ?? "[]");
 
-        const searchInput = document.getElementById('product-search');
-        const dataList = document.getElementById('productos-list');
-        const productImage = document.getElementById('product-image');
-        const idProductoInput = document.getElementById('idProducto');
-        const nombreEspInput = document.getElementById('nombreEsp');
-        const fotoInput = document.getElementById('foto-hidden');
-        const fechaInput = document.getElementById('fechaVencimiento');
+    const searchInput = document.getElementById('product-search');
+    const dataList = document.getElementById('productos-list');
+    const productImage = document.getElementById('product-image');
+    const idProductoInput = document.getElementById('idProducto');
+    const nombreEspInput = document.getElementById('nombreEsp');
+    const fotoInput = document.getElementById('foto-hidden');
+    const fechaInput = document.getElementById('fechaVencimiento');
 
-        searchInput.addEventListener('input', function(e) {
-            const inputVal = e.target.value.toLowerCase();
-            dataList.innerHTML = ''; 
+    // Validación al enviar el formulario
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        if (!idProductoInput.value || idProductoInput.value == "0") {
+            e.preventDefault();
+            alert("Por favor, selecciona un producto válido de la lista desplegable.");
+            searchInput.focus();
+        }
+    });
 
-            if (inputVal.length < 1) {
-                productImage.style.display = 'none';
-                return;
-            }
+    searchInput.addEventListener('input', function(e) {
+        const inputVal = e.target.value.toLowerCase();
+        dataList.innerHTML = ''; 
 
-            const matches = productosBase.filter(p => p.Nombre.toLowerCase().includes(inputVal));
+        if (inputVal.length < 1) {
+            productImage.style.display = 'none';
+            return;
+        }
+
+        // CORRECCIÓN: Usamos 'p.nombre' en minúscula
+        const matches = productosBase.filter(p => p.nombre.toLowerCase().includes(inputVal));
+        
+        matches.forEach(prod => {
+            const option = document.createElement('option');
+            // CORRECCIÓN: Usamos 'prod.nombre' en minúscula
+            option.value = prod.nombre; 
+            dataList.appendChild(option);
+        });
+    });
+
+    searchInput.addEventListener('change', function(e) {
+        const selectedName = e.target.value;
+        // CORRECCIÓN: Usamos 'p.nombre' en minúscula
+        const selectedProduct = productosBase.find(p => p.nombre === selectedName);
+
+        if (selectedProduct) {
+            // CORRECCIÓN: Usamos propiedades en minúscula (id, foto, nombre)
+            idProductoInput.value = selectedProduct.id;
+            fotoInput.value = selectedProduct.foto; 
+            nombreEspInput.value = selectedProduct.nombre; 
             
-            matches.forEach(prod => {
-                const option = document.createElement('option');
-                option.value = prod.Nombre;
-                dataList.appendChild(option);
-            });
-        });
-
-        searchInput.addEventListener('change', function(e) {
-            const selectedName = e.target.value;
-            const selectedProduct = productosBase.find(p => p.Nombre === selectedName);
-
-            if (selectedProduct) {
-                idProductoInput.value = selectedProduct.ID;
-                fotoInput.value = selectedProduct.Foto;
-                nombreEspInput.value = selectedProduct.Nombre; 
-                productImage.src = selectedProduct.Foto;
+            if(selectedProduct.foto){
+                productImage.src = selectedProduct.foto;
                 productImage.style.display = 'block';
-            } else {
-                productImage.style.display = 'none';
-                idProductoInput.value = '';
-                fotoInput.value = '';
             }
-        });
+        } else {
+            productImage.style.display = 'none';
+            idProductoInput.value = '';
+            fotoInput.value = '';
+        }
+    });
 
-        fechaInput.min = new Date().toISOString().split("T")[0];
-    </script>
+    fechaInput.min = new Date().toISOString().split("T")[0];
+</script>
 }
