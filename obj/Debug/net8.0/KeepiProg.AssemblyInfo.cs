@@ -13,19 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KeepiProg")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3bd6d0d8fb5ce3e252ead9b0d59d68de74460bce")]
-=======
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16d4d2aa41306736e8b03409ea1599febeb0ba40")]
-=======
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16d4d2aa41306736e8b03409ea1599febeb0ba40")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47462f645278dadcc1dfc5b2bfbab373b4952940")]
->>>>>>> 039fccb5ba6e0f0fa45369a07a720fb575044168
->>>>>>> 3bd6d0d8fb5ce3e252ead9b0d59d68de74460bce
->>>>>>> d26db0b644feb3d5f84167dbda3bb32eb2e7a364
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee8c661982b2b141a2230b1689b42e8e59684eae")]
 [assembly: System.Reflection.AssemblyProductAttribute("KeepiProg")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KeepiProg")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
