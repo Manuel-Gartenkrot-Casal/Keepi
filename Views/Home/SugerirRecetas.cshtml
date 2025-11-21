@@ -1,0 +1,172 @@
+@model List<Receta>
+@{
+    ViewData["Title"] = "Recetas Sugeridas";
+}
+
+<style>
+    /* Contenedor principal de la página */
+    .recipe-container {
+        max-width: 1200px;
+        margin: 0 auto; /* Centra el contenido */
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Encabezado con el título y el botón */
+    .recipe-header {
+        display: flex;
+        justify-content: space-between; /* Título a la izq, botón a la der */
+        align-items: center;
+        margin-bottom: 25px;
+        flex-wrap: wrap; /* Para celulares */
+    }
+
+    .recipe-header h2 {
+        margin: 0 15px 10px 0; /* Espacio para que no se pegue al botón en celulares */
+    }
+
+    /* La grilla de tarjetas responsiva */
+    .recipe-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px; /* Espacio entre tarjetas */
+    }
+
+    /* Estilo de cada tarjeta */
+    .recipe-card {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column; 
+        height: 100%; 
+        overflow: hidden; 
+    }
+
+    .recipe-card-content {
+        padding: 20px;
+        flex-grow: 1; /* Hace que esta sección crezca y ocupe el espacio */
+    }
+
+    .recipe-card-content h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .recipe-info {
+        display: flex;
+        justify-content: space-between; /* Duración a la izq, Raciones a la der */
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .recipe-info span {
+        font-weight: 500;
+    }
+
+    /* Estilo para los botones */
+    .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .btn-info {
+        background-color: #0dcaf0;
+        color: #000;
+    }
+
+    .btn-primary-full {
+        display: block; /* Ocupa todo el ancho */
+        padding: 12px;
+        background-color: #0d6efd;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 600;
+        border-top: 1px solid #e0e0e0;
+        transition: background-color 0.2s;
+    }
+
+    .btn-primary-full:hover {
+        background-color: #0b5ed7;
+    }
+
+    /* Estilo para los mensajes de alerta/error */
+    .recipe-alert {
+        padding: 20px; 
+        background-color: #f8f9fa; 
+        border: 1px solid #dee2e6; 
+        border-radius: 5px;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+    .recipe-alert-warning {
+        background-color: #fff3cd;
+        border-color: #ffe69c;
+        color: #664d03;
+    }
+
+</style>
+
+<div class="recipe-container">
+    <div class="recipe-header">
+        <h2>@ViewData["Title"]</h2>
+        <div>
+            <a href="@Url.Action("Index", "Recetas")" class="btn btn-info">
+                Volver al Menú
+            </a>
+        </div>
+    </div>
+    <p style="font-size: 1.1rem; color: #555; margin-bottom: 20px;">
+        Estas son las recetas que puedes preparar con los ingredientes que tienes en tu heladera.
+    </p>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="recipe-alert recipe-alert-warning">
+            @ViewBag.Error
+        </div>
+    }
+    else if (Model != null && Model.Any())
+    {
+        <div class="recipe-grid">
+            @foreach (var receta in Model) {
+                <div class="recipe-card">
+                    <div class="recipe-card-content">
+                        <h3>@receta.nombre</h3>
+                        
+                        <div class="recipe-info">
+                            <span>
+                                <strong>Duración:</strong> @receta.duracion min
+                            </span>
+                            <span>
+                                <strong>Raciones:</strong> @receta.Raciones
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <a href="@Url.Action("Detalles", "Recetas", new { id = receta.ID })" class="btn-primary-full">
+                        Ver Receta
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="recipe-alert">
+            No se encontraron recetas que puedas hacer con todos tus ingredientes.
+        </div>
+    }
+</div>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Keepi</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- Overlay para cerrar menús -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Menú Lateral con mejor estructura -->
+    <div class="menu-lateral" id="menuLateral">
+        <div class="menu-lateral-header">
+            <h2>Menú</h2>
+            <button class="btn-cerrar" id="btnCerrarMenu">×</button>
+        </div>
+        <nav>
+            <a href="/Home/Index"><span>🏠</span> Inicio</a>
+            <a href="/Heladera/InicializarHeladera"><span>❄️</span> Mi Heladera</a>
+            <a href="/Home/Recetas"><span>🍽️</span> Recetas</a>
+            <a href="/Home/ListaDeSuper"><span>🛒</span> Lista de Compras</a>
+            <a href="/Chat/ChatBot"><span>💬</span> Mr. Keep</a>
+            <a href="/Home/Perfil"><span>👤</span> Perfil</a>
+            <a href="/Auth/cerrarSesion"><span>🚪</span> Cerrar Sesión</a>
+        </nav>
+    </div>
+
+    <!-- Panel de Notificaciones implementado -->
+    <div class="notificaciones-panel" id="panelNotificaciones">
+        <div class="notificaciones-header">
+            <h3>Notificaciones</h3>
+            <button class="btn-cerrar-notis" id="btnCerrarNotis">×</button>
+        </div>
+        <div class="notificaciones-content">
+            <ul id="listaNotificaciones">
+                <!-- Las notificaciones se cargarán aquí dinámicamente -->
+            </ul>
+            <div class="sin-notificaciones">
+                <p>No hay notificaciones</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <section class="layout">
+            <div class="grow1">
+                <a class="menu" href="#" id="btnMenu">☰</a>
+            </div>
+            <div class="grow9">
+                <a class="logo" href="/Home/Index">
+                    <img src="~/imagenes/logokeepi.png" alt="Logo Keepi">
+                </a>
+            </div>
+            <div class="grow1">
+                @if (Context.Session.GetString("usuario") != null)
+                {
+                    <a class="notis" href="#" id="btnNotis">
+                        <img src="~/imagenes/Notis.png" alt="Notificaciones">
+                        <span class="notis-badge" id="notisBadge" style="display: none;">0</span>
+                    </a>
+                }
+                <a class="perfil" href="/Home/Perfil">
+                    <img src="~/imagenes/Perfil.png" alt="Perfil">
+                </a>
+            </div>
+        </section>
+    </header>
+
+    <!-- JavaScript mejorado para manejar menús sin conflictos -->
+    <script>
+        console.log('[v0] Inicializando menús y notificaciones');
+        
+        // Elementos del DOM
+        const btnMenu = document.getElementById('btnMenu');
+        const btnCerrarMenu = document.getElementById('btnCerrarMenu');
+        const menuLateral = document.getElementById('menuLateral');
+        
+        const btnNotis = document.getElementById('btnNotis');
+        const btnCerrarNotis = document.getElementById('btnCerrarNotis');
+        const panelNotificaciones = document.getElementById('panelNotificaciones');
+        
+        const overlay = document.getElementById('overlay');
+
+        // Función para cerrar todos los paneles
+        function cerrarTodo() {
+            menuLateral.classList.remove('active');
+            panelNotificaciones.classList.remove('active');
+            overlay.classList.remove('active');
+            console.log('[v0] Todos los paneles cerrados');
+        }
+
+        // Abrir menú lateral
+        if (btnMenu) {
+            btnMenu.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('[v0] Abriendo menú lateral');
+                
+                // Cerrar notificaciones si están abiertas
+                panelNotificaciones.classList.remove('active');
+                
+                // Abrir menú
+                menuLateral.classList.add('active');
+                overlay.classList.add('active');
+            });
+        }
+
+        // Cerrar menú lateral con botón X
+        if (btnCerrarMenu) {
+            btnCerrarMenu.addEventListener('click', () => {
+                console.log('[v0] Cerrando menú lateral');
+                cerrarTodo();
+            });
+        }
+
+        // Abrir panel de notificaciones
+        if (btnNotis) {
+            btnNotis.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('[v0] Abriendo panel de notificaciones');
+                
+                // Cerrar menú si está abierto
+                menuLateral.classList.remove('active');
+                
+                // Abrir notificaciones
+                panelNotificaciones.classList.add('active');
+                overlay.classList.add('active');
+                
+                // Cargar notificaciones
+                cargarNotificaciones();
+            });
+        }
+
+        // Cerrar panel de notificaciones con botón X
+        if (btnCerrarNotis) {
+            btnCerrarNotis.addEventListener('click', () => {
+                console.log('[v0] Cerrando panel de notificaciones');
+                cerrarTodo();
+            });
+        }
+
+        // Cerrar todo al hacer clic en overlay
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                console.log('[v0] Click en overlay - cerrando todo');
+                cerrarTodo();
+            });
+        }
+
+        // Cerrar menú al hacer clic en un enlace
+        const menuLinks = document.querySelectorAll('.menu-lateral nav a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                console.log('[v0] Click en enlace del menú');
+                cerrarTodo();
+            });
+        });
+
+        function cargarNotificaciones() {
+            // Por ahora mostrar "sin notificaciones" hasta que se implemente el backend
+            const listaNotificaciones = document.getElementById('listaNotificaciones');
+            const sinNotificaciones = document.querySelector('.sin-notificaciones');
+            
+            if (listaNotificaciones && sinNotificaciones) {
+                listaNotificaciones.innerHTML = '';
+                sinNotificaciones.style.display = 'block';
+            }
+            
+            // TODO: Implementar llamada AJAX al backend cuando esté listo
+            // fetch('/Notificaciones/ObtenerNotificaciones')
+            //     .then(response => response.json())
+            //     .then(notificaciones => {
+            //         if (notificaciones && notificaciones.length > 0) {
+            //             sinNotificaciones.style.display = 'none';
+            //             // Renderizar notificaciones
+            //         }
+            //     });
+        }
+
+        function actualizarBadgeNotificaciones(count) {
+            const badge = document.getElementById('notisBadge');
+            if (badge) {
+                if (count > 0) {
+                    badge.textContent = count;
+                    badge.style.display = 'flex';
+                } else {
+                    badge.style.display = 'none';
+                }
+            }
+        }
+
+        // Inicializar badge en 0 (sin notificaciones)
+        actualizarBadgeNotificaciones(0);
+    </script>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <p>© 2025 Keepi — Don't Waste It, Keepi.</p>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

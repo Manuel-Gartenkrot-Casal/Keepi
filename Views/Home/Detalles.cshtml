@@ -1,0 +1,253 @@
+@model Receta 
+
+@{
+    ViewData["Title"] = Model.nombre;
+    var productos = ViewBag.ProductosDeLaReceta as List<Producto>;
+}
+
+<style>
+    .recipe-detail-container {
+        max-width: 900px;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+    }
+    .recipe-card-detail {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        overflow: hidden;
+    }
+
+    /* Encabezado */
+    .recipe-card-header {
+        padding: 20px 25px;
+        background-color: #f9f9f9;
+        border-bottom: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .recipe-card-header h2 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #333;
+    }
+    .recipe-card-header .favorite-badge {
+        font-size: 1.5rem;
+        background-color: #ffc107;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    /* Cuerpo principal */
+    .recipe-card-body {
+        padding: 25px;
+    }
+
+    /* Info (Duración, Raciones) */
+    .recipe-meta-info {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+    }
+    .recipe-meta-info div {
+        font-size: 1.1rem;
+        color: #555;
+    }
+    .recipe-meta-info div strong {
+        display: block;
+        font-size: 1.3rem;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    /* Secciones (Ingredientes e Instrucciones) */
+    .recipe-section h4 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #444;
+        border-bottom: 2px solid #0d6efd;
+        padding-bottom: 5px;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    
+    .ingredient-list {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    .ingredient-list li {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+
+    /* ESTILO PARA LAS INSTRUCCIONES */
+    .instructions-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #333;
+        
+        /* Esta es la magia: respeta los saltos de línea y espacios */
+        white-space: pre-wrap; 
+    }
+
+    .recipe-alert {
+        font-size: 1.1rem;
+        color: #777;
+    }
+
+    /* Pie de página (Footer) */
+    .recipe-card-footer {
+        padding: 15px 25px;
+        background-color: #f9f9f9;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Para celulares */
+    }
+    .recipe-card-footer .footer-actions {
+        display: flex;
+        gap: 10px; /* Espacio entre botones */
+    }
+
+    /* Estilos de botones (sin Bootstrap) */
+    .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .btn-outline-secondary {
+        border-color: #6c757d;
+        color: #6c757d;
+        background-color: transparent;
+    }
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+    .btn-success {
+        background-color: #198754;
+        color: #fff;
+    }
+    .btn-success:hover {
+        background-color: #157347;
+    }
+    .btn-warning {
+        background-color: #ffc107;
+        color: #000;
+    }
+    .btn-warning:hover {
+        background-color: #e0a800;
+    }
+    .btn-outline-warning {
+        border-color: #ffc107;
+        color: #ffc107;
+        background-color: transparent;
+    }
+    .btn-outline-warning:hover {
+        background-color: #ffc107;
+        color: #000;
+    }
+</style>
+
+<div class="recipe-detail-container">
+    <div class="recipe-card-detail">
+        <div class="recipe-card-header">
+            <h2>@Model.nombre</h2>
+            @if (Model.favorito)
+            {
+                <span class="favorite-badge">⭐ Favorito</span>
+            }
+        </div>
+        <div class="recipe-card-body">
+            
+            <div class="recipe-meta-info">
+                <div>
+                    <strong>Duración</strong> @Model.duracion min
+                </div>
+                <div>
+                    <strong>Raciones</strong> @Model.Raciones
+                </div>
+                <div>
+                    <strong>Popularidad</strong> @Model.Popularidad
+                </div>
+            </div>
+
+            <div class="recipe-section">
+                <h4>Ingredientes Requeridos</h4>
+                @if (productos != null && productos.Any())
+                {
+                    <ul class="ingredient-list">
+                        @foreach (var producto in productos)
+                        {
+                            <li>@producto.Nombre</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <div class="recipe-alert">
+                        Esta receta no tiene productos asignados.
+                    </div>
+                }
+            </div>
+
+            <div class="recipe-section">
+                <h4>Instrucciones</h4>
+                @if (!string.IsNullOrEmpty(Model.Instrucciones))
+                {
+                    <div class="instructions-text">
+                        @Model.Instrucciones
+                    </div>
+                }
+                else
+                {
+                    <div class="recipe-alert">
+                        No hay instrucciones detalladas para esta receta.
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="recipe-card-footer">
+            <a href="@Url.Action("Index", "Recetas")" class="btn btn-outline-secondary">Volver al Menú</a>
+            
+            <div class="footer-actions">
+                <form method="post" action="@Url.Action("ToggleFavorito", "Recetas", new { id = Model.ID })" style="display: inline;">
+                    @if (Model.favorito)
+                    {
+                        <button type="submit" class="btn btn-warning" title="Quitar de Favoritos">
+                            ⭐ Quitar Favorito
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-outline-warning" title="Agregar a Favoritos">
+                            ☆ Agregar Favorito
+                        </button>
+                    }
+                </form>
+
+                <form method="post" action="@Url.Action("FinalizarReceta", "Recetas", new { id = Model.ID })" style="display: inline;">
+                    <button type="submit" class="btn btn-success">
+                        ¡La cociné! (+1)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

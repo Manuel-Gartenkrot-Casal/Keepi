@@ -1,0 +1,243 @@
+@model Usuario
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<!-- Vista de perfil completamente implementada -->
+<div class="perfil-container">
+    <div class="perfil-card">
+        <div class="perfil-header">
+            <div class="perfil-avatar">
+                <img src="~/imagenes/Perfil.png" alt="Avatar de @Model.Username">
+            </div>
+            <h2>@Model.Username</h2>
+        </div>
+
+        <div class="perfil-body">
+            <div class="perfil-info-section">
+                <h3>Información de la Cuenta</h3>
+                
+                <div class="info-item">
+                    <span class="info-label">Usuario:</span>
+                    <span class="info-value">@Model.Username</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">ID de Usuario:</span>
+                    <span class="info-value">#@Model.ID</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Miembro desde:</span>
+                    <span class="info-value">@DateTime.Now.Year</span>
+                </div>
+            </div>
+
+            <div class="perfil-stats-section">
+                <h3>Estadísticas</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">❄️</div>
+                        <div class="stat-number">@(ViewBag.NumeroHeladeras ?? 1)</div>
+                        <div class="stat-label">Heladeras</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🍽️</div>
+                        <div class="stat-number">@(ViewBag.RecetasCocinadas ?? 0)</div>
+                        <div class="stat-label">Recetas Cocinadas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🌱</div>
+                        <div class="stat-number">@(ViewBag.AlimentosAhorrados ?? 0)</div>
+                        <div class="stat-label">Alimentos Salvados</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="perfil-actions">
+                <a href="@Url.Action("CargarProductos", "Heladera")" class="btn btn-primary">
+                    Ver Mi Heladera
+                </a>
+                <a href="@Url.Action("Index", "Recetas")" class="btn btn-secondary">
+                    Ver Recetas
+                </a>
+                <a href="@Url.Action("cerrarSesion", "Auth")" class="btn btn-danger">
+                    Cerrar Sesión
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.perfil-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.perfil-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.perfil-header {
+    background: linear-gradient(135deg, #59ad44 0%, #7ecb20 100%);
+    padding: 40px;
+    text-align: center;
+    color: white;
+}
+
+.perfil-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.perfil-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.perfil-header h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+.perfil-body {
+    padding: 40px;
+}
+
+.perfil-info-section,
+.perfil-stats-section {
+    margin-bottom: 30px;
+}
+
+.perfil-info-section h3,
+.perfil-stats-section h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #59ad44;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #666;
+}
+
+.info-value {
+    color: #333;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #59ad44;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #666;
+}
+
+.perfil-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.perfil-actions .btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #59ad44;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #4a8d38;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+@@media (max-width: 768px) {
+    .perfil-actions {
+        flex-direction: column;
+    }
+    
+    .perfil-actions .btn {
+        width: 100%;
+    }
+}
+</style>

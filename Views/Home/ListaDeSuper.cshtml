@@ -1,0 +1,257 @@
+@{
+    ViewData["Title"] = "Lista de Compras";
+}
+
+<!-- Vista de lista de compras completamente implementada -->
+<div class="lista-super-container">
+    <div class="lista-super-card">
+        <div class="lista-header">
+            <h2>Mi Lista de Compras</h2>
+            <button id="clearAllBtn" class="btn-clear-all">Limpiar Todo</button>
+        </div>
+
+        <div class="add-item-section">
+            <input type="text" id="newItemInput" placeholder="Agregar producto..." />
+            <button id="addItemBtn" class="btn-add">+</button>
+        </div>
+
+        <div class="items-container" id="itemsContainer">
+            <p class="empty-message">Tu lista está vacía. Agrega productos para comenzar.</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    const itemsContainer = document.getElementById('itemsContainer');
+    const newItemInput = document.getElementById('newItemInput');
+    const addItemBtn = document.getElementById('addItemBtn');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+
+    let shoppingList = JSON.parse(localStorage.getItem('keepi-shopping-list')) || [];
+
+    function renderList() {
+        if (shoppingList.length === 0) {
+            itemsContainer.innerHTML = '<p class="empty-message">Tu lista está vacía. Agrega productos para comenzar.</p>';
+            return;
+        }
+
+        itemsContainer.innerHTML = '';
+        shoppingList.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = `shopping-item ${item.checked ? 'checked' : ''}`;
+            itemDiv.innerHTML = `
+                <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleItem(${index})">
+                <span class="item-text">${item.text}</span>
+                <button class="btn-delete" onclick="deleteItem(${index})">✕</button>
+            `;
+            itemsContainer.appendChild(itemDiv);
+        });
+    }
+
+    function addItem() {
+        const text = newItemInput.value.trim();
+        if (text === '') return;
+
+        shoppingList.push({ text: text, checked: false });
+        localStorage.setItem('keepi-shopping-list', JSON.stringify(shoppingList));
+        newItemInput.value = '';
+        renderList();
+    }
+
+    function toggleItem(index) {
+        shoppingList[index].checked = !shoppingList[index].checked;
+        localStorage.setItem('keepi-shopping-list', JSON.stringify(shoppingList));
+        renderList();
+    }
+
+    function deleteItem(index) {
+        shoppingList.splice(index, 1);
+        localStorage.setItem('keepi-shopping-list', JSON.stringify(shoppingList));
+        renderList();
+    }
+
+    function clearAll() {
+        if (confirm('¿Estás seguro de que deseas limpiar toda la lista?')) {
+            shoppingList = [];
+            localStorage.removeItem('keepi-shopping-list');
+            renderList();
+        }
+    }
+
+    window.toggleItem = toggleItem;
+    window.deleteItem = deleteItem;
+
+    addItemBtn.addEventListener('click', addItem);
+    clearAllBtn.addEventListener('click', clearAll);
+    
+    newItemInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            addItem();
+        }
+    });
+
+    renderList();
+    </script>
+}
+
+<style>
+.lista-super-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.lista-super-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.lista-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #59ad44;
+}
+
+.lista-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 28px;
+}
+
+.btn-clear-all {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-clear-all:hover {
+    background-color: #c82333;
+}
+
+.add-item-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.add-item-section input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.add-item-section input:focus {
+    outline: none;
+    border-color: #59ad44;
+}
+
+.btn-add {
+    width: 50px;
+    height: 50px;
+    background-color: #59ad44;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #4a8d38;
+}
+
+.items-container {
+    min-height: 200px;
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    padding: 40px 20px;
+}
+
+.shopping-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.shopping-item:hover {
+    background-color: #f0f0f0;
+}
+
+.shopping-item.checked {
+    opacity: 0.6;
+}
+
+.shopping-item.checked .item-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.shopping-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.item-text {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+}
+
+.btn-delete {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    color: #dc3545;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+@@media (max-width: 768px) {
+    .lista-super-card {
+        padding: 20px;
+    }
+    
+    .lista-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .btn-clear-all {
+        width: 100%;
+    }
+}
+</style>

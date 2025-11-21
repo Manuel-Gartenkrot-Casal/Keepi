@@ -1,0 +1,702 @@
+@{
+    ViewData["Title"] = "Keepi - Tu Heladera Inteligente";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .landing-page {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Hero Section con formas orgánicas */
+    .landing-hero {
+        position: relative;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d1f0d 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 60px 20px;
+    }
+
+    /* Formas abstractas flotantes */
+    .hero-shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        animation: float 20s infinite ease-in-out;
+    }
+
+    .shape-1 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, #59ad44 0%, transparent 70%);
+        top: -100px;
+        left: -100px;
+        animation-delay: 0s;
+    }
+
+    .shape-2 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, #7ecb20 0%, transparent 70%);
+        bottom: -150px;
+        right: -150px;
+        animation-delay: 3s;
+    }
+
+    .shape-3 {
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(circle, #4a8d38 0%, transparent 70%);
+        top: 50%;
+        right: 10%;
+        animation-delay: 6s;
+    }
+
+    @@keyframes float {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(50px, -50px) scale(1.1); }
+        66% { transform: translate(-30px, 30px) scale(0.9); }
+    }
+
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+
+    /* Badge con efecto neón */
+    .hero-badge {
+        display: inline-block;
+        background: rgba(89, 173, 68, 0.15);
+        color: #59ad44;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        border: 2px solid rgba(89, 173, 68, 0.4);
+        box-shadow: 0 0 20px rgba(89, 173, 68, 0.3),
+                    inset 0 0 10px rgba(89, 173, 68, 0.1);
+        animation: pulse-glow 3s infinite ease-in-out;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    @@keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(89, 173, 68, 0.3), inset 0 0 10px rgba(89, 173, 68, 0.1); }
+        50% { box-shadow: 0 0 30px rgba(89, 173, 68, 0.5), inset 0 0 15px rgba(89, 173, 68, 0.2); }
+    }
+
+    /* Título con efecto de gradiente animado */
+    .hero-title {
+        font-size: 80px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #ffffff 0%, #59ad44 50%, #7ecb20 100%);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 30px;
+        line-height: 1.1;
+        letter-spacing: -3px;
+        animation: gradient-shift 5s ease infinite;
+    }
+
+    @@keyframes gradient-shift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    .hero-subtitle {
+        font-size: 22px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 50px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+        font-weight: 300;
+    }
+
+    .hero-cta {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 80px;
+    }
+
+    /* Botones con efectos modernos */
+    .btn-primary-cta {
+        background: linear-gradient(135deg, #59ad44 0%, #7ecb20 100%);
+        color: white;
+        padding: 18px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 18px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: none;
+        box-shadow: 0 10px 30px rgba(89, 173, 68, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn-primary-cta:hover::before {
+        left: 100%;
+    }
+
+    .btn-primary-cta:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(89, 173, 68, 0.6);
+        color: white;
+    }
+
+    .btn-secondary-cta {
+        background: transparent;
+        color: white;
+        padding: 18px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 18px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary-cta:hover {
+        border-color: #59ad44;
+        background: rgba(89, 173, 68, 0.1);
+        transform: translateY(-5px);
+        color: white;
+        box-shadow: 0 10px 30px rgba(89, 173, 68, 0.3);
+    }
+
+    /* Imagen con efecto 3D */
+    .hero-image-container {
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+        perspective: 1000px;
+    }
+
+    .hero-image-container img {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 30px 60px rgba(89, 173, 68, 0.5));
+        animation: float-image 6s ease-in-out infinite;
+        transform-style: preserve-3d;
+    }
+
+    @@keyframes float-image {
+        0%, 100% { transform: translateY(0px) rotateY(0deg); }
+        50% { transform: translateY(-20px) rotateY(5deg); }
+    }
+
+    /* Stats Section con diseño de bento box */
+    .stats-section {
+        background: linear-gradient(180deg, #ffffff 0%, #f5f9f3 100%);
+        padding: 100px 20px;
+        position: relative;
+    }
+
+    .stats-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(180deg, #0a0a0a 0%, transparent 100%);
+    }
+
+    .stats-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 70px;
+    }
+
+    .section-badge {
+        display: inline-block;
+        background: rgba(89, 173, 68, 0.1);
+        color: #59ad44;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        border: 2px solid rgba(89, 173, 68, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .section-title {
+        font-size: 56px;
+        font-weight: 900;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        letter-spacing: -2px;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        padding: 40px 0;
+    }
+
+    /* Tarjetas con efecto glassmorphism */
+    .stat-card {
+        text-align: center;
+        padding: 50px 30px;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 2px solid rgba(89, 173, 68, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(89, 173, 68, 0.1) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+
+    .stat-card:hover::before {
+        opacity: 1;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 20px 60px rgba(89, 173, 68, 0.25);
+        border-color: #59ad44;
+    }
+
+    .stat-number {
+        font-size: 64px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #59ad44 0%, #7ecb20 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 15px;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: 15px;
+        color: #333;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .stat-company {
+        font-size: 12px;
+        color: #999;
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Features Section con tarjetas inclinadas */
+    .features-section {
+        background: #ffffff;
+        padding: 120px 20px;
+    }
+
+    .features-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-description {
+        font-size: 20px;
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-top: 70px;
+    }
+
+    .feature-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+        padding: 50px;
+        border-radius: 30px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .feature-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle, rgba(89, 173, 68, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(50%, -50%);
+        transition: all 0.5s;
+    }
+
+    .feature-card:hover::after {
+        width: 300px;
+        height: 300px;
+    }
+
+    .feature-card:hover {
+        border-color: #59ad44;
+        transform: translateY(-10px) rotate(-1deg);
+        box-shadow: 0 20px 60px rgba(89, 173, 68, 0.2);
+    }
+
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #59ad44 0%, #7ecb20 100%);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(89, 173, 68, 0.3);
+        position: relative;
+        z-index: 1;
+    }
+
+    .feature-title {
+        font-size: 28px;
+        font-weight: 800;
+        color: #1a1a1a;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .feature-description {
+        font-size: 17px;
+        color: #666;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* CTA Section con fondo dramático */
+    .cta-section {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d1f0d 100%);
+        padding: 120px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(89, 173, 68, 0.2) 0%, transparent 70%);
+        animation: pulse-scale 8s infinite ease-in-out;
+    }
+
+    @@keyframes pulse-scale {
+        0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+        50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+    }
+
+    .cta-container {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-title {
+        font-size: 60px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #ffffff 0%, #59ad44 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 25px;
+        line-height: 1.2;
+        letter-spacing: -2px;
+    }
+
+    .cta-description {
+        font-size: 22px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 50px;
+        line-height: 1.6;
+        font-weight: 300;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 968px) {
+        .hero-title {
+            font-size: 52px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .section-title,
+        .cta-title {
+            font-size: 42px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+        }
+
+        .feature-card {
+            padding: 40px 30px;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .hero-title {
+            font-size: 38px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+        }
+
+        .hero-cta {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .btn-primary-cta,
+        .btn-secondary-cta {
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            padding: 16px 32px;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .stat-number {
+            font-size: 42px;
+        }
+
+        .section-title,
+        .cta-title {
+            font-size: 32px;
+        }
+
+        .section-description,
+        .cta-description {
+            font-size: 16px;
+        }
+
+        .feature-card {
+            padding: 35px 25px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+        }
+
+        .feature-title {
+            font-size: 22px;
+        }
+
+        .feature-description {
+            font-size: 15px;
+        }
+
+        .shape-1, .shape-2, .shape-3 {
+            width: 250px;
+            height: 250px;
+        }
+    }
+</style>
+
+<div class="landing-page">
+    <!-- Hero Section -->
+    <section class="landing-hero">
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+        <div class="hero-shape shape-3"></div>
+        
+        <div class="hero-container">
+            <div class="hero-badge">Tu asistente inteligente de cocina</div>
+            <h1 class="hero-title">Organizá tu heladera.<br/>Reducí desperdicios.</h1>
+            <p class="hero-subtitle">La plataforma completa para gestionar tus alimentos, recibir alertas de vencimiento y descubrir recetas con lo que ya tenés en casa.</p>
+            
+            <div class="hero-cta">
+                @if (Context.Session.GetString("usuario") != null)
+                {
+                    <a href="@Url.Action("InicializarHeladera", "Heladera")" class="btn-primary-cta">Ir a Mi Heladera</a>
+                    <a href="@Url.Action("ChatBot", "Chat")" class="btn-secondary-cta">Hablar con Mr. Keepi →</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Auth")" class="btn-primary-cta">Comenzar Gratis</a>
+                    <a href="@Url.Action("Login", "Auth")" class="btn-secondary-cta">Ver Demo →</a>
+                }
+            </div>
+
+            <div class="hero-image-container">
+                <img src="/imagenes/heladera.png" alt="Keepi - Heladera Inteligente"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="section-header">
+                <div class="section-badge">Impacto Global</div>
+                <h2 class="section-title">El desperdicio alimentario<br/>es un problema que podemos resolver</h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1/3</div>
+                    <div class="stat-label">de alimentos se desperdician</div>
+                    <div class="stat-company">Globalmente</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">800M+</div>
+                    <div class="stat-label">personas con hambre</div>
+                    <div class="stat-company">En el mundo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30%</div>
+                    <div class="stat-label">de recursos naturales perdidos</div>
+                    <div class="stat-company">Por desperdicio</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$680</div>
+                    <div class="stat-label">gastados en comida desperdiciada</div>
+                    <div class="stat-company">Por familia/año</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="section-header">
+                <div class="section-badge">Funcionalidades</div>
+                <h2 class="section-title">Todo lo que necesitás en un solo lugar</h2>
+                <p class="section-description">Herramientas potentes diseñadas para hacer tu vida más fácil y reducir el desperdicio de alimentos.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Gestión Inteligente</h3>
+                    <p class="feature-description">Registrá tus alimentos con foto y fecha de vencimiento. Recibí alertas antes de que se venzan para aprovecharlos a tiempo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">Asistente con IA</h3>
+                    <p class="feature-description">Chateá con Mr. Keepi, tu asistente personal que te ayuda con recetas, conservación y aprovechamiento de alimentos.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🍳</div>
+                    <h3 class="feature-title">Recetas Personalizadas</h3>
+                    <p class="feature-description">Descubrí recetas basadas en los ingredientes que ya tenés. Nunca más te faltará inspiración para cocinar.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <h3 class="feature-title">Lista de Compras</h3>
+                    <p class="feature-description">Creá listas inteligentes basadas en lo que te falta. Comprá solo lo necesario y ahorrá dinero.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Empezá a reducir desperdicios hoy</h2>
+            <p class="cta-description">Unite a miles de usuarios que ya están organizando mejor su cocina y ahorrando dinero con Keepi.</p>
+            <div class="hero-cta">
+                @if (Context.Session.GetString("usuario") != null)
+                {
+                    <a href="@Url.Action("InicializarHeladera", "Heladera")" class="btn-primary-cta">Ir a Mi Heladera</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Auth")" class="btn-primary-cta">Comenzar Gratis</a>
+                }
+            </div>
+        </div>
+    </section>
+</div>

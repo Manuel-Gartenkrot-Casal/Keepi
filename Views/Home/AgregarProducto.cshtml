@@ -1,0 +1,309 @@
+@{
+    ViewData["Title"] = "Agregar Producto";
+    var productos = ViewBag.Productos as List<Producto>;
+}
+
+<div class="agregar-producto-container">
+    <div class="form-container">
+        <form id="agregarProductoForm">
+            @Html.AntiForgeryToken()
+            
+            <h2>Agregar Producto</h2>
+            
+            <!-- Campo de búsqueda mejorado con autocomplete -->
+            <div class="form-group">
+                <label for="product-search">Buscar Producto Base</label>
+                <input type="text" id="product-search" placeholder="Escribe (ej: Leche, Huevo...)" autocomplete="off">
+                <div id="suggestions-list" class="suggestions-list"></div>
+            </div>
+
+            <img id="product-image" src="/placeholder.svg" alt="Vista previa del producto" class="product-preview"/>
+
+            <input type="hidden" id="idProducto" name="idProducto" />
+            <input type="hidden" id="foto-hidden" name="foto" />
+
+            <div class="form-group">
+                <label for="nombreEsp">Nombre Específico</label>
+                <input type="text" id="nombreEsp" name="nombreEsp" placeholder="Ej: Leche Sancor 1L" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="fechaVencimiento">Fecha de Vencimiento</label>
+                <input type="date" id="fechaVencimiento" name="fechaVencimiento" required>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                Agregar a Heladera
+            </button>
+            
+            <div id="message-container"></div>
+
+            <p class="link-back">
+                <a href="@Url.Action("CargarProductos", "Heladera")">Volver a Mi Heladera</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    const productosBase = @Html.Raw(Json.Serialize(productos ?? new List<Producto>()));
+    
+    const searchInput = document.getElementById('product-search');
+    const suggestionsList = document.getElementById('suggestions-list');
+    const productImage = document.getElementById('product-image');
+    const idProductoInput = document.getElementById('idProducto');
+    const nombreEspInput = document.getElementById('nombreEsp');
+    const fotoInput = document.getElementById('foto-hidden');
+    const fechaInput = document.getElementById('fechaVencimiento');
+    const messageContainer = document.getElementById('message-container');
+
+    let selectedProduct = null;
+
+    // Establecer fecha mínima como hoy
+    fechaInput.min = new Date().toISOString().split("T")[0];
+
+    // Autocompletado mejorado
+    searchInput.addEventListener('input', function(e) {
+        const inputVal = e.target.value.toLowerCase().trim();
+        suggestionsList.innerHTML = '';
+        
+        if (inputVal.length < 1) {
+            suggestionsList.style.display = 'none';
+            productImage.style.display = 'none';
+            selectedProduct = null;
+            return;
+        }
+
+        const matches = productosBase.filter(p => p.nombre.toLowerCase().includes(inputVal));
+        
+        if (matches.length > 0) {
+            suggestionsList.style.display = 'block';
+            matches.forEach(prod => {
+                const div = document.createElement('div');
+                div.className = 'suggestion-item';
+                div.textContent = prod.nombre;
+                div.addEventListener('click', function() {
+                    selectProduct(prod);
+                });
+                suggestionsList.appendChild(div);
+            });
+        } else {
+            suggestionsList.style.display = 'none';
+        }
+    });
+
+    function selectProduct(prod) {
+        selectedProduct = prod;
+        searchInput.value = prod.nombre;
+        idProductoInput.value = prod.id;
+        fotoInput.value = prod.foto || 'producto-default.jpg';
+        nombreEspInput.value = prod.nombre;
+        
+        if (prod.foto) {
+            productImage.src = `/imagenes/Productos/${prod.foto}`;
+            productImage.style.display = 'block';
+        }
+        
+        suggestionsList.style.display = 'none';
+    }
+
+    // Cerrar sugerencias al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (!searchInput.contains(e.target) && !suggestionsList.contains(e.target)) {
+            suggestionsList.style.display = 'none';
+        }
+    });
+
+    // Envío del formulario con AJAX
+    document.getElementById('agregarProductoForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        if (!idProductoInput.value || idProductoInput.value == "0") {
+            showMessage("Por favor, selecciona un producto válido de la lista.", "error");
+            searchInput.focus();
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('idProducto', idProductoInput.value);
+        formData.append('nombreEspecifico', nombreEspInput.value);
+        formData.append('fechaVencimiento', fechaInput.value);
+        formData.append('foto', fotoInput.value);
+
+        try {
+            const response = await fetch('@Url.Action("AgregarProducto", "Home")', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                showMessage("Producto agregado exitosamente", "success");
+                // Limpiar formulario
+                setTimeout(() => {
+                    window.location.href = '@Url.Action("CargarProductos", "Heladera")';
+                }, 1500);
+            } else {
+                showMessage(data.message || "Error al agregar producto", "error");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showMessage("Error al agregar producto", "error");
+        }
+    });
+
+    function showMessage(message, type) {
+        messageContainer.innerHTML = `<div class="message-${type}">${message}</div>`;
+    }
+    </script>
+}
+
+<style>
+.agregar-producto-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 200px);
+    padding: 50px 20px;
+    background-color: #f2f2f2;
+}
+
+.form-container {
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #59ad44;
+}
+
+.suggestions-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+.product-preview {
+    display: none;
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: #59ad44;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #4a8d38;
+}
+
+.link-back {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.link-back a {
+    color: #59ad44;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-back a:hover {
+    text-decoration: underline;
+}
+
+#message-container {
+    margin-top: 20px;
+}
+
+.message-success {
+    padding: 12px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.message-error {
+    padding: 12px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    text-align: center;
+}
+</style>

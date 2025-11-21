@@ -1,0 +1,126 @@
+@model List<semantic_kernel.Models.ChatMessage>
+
+@{
+    ViewData["Title"] = "ChatBot";
+}
+
+<!-- Contenedor principal minimalista -->
+<div class="chat-container">
+    <!-- Mensajes del chat -->
+    <div class="chat-messages" id="chatMessages">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var message in Model)
+            {
+                <div class="message @(message.IsUser ? "user" : "bot")">
+                    @Html.Raw(message.Content.Replace("\n", "<br>"))
+                </div>
+            }
+        }
+        
+        <!-- Indicador de escritura -->
+        <div class="typing-indicator" id="typingIndicator">
+            Escribiendo...
+        </div>
+    </div>
+
+    <!-- Barra de entrada -->
+    <div class="input-container" id="inputContainer">
+        <input 
+            type="text" 
+            name="Message" 
+            id="messageInput" 
+            placeholder="Escribe tu mensaje..." 
+            maxlength="1000" />
+        <button type="button" id="sendBtn">Enviar</button>
+        <button type="button" id="clearBtn" asp-controller="Chat" asp-action="ClearHistory">Limpiar</button>
+    </div>
+</div>
+<script>
+    const sendBtn = document.getElementById('sendBtn');
+    const messageInput = document.getElementById('messageInput');
+    const chatMessages = document.getElementById('chatMessages');
+
+    let isWaitingForResponse = false;
+
+    function showTypingIndicator() {
+        const typingIndicator = document.getElementById('typingIndicator');
+        typingIndicator.style.display = 'block';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function hideTypingIndicator() {
+        const typingIndicator = document.getElementById('typingIndicator');
+        typingIndicator.style.display = 'none';
+    }
+
+    async function sendMessage() {
+        const message = messageInput.value.trim();
+        if (!message) return;
+
+        // Mostrar el mensaje del usuario en pantalla
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message user';
+        userMessage.textContent = message;
+        chatMessages.appendChild(userMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Mostrar indicador de escritura del bot
+        isWaitingForResponse = true;
+        showTypingIndicator();
+
+        // Limpiar el input
+        messageInput.value = '';
+
+        try {
+            const response = await fetch('/Chat/SendMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ Message: message })
+            });
+
+            const data = await response.json();
+
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot';
+
+            if (data.success) {
+                botMessage.innerHTML = data.message.replace(/\n/g, '<br>');
+            } else {
+                botMessage.classList.add('error');
+                botMessage.textContent = `Error: ${data.message}`;
+            }
+
+            chatMessages.appendChild(botMessage);
+        } catch (error) {
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'message bot error';
+            errorMessage.textContent = 'Error al enviar el mensaje';
+            chatMessages.appendChild(errorMessage);
+        } finally {
+            isWaitingForResponse = false;
+            hideTypingIndicator();
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+
+    messageInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    const clearBtn = document.getElementById('clearBtn');
+    clearBtn.addEventListener('click', async function() {
+        const response = await fetch('/Chat/ClearHistory', { method: 'POST' });
+        const data = await response.json();
+        if (data.success) {
+            chatMessages.innerHTML = '';
+        }
+    });
+</script>
