@@ -24,46 +24,106 @@ namespace semantic_kernel.Controllers
 
        public IActionResult ChatBot()
 {
-    var chatHistory = GetChatHistory(null); // No agregar mensaje nuevo
+    var session = HttpContext.Session.GetString("usuario");
+    if (string.IsNullOrEmpty(session))
+    {
+        return RedirectToAction("Login", "Auth");
+    }
+    
+    var chatHistory = GetChatHistory(null);
     return View(chatHistory);
 }
 
-
-
-        // Aceptamos el JSON del body explícitamente para requests AJAX
         [HttpPost]
         public async Task<IActionResult> SendMessage([FromBody] ChatRequest request)
         {
             try
             {
-                // Debug info: content type and model state pueden ayudar a diagnosticar problemas de binding
-                var contentType = Request.ContentType;
-                Console.WriteLine($"[ChatController] Content-Type: {contentType}");
-                try
+                string user = HttpContext.Session.GetString("usuario");
+                if (string.IsNullOrEmpty(user))
                 {
-                    // Intentar leer el body raw para depuración (solo si el binding falla)
-                    Request.Body.Position = 0;
-                }
-                catch { }
-                Console.WriteLine($"[ChatController] ModelState.IsValid: {ModelState.IsValid}");
-                Console.WriteLine($"[ChatController] Request bound: {JsonConvert.SerializeObject(request)}");
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(new ChatResponse
+                    Console.WriteLine("[ChatController] Usuario no autenticado");
+                    return Json(new ChatResponse
                     {
-                        Message = "Request model is invalid",
+                        Message = "Tu sesión ha expirado. Por favor, inicia sesión nuevamente.",
                         Success = false
                     });
                 }
 
-                if (request == null)
+                Usuario usuario = Objeto.StringToObject<Usuario>(user);
+                if (usuario == null || usuario.ID <= 0)
                 {
-                    return BadRequest(new ChatResponse
+                    Console.WriteLine("[ChatController] Error al deserializar usuario o ID inválido");
+                    return Json(new ChatResponse
                     {
-                        Message = "Request body is missing or could not be bound",
+                        Message = "Error de sesión. Por favor, inicia sesión nuevamente.",
                         Success = false
                     });
                 }
+
+                if (request == null || string.IsNullOrWhiteSpace(request.Message))
+                {
+                    return Json(new ChatResponse
+                    {
+                        Message = "El mensaje no puede estar vacío",
+                        Success = false
+                    });
+                }
+
+                if (request.Message.Length > 1000)
+                {
+                    return Json(new ChatResponse
+                    {
+                        Message = "El mensaje es demasiado largo. Máximo 1000 caracteres.",
+                        Success = false
+                    });
+                }
+
+                int idUsuario = usuario.ID;
+                string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
+
+                Console.WriteLine($"[ChatController] Usuario autenticado: {usuario.Username} (ID: {idUsuario})");
+                Console.WriteLine($"[ChatController] nombreHeladera: {nombreHeladera ?? "NULL"}");
+
+                List<ProductoXHeladera> heladeraJson = new List<ProductoXHeladera>();
+
+                if (string.IsNullOrEmpty(nombreHeladera))
+                {
+                    Console.WriteLine("[ChatController] nombreHeladera es null o vacío - inicializando heladera");
+                    List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
+                    
+                    if (nombresHeladeras != null && nombresHeladeras.Count > 0)
+                    {
+                        nombreHeladera = nombresHeladeras[0];
+                        HttpContext.Session.SetString("nombreHeladera", nombreHeladera);
+                        Console.WriteLine($"[ChatController] Heladera inicializada: {nombreHeladera}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("[ChatController] Usuario no tiene heladeras configuradas");
+                        return Json(new ChatResponse
+                        {
+                            Message = "No tienes heladeras configuradas. Por favor, configura una heladera primero.",
+                            Success = false
+                        });
+                    }
+                }
+
+                List<string> heladerasDelUsuario = BD.traerNombresHeladerasById(idUsuario);
+                if (!heladerasDelUsuario.Contains(nombreHeladera))
+                {
+                    Console.WriteLine($"[ChatController] Usuario {idUsuario} intentó acceder a heladera no autorizada: {nombreHeladera}");
+                    return Json(new ChatResponse
+                    {
+                        Message = "No tienes permiso para acceder a esta heladera.",
+                        Success = false
+                    });
+                }
+
+                // Load products from refrigerator
+                heladeraJson = BD.getProductosByNombreHeladeraAndIdUsuario(nombreHeladera, idUsuario);
+                Console.WriteLine($"[ChatController] Productos cargados: {heladeraJson?.Count ?? 0}");
+
                 var userMessage = new ChatMessage
                 {
                     Content = request.Message,
@@ -72,69 +132,10 @@ namespace semantic_kernel.Controllers
                 };
 
                 List<ChatMessage> chatHistory = GetChatHistory(userMessage);
-                SaveChatHistory(chatHistory); // Guarda el mensaje del usuario
+                SaveChatHistory(chatHistory);
 
-
-                string user = HttpContext.Session.GetString("usuario");
-                if (user == null)
-                {
-                    Console.WriteLine("[ChatController] Usuario no autenticado");
-                    return Json(new ChatResponse
-                    {
-                        Message = "Inicia sesión para usar el ChatBot",
-                        Success = false
-                    });
-                }
-
-                Usuario usuario = Objeto.StringToObject<Usuario>(user);
-                if (usuario == null)
-                {
-                    Console.WriteLine("[ChatController] Error al deserializar usuario");
-                    return Json(new ChatResponse
-                    {
-                        Message = "Error de sesión. Por favor, inicia sesión nuevamente.",
-                        Success = false
-                    });
-                }
-
-                int idUsuario = usuario.ID;
-                string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
-
-                Console.WriteLine($"[ChatController] nombreHeladera: {nombreHeladera ?? "NULL"}");
-                Console.WriteLine($"[ChatController] idUsuario: {idUsuario}");
-
-                List<ProductoXHeladera> heladeraJson = new List<ProductoXHeladera>();
-
-                if (string.IsNullOrEmpty(nombreHeladera))
-                {
-                    Console.WriteLine("[ChatController] nombreHeladera es null o vacío - usuario no tiene heladera inicializada");
-                    // Intentar inicializar la heladera automáticamente
-                    List<string> nombresHeladeras = BD.traerNombresHeladerasById(idUsuario);
-                    if (nombresHeladeras != null && nombresHeladeras.Count > 0)
-                    {
-                        nombreHeladera = nombresHeladeras[0];
-                        HttpContext.Session.SetString("nombreHeladera", nombreHeladera);
-                        Console.WriteLine($"[ChatController] Heladera inicializada automáticamente: {nombreHeladera}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("[ChatController] Usuario no tiene heladeras");
-                    }
-                }
-
-                if (!string.IsNullOrEmpty(nombreHeladera))
-                {
-                    heladeraJson = BD.getProductosByNombreHeladeraAndIdUsuario(nombreHeladera, idUsuario);
-                    Console.WriteLine($"[ChatController] heladeraJson count: {heladeraJson?.Count ?? 0}");
-                }
-
-                // Validar que heladeraJson no sea null (si es null, inicializar como lista vacía)
-                if (heladeraJson == null)
-                {
-                    heladeraJson = new List<ProductoXHeladera>();
-                }
-
-                var botResponse = await _chatService.GetChatResponseAsync(request.Message, chatHistory, heladeraJson);
+                // Get AI response
+                var botResponse = await _chatService.GetChatResponseAsync(request.Message, chatHistory, heladeraJson ?? new List<ProductoXHeladera>());
 
                 var botMessage = new ChatMessage
                 {
@@ -142,8 +143,8 @@ namespace semantic_kernel.Controllers
                     IsUser = false,
                     Timestamp = DateTime.Now
                 };
+                
                 chatHistory.Add(botMessage);
-
                 SaveChatHistory(chatHistory);
 
                 return Json(new ChatResponse
@@ -154,9 +155,11 @@ namespace semantic_kernel.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"[ChatController] Excepción: {ex.Message}");
+                Console.WriteLine($"[ChatController] Stack Trace: {ex.StackTrace}");
                 return Json(new ChatResponse
                 {
-                    Message = $"Error: {ex.Message}",
+                    Message = "Ocurrió un error al procesar tu mensaje. Por favor, intenta nuevamente.",
                     Success = false
                 });
             }
@@ -165,9 +168,16 @@ namespace semantic_kernel.Controllers
         [HttpPost]
         public IActionResult ClearHistory()
         {
+            var session = HttpContext.Session.GetString("usuario");
+            if (string.IsNullOrEmpty(session))
+            {
+                return Json(new { success = false, message = "Sesión no válida" });
+            }
+
             _httpContextAccessor.HttpContext?.Session.Remove("ChatHistory");
             return Json(new { success = true });
         }
+        
        private List<ChatMessage> GetChatHistory(ChatMessage chatMessage)
 {
     var session = _httpContextAccessor.HttpContext?.Session;
@@ -181,7 +191,6 @@ namespace semantic_kernel.Controllers
             historyJson = Objeto.StringToObject<List<ChatMessage>>(json);
         }
 
-        // Asegurar que la lista esté inicializada
         if (historyJson == null)
         {
             historyJson = new List<ChatMessage>();
@@ -195,8 +204,6 @@ namespace semantic_kernel.Controllers
 
     return historyJson;
 }
-
-
 
         private void SaveChatHistory(List<ChatMessage> chatHistory)
         {

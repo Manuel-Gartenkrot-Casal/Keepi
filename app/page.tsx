@@ -1,154 +1,341 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { Bell, Refrigerator, AlertTriangle, Calendar, LogOut, ChevronDown } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { LoginForm } from "@/components/login-form"
+
+interface ProductoHeladera {
+  id: number
+  nombreEspecifico: string
+  nombreProducto: string
+  fechaVencimiento: string
+  diasRestantes: number
+  foto: string
+}
+
+interface SessionData {
+  authenticated: boolean
+  usuario?: { id: number; username: string }
+  heladeras?: string[]
+  heladeraActual?: string
+}
+
 export default function Page() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-6">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
-              K
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Keepi - C# ASP.NET MVC App</h1>
-              <p className="text-gray-600">Smart Refrigerator Management System</p>
-            </div>
-          </div>
+  const [session, setSession] = useState<SessionData | null>(null)
+  const [productos, setProductos] = useState<ProductoHeladera[]>([])
+  const [productosVenciendo, setProductosVenciendo] = useState<ProductoHeladera[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [checkingAuth, setCheckingAuth] = useState(true)
 
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-            <div className="flex items-start">
-              <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="ml-3">
-                <h3 className="text-sm font-medium text-yellow-800">Important Notice</h3>
-                <p className="mt-2 text-sm text-yellow-700">
-                  This is a <strong>C# ASP.NET MVC</strong> application, not a Next.js/React app. To run this project,
-                  you need Visual Studio and SQL Server.
-                </p>
-              </div>
-            </div>
-          </div>
+  useEffect(() => {
+    async function checkAuth() {
+      try {
+        const response = await fetch("/api/auth/session")
+        if (response.ok) {
+          const data = await response.json()
+          setSession(data)
+        } else {
+          setSession({ authenticated: false })
+        }
+      } catch (err) {
+        console.error("[v0] Error checking auth:", err)
+        setSession({ authenticated: false })
+      } finally {
+        setCheckingAuth(false)
+      }
+    }
+    checkAuth()
+  }, [])
 
-          <div className="space-y-6">
-            <section>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">Database Fix Required</h2>
-              <p className="text-gray-700 mb-4">
-                The <code className="bg-gray-100 px-2 py-1 rounded text-sm">miHeladera</code> view has been updated to
-                handle the new <code className="bg-gray-100 px-2 py-1 rounded text-sm">Eliminado</code> column in the{" "}
-                <code className="bg-gray-100 px-2 py-1 rounded text-sm">UsuarioXHeladera</code> table.
-              </p>
+  useEffect(() => {
+    if (!session?.authenticated) return
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h3 className="font-semibold text-blue-900 mb-2">📁 SQL Scripts to Run (in order):</h3>
-                <ol className="list-decimal list-inside space-y-2 text-sm text-blue-800">
-                  <li>
-                    <code className="bg-white px-2 py-1 rounded">scripts/fix-miHeladera-view-v1.sql</code> - Fix
-                    sp_GetProductosByHeladeraId
-                  </li>
-                  <li>
-                    <code className="bg-white px-2 py-1 rounded">scripts/fix-miHeladera-view-v2.sql</code> - Fix
-                    getProductosByNombreHeladeraAndIdUsuario
-                  </li>
-                  <li>
-                    <code className="bg-white px-2 py-1 rounded">scripts/fix-miHeladera-view-v3.sql</code> - Fix
-                    traerNombresHeladerasById
-                  </li>
-                  <li>
-                    <code className="bg-white px-2 py-1 rounded">scripts/fix-miHeladera-view-v4.sql</code> - Fix
-                    SeleccionarHeladeraByNombre
-                  </li>
-                  <li>
-                    <code className="bg-white px-2 py-1 rounded">scripts/fix-miHeladera-view-v5.sql</code> - Fix
-                    BuscarHeladeras
-                  </li>
-                </ol>
-              </div>
-            </section>
+    async function fetchProductos() {
+      try {
+        setLoading(true)
+        const response = await fetch("/api/productos-vencimiento")
 
-            <section>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">What Was Fixed</h2>
-              <div className="bg-gray-50 rounded-lg p-4 space-y-3 text-sm">
-                <div className="flex items-start gap-3">
-                  <span className="text-green-500 font-bold">✓</span>
-                  <div>
-                    <strong>Soft Delete Filtering:</strong> All stored procedures now filter out records where{" "}
-                    <code className="bg-white px-2 py-1 rounded text-xs">UsuarioXHeladera.Eliminado = 1</code>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-green-500 font-bold">✓</span>
-                  <div>
-                    <strong>Product Display:</strong> Only products from active user-heladera relationships are shown
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-green-500 font-bold">✓</span>
-                  <div>
-                    <strong>Heladera Selection:</strong> Users can only access heladeras they have active access to
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-green-500 font-bold">✓</span>
-                  <div>
-                    <strong>Data Integrity:</strong> Prevents displaying products from deleted or archived heladeras
-                  </div>
-                </div>
-              </div>
-            </section>
+        if (!response.ok) {
+          if (response.status === 401) {
+            setSession({ authenticated: false })
+            return
+          }
+          throw new Error("Error al cargar productos")
+        }
 
-            <section>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">How to Run the Scripts</h2>
-              <div className="bg-gray-50 rounded-lg p-4">
-                <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
-                  <li>Open SQL Server Management Studio (SSMS)</li>
-                  <li>Connect to your Keepi_DataBase</li>
-                  <li>Open each SQL script file in order (v1 through v5)</li>
-                  <li>Execute each script by pressing F5 or clicking Execute</li>
-                  <li>Verify that each stored procedure is created successfully</li>
-                  <li>Test the miHeladera view in your application</li>
-                </ol>
-              </div>
-            </section>
+        const data = await response.json()
+        setProductos(data.todos || [])
+        setProductosVenciendo(data.venciendo || [])
+        setError(null)
+      } catch (err) {
+        console.error("[v0] Error:", err)
+        setError(err instanceof Error ? err.message : "Error desconocido")
+      } finally {
+        setLoading(false)
+      }
+    }
 
-            <section className="border-t pt-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">Project Structure</h2>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <h3 className="font-semibold text-gray-700 mb-2">Controllers</h3>
-                  <ul className="space-y-1 text-gray-600">
-                    <li>• HeladeraController.cs</li>
-                    <li>• HomeController.cs</li>
-                    <li>• AuthController.cs</li>
-                    <li>• ChatController.cs</li>
-                    <li>• RecetasController.cs</li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-700 mb-2">Models</h3>
-                  <ul className="space-y-1 text-gray-600">
-                    <li>• Heladera.cs</li>
-                    <li>• ProductoXHeladera.cs</li>
-                    <li>• UsuarioXHeladera.cs</li>
-                    <li>• BD.cs (Database Layer)</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
+    fetchProductos()
+    const interval = setInterval(fetchProductos, 5 * 60 * 1000)
+    return () => clearInterval(interval)
+  }, [session])
 
-        <div className="bg-green-600 text-white rounded-lg p-6 text-center">
-          <h3 className="text-lg font-semibold mb-2">✅ Solution Ready</h3>
-          <p className="text-green-100">
-            Download the ZIP file and run the SQL scripts to fix the miHeladera view issue!
-          </p>
-        </div>
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" })
+    setSession({ authenticated: false })
+    setProductos([])
+    setProductosVenciendo([])
+  }
+
+  const handleCambiarHeladera = async (nombreHeladera: string) => {
+    try {
+      const response = await fetch("/api/heladeras/cambiar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombreHeladera }),
+      })
+
+      if (response.ok) {
+        setSession((prev) => (prev ? { ...prev, heladeraActual: nombreHeladera } : null))
+        window.location.reload()
+      }
+    } catch (err) {
+      console.error("[v0] Error cambiando heladera:", err)
+    }
+  }
+
+  const getExpirationColor = (diasRestantes: number) => {
+    if (diasRestantes < 0) return "text-red-600"
+    if (diasRestantes === 0) return "text-red-500"
+    if (diasRestantes === 1) return "text-orange-500"
+    if (diasRestantes <= 3) return "text-yellow-600"
+    return "text-green-600"
+  }
+
+  const getExpirationMessage = (diasRestantes: number) => {
+    if (diasRestantes < 0) return "Vencido"
+    if (diasRestantes === 0) return "Vence hoy"
+    if (diasRestantes === 1) return "Vence mañana"
+    return `Vence en ${diasRestantes} días`
+  }
+
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
+        <p className="text-gray-500">Cargando...</p>
       </div>
+    )
+  }
+
+  if (!session?.authenticated) {
+    return <LoginForm onLoginSuccess={() => window.location.reload()} />
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+      {/* Header with Notifications */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+                <Refrigerator className="w-6 h-6 text-white" />
+              </div>
+              <h1 className="text-xl font-bold text-gray-900">Keepi</h1>
+            </div>
+
+            <div className="flex items-center gap-4">
+              {session.heladeras && session.heladeras.length > 1 && (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="sm" className="gap-2 bg-transparent">
+                      <Refrigerator className="w-4 h-4" />
+                      {session.heladeraActual}
+                      <ChevronDown className="w-4 h-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    {session.heladeras.map((heladera) => (
+                      <DropdownMenuItem
+                        key={heladera}
+                        onClick={() => handleCambiarHeladera(heladera)}
+                        className={heladera === session.heladeraActual ? "bg-green-50 font-medium" : ""}
+                      >
+                        {heladera}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              )}
+
+              {/* Notifications Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="relative">
+                    <Bell className="w-5 h-5" />
+                    {productosVenciendo.length > 0 && (
+                      <Badge
+                        variant="destructive"
+                        className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                      >
+                        {productosVenciendo.length}
+                      </Badge>
+                    )}
+                    <span className="sr-only">Notificaciones</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-80 p-0">
+                  <div className="bg-white rounded-lg shadow-lg">
+                    <div className="px-4 py-3 border-b border-gray-200">
+                      <h3 className="font-semibold text-gray-900">Productos por vencer</h3>
+                      <p className="text-sm text-gray-500">
+                        {productosVenciendo.length} producto{productosVenciendo.length !== 1 ? "s" : ""} requieren
+                        atención
+                      </p>
+                    </div>
+
+                    <div className="max-h-96 overflow-y-auto">
+                      {loading ? (
+                        <div className="px-4 py-8 text-center text-gray-500">
+                          <p className="text-sm">Cargando productos...</p>
+                        </div>
+                      ) : productosVenciendo.length > 0 ? (
+                        <div className="divide-y divide-gray-100">
+                          {productosVenciendo.map((producto) => (
+                            <div key={producto.id} className="px-4 py-3 hover:bg-gray-50 transition-colors">
+                              <div className="flex items-start gap-3">
+                                <img
+                                  src={producto.foto || "/placeholder.svg"}
+                                  alt={producto.nombreEspecifico}
+                                  className="w-12 h-12 rounded-lg object-cover flex-shrink-0"
+                                />
+                                <div className="flex-1 min-w-0">
+                                  <p className="font-medium text-gray-900 text-sm truncate">
+                                    {producto.nombreEspecifico}
+                                  </p>
+                                  <div className="flex items-center gap-2 mt-1">
+                                    <Calendar className="w-3 h-3 text-gray-400" />
+                                    <p className={`text-xs font-medium ${getExpirationColor(producto.diasRestantes)}`}>
+                                      {getExpirationMessage(producto.diasRestantes)}
+                                    </p>
+                                  </div>
+                                </div>
+                                {producto.diasRestantes < 0 && (
+                                  <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="px-4 py-8 text-center text-gray-500">
+                          <Bell className="w-8 h-8 mx-auto mb-2 text-gray-300" />
+                          <p className="text-sm">No hay productos por vencer</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="gap-2">
+                    {session.usuario?.username}
+                    <ChevronDown className="w-4 h-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={handleLogout} className="text-red-600">
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Cerrar sesión
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {error && (
+          <Alert className="mb-6 border-red-200 bg-red-50">
+            <AlertTriangle className="h-4 w-4 text-red-600" />
+            <AlertDescription className="text-red-800">
+              Error al cargar productos: {error}. Verifica la conexión a la base de datos.
+            </AlertDescription>
+          </Alert>
+        )}
+
+        {!loading && productosVenciendo.length > 0 && (
+          <Alert className="mb-6 border-orange-200 bg-orange-50">
+            <AlertTriangle className="h-4 w-4 text-orange-600" />
+            <AlertDescription className="text-orange-800">
+              Tienes <strong>{productosVenciendo.length}</strong> producto{productosVenciendo.length !== 1 ? "s" : ""}{" "}
+              que {productosVenciendo.length !== 1 ? "están" : "está"} por vencer o ya vencido
+              {productosVenciendo.length !== 1 ? "s" : ""}. Revisa las notificaciones para más detalles.
+            </AlertDescription>
+          </Alert>
+        )}
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Refrigerator className="w-5 h-5" />
+              {session.heladeraActual}
+            </CardTitle>
+            <CardDescription>
+              {loading ? "Cargando productos..." : `${productos.length} productos almacenados`}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {loading ? (
+              <div className="text-center py-8 text-gray-500">
+                <p>Cargando productos desde la base de datos...</p>
+              </div>
+            ) : productos.length > 0 ? (
+              <div className="space-y-4">
+                {productos.map((producto) => (
+                  <div
+                    key={producto.id}
+                    className="flex items-center gap-4 p-4 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors"
+                  >
+                    <img
+                      src={producto.foto || "/placeholder.svg"}
+                      alt={producto.nombreEspecifico}
+                      className="w-16 h-16 rounded-lg object-cover"
+                    />
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900">{producto.nombreEspecifico}</h3>
+                      <p className="text-sm text-gray-500">{producto.nombreProducto}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className={`font-medium text-sm ${getExpirationColor(producto.diasRestantes)}`}>
+                        {getExpirationMessage(producto.diasRestantes)}
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {new Date(producto.fechaVencimiento).toLocaleDateString("es-AR")}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                <Refrigerator className="w-12 h-12 mx-auto mb-2 text-gray-300" />
+                <p>No hay productos en la heladera</p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </main>
     </div>
   )
 }

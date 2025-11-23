@@ -12,6 +12,7 @@
     .landing-page {
         width: 100%;
         overflow-x: hidden;
+        transform: translateY(-50px);
     }
 
     /* Hero Section con formas orgánicas */
@@ -23,7 +24,7 @@
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        padding: 60px 20px;
+        padding: 60px 20px
     }
 
     /* Formas abstractas flotantes */
@@ -195,27 +196,6 @@
         transform: translateY(-5px);
         color: white;
         box-shadow: 0 10px 30px rgba(89, 173, 68, 0.3);
-    }
-
-    /* Imagen con efecto 3D */
-    .hero-image-container {
-        max-width: 500px;
-        margin: 0 auto;
-        position: relative;
-        perspective: 1000px;
-    }
-
-    .hero-image-container img {
-        width: 100%;
-        height: auto;
-        filter: drop-shadow(0 30px 60px rgba(89, 173, 68, 0.5));
-        animation: float-image 6s ease-in-out infinite;
-        transform-style: preserve-3d;
-    }
-
-    @@keyframes float-image {
-        0%, 100% { transform: translateY(0px) rotateY(0deg); }
-        50% { transform: translateY(-20px) rotateY(5deg); }
     }
 
     /* Stats Section con diseño de bento box */
@@ -604,10 +584,6 @@
                     <a href="@Url.Action("Login", "Auth")" class="btn-primary-cta">Comenzar Gratis</a>
                     <a href="@Url.Action("Login", "Auth")" class="btn-secondary-cta">Ver Demo →</a>
                 }
-            </div>
-
-            <div class="hero-image-container">
-                <img src="/imagenes/heladera.png" alt="Keepi - Heladera Inteligente"/>
             </div>
         </div>
     </section>
