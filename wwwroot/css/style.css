@@ -11,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   padding-top: 100px;
+  overflow-x: hidden;
 }
 
 h2,
@@ -18,11 +19,14 @@ p {
   color: #383838;
   display: block;
 }
-
 .index h1 {
+  position: absolute;
+  z-index: 1;
   margin-bottom: 1%;
   font-size: 64px;
   font-weight: bold;
+  left:850px;
+  top:250px;
 }
 
 /*Principio del header*/
@@ -236,36 +240,54 @@ header .layout .grow1 .perfil img {
     visibility: visible;
 }
 /*Final del header*/
+
 .index section:first-of-type {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, #59ad44 0%, #cbe928 45%, #ebeb62 100%);
   color: #ffffff;
   padding-top: 8%;
   padding-bottom: 10%;
   margin-top: -100px;
-  padding-top: calc(100px + 8%);
+  padding-top: calc(100px + 18%);
+}
+
+.indexFondo{
+  display: block;
+  position: absolute;
+  width: 2200px;
+  height: 760px;
+  background: linear-gradient(135deg, #59ad44 0%, #cbe928 45%, #ebeb62 100%);
+  transform: rotate(10deg) translateY(-150px) translateX(-100px);
+  z-index: 0;
 }
 
 .index section:first-of-type p {
   color: #ffffff;
+  position: absolute;
+  z-index: 1;
+  left:600px;
+  top: 400px;
 }
 
 .index div a {
+  position: absolute;
+  z-index: 1;
   display: flex;
   align-items: center;
   text-align: center;
-justify-content: center;
+  justify-content: center;
   background-color: transparent;
   color: #ffffff;
-  width: 26%;
+  width: 150px;
   padding: 1.2%;
   border-radius: 20px;
   text-decoration: none;
   font-weight: 600;
   border: 3px solid white;
   transition: all 0.3s ease;
+  left: 975px;
+
 }
 
 .index div a:hover {
@@ -276,6 +298,7 @@ justify-content: center;
 .index div a:last-of-type {
   background-color: white;
   color: #59ad44;
+  left: 775px
 }
 
 .index div a:last-of-type:hover {
@@ -376,6 +399,11 @@ section > p {
   text-align: center;
   background-color: #f0efe6;
 
+}
+
+.index section img{
+  width: 25%;
+  height: auto;
 }
 
 section > div > div:hover {
