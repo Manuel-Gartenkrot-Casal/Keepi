@@ -68,7 +68,7 @@ public class HeladeraController : Controller
         }
     }
 
-    /*public IActionResult Heladeras() {
+    public IActionResult Heladeras() {
         string user = HttpContext.Session.GetString("usuario");
         if (user == null)
         {
@@ -82,10 +82,10 @@ public class HeladeraController : Controller
             return RedirectToAction("CrearHeladera", "Heladera"); //Si no hay heladera, se crea una o te vas
         }
         List<Heladera> lista = new List<Heladera>();
-        lista = BD.BuscarHeladeraDeUsuario(user);
+        lista = BD.BuscarHeladeraDeUsuario(idUsuario);
         ViewBag.Heladeras = lista;
-        return View();
-    }*/
+        return View("Heladeras", "Heladera");
+    }
 
 
     public IActionResult CambiarColor()
