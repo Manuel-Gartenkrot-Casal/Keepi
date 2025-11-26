@@ -24,9 +24,9 @@ p {
   z-index: 1;
   margin-bottom: 1%;
   font-size: 64px;
-  font-weight: bold;
-  left:850px;
-  top:250px;
+  font-weight: 400;
+  left:28%;
+  top:25%;
 }
 
 /*Principio del header*/
@@ -240,7 +240,10 @@ header .layout .grow1 .perfil img {
     visibility: visible;
 }
 /*Final del header*/
-
+.Slogan{
+  color:#59ad44;
+  font-weight: 900;
+}
 .index section:first-of-type {
   align-items: center;
   justify-content: center;
@@ -256,7 +259,7 @@ header .layout .grow1 .perfil img {
   display: block;
   position: absolute;
   width: 2200px;
-  height: 760px;
+  height: 800px;
   background: linear-gradient(135deg, #59ad44 0%, #cbe928 45%, #ebeb62 100%);
   transform: rotate(10deg) translateY(-150px) translateX(-100px);
   z-index: 0;
@@ -274,19 +277,21 @@ header .layout .grow1 .perfil img {
   position: absolute;
   z-index: 1;
   display: flex;
+  width: 10%;
   align-items: center;
   text-align: center;
   justify-content: center;
   background-color: transparent;
   color: #ffffff;
-  width: 150px;
-  padding: 1.2%;
+  width: 200px;
+  padding-top: 0.8%;
+  padding-bottom: 0.8%;
   border-radius: 20px;
   text-decoration: none;
   font-weight: 600;
   border: 3px solid white;
   transition: all 0.3s ease;
-  left: 975px;
+  left: 51%;
 
 }
 
@@ -298,7 +303,7 @@ header .layout .grow1 .perfil img {
 .index div a:last-of-type {
   background-color: white;
   color: #59ad44;
-  left: 775px
+  left: 39%
 }
 
 .index div a:last-of-type:hover {
