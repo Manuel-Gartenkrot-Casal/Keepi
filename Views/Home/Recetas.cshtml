@@ -9,6 +9,25 @@
     // Colores
     var brandGreen = "#28a745"; 
     var btnBlue = "#455CBA";    
+
+    // Función local para imágenes
+    string ObtenerImagenPorId(int id)
+    {
+        return id switch
+        {
+            1 => "/imagenes/Productos/lechuga.jpg",
+            2 => "/imagenes/Productos/carne.jpg",
+            3 => "/imagenes/Productos/yogur.webp",
+            4 => "/imagenes/Productos/queso.webp",
+            5 => "/imagenes/Productos/pollo.jpg",
+            6 => "/imagenes/Productos/pan.webp",
+            7 => "/imagenes/Productos/carne.jpg",
+            8 => "/imagenes/Productos/leche.jpg",
+            9 => "/imagenes/Productos/manzana.jpeg",
+            10 => "/imagenes/Productos/pollo.jpg",
+            _ => "/imagenes/logokeepi.png"
+        };
+    }
 }
 
 <style>
@@ -17,13 +36,12 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 40px 20px;
-        /* Tipografía más minimalista y moderna */
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        color: #444; /* Un gris oscuro es más suave que el negro puro */
-        font-weight: 300; /* Letra más fina */
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        color: #444; 
+        font-weight: 300;
     }
 
-    /* --- BARRA SUPERIOR (BUSCADOR Y FILTROS) --- */
+    /* --- BARRA SUPERIOR --- */
     .top-bar {
         display: flex;
         flex-direction: column;
@@ -40,82 +58,31 @@
         }
     }
 
-    /* ESTILO BUSCADOR */
-    .search-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 400px;
-    }
-
+    /* --- BUSCADOR Y FILTROS --- */
+    .search-wrapper { position: relative; width: 100%; max-width: 400px; }
     .search-input {
-        width: 100%;
-        padding: 10px 20px;
-        padding-right: 50px;
-        border: 1px solid @brandGreen; /* Borde más fino */
-        border-radius: 50px;
-        font-size: 0.95rem;
-        outline: none;
-        transition: all 0.3s ease;
-        background-color: #fff;
+        width: 100%; padding: 10px 20px; padding-right: 50px;
+        border: 1px solid @brandGreen; border-radius: 50px;
+        font-size: 0.95rem; outline: none; transition: all 0.3s ease; background-color: #fff;
     }
-
-    .search-input:focus {
-        box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
-        border-color: @brandGreen;
-    }
-
+    .search-input:focus { box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1); border-color: @brandGreen; }
     .search-btn {
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: @brandGreen;
-        color: white;
-        border: none;
-        width: 32px; /* Lupa un poco más chica */
-        height: 32px;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.3s;
+        position: absolute; right: 5px; top: 50%; transform: translateY(-50%);
+        background-color: @brandGreen; color: white; border: none;
+        width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+        display: flex; align-items: center; justify-content: center; transition: background 0.3s;
     }
-    
-    .search-btn:hover {
-        background-color: #218838;
-    }
+    .search-btn:hover { background-color: #218838; }
 
-    /* ESTILO BOTONES FILTRO (PILLS) */
-    .filter-pills {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
+    .filter-pills { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
     .btn-pill {
-        padding: 8px 20px; /* Más sutil */
-        border-radius: 50px;
-        border: 1px solid @brandGreen; /* Borde fino */
-        background-color: transparent;
-        color: @brandGreen;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-size: 0.9rem;
-        cursor: pointer;
+        padding: 8px 20px; border-radius: 50px; border: 1px solid @brandGreen;
+        background-color: transparent; color: @brandGreen; font-weight: 500;
+        text-decoration: none; transition: all 0.3s ease; font-size: 0.9rem; cursor: pointer;
     }
+    .btn-pill:hover { background-color: rgba(40, 167, 69, 0.05); }
+    .btn-pill.active { background-color: @brandGreen; color: white; box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2); }
 
-    .btn-pill:hover {
-        background-color: rgba(40, 167, 69, 0.05);
-    }
-
-    .btn-pill.active {
-        background-color: @brandGreen;
-        color: white;
-        box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
-    }
 
     /* --- GRILLA DE TARJETAS --- */
     .recipe-grid {
@@ -124,14 +91,12 @@
         gap: 30px;
     }
 
-    /* TARJETA INDIVIDUAL */
     .recipe-card {
         background: white;
-        border: 1px solid @brandGreen; /* Borde más fino para minimalismo */
+        border: 1px solid @brandGreen;
         border-radius: 16px;
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
+        display: flex; flex-direction: column;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         height: 100%;
         position: relative;
@@ -139,133 +104,114 @@
 
     .recipe-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     }
 
-    .card-body {
-        padding: 25px 20px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+    /* HEADER DE LA IMAGEN */
+    .card-img-header {
+        height: 180px; width: 100%;
+        background-color: #f9f9f9; position: relative;
+        overflow: hidden; border-bottom: 1px solid #f0f0f0;
+    }
+    .recipe-img {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+        transition: transform 0.5s ease;
+    }
+    .recipe-card:hover .recipe-img { transform: scale(1.05); }
+
+    /* --- BOTÓN DE FAVORITO (CORAZÓN MÁS GRANDE) --- */
+    .fav-btn-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
     }
 
-    .recipe-title {
-        font-size: 1.35rem; /* Título un poco más refinado */
-        font-weight: 600;
-        margin: 0 0 20px 0;
-        color: #222;
-        letter-spacing: -0.5px; /* Tracking moderno */
-        line-height: 1.2;
-    }
-
-    /* DATOS (TIEMPO, RACIONES, POPULARIDAD) */
-    .recipe-stats {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 25px;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .stat-item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #666;
-    }
-
-    .stat-icon {
-        color: @brandGreen;
-        font-size: 1.1rem;
-    }
-
-    .stat-pop {
-        color: #e0a800;
-    }
-
-    /* BOTÓN PREPARAR - DISEÑO MÁS PEQUEÑO */
-    .card-footer-action {
-        margin-top: auto;
-        display: flex;
-        justify-content: center; /* Centramos el botón */
-    }
-
-    .btn-preparar {
-        display: inline-block; /* Ya no ocupa todo el ancho */
-        padding: 8px 24px;     /* Relleno más chico */
-        background-color: @btnBlue;
-        color: white;
-        font-weight: 600;
-        font-size: 0.85rem;    /* Letra más chica */
-        border-radius: 50px;   /* Muy redondeado (Pill shape) */
-        text-decoration: none;
-        transition: all 0.3s ease;
+    .btn-fav {
+        /* Aumenté el tamaño aquí */
+        width: 50px; 
+        height: 50px;
+        border-radius: 50%;
+        background-color: white;
         border: none;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        transition: transform 0.2s, box-shadow 0.2s;
+        padding: 0;
+    }
+
+    .btn-fav:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* También aumenté el ícono */
+    .heart-icon {
+        width: 28px; 
+        height: 28px;
+        fill: none;
+        stroke: #888;
+        stroke-width: 2;
+        transition: all 0.2s ease;
+    }
+
+    /* Estado ACTIVO (Favorito = True) */
+    .btn-fav.is-favorite .heart-icon {
+        fill: #ff4757;
+        stroke: #ff4757;
+    }
+
+    /* --- CONTENIDO DE LA TARJETA --- */
+    .card-body {
+        padding: 20px; flex-grow: 1; display: flex; flex-direction: column; text-align: center;
+    }
+    .recipe-title {
+        font-size: 1.25rem; font-weight: 600; margin: 0 0 15px 0; color: #222; line-height: 1.3;
+    }
+    .recipe-stats {
+        display: flex; gap: 15px; margin-bottom: 20px;
+        flex-wrap: wrap; justify-content: center; align-items: center;
+    }
+    .stat-item { display: flex; align-items: center; gap: 5px; font-size: 0.85rem; font-weight: 500; color: #666; }
+    .stat-icon { color: @brandGreen; font-size: 1rem; }
+    .stat-pop { color: #e0a800; }
+
+    .card-footer-action { margin-top: auto; display: flex; justify-content: center; }
+    .btn-preparar {
+        display: inline-block; padding: 8px 24px;
+        background-color: @btnBlue; color: white; font-weight: 600; font-size: 0.85rem;
+        border-radius: 50px; text-decoration: none; transition: all 0.3s ease; border: none;
+        text-transform: uppercase; letter-spacing: 0.5px;
         box-shadow: 0 2px 5px rgba(69, 92, 186, 0.2);
     }
+    .btn-preparar:hover { background-color: #324390; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(69, 92, 186, 0.3); color: white; }
 
-    .btn-preparar:hover {
-        background-color: #324390;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(69, 92, 186, 0.3);
-        color: white;
-    }
-
-    /* Mensajes de "Vacío" */
     .empty-state {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 60px 20px;
-        background-color: #fcfdfc;
-        border: 1px dashed @brandGreen;
-        border-radius: 20px;
-        color: #666;
+        grid-column: 1 / -1; text-align: center; padding: 50px 20px;
+        background-color: #fcfdfc; border: 1px dashed @brandGreen; border-radius: 20px; color: #666;
     }
-    
-    .empty-icon {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        display: block;
-        opacity: 0.7;
-    }
-
+    .empty-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; opacity: 0.6; }
 </style>
 
 <div class="recipe-container">
     
     <div class="top-bar">
-        
         <form method="get" action="@Url.Action("Index", "Recetas")" class="search-wrapper">
             <input type="text" name="busqueda" class="search-input" 
                    placeholder="Buscar recetas..." value="@busquedaActual">
             <input type="hidden" name="filtro" value="@filtroActual" />
-            
             <button type="submit" class="search-btn" title="Buscar">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
         </form>
-
         <div class="filter-pills">
             <a href="@Url.Action("Index", new { filtro = "Alfabeticamente", busqueda = busquedaActual })" 
-               class="btn-pill @(string.IsNullOrEmpty(filtroActual) || filtroActual == "Alfabeticamente" ? "active" : "")">
-               A-Z
-            </a>
-
+               class="btn-pill @(string.IsNullOrEmpty(filtroActual) || filtroActual == "Alfabeticamente" ? "active" : "")">A-Z</a>
             <a href="@Url.Action("Index", new { filtro = "Popularidad", busqueda = busquedaActual })" 
-               class="btn-pill @(filtroActual == "Popularidad" ? "active" : "")">
-               Popularidad
-            </a>
-
+               class="btn-pill @(filtroActual == "Popularidad" ? "active" : "")">Popularidad</a>
             <a href="@Url.Action("Index", new { filtro = "Sugeridas", busqueda = busquedaActual })" 
-               class="btn-pill @(filtroActual == "Sugeridas" ? "active" : "")">
-               Sugeridas 🍳
-            </a>
+               class="btn-pill @(filtroActual == "Sugeridas" ? "active" : "")">Sugeridas 🍳</a>
         </div>
     </div>
 
@@ -275,6 +221,23 @@
             foreach (var receta in listaRecetas)
             {
                 <div class="recipe-card">
+                    <div class="card-img-header">
+                        
+                        <div class="fav-btn-container">
+                            <button type="button" 
+                                    class="btn-fav @(receta.favorito ? "is-favorite" : "")" 
+                                    onclick="toggleFavorito(this, @receta.ID)"
+                                    title="Me gusta">
+                                <svg class="heart-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <img src="@ObtenerImagenPorId(receta.ID)" alt="@receta.nombre" class="recipe-img" 
+                             onerror="this.src='/imagenes/logokeepi.png'" />
+                    </div>
+
                     <div class="card-body">
                         <h3 class="recipe-title">@receta.nombre</h3>
                         
@@ -322,5 +285,28 @@
             </div>
         }
     </div>
-
 </div>
+
+<script>
+    function toggleFavorito(btn, idReceta) {
+        // 1. Efecto visual inmediato (Toggle de la clase CSS)
+        btn.classList.toggle('is-favorite');
+
+        // 2. Llamada al servidor en segundo plano (Fetch)
+        // Esto ejecuta la acción sin recargar la página ni seguir el redirect del controller
+        fetch('@Url.Action("ToggleFavorito", "Recetas")?id=' + idReceta, {
+            method: 'POST'
+        }).then(response => {
+            // Si quieres puedes verificar response.ok
+            // Si el usuario no está logueado, el servidor podría redirigir al login.
+            // En ese caso response.url contendría la url de login.
+            if (response.url.includes("Login")) {
+                window.location.href = response.url; // Redirigir al login si es necesario
+            }
+        }).catch(error => {
+            console.error('Error al marcar favorito:', error);
+            // Si falla, revertimos el cambio visual
+            btn.classList.toggle('is-favorite');
+        });
+    }
+</script>
