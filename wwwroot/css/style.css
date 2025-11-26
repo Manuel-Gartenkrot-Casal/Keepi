@@ -861,6 +861,7 @@ color:#5f5f5f;
   color: #ffffff;
   font-size: 2rem;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 .cambiarHeladera{
@@ -901,7 +902,7 @@ color:#5f5f5f;
 
 .chat-container {
   width: 90%;
-  max-width: 600px;
+  max-width: 900px;
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -934,10 +935,15 @@ color:#5f5f5f;
   background-color: #f5f2de;
   color: #000000;
   margin-left: auto;
-  text-align: right;
+  text-align: right; 
   border-radius: 17px 17px 4px 17px;
-
+  display: block;   /* <--- CAMBIADO */
+  max-width: 70%;
+  width: fit-content;
+  padding: 10px 14px;
+  word-wrap: break-word;
 }
+
 
 .message.bot {
   background-color: #59ad44;
@@ -960,7 +966,7 @@ color:#5f5f5f;
 }
 
 .input-container {
-  background-color: #333;
+  background-color: transparent;
   padding: 15px 20px;
   display: flex;
   gap: 10px;
@@ -979,7 +985,7 @@ color:#5f5f5f;
 
 .input-container input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #4a8d38;
+  box-shadow: 0 0 0 2px #61ba4b;
 }
 
 .input-container button {
@@ -991,6 +997,20 @@ color:#5f5f5f;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.2s;
+}
+.input-container button:last-child{
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgba(255, 44, 44, 0.856);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+.input-container button:last-child:hover{
+  background-color: rgba(216, 25, 25, 0.856);
+
 }
 
 .input-container button:hover {
