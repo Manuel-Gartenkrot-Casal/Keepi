@@ -1,4 +1,5 @@
-﻿using semantic_kernel.Services;
+using semantic_kernel.Services;
+using Keepi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,9 @@ builder.Services.AddHttpContextAccessor();
 
 // Register ChatService
 builder.Services.AddScoped<IChatService, ChatService>();
+
+// NotificacionService
+builder.Services.AddScoped<INotificacionService, NotificacionService>();
 
 var app = builder.Build();
 

@@ -32,31 +32,8 @@
 
     <!-- Notificaciones, lo puse aca -->
 
-    @*/
-    <div class="notificaciones-panel" id="panel">
+    @await Component.InvokeAsync("Notificaciones")
 
-        <button class="cerrar-sidebar" id="btnCerrar">✖</button>
-
-        <h3>Notificaciones</h3>
-
-        <ul>
-            @if (lista != null && lista.Any())
-            {
-                foreach (Notificacion n in lista)
-                {
-                    <li class="notificacion-item">
-                        <p>@n.Mensaje</p>
-                        <small>@n.FechaNotificacion.ToString("dd/MM/yyyy HH:mm")</small>
-                    </li>
-                }
-            }
-            else
-            {
-                <li class="sin-notificaciones">No hay notificaciones</li>
-            }
-        </ul>
-    </div>
-    *@
     <!-- Header -->
     <header>
         <section class="layout">
@@ -88,7 +65,7 @@
         const btnCerrarPanel = document.getElementById('btnCerrarPanel');
         const overlay = document.getElementById('overlay');
 
-        // Abrir menú
+                // Abrir menú
         btnMenu.addEventListener('click', (e) => {
             e.preventDefault();
             menuLateral.classList.add('active');
@@ -119,6 +96,7 @@
 
         //Notis
 
+    if(btnNoti && panel && btnCerrarPanel) {
         btnNoti.addEventListener('click', (e) => {
             e.preventDefault();
             panel.classList.add('active');
@@ -137,6 +115,7 @@
                 overlay.classList.remove('active');
             });
         });
+    }
     </script>
 
     <main role="main">
@@ -153,4 +132,5 @@
 </body>
 
 </html>
+
 
