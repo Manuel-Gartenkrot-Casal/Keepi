@@ -11,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   padding-top: 100px;
+  overflow-x: hidden;
 }
 
 h2,
@@ -18,7 +19,6 @@ p {
   color: #383838;
   display: block;
 }
-
 .index h1 {
   position: absolute;
   z-index: 1;
