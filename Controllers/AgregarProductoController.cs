@@ -105,7 +105,7 @@ namespace Keepi.Controllers
                     foto
                 );
 
-                TempData["Success"] = "¡Producto agregado con éxito! (Modo Test)";
+                TempData["Success"] = "¡Producto agregado con éxito!";
             }
             catch (Exception ex)
             {

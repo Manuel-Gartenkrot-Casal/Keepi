@@ -82,7 +82,6 @@ public class HeladeraController : Controller
             return RedirectToAction("CrearHeladera", "Heladera"); //Si no hay heladera, se crea una o te vas
         }
         List<Heladera> lista = new List<Heladera>();
-        lista = BD.BuscarHeladeraDeUsuario(idUsuario);
         ViewBag.Heladeras = lista;
         return View("Heladeras", "Heladera");
     }

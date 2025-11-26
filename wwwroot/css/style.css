@@ -561,7 +561,7 @@ section h3 {
 }
 
 .Heladera .productoEnHeladera h1::after {
-    content: "Comprado hace X días"; /* Podés reemplazar dinámicamente en el backend */
+    content: "Comprado hace X días"; 
     display: block;
     font-size: 12px;
     font-weight: 400;
@@ -596,11 +596,11 @@ section h3 {
 }
 
 .Heladera .productoEnHeladera span:nth-of-type(1) {
-    background: #4653a2; /* botón “Usar / Abrir” */
+    background: #4653a2; 
 }
 
 .Heladera .productoEnHeladera span:nth-of-type(2) {
-    background: #9da6c2; /* estado: “Estado / Congelado / Alacena” */
+    background: #9da6c2; 
 }
 .mi-heladera-container {
   width: 100%;
@@ -924,8 +924,11 @@ color:#5f5f5f;
   color: #ffffff;
   font-size: 1rem;
   font-weight: bolder;
+  
 }
-
+.buscadorHeladera::placeholder{
+  color: white;
+}
 /*Inicio ChatBot*/
 
 .chat-container {
