@@ -437,7 +437,7 @@
             }
         }
 
-        public static List<Heladera> BuscarHeladeraDeUsuario(string nombreUsuario)
+        public static List<Heladera> BuscarHeladeraDeUsuario(int idUsuario)
         {
             List<Heladera> lista = new List<Heladera>();
             string storedProcedure = "BuscarHeladeras";
@@ -445,7 +445,7 @@
             {
                 lista = connection.Query<Heladera>(
                     storedProcedure,
-                    new { Nombre = nombreUsuario },
+                    new { IDUsuario = idUsuario },
                     commandType: CommandType.StoredProcedure
                 ).ToList();
                 }
