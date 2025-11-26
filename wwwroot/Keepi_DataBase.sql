@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Keepi_DataBase]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Database [Keepi_DataBase]    Script Date: 26/11/2025 14:16:11 ******/
 CREATE DATABASE [Keepi_DataBase]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -79,10 +79,10 @@ ALTER DATABASE [Keepi_DataBase] SET QUERY_STORE = OFF
 GO
 USE [Keepi_DataBase]
 GO
-/****** Object:  User [alumno]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  User [alumno]    Script Date: 26/11/2025 14:16:12 ******/
 CREATE USER [alumno] FOR LOGIN [alumno] WITH DEFAULT_SCHEMA=[dbo]
 GO
-/****** Object:  Table [dbo].[Categoria]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Table [dbo].[Categoria]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ CREATE TABLE [dbo].[Categoria](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Heladera]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Table [dbo].[Heladera]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,7 +113,7 @@ CREATE TABLE [dbo].[Heladera](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Notificacion]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Table [dbo].[Notificacion]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -130,7 +130,7 @@ CREATE TABLE [dbo].[Notificacion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Producto]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Table [dbo].[Producto]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +152,7 @@ CREATE TABLE [dbo].[Producto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductoXHeladera]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Table [dbo].[ProductoXHeladera]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -173,7 +173,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductoXReceta]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Table [dbo].[ProductoXReceta]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -189,7 +189,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Receta]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Table [dbo].[Receta]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -208,7 +208,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -226,7 +226,7 @@ CREATE TABLE [dbo].[Usuario](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UsuarioXHeladera]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  Table [dbo].[UsuarioXHeladera]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -321,36 +321,55 @@ SET IDENTITY_INSERT [dbo].[ProductoXReceta] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Receta] ON 
 
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (1, N'Ensalada César', 0, 15, NULL, NULL, N'Paso 1: Hervir dos huevos en una olla pequeña durante 10 minutos.
-Paso 2: Mientras los huevos se cocinan, lavar y cortar la lechuga, el tomate y la cebolla.
-Paso 3: Abrir la lata de atún y escurrir el aceite o el agua.
-Paso 4: Una vez cocidos los huevos, enfriarlos, pelarlos y cortarlos en cuartos.
-Paso 5: Colocar todos los ingredientes en un bol grande, mezclar y condimentar con sal, aceite y vinagre a gusto.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (2, N'Milanesas con puré', 1, 40, NULL, NULL, N'Paso 1: Precalentar el horno a 180°C.
-Paso 2: Estirar la masa de tarta (pascualina) en una fuente para horno previamente aceitada.
-Paso 3: En una sartén, dorar la cebolla y el morrón picados. Agregar el pollo (previamente hervido y desmenuzado) y cocinar por 5 minutos.
-Paso 4: En un bol, mezclar el sofrito de pollo con 2 huevos batidos y 3 cucharadas de queso crema. Condimentar con sal, pimienta y orégano.
-Paso 5: Volcar el relleno sobre la masa en la fuente.
-Paso 6: (Opcional) Tapar con la otra masa de tarta y hacer un repulgue.
-Paso 7: Hornear durante 30-40 minutos o hasta que la masa esté dorada.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (3, N'Smoothie de frutas', 0, 10, NULL, NULL, N'Paso 1: Pelar las papas, cortarlas en cubos y ponerlas a hervir en una olla con agua y sal.
-Paso 2: Mientras hierven las papas, preparar las milanesas. Batir 2 huevos con ajo picado, perejil, sal y pimienta.
-Paso 3: Pasar cada bife de carne primero por el huevo batido y luego por el pan rallado, presionando bien para que se adhiera.
-Paso 4: Freír las milanesas en aceite caliente o cocinarlas en una placa para horno hasta que estén doradas de ambos lados.
-Paso 5: Cuando las papas estén tiernas (pincharlas con un tenedor), colarlas. Pisarlas con un pisapapas, agregar una cucharada de manteca, un chorrito de leche caliente y sal. Batir hasta que quede cremoso.
-Paso 6: Servir una milanesa con una porción de puré. ¡Ideal con un chorrito de limón sobre la milanesa!')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (4, N'Tarta de jamón y queso', 0, 35, NULL, NULL, N'Paso 1: Poner a hervir abundante agua con sal en una olla grande para los fideos.
-Paso 2: Para la salsa, picar y rehogar la cebolla y el ajo en una sartén grande con un chorrito de aceite de oliva.
-Paso 3: Agregar la carne picada a la sartén y cocinar, revolviendo para separarla, hasta que cambie de color y se dore.
-Paso 4: Incorporar la lata de tomate triturado. Condimentar con sal, pimienta y orégano. Bajar el fuego y dejar cocinar la salsa tapada durante al menos 20 minutos.
-Paso 5: Cuando el agua hierva, echar los fideos y cocinar según el tiempo indicado en el paquete (generalmente 8-10 minutos).
-Paso 6: Colar los fideos, servirlos en un plato y cubrir generosamente con la salsa bolognesa. Opcional: agregar queso rallado por encima.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (5, N'Pollo al horno', 0, 60, NULL, NULL, NULL)
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (6, N'Pizza casera', 1, 45, NULL, NULL, NULL)
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (7, N'Empanadas de carne', 0, 50, NULL, NULL, NULL)
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (8, N'Flan con dulce de leche', 0, 70, NULL, NULL, NULL)
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (9, N'Ensalada de frutas', 1, 10, NULL, NULL, NULL)
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (10, N'Sándwich de pollo', 0, 20, NULL, NULL, NULL)
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (1, N'Ensalada César', 0, 15, 0, 2, N'Paso 1: Hervir dos huevos durante 10 minutos.
+Paso 2: Lavar y cortar la lechuga, el tomate y la cebolla.
+Paso 3: Abrir la lata de atún y escurrir.
+Paso 4: Pelar los huevos y cortarlos en cuartos.
+Paso 5: Mezclar todo en un bol y condimentar con sal, aceite, vinagre y salsa César a gusto.')
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (2, N'Milanesas con puré', 1, 40, 0, 4, N'Paso 1: Pelar papas, cortar en cubos y hervir con sal.
+Paso 2: Pasar los bifes de carne por huevo batido (con ajo y perejil) y luego por pan rallado.
+Paso 3: Freír las milanesas en aceite caliente o al horno hasta dorar.
+Paso 4: Colar las papas, agregar manteca y leche, y pisar hasta hacer puré.
+Paso 5: Servir las milanesas acompañadas del puré.')
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (3, N'Smoothie de frutas', 0, 10, 0, 2, N'Paso 1: Lavar bien las frutas elegidas (frutillas, bananas, duraznos).
+Paso 2: Cortarlas en trozos y colocarlas en la licuadora.
+Paso 3: Agregar leche, yogur o agua y hielo a gusto.
+Paso 4: Licuar hasta obtener una mezcla cremosa y homogénea.
+Paso 5: Servir inmediatamente en vaso alto.')
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (4, N'Tarta de jamón y queso', 0, 35, 0, 6, N'Paso 1: Forrar una tartera aceitada con una de las tapas de masa.
+Paso 2: Cortar el jamón y el queso en cubos o fetas.
+Paso 3: En un bol, batir 3 huevos con un poco de crema o queso crema, sal y pimienta.
+Paso 4: Mezclar el jamón y queso con el ligue de huevos y volcar sobre la masa.
+Paso 5: Hornear a 180°C durante 30 minutos o hasta que la masa esté dorada y el relleno firme.')
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (5, N'Pollo al horno', 0, 60, 0, 4, N'Paso 1: Lavar el pollo y colocarlo en una asadera.
+Paso 2: Pelar papas, batatas y cebollas, cortarlas en trozos grandes y rodear el pollo.
+Paso 3: Rociar todo con aceite, jugo de limón y condimentar con sal, orégano y provenzal.
+Paso 4: Llevar a horno medio/fuerte durante 60 a 90 minutos.
+Paso 5: Retirar cuando el pollo esté dorado y los jugos salgan claros.')
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (6, N'Pizza casera', 1, 45, 0, 3, N'Paso 1: Estirar el bollo de masa en una pizzera previamente aceitada.
+Paso 2: Cubrir con salsa de tomate condimentada.
+Paso 3: Llevar a horno fuerte 10 minutos (pre-pizza).
+Paso 4: Retirar, agregar abundante muzzarella y aceitunas.
+Paso 5: Volver al horno hasta que el queso se derrita y gratine.')
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (7, N'Empanadas de carne', 0, 50, 0, 12, N'Paso 1: Saltear cebolla y morrón picados en grasa o aceite.
+Paso 2: Agregar carne picada, sal, comino y pimentón. Cocinar hasta que la carne cambie de color.
+Paso 3: Retirar del fuego, agregar huevo duro picado y cebolla de verdeo. Enfriar el relleno.
+Paso 4: Rellenar los discos de empanada y hacer el repulgue.
+Paso 5: Hornear a fuego fuerte o freír en grasa hasta que la masa esté dorada.')
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (8, N'Flan con dulce de leche', 0, 70, 0, 8, N'Paso 1: Hacer un caramelo con azúcar en la flanera y dejar enfriar.
+Paso 2: En un bol, mezclar suavemente 5 huevos, 500cc de leche y 100g de azúcar (sin hacer espuma). Agrega vainilla.
+Paso 3: Verter la mezcla en la flanera acaramelada.
+Paso 4: Cocinar a baño maría en el horno (160°C) por aprox. 50-60 minutos.
+Paso 5: Dejar enfriar bien en heladera antes de desmoldar. Servir con dulce de leche.')
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (9, N'Ensalada de frutas', 1, 10, 0, 4, N'Paso 1: Lavar bien y pelar las frutas (naranja, manzana, banana, pera, durazno).
+Paso 2: Cortar todas las frutas en cubos pequeños del mismo tamaño.
+Paso 3: Colocar en un bol grande y agregar jugo de naranja natural y azúcar a gusto.
+Paso 4: Mezclar bien y dejar reposar en la heladera al menos 1 hora para que suelten sus jugos.')
+INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (10, N'Sándwich de pollo', 0, 20, 0, 1, N'Paso 1: Tostar ligeramente dos rebanadas de pan.
+Paso 2: Untar ambas partes con mayonesa o queso crema.
+Paso 3: Colocar hojas de lechuga fresca y rodajas de tomate.
+Paso 4: Agregar pechuga de pollo cocida (puede ser desmenuzada o en fetas) y una feta de queso.
+Paso 5: Cerrar el sándwich, cortar al medio y disfrutar.')
 SET IDENTITY_INSERT [dbo].[Receta] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Usuario] ON 
@@ -451,7 +470,7 @@ ALTER TABLE [dbo].[ProductoXHeladera]  WITH CHECK ADD  CONSTRAINT [CK_ProductoXH
 GO
 ALTER TABLE [dbo].[ProductoXHeladera] CHECK CONSTRAINT [CK_ProductoXHeladera_Estado]
 GO
-/****** Object:  StoredProcedure [dbo].[BuscarHeladeraDeUsuario]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[BuscarHeladeraDeUsuario]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -466,7 +485,7 @@ BEGIN
 	WHERE u.Id = @IDUsuario;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[buscarProducto]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[buscarProducto]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -495,7 +514,7 @@ IF EXISTS (SELECT 1 FROM Producto WHERE Nombre = @Nombre)
     END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[CalcularFPromedioBase]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[CalcularFPromedioBase]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -530,7 +549,7 @@ BEGIN
     SELECT @f_promedio_base AS f_promedio_base;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[CambiarEstadoProducto]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[CambiarEstadoProducto]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -571,7 +590,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[crearHeladera]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[crearHeladera]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -607,7 +626,7 @@ ROLLBACK TRANSACTION
 END CATCH
 end
 GO
-/****** Object:  StoredProcedure [dbo].[crearUsuario]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[crearUsuario]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -629,7 +648,7 @@ select '1'
 end
 end
 GO
-/****** Object:  StoredProcedure [dbo].[eliminarHeladera]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[eliminarHeladera]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -661,7 +680,7 @@ print @resultado
 END CATCH
 end
 GO
-/****** Object:  StoredProcedure [dbo].[eliminarProductoHeladera]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[eliminarProductoHeladera]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -693,7 +712,7 @@ print @resultado
 end catch
 end
 GO
-/****** Object:  StoredProcedure [dbo].[getProductosByNombreHeladeraAndIdUsuario]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[getProductosByNombreHeladeraAndIdUsuario]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -724,7 +743,7 @@ BEGIN
         AND (PH.Eliminado = 0 OR PH.Eliminado IS NULL)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SeleccionarHeladeraByNombre]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[SeleccionarHeladeraByNombre]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -739,7 +758,7 @@ inner join UsuarioXHeladera UxH on UxH.IdHeladera = H.Id
 where UxH.IdUsuario = @IdUsuario and H.Nombre = @Nombre
 end
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AgregarProductoXHeladera]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AgregarProductoXHeladera]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -780,7 +799,7 @@ BEGIN
            );
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetAllProductos]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetAllProductos]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -804,7 +823,7 @@ BEGIN
      
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetHeladeraByUsuarioId]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetHeladeraByUsuarioId]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -834,7 +853,7 @@ BEGIN
         UXH.IdUsuario = @IdUsuario;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetProductosByHeladeraId]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetProductosByHeladeraId]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -857,7 +876,7 @@ BEGIN
         AND PXH.Eliminado = 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetProductosByRecetaId]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetProductosByRecetaId]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -885,7 +904,7 @@ BEGIN
         PXR.IdReceta = @IdReceta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetRecetaById]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetRecetaById]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -912,7 +931,7 @@ BEGIN
         ID = @IdReceta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetRecetas]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetRecetas]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -939,7 +958,7 @@ BEGIN
         Receta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_IncrementarPopularidadReceta]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[sp_IncrementarPopularidadReceta]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -949,7 +968,7 @@ GO
 -- 7. Incrementa la popularidad de una receta
 -- Usado en: RecetasController -> FinalizarReceta(id)
 -- =============================================
-CREATE PROCEDURE [dbo].[sp_IncrementarPopularidadReceta]
+ CREATE PROCEDURE [dbo].[sp_IncrementarPopularidadReceta]
     @IdReceta INT
 AS
 BEGIN
@@ -957,12 +976,13 @@ BEGIN
     
     UPDATE Receta
     SET 
-        Popularidad = Popularidad + 1
+        -- Si Popularidad es NULL, lo trata como 0 y le suma 1
+        Popularidad = ISNULL(Popularidad, 0) + 1
     WHERE 
         ID = @IdReceta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ToggleFavoritoReceta]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ToggleFavoritoReceta]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -980,7 +1000,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[TeoremaHevia]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[TeoremaHevia]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1056,7 +1076,7 @@ BEGIN CATCH
 END CATCH
 END
 GO
-/****** Object:  StoredProcedure [dbo].[traerNombresHeladerasById]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[traerNombresHeladerasById]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1070,7 +1090,7 @@ inner join UsuarioXHeladera UxH on H.Id = UxH.IdHeladera
 where UxH.IdUsuario = @IdUsuario
 end
 GO
-/****** Object:  StoredProcedure [dbo].[traerNotificacionesNoLeidas]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[traerNotificacionesNoLeidas]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1087,7 +1107,7 @@ BEGIN
     WHERE N.Leida = 0;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[verificarUsuario]    Script Date: 26/11/2025 09:00:10 ******/
+/****** Object:  StoredProcedure [dbo].[verificarUsuario]    Script Date: 26/11/2025 14:16:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
