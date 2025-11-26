@@ -16,19 +16,79 @@ namespace KeepiProg.Controllers
           return HttpContext.Session.GetInt32("IdUsuario");
         }
 
-        public IActionResult Index()
+public IActionResult Index(string busqueda, string filtro)
+{
+    int? idUsuario = GetCurrentUserId();
+    if (idUsuario == null)
+    {
+        return RedirectToAction("Login", "Auth");
+    }
+
+    // 1. Obtener la lista base de recetas
+    List<Receta> recetas;
+
+    if (filtro == "Sugeridas")
+    {
+        // --- LÓGICA DE SUGERIR RECETAS INTEGRADA ---
+        Heladera heladera = BD.GetHeladeraByUsuarioId(idUsuario.Value);
+        
+        if (heladera == null)
         {
-            if (GetCurrentUserId() == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-
-            ViewBag.ListaRecetas = BD.GetAllRecetas();
-            
-
-            return View("~/Views/Home/Recetas.cshtml");
+            recetas = new List<Receta>(); // No tiene heladera, no hay sugerencias
         }
+        else
+        {
+            List<Producto> productosEnHeladera = BD.GetProductosByHeladeraId(heladera.ID);
+            HashSet<int> idsProductosEnHeladera = new HashSet<int>(productosEnHeladera.Select(p => p.ID));
+            List<Receta> todas = BD.GetAllRecetas();
+            recetas = new List<Receta>();
 
+            foreach (var r in todas)
+            {
+                List<Producto> productosRequeridos = BD.GetProductosByRecetaId(r.ID);
+                // Verifica que la receta tenga ingredientes y que el usuario tenga TODOS
+                if (productosRequeridos.Count > 0 && productosRequeridos.All(pr => idsProductosEnHeladera.Contains(pr.ID)))
+                {
+                    recetas.Add(r);
+                }
+            }
+        }
+    }
+    else
+    {
+        // Traer todas si no se pide sugerencia
+        recetas = BD.GetAllRecetas();
+    }
+
+    // 2. Aplicar Buscador (si escribieron algo)
+    if (!string.IsNullOrEmpty(busqueda))
+    {
+        recetas = recetas.Where(r => r.nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+    }
+
+    // 3. Aplicar Ordenamiento (Popularidad o Alfabético)
+    switch (filtro)
+    {
+        case "Popularidad":
+            recetas = recetas.OrderByDescending(r => r.Popularidad).ToList();
+            break;
+        case "Alfabeticamente":
+            recetas = recetas.OrderBy(r => r.nombre).ToList();
+            break;
+        // Si es "Sugeridas", ya filtramos, pero podemos ordenarlas por nombre por defecto
+        default: 
+            if (filtro != "Sugeridas") 
+                recetas = recetas.OrderBy(r => r.nombre).ToList(); 
+            break;
+    }
+
+    // Guardamos los valores para mantenerlos en la vista
+    ViewBag.CurrentFilter = filtro;
+    ViewBag.CurrentSearch = busqueda;
+    ViewBag.ListaRecetas = recetas;
+
+    return View("~/Views/Home/Recetas.cshtml");
+}
         public IActionResult Detalles(int id)
         {
             if (GetCurrentUserId() == null)

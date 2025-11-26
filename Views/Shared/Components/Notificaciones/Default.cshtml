@@ -1,0 +1,90 @@
+@model List<Notificacion>
+
+<style>
+    /*Notificaciones*/
+
+    .notificaciones-panel {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background: linear-gradient(180deg, #cfd518, #a5aa13);
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+        transition: right 0.3s ease;
+        z-index: 2001;
+        overflow-y: auto;
+    }
+
+    .notificaciones-panel.active {
+        right: 0;
+    }
+
+    .panel-notis-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 20px;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .panel-notis-header h2 {
+        color: white;
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .cerrar-sidebar {
+        background: transparent;
+        border: none !important;
+        color: white;
+        font-size: 32px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .cerrar-sidebar:hover {
+        transform: rotate(90deg);
+    }
+
+    .notificaciones-panel ul {
+        padding: 20px 0;
+        border: none !important;
+    }
+
+    .notificaciones-panel ul li {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: all 0.2s ease;
+        border-left: 4px solid transparent !important;
+    }
+</style>
+
+<div class="notificaciones-panel" id="panel">
+
+    <div class="panel-notis-header">
+        <h2>Notificaciones</h2>
+        <button class="cerrar-sidebar" id="btnCerrarPanel">×</button>
+    </div>
+    <ul>
+        @if (Model != null && Model.Any())
+        {
+            foreach (Notificacion n in Model)
+            {
+                <li class="notificacion-item">
+                    <p>@n.Mensaje</p>
+                    <small>@n.FechaNotificacion.ToString("dd/MM/yyyy HH:mm")</small>
+                </li>
+            }
+        }
+        else
+        {
+            <li class="sin-notificaciones">No hay notificaciones</li>
+        }
+    </ul>
+</div>
+

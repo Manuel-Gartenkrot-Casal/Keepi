@@ -1,162 +1,326 @@
+@using KeepiProg.Models
 @model Receta 
 @{
     ViewData["Title"] = "Menú de Recetas";
     var listaRecetas = ViewBag.ListaRecetas as List<Receta>;
+    var filtroActual = ViewBag.CurrentFilter as string;
+    var busquedaActual = ViewBag.CurrentSearch as string;
+
+    // Colores
+    var brandGreen = "#28a745"; 
+    var btnBlue = "#455CBA";    
 }
 
 <style>
-    /* Contenedor principal de la página */
+    /* --- CONFIGURACIÓN GENERAL --- */
     .recipe-container {
         max-width: 1200px;
-        margin: 0 auto; /* Centra el contenido */
-        padding: 20px;
-        font-family: Arial, sans-serif;
+        margin: 0 auto;
+        padding: 40px 20px;
+        /* Tipografía más minimalista y moderna */
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #444; /* Un gris oscuro es más suave que el negro puro */
+        font-weight: 300; /* Letra más fina */
     }
 
-    /* Encabezado con el título y el botón */
-    .recipe-header {
+    /* --- BARRA SUPERIOR (BUSCADOR Y FILTROS) --- */
+    .top-bar {
         display: flex;
-        justify-content: space-between; /* Título a la izq, botón a la der */
+        flex-direction: column;
+        gap: 25px;
+        margin-bottom: 50px;
         align-items: center;
-        margin-bottom: 25px;
-        flex-wrap: wrap; /* Para celulares */
     }
 
-    .recipe-header h2 {
-        margin: 0 15px 10px 0; /* Espacio para que no se pegue al botón en celulares */
+    @@media (min-width: 992px) {
+        .top-bar {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
 
-    /* La grilla de tarjetas responsiva */
-    .recipe-grid {
-        display: grid;
-        /* Magia responsiva:
-           Crea columnas que tengan un mínimo de 280px.
-           En celulares (ej: 360px), solo cabe 1.
-           En tablets (ej: 700px), caben 2.
-           En desktops (ej: 1000px), caben 3.
-           'auto-fill' crea tantas como quepan.
-        */
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px; /* Espacio entre tarjetas */
+    /* ESTILO BUSCADOR */
+    .search-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
     }
 
-    /* Estilo de cada tarjeta */
-    .recipe-card {
-        background-color: #ffffff;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        display: flex;
-        flex-direction: column; /* Organiza el contenido verticalmente */
-        height: 100%; /* Ocupa toda la altura de la celda de la grilla */
-        overflow: hidden; /* Para que el borde redondeado funcione */
-    }
-
-    .recipe-card-content {
-        padding: 20px;
-        flex-grow: 1; /* Hace que esta sección crezca y ocupe el espacio */
-    }
-
-    .recipe-card-content h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-top: 0;
-        margin-bottom: 15px;
-        color: #333;
-    }
-
-    .recipe-info {
-        display: flex;
-        justify-content: space-between; /* Duración a la izq, Raciones a la der */
+    .search-input {
+        width: 100%;
+        padding: 10px 20px;
+        padding-right: 50px;
+        border: 1px solid @brandGreen; /* Borde más fino */
+        border-radius: 50px;
         font-size: 0.95rem;
-        color: #555;
+        outline: none;
+        transition: all 0.3s ease;
+        background-color: #fff;
     }
 
-    .recipe-info span {
-        font-weight: 500;
+    .search-input:focus {
+        box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+        border-color: @brandGreen;
     }
 
-
-    .btn {
-        display: inline-block;
-        padding: 10px 15px;
-        font-size: 1rem;
-        font-weight: 600;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-        cursor: pointer;
+    .search-btn {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: @brandGreen;
+        color: white;
         border: none;
-    }
-
-    .btn-info {
-        background-color: #0dcaf0;
-        color: #000;
-    }
-
-    .btn-primary {
-        background-color: #0d6efd;
-        color: #fff;
+        width: 32px; /* Lupa un poco más chica */
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s;
     }
     
-    .btn-primary-full {
-        display: block; /* Ocupa todo el ancho */
-        padding: 12px;
-        background-color: #0d6efd;
-        color: #fff;
-        text-align: center;
-        text-decoration: none;
-        font-weight: 600;
-        border-top: 1px solid #e0e0e0;
-        transition: background-color 0.2s;
+    .search-btn:hover {
+        background-color: #218838;
     }
 
-    .btn-primary-full:hover {
-        background-color: #0b5ed7;
+    /* ESTILO BOTONES FILTRO (PILLS) */
+    .filter-pills {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-pill {
+        padding: 8px 20px; /* Más sutil */
+        border-radius: 50px;
+        border: 1px solid @brandGreen; /* Borde fino */
+        background-color: transparent;
+        color: @brandGreen;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        cursor: pointer;
+    }
+
+    .btn-pill:hover {
+        background-color: rgba(40, 167, 69, 0.05);
+    }
+
+    .btn-pill.active {
+        background-color: @brandGreen;
+        color: white;
+        box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+    }
+
+    /* --- GRILLA DE TARJETAS --- */
+    .recipe-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+    }
+
+    /* TARJETA INDIVIDUAL */
+    .recipe-card {
+        background: white;
+        border: 1px solid @brandGreen; /* Borde más fino para minimalismo */
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        position: relative;
+    }
+
+    .recipe-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .card-body {
+        padding: 25px 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .recipe-title {
+        font-size: 1.35rem; /* Título un poco más refinado */
+        font-weight: 600;
+        margin: 0 0 20px 0;
+        color: #222;
+        letter-spacing: -0.5px; /* Tracking moderno */
+        line-height: 1.2;
+    }
+
+    /* DATOS (TIEMPO, RACIONES, POPULARIDAD) */
+    .recipe-stats {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #666;
+    }
+
+    .stat-icon {
+        color: @brandGreen;
+        font-size: 1.1rem;
+    }
+
+    .stat-pop {
+        color: #e0a800;
+    }
+
+    /* BOTÓN PREPARAR - DISEÑO MÁS PEQUEÑO */
+    .card-footer-action {
+        margin-top: auto;
+        display: flex;
+        justify-content: center; /* Centramos el botón */
+    }
+
+    .btn-preparar {
+        display: inline-block; /* Ya no ocupa todo el ancho */
+        padding: 8px 24px;     /* Relleno más chico */
+        background-color: @btnBlue;
+        color: white;
+        font-weight: 600;
+        font-size: 0.85rem;    /* Letra más chica */
+        border-radius: 50px;   /* Muy redondeado (Pill shape) */
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 5px rgba(69, 92, 186, 0.2);
+    }
+
+    .btn-preparar:hover {
+        background-color: #324390;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(69, 92, 186, 0.3);
+        color: white;
+    }
+
+    /* Mensajes de "Vacío" */
+    .empty-state {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 60px 20px;
+        background-color: #fcfdfc;
+        border: 1px dashed @brandGreen;
+        border-radius: 20px;
+        color: #666;
+    }
+    
+    .empty-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        display: block;
+        opacity: 0.7;
     }
 
 </style>
 
 <div class="recipe-container">
-    <div class="recipe-header">
-        <h2>@ViewData["Title"]</h2>
-        <div>
-            <a href="@Url.Action("SugerirRecetas", "Recetas")" class="btn btn-info">
-                Sugerir Recetas
+    
+    <div class="top-bar">
+        
+        <form method="get" action="@Url.Action("Index", "Recetas")" class="search-wrapper">
+            <input type="text" name="busqueda" class="search-input" 
+                   placeholder="Buscar recetas..." value="@busquedaActual">
+            <input type="hidden" name="filtro" value="@filtroActual" />
+            
+            <button type="submit" class="search-btn" title="Buscar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+        </form>
+
+        <div class="filter-pills">
+            <a href="@Url.Action("Index", new { filtro = "Alfabeticamente", busqueda = busquedaActual })" 
+               class="btn-pill @(string.IsNullOrEmpty(filtroActual) || filtroActual == "Alfabeticamente" ? "active" : "")">
+               A-Z
+            </a>
+
+            <a href="@Url.Action("Index", new { filtro = "Popularidad", busqueda = busquedaActual })" 
+               class="btn-pill @(filtroActual == "Popularidad" ? "active" : "")">
+               Popularidad
+            </a>
+
+            <a href="@Url.Action("Index", new { filtro = "Sugeridas", busqueda = busquedaActual })" 
+               class="btn-pill @(filtroActual == "Sugeridas" ? "active" : "")">
+               Sugeridas 🍳
             </a>
         </div>
     </div>
 
-    @if (listaRecetas != null && listaRecetas.Any())
-    {
-        <div class="recipe-grid">
-            @foreach (var receta in listaRecetas)
+    <div class="recipe-grid">
+        @if (listaRecetas != null && listaRecetas.Any())
+        {
+            foreach (var receta in listaRecetas)
             {
                 <div class="recipe-card">
-                    <div class="recipe-card-content">
-                        <h3>@receta.nombre</h3>
+                    <div class="card-body">
+                        <h3 class="recipe-title">@receta.nombre</h3>
                         
-                        <div class="recipe-info">
-                            <span>
-                                <strong>Duración:</strong> @receta.duracion min
-                            </span>
-                            <span>
-                                <strong>Raciones:</strong> @receta.Raciones
-                            </span>
+                        <div class="recipe-stats">
+                            <div class="stat-item" title="Duración">
+                                <span class="stat-icon">⏱</span> @receta.duracion min
+                            </div>
+                            
+                            <div class="stat-item" title="Raciones">
+                                <span class="stat-icon">🍽</span> @receta.Raciones
+                            </div>
+
+                            @if(receta.Popularidad > 0)
+                            {
+                                <div class="stat-item" title="Popularidad">
+                                    <span class="stat-icon stat-pop">★</span> @receta.Popularidad
+                                </div>
+                            }
+                        </div>
+
+                        <div class="card-footer-action">
+                            <a href="@Url.Action("Detalles", "Recetas", new { id = receta.ID })" class="btn-preparar">
+                                Preparar
+                            </a>
                         </div>
                     </div>
-                    
-                    <a href="@Url.Action("Detalles", "Recetas", new { id = receta.ID })" class="btn-primary-full">
-                        Ver Receta
-                    </a>
                 </div>
             }
-        </div>
-    }
-    else
-    {
-        <div style="padding: 20px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px;">
-            No hay recetas cargadas en la base de datos.
-        </div>
-    }
+        }
+        else
+        {
+            <div class="empty-state">
+                <span class="empty-icon">🍃</span>
+                @if(filtroActual == "Sugeridas")
+                {
+                    <h3>¡Ups! Faltan ingredientes</h3>
+                    <p style="font-size:0.9rem;">Agrega más productos a tu heladera para ver sugerencias.</p>
+                }
+                else
+                {
+                    <h3>No encontramos recetas</h3>
+                    <p style="font-size:0.9rem;">Prueba con otra búsqueda o filtro.</p>
+                }
+                <a href="@Url.Action("Index")" style="color:#28a745; font-weight:600; font-size:0.9rem; display:inline-block; margin-top:10px;">Ver todo</a>
+            </div>
+        }
+    </div>
+
 </div>
