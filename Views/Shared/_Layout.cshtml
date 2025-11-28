@@ -123,7 +123,22 @@
     <footer>
         <p>© 2025 Keepi — Don't Waste It, Keepi.</p>
     </footer>
+<div id="chat-widget" class="chat-widget">
+        <div class="chat-widget-header">
+            <span>💬 Mr. Keep</span>
+            <button id="close-chat-widget">×</button>
+        </div>
+        <div id="chat-widget-messages" class="chat-widget-messages">
+            </div>
+        <div class="chat-widget-input-area">
+            <input type="text" id="chat-widget-input" placeholder="Escribe tu mensaje..." maxlength="1000">
+            <button id="chat-widget-send">➤</button>
+        </div>
+    </div>
 
+    <button id="chat-fab" class="chat-fab">
+        💬
+    </button>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

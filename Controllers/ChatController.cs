@@ -28,6 +28,13 @@ namespace semantic_kernel.Controllers
     return View(chatHistory);
 }
 
+        [HttpGet]
+        public IActionResult GetHistory()
+        {
+            var history = GetChatHistory(null);
+            return Json(new { success = true, history = history });
+        }
+
 
 
         // Aceptamos el JSON del body explícitamente para requests AJAX
