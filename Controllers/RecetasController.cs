@@ -29,12 +29,11 @@ public IActionResult Index(string busqueda, string filtro)
 
     if (filtro == "Sugeridas")
     {
-        // --- LÓGICA DE SUGERIR RECETAS INTEGRADA ---
         Heladera heladera = BD.GetHeladeraByUsuarioId(idUsuario.Value);
         
         if (heladera == null)
         {
-            recetas = new List<Receta>(); // No tiene heladera, no hay sugerencias
+            recetas = new List<Receta>(); 
         }
         else
         {
@@ -46,7 +45,6 @@ public IActionResult Index(string busqueda, string filtro)
             foreach (var r in todas)
             {
                 List<Producto> productosRequeridos = BD.GetProductosByRecetaId(r.ID);
-                // Verifica que la receta tenga ingredientes y que el usuario tenga TODOS
                 if (productosRequeridos.Count > 0 && productosRequeridos.All(pr => idsProductosEnHeladera.Contains(pr.ID)))
                 {
                     recetas.Add(r);
@@ -54,9 +52,16 @@ public IActionResult Index(string busqueda, string filtro)
             }
         }
     }
+    // --- AQUÍ ES DONDE AGREGAS EL NUEVO FILTRO ---
+    else if (filtro == "Favoritos")
+    {
+        // Trae todas y filtra solo las que tienen favorito en true
+        recetas = BD.GetAllRecetas().Where(r => r.favorito).ToList();
+    }
+    // ---------------------------------------------
     else
     {
-        // Traer todas si no se pide sugerencia
+        // Traer todas si no se pide sugerencia ni favoritos
         recetas = BD.GetAllRecetas();
     }
 
@@ -66,7 +71,7 @@ public IActionResult Index(string busqueda, string filtro)
         recetas = recetas.Where(r => r.nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
     }
 
-    // 3. Aplicar Ordenamiento (Popularidad o Alfabético)
+    // 3. Aplicar Ordenamiento
     switch (filtro)
     {
         case "Popularidad":
@@ -75,14 +80,12 @@ public IActionResult Index(string busqueda, string filtro)
         case "Alfabeticamente":
             recetas = recetas.OrderBy(r => r.nombre).ToList();
             break;
-        // Si es "Sugeridas", ya filtramos, pero podemos ordenarlas por nombre por defecto
         default: 
             if (filtro != "Sugeridas") 
                 recetas = recetas.OrderBy(r => r.nombre).ToList(); 
             break;
     }
 
-    // Guardamos los valores para mantenerlos en la vista
     ViewBag.CurrentFilter = filtro;
     ViewBag.CurrentSearch = busqueda;
     ViewBag.ListaRecetas = recetas;
