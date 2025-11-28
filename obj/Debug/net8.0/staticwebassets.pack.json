@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\FondoHeladera.png",
+      "PackagePath": "staticwebassets\\imagenes\\FondoHeladera.png"
+    },
+    {
+      "Id": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Lupa.png",
+      "PackagePath": "staticwebassets\\imagenes\\Lupa.png"
+    },
+    {
       "Id": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\Notis.png",
       "PackagePath": "staticwebassets\\imagenes\\Notis.png"
     },
