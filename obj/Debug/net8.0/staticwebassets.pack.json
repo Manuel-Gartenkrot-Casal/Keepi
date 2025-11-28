@@ -69,8 +69,16 @@
       "PackagePath": "staticwebassets\\imagenes\\Productos\\yogur.webp"
     },
     {
+      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\apple.svg",
+      "PackagePath": "staticwebassets\\imagenes\\apple.svg"
+    },
+    {
       "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\fotodeperfil.webp",
       "PackagePath": "staticwebassets\\imagenes\\fotodeperfil.webp"
+    },
+    {
+      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\google.webp",
+      "PackagePath": "staticwebassets\\imagenes\\google.webp"
     },
     {
       "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\heladera.png",
@@ -79,6 +87,10 @@
     {
       "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\logokeepi.png",
       "PackagePath": "staticwebassets\\imagenes\\logokeepi.png"
+    },
+    {
+      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\microsoft.png",
+      "PackagePath": "staticwebassets\\imagenes\\microsoft.png"
     },
     {
       "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\js\\site.js",

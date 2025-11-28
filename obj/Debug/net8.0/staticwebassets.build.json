@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DwkBjgmGXDBeybDFuxxJqwGXvNhM1oYEfjKQhSDxNTI=",
+  "Hash": "GCf2q3xFdKlHZL9fjOpz3Ex2+1icucbes57B3S5y/Gc=",
   "Source": "KeepiProg",
   "BasePath": "_content/KeepiProg",
   "Mode": "Default",
@@ -55,6 +55,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\apple.svg",
+      "SourceId": "KeepiProg",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\",
+      "BasePath": "_content/KeepiProg",
+      "RelativePath": "imagenes/apple.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\apple.svg"
+    },
+    {
       "Identity": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\FondoHeladera.png",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
@@ -91,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imagenes\\fotodeperfil.webp"
+    },
+    {
+      "Identity": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\google.webp",
+      "SourceId": "KeepiProg",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\",
+      "BasePath": "_content/KeepiProg",
+      "RelativePath": "imagenes/google.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\google.webp"
     },
     {
       "Identity": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\heladera.png",
@@ -148,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imagenes\\Lupa.png"
+    },
+    {
+      "Identity": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\microsoft.png",
+      "SourceId": "KeepiProg",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\",
+      "BasePath": "_content/KeepiProg",
+      "RelativePath": "imagenes/microsoft.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\microsoft.png"
     },
     {
       "Identity": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Notis.png",

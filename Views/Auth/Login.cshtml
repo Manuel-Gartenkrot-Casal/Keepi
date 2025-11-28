@@ -57,8 +57,28 @@
     <button type="submit" class="btn btn-success">Crear cuenta</button>
     <button type="button" id="backBtn" class="btn btn-link">Volver a iniciar sesión</button>
 </form>
+<div class="social-login">
+    <p>O continua con:</p>
 
-</section>
+    <div class="social-buttons">
+
+        <button onclick="location.href='https://www.google.com'">
+            <img src="~/imagenes/google.webp" alt="Google">
+        </button>
+
+        <button onclick="location.href='https://www.microsoft.com'">
+            <img src="~/imagenes/microsoft.png" alt="Microsoft">
+        </button>
+
+        <button onclick="location.href='https://www.apple.com'">
+            <img src="~/imagenes/apple.svg" alt="Apple">
+        </button>
+
+    </div>
+</div>
+
+
+</section>  
 </div>
 
 
@@ -98,3 +118,72 @@
         })();
     </script>
 }
+<style>
+/* CONTENEDOR */
+.social-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-login p {
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+/* BOTONES */
+.social-buttons button {
+    background: none;
+    border: none;
+    margin: 0 8px;
+    padding: 0;
+    cursor: pointer;
+
+    /* ELIMINAR TODAS LAS TRANSICIONES Y ANIMACIONES */
+    transition: none !important;
+    animation: none !important;
+
+    /* EVITAR EFECTOS AL CLICKEAR */
+    outline: none !important;
+    box-shadow: none !important;
+
+    /* QUITAR EL FLASH AZUL EN CELULARES */
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+/* IMÁGENES */
+.social-buttons img {
+    width: 42px;
+    height: 42px;
+
+    /* ELIMINAR TODAS LAS ANIMACIONES */
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+
+/* DESACTIVAR HOVER, FOCUS Y ACTIVE POR COMPLETO */
+.social-buttons button:hover,
+.social-buttons button:focus,
+.social-buttons button:active,
+.social-buttons img:hover,
+.social-buttons img:focus,
+.social-buttons img:active {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* QUITAR CUALQUIER ANIMACIÓN GLOBAL DE LA PÁGINA */
+* {
+    animation: none !important;
+    transition: none !important;
+}
+
+
+
+
+
+</style>
