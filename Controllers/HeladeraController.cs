@@ -83,7 +83,7 @@ public class HeladeraController : Controller
         }
         List<Heladera> lista = new List<Heladera>();
         ViewBag.Heladeras = lista;
-        return View("Heladeras", "Heladera");
+        return View("Heladeras");
     }
 
 
