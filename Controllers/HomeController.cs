@@ -17,10 +17,12 @@ public class HomeController : Controller
     {
         return View();
     }
-        public IActionResult Perfil(){
+ public IActionResult Perfil()
+{
+    string usuarioJson = HttpContext.Session.GetString("usuario");
+    ViewBag.UsuarioJson = usuarioJson;
+    return View();
+}
 
-        return View();
-
-        }
 
 }
