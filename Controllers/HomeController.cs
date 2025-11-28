@@ -17,8 +17,20 @@ public class HomeController : Controller
     {
         return View();
     }
+     private int? GetCurrentUserId()
+
+
+        
+        {
+          return HttpContext.Session.GetInt32("IdUsuario");
+        }
  public IActionResult Perfil()
 {
+    int? idUsuario = GetCurrentUserId();
+    if (idUsuario == null)
+    {
+        return RedirectToAction("Login", "Auth");
+    }
     string usuarioJson = HttpContext.Session.GetString("usuario");
     ViewBag.UsuarioJson = usuarioJson;
     return View();
