@@ -32,7 +32,7 @@ namespace Keepi.Controllers
             
             int idHeladera = heladeraActual.ID; 
 
-            // Validación: Si el ID es inválido, redirigimos a la heladera con error
+
             if (idProducto <= 0)
             {
                 TempData["Error"] = "Por favor, selecciona un producto válido de la lista.";
