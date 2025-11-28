@@ -62,20 +62,22 @@
 
     <div class="social-buttons">
 
-        <button onclick="location.href='https://www.google.com'">
+        <button onclick="window.open('https://accounts.google.com', '_blank')">
             <img src="~/imagenes/google.webp" alt="Google">
         </button>
 
-        <button onclick="location.href='https://www.microsoft.com'">
+        <button onclick="window.open('https://login.microsoftonline.com', '_blank')">
             <img src="~/imagenes/microsoft.png" alt="Microsoft">
         </button>
 
-        <button onclick="location.href='https://www.apple.com'">
-            <img src="~/imagenes/apple.svg" alt="Apple">
-        </button>
+       <button onclick="window.open('https://appleid.apple.com/', '_blank')">
+    <img src="~/imagenes/apple.svg" alt="Apple">
+</button>
+
 
     </div>
 </div>
+
 
 
 </section>  
@@ -119,7 +121,6 @@
     </script>
 }
 <style>
-/* CONTENEDOR */
 .social-login {
     text-align: center;
     margin-top: 20px;
@@ -131,7 +132,6 @@
     color: #666;
 }
 
-/* BOTONES */
 .social-buttons button {
     background: none;
     border: none;
@@ -139,30 +139,24 @@
     padding: 0;
     cursor: pointer;
 
-    /* ELIMINAR TODAS LAS TRANSICIONES Y ANIMACIONES */
     transition: none !important;
     animation: none !important;
 
-    /* EVITAR EFECTOS AL CLICKEAR */
     outline: none !important;
     box-shadow: none !important;
 
-    /* QUITAR EL FLASH AZUL EN CELULARES */
     -webkit-tap-highlight-color: transparent !important;
 }
 
-/* IMÁGENES */
 .social-buttons img {
     width: 42px;
     height: 42px;
 
-    /* ELIMINAR TODAS LAS ANIMACIONES */
     transition: none !important;
     animation: none !important;
     transform: none !important;
 }
 
-/* DESACTIVAR HOVER, FOCUS Y ACTIVE POR COMPLETO */
 .social-buttons button:hover,
 .social-buttons button:focus,
 .social-buttons button:active,
@@ -176,7 +170,6 @@
     box-shadow: none !important;
 }
 
-/* QUITAR CUALQUIER ANIMACIÓN GLOBAL DE LA PÁGINA */
 * {
     animation: none !important;
     transition: none !important;
