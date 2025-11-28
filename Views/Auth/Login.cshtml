@@ -57,8 +57,30 @@
     <button type="submit" class="btn btn-success">Crear cuenta</button>
     <button type="button" id="backBtn" class="btn btn-link">Volver a iniciar sesión</button>
 </form>
+<div class="social-login">
+    <p>O continua con:</p>
 
-</section>
+    <div class="social-buttons">
+
+        <button onclick="window.open('https://accounts.google.com', '_blank')">
+            <img src="~/imagenes/google.webp" alt="Google">
+        </button>
+
+        <button onclick="window.open('https://login.microsoftonline.com', '_blank')">
+            <img src="~/imagenes/microsoft.png" alt="Microsoft">
+        </button>
+
+       <button onclick="window.open('https://appleid.apple.com/', '_blank')">
+    <img src="~/imagenes/apple.svg" alt="Apple">
+</button>
+
+
+    </div>
+</div>
+
+
+
+</section>  
 </div>
 
 
@@ -98,3 +120,63 @@
         })();
     </script>
 }
+<style>
+.social-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-login p {
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.social-buttons button {
+    background: none;
+    border: none;
+    margin: 0 8px;
+    padding: 0;
+    cursor: pointer;
+
+    transition: none !important;
+    animation: none !important;
+
+    outline: none !important;
+    box-shadow: none !important;
+
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.social-buttons img {
+    width: 42px;
+    height: 42px;
+
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+
+.social-buttons button:hover,
+.social-buttons button:focus,
+.social-buttons button:active,
+.social-buttons img:hover,
+.social-buttons img:focus,
+.social-buttons img:active {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+* {
+    animation: none !important;
+    transition: none !important;
+}
+
+
+
+
+
+</style>
