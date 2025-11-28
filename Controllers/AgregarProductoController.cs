@@ -111,6 +111,7 @@ namespace Keepi.Controllers
             {
                 TempData["Error"] = "No se pudo agregar el producto: " + ex.Message;
                 
+                
                 try 
                 {
                     ViewBag.ListaProductos = BD.GetAllProductos(); 
@@ -121,10 +122,10 @@ namespace Keepi.Controllers
                     TempData["Error"] += " (Error al recargar productos: " + dbEx.Message + ")";
                 }
 
-                return View("~/Views/Home/AgregarProducto.cshtml");
+                return RedirectToAction("CargarProductos", "Heladera");
             }
 
-            return RedirectToAction("CargarProductos","heladera"); 
+        return RedirectToAction("CargarProductos", "Heladera");
         }
     }
 }
