@@ -1937,3 +1937,152 @@ main {
       height: 60vh;
   }
 }
+/* =========================================
+   NUEVOS ESTILOS LANDING PAGE (Problemática y Solución)
+   ========================================= */
+
+/* Ajustes generales de sección */
+.section-problem, 
+.section-solution {
+    padding: 80px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.section-solution {
+    background-color: #f9fdf9; /* Fondo muy suave verdoso para diferenciar */
+}
+
+.section-problem h2, 
+.section-solution h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.section-desc {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    line-height: 1.6;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+  max-width: 1400px; /* ANTES: 1200px */
+  margin: 0 auto;
+}
+
+/* Estilo de la Tarjeta Individual */
+.info-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 30px; /* Un poco más de espacio interno lateral */
+  width: 380px;      /* ANTES: 300px - Esto las hace más anchas */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Efecto Hover: Levantar tarjeta */
+.info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(89, 173, 68, 0.15);
+    border-color: #59ad44;
+}
+
+/* Iconos (Emojis) */
+.info-card .icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+/* Títulos dentro de las tarjetas */
+.section-problem .info-card h3 {
+    font-size: 2.5rem;
+    color: #59ad44;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.section-solution .info-card h4 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* Texto descriptivo en tarjetas */
+.info-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Número de paso para la solución (bolita verde) */
+.step-number {
+    background-color: #59ad44;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(89, 173, 68, 0.3);
+}
+
+/* Ajustes Responsive */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-card {
+        width: 90%;
+        max-width: 350px;
+    }
+    
+    .section-problem h2, 
+    .section-solution h2 {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 1200px) {
+  .info-card {
+      width: 45%; /* En pantallas medianas, que ocupen casi la mitad cada una */
+      min-width: 300px;
+  }
+}
+
+/* Ajuste para móviles (mantenemos el estilo anterior) */
+@media (max-width: 768px) {
+  .cards-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .info-card {
+      width: 90%;
+      max-width: 450px; /* Permitimos que sean más anchas en móvil también */
+  }
+}
