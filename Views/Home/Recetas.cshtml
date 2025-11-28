@@ -102,11 +102,6 @@
         position: relative;
     }
 
-    .recipe-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    }
-
     /* HEADER DE LA IMAGEN */
     .card-img-header {
         height: 180px; width: 100%;
@@ -117,7 +112,7 @@
         width: 100%; height: 100%; object-fit: cover; display: block;
         transition: transform 0.5s ease;
     }
-    .recipe-card:hover .recipe-img { transform: scale(1.05); }
+
 
     /* --- BOTÓN DE FAVORITO (CORAZÓN MÁS GRANDE) --- */
     .fav-btn-container {
@@ -206,12 +201,17 @@
             </button>
         </form>
         <div class="filter-pills">
-            <a href="@Url.Action("Index", new { filtro = "Alfabeticamente", busqueda = busquedaActual })" 
+<a href="@Url.Action("Index", new { filtro = "Alfabeticamente", busqueda = busquedaActual })" 
                class="btn-pill @(string.IsNullOrEmpty(filtroActual) || filtroActual == "Alfabeticamente" ? "active" : "")">A-Z</a>
+            
             <a href="@Url.Action("Index", new { filtro = "Popularidad", busqueda = busquedaActual })" 
                class="btn-pill @(filtroActual == "Popularidad" ? "active" : "")">Popularidad</a>
+
+            <a href="@Url.Action("Index", new { filtro = "Favoritos", busqueda = busquedaActual })" 
+               class="btn-pill @(filtroActual == "Favoritos" ? "active" : "")">Favoritos ❤️</a>
             <a href="@Url.Action("Index", new { filtro = "Sugeridas", busqueda = busquedaActual })" 
                class="btn-pill @(filtroActual == "Sugeridas" ? "active" : "")">Sugeridas 🍳</a>
+               
         </div>
     </div>
 

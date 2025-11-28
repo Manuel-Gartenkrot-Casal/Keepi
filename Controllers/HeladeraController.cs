@@ -83,7 +83,7 @@ public class HeladeraController : Controller
         }
         List<Heladera> lista = new List<Heladera>();
         ViewBag.Heladeras = lista;
-        return View("Heladeras", "Heladera");
+        return View("Heladeras");
     }
 
 
@@ -125,31 +125,40 @@ public class HeladeraController : Controller
 
         return View("MiHeladera");
     }
-    public IActionResult CargarProductos()
+
+public IActionResult CargarProductos()
+{
+    string user = HttpContext.Session.GetString("usuario");
+    if (user == null)
     {
-        string user = HttpContext.Session.GetString("usuario");
-        if (user == null)
-        {
-            return RedirectToAction("Login", "Auth");
-        }
-        Usuario usuario = Objeto.StringToObject<Usuario>(user);
-        string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
-        if (string.IsNullOrEmpty(nombreHeladera))
-        {
-            return RedirectToAction("InicializarHeladera");
-        }
-        Heladera Heladera = BD.SeleccionarHeladeraByNombre(usuario.ID, nombreHeladera);
-        if (Heladera != null)
-        {
-            ViewBag.Productos = BD.GetProductosXHeladeraByHeladeraId(Heladera.ID);
-        }
-        else
-        {
-            ViewBag.Productos = new List<ProductoXHeladera>();
-        }
-        ViewBag.ColorHeladera = Heladera.Color;
-        return View("MiHeladera");
+        return RedirectToAction("Login", "Auth");
     }
+    Usuario usuario = Objeto.StringToObject<Usuario>(user);
+    string nombreHeladera = HttpContext.Session.GetString("nombreHeladera");
+    if (string.IsNullOrEmpty(nombreHeladera))
+    {
+        return RedirectToAction("InicializarHeladera");
+    }
+    Heladera Heladera = BD.SeleccionarHeladeraByNombre(usuario.ID, nombreHeladera);
+    
+    if (Heladera != null)
+    {
+        ViewBag.Productos = BD.GetProductosXHeladeraByHeladeraId(Heladera.ID);
+    }
+    else
+    {
+        ViewBag.Productos = new List<ProductoXHeladera>();
+    }
+
+    try {
+        ViewBag.ListaProductos = BD.GetAllProductos(); 
+    } catch {
+        ViewBag.ListaProductos = new List<Producto>();
+    }
+
+    ViewBag.ColorHeladera = Heladera.Color;
+    return View("MiHeladera");
+}
 
     [HttpPost]
     public IActionResult EliminarProducto([FromForm] int idProductoXHeladera, [FromForm] int idProducto)

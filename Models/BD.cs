@@ -440,7 +440,7 @@
         public static List<Heladera> BuscarHeladeraDeUsuario(int idUsuario)
         {
             List<Heladera> lista = new List<Heladera>();
-            string storedProcedure = "BuscarHeladeras";
+            string storedProcedure = "BuscarHeladeraDeUsuario";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 lista = connection.Query<Heladera>(
