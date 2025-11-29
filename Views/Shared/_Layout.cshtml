@@ -3,9 +3,18 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NombreProyecto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>@ViewData["Title"] - Keepi</title>
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <!-- Touch Icons -->
+    <link rel="apple-touch-icon" href="~/imagenes/icon-192x192.png">
+    <link rel="icon" type="image/png" href="~/imagenes/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="~/imagenes/favicon-16x16.png" sizes="16x16" />
+    <!-- PWA Support -->
+    <link rel="manifest" href="~/manifest.json">
+    <meta name="theme-color" content="#59ad44">
 </head>
 
 <body>
@@ -121,26 +130,74 @@
     </main>
 
     <footer>
-        <p>© 2025 Keepi — Don't Waste It, Keepi.</p>
+        <p>© @DateTime.Now.Year Keepi — Don't Waste It, Keepi.</p>
     </footer>
 <div id="chat-widget" class="chat-widget">
-        <div class="chat-widget-header">
-            <span>💬 Mr. Keep</span>
-            <button id="close-chat-widget">×</button>
-        </div>
-        <div id="chat-widget-messages" class="chat-widget-messages">
-            </div>
-        <div class="chat-widget-input-area">
-            <input type="text" id="chat-widget-input" placeholder="Escribe tu mensaje..." maxlength="1000">
-            <button id="chat-widget-send">➤</button>
-        </div>
+    <div class="chat-widget-header">
+        <span>💬 Mr. Keep</span>
+        <button id="close-chat-widget" aria-label="Cerrar chat">×</button>
     </div>
+    <div id="chat-widget-messages" class="chat-widget-messages"></div>
+    <div class="chat-widget-input-area">
+        <input type="text" id="chat-widget-input" placeholder="Escribe tu mensaje..." maxlength="1000" aria-label="Mensaje">
+        <button id="chat-widget-send" aria-label="Enviar mensaje">
+            <span class="desktop-only">Enviar</span>
+            <span class="mobile-only">➤</span>
+        </button>
+    </div>
+</div>
 
-    <button id="chat-fab" class="chat-fab">
-        💬
-    </button>
+<button id="chat-fab" class="chat-fab" aria-label="Abrir chat">
+    <span class="desktop-only">Chatear con Mr. Keep</span>
+    <span class="mobile-only">💬</span>
+</button>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Detectar si es un dispositivo táctil
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+        
+        // Añadir clase al body para estilos específicos de touch
+        if (isTouchDevice) {
+            document.body.classList.add('touch-device');
+        }
+
+        // Mejorar la accesibilidad del menú
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cerrar menú al presionar Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    menuLateral.classList.remove('active');
+                    overlay.classList.remove('active');
+                    if (panel) panel.classList.remove('active');
+                }
+            });
+
+            // Mejorar la navegación por teclado
+            const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+            const modal = document.querySelector('.menu-lateral');
+            
+            if (modal) {
+                const focusableContent = modal.querySelectorAll(focusableElements);
+                const firstFocusableElement = focusableContent[0];
+                const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Tab') {
+                        if (e.shiftKey && document.activeElement === firstFocusableElement) {
+                            e.preventDefault();
+                            lastFocusableElement.focus();
+                        } else if (!e.shiftKey && document.activeElement === lastFocusableElement) {
+                            e.preventDefault();
+                            firstFocusableElement.focus();
+                        }
+                    }
+                });
+
+                firstFocusableElement.focus();
+            }
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

@@ -368,37 +368,39 @@ section:nth-of-type(3) ul li span{
    ============================================ */
 
 @media (max-width: 768px) {
-  
   /* BODY */
   body {
-    padding-top: 12%;
+    padding-top: 80px;
+    overflow-x: hidden;
   }
 
   /* ========== HEADER ========== */
   header {
-    border-bottom-left-radius: 5%;
-    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 0 10px;
   }
 
   header section.layout {
-    min-height: 10vh;
-    padding: 0 3%;
-    gap: 2%;
+    min-height: 80px;
+    padding: 0 15px;
+    gap: 10px;
   }
 
   header .layout .grow9 a.logo img {
-    height: 5vh;
+    height: 40px;
   }
 
   header .layout .grow1 a.menu {
-    font-size: 5vw;
-    padding: 1%;
+    font-size: 24px;
+    padding: 5px;
     margin-left: 0;
   }
-
+  
   header .layout .grow1 .notis img,
   header .layout .grow1 .perfil img {
-    height: 4.5vh;
+    height: 32px;
+    width: 32px;
     width: 4.5vh;
   }
 
@@ -751,7 +753,7 @@ section:nth-of-type(3) ul li span{
     width: 75%;
     max-width: 75%;
     height: 6vh;
-    top: 26%;
+    top: 23%;
     right: 50%;
     transform: translateX(50%);
     font-size: 3.5vw;
@@ -1367,8 +1369,8 @@ color:#5f5f5f;
   width: 100px;
   height: 100px;
   position: absolute;
-  top: 600px;
-  right: 500px;
+  top: 650px;
+  right: 25%;
   background-color: #21212180;
   backdrop-filter: blur(6px);
   border: none;
@@ -1385,7 +1387,7 @@ color:#5f5f5f;
   width: 200px;
   height: 50px;
   position: absolute;
-  top: 650px;
+  top: 700px;
   left: 45%;
   background-color: #21212180;
   backdrop-filter: blur(6px);
@@ -1402,8 +1404,8 @@ color:#5f5f5f;
   width: 220px;
   height: 50px;
   position: absolute;
-  top: 23%;
-  right: 27%;
+  top: 18%;
+  right: 25%;
   padding-left: 1%;
   background-color: #21212180;
   backdrop-filter: blur(6px);
