@@ -1003,6 +1003,35 @@ section h3 {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .login section {
+    width: 85%;
+    max-width: 400px;
+    margin-top: 120px;
+    margin-bottom: 40px;
+  }
+
+  .login h2 {
+    font-size: 6vw;
+    margin-bottom: 4%;
+  }
+
+  .login form {
+    width: 100%;
+  }
+
+  .login input {
+    width: 100%;
+  }
+
+  .login .btn-primary,
+  .login .btn-success,
+  .login .btn-outline-secondary,
+  .login .btn-link {
+    width: 100%;
+    max-width: 100%;
+  }
+}
 
 /* producto en heladera*/
  .Heladera {
