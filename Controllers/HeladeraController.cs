@@ -100,8 +100,27 @@ public class HeladeraController : Controller
         Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
         if (Heladera != null)
         {
-            Heladera.CambiarColor(color);
+            Heladera.CambiarColor(color, Heladera.ID);
         }
+        return View();
+    }
+
+    public IActionResult CambiarNombre()
+    {
+        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult CambiarNombre(string nuevoNombre, string nombreHeladera)
+    {
+        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
+
+        if (Heladera != null)
+        {
+            Heladera.CambiarNombre(nuevoNombre, Heladera.ID);
+        }
+
         return View();
     }
 
@@ -283,3 +302,4 @@ public IActionResult CargarProductos()
         }
     }
 }
+
