@@ -3,43 +3,90 @@
 }
 
 <style>
-        body {
+        .paginaHeladeras {
             font-family: sans-serif;
             background: #f9f9f9;
             text-align: center;
             margin: 0;
             padding: 3%;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 160px); /* ajustar 160px según header+footer reales */
+            padding-bottom: 0; /* el footer está fuera; evitamos espacio extra */
+
+            /* evitar que elementos escalados amplíen el ancho del documento */
+            overflow-x: hidden;
+        }
+
+        .heladeraContenido {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-container {
+            overflow: visible;
         }
 
         .heladeras-container {
             display: flex;
+            flex-wrap: nowrap;
             overflow-x: auto;
+            overflow-y: hidden;
             scroll-behavior: smooth;
-            align-items: center;
+            align-items: flex-start;
             gap: 1.5%;
             padding: 1%;
-            margin-top: 4%;
             scroll-snap-type: x mandatory;
             scrollbar-width: none; /* Oculta barra en Firefox */
             width: 100%;
             box-sizing: border-box;
+            padding-bottom: 20px;
         }
 
         .heladeras-container::-webkit-scrollbar {
             display: none; /* Oculta barra en Chrome/Safari */
         }
 
-        .heladera {
-            flex: 0 0 15%;
-            height: 400px; /*No se porque no funciona en porcentaje*/
-            background: #c0c0c0;
+        .heladera-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex: 0 0 280px; /* ancho fijo por tarjeta (ajustar si querés) */
+            box-sizing: border-box;
+        }
+
+        .heladera-card .heladera {
+            flex: 0 0 auto !important;
+            width: 100%;
+            height: 400px;
+            /* color base desde la variable */
+            background-color: var(--hel-color, #c0c0c0);
+            /* capa uniforme que oscurece ligeramente el color base */
+            background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20));
+            background-blend-mode: multiply;
+            background-repeat: no-repeat;
+            background-size: cover;
             border-radius: 8px;
             position: relative;
-            opacity: 0.5;
+            opacity: 1;
             transform: scale(0.9);
             transition: all 0.4s ease;
             scroll-snap-align: center;
             cursor: default;
+        }
+
+        .heladera-info {
+            text-align: center;
+            width: 100%;
+            margin-top: 7%;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 8px;
         }
 
         .heladera.active {
@@ -51,13 +98,13 @@
 
         .nota {
             position: absolute;
-            top: 3%;
+            top: 2.5%;
             right: 4%;
             background: white;
             border: 1px solid #ccc;
             padding: 6%;
             font-size: 15px; /*No se porque no funciona en porcentaje*/
-            width: 25%;
+            width: 42%;
             text-align: center;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             font-weight: bold;
@@ -92,20 +139,146 @@
             display: none;
         }
 
+        /* Freezer: más oscuro (superior) */
         .freezer {
             width: 100%;
             height: 40%;
-            border-radius: 8px;
-            background-color: rgb(105, 105, 105);
+            border-radius: 8px 8px 4px 4px;
+            background-color: var(--hel-color, rgb(105,105,105));
+            /* freezer más oscuro */
+            background-image: linear-gradient(rgba(0,0,0,0.13), rgba(0,0,0,0.13));
+            background-blend-mode: multiply;
+            background-size: cover;
         }
 
+        /* Parte inferior: un poco menos oscura para contraste */
         .heladeraAbajo {
             width: 100%;
             height: 60%;
             margin-top: 2%;
-            border-radius: 8px;
-            background-color: rgb(105, 105, 105);
+            border-radius: 4px 4px 8px 8px;
+            background-color: var(--hel-color, rgb(105,105,105));
+            /* parte inferior un poco menos oscura */
+            background-image: linear-gradient(rgba(0,0,0,0.13), rgba(0,0,0,0.13));
+            background-blend-mode: multiply;
+            background-size: cover;
         }
+        
+        .heladera:hover,
+        .freezer .heladeraAbajo {
+            background-image: linear-gradient(rgba(0,0,0,0.17), rgba(0,0,0,0.17));
+            background-blend-mode: multiply;
+            background-size: cover;
+        }
+
+        .heladera:hover,
+        .heladera {
+            background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25));
+            background-blend-mode: multiply;
+            background-size: cover;
+        }
+
+        /* overlay general (sobre todo el cuerpo) */
+        .heladera::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25));
+            opacity: 0;
+            transition: opacity .30s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heladera.active {
+            opacity: 1;
+            transform: scale(1.05);
+            z-index: 3;
+            box-shadow: 0 12px 34px rgba(8,12,20,0.12);
+        }
+
+        .heladera-info .btn-row { 
+            display: flex; 
+            gap: 10px; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+        }
+
+        .nombre-heladera {
+            margin-bottom: 3%;
+        }
+
+        .btn {
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:8px;
+            padding:10px 16px;
+            font-weight:600;
+            font-size:14px;
+            border-radius:var(--btn-radius);
+            border:0;
+            cursor:pointer;
+            box-shadow:var(--shadow-1);
+            transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+            min-width: 140px;
+            color: #0b1220;
+        }
+
+        .btn:active{ transform: translateY(0); }
+        .btn:focus{ outline: 3px solid rgba(50,115,220,0.12); outline-offset: 3px; }
+        
+        .btn--primary {
+            background: linear-gradient(180deg,#56cc7b,#2aa04a);
+            color: #04230a;
+        }
+        .btn--primary:hover{ transform: translateY(-3px); box-shadow:var(--shadow-2); }
+
+        .btn--accent {
+            background: linear-gradient(180deg,#7fb6ff,#2f6fd1);
+            color:#041834;
+        }
+        .btn--accent:hover{ transform: translateY(-3px); box-shadow:var(--shadow-2); }
+
+        .btn--danger {
+            background: linear-gradient(180deg,#ff9b9b,#d93939);
+            color:#230909;
+        }
+        .btn--danger:hover{ transform: translateY(-3px); box-shadow:var(--shadow-2); filter:brightness(.98); }
+
+        /* small variant for popup actions */
+        .btn--sm { padding:8px 12px; min-width: 80px; font-size:13px; border-radius:10px; }
+
+        .btnCambiarNombre{
+            background: linear-gradient(180deg,#6ee07a,#22a34a);
+            color: #05220a;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.12);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .btnCambiarNombre:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34,163,74,0.12); filter:brightness(1.02); }
+        .btnCambiarNombre:active { transform: translateY(0); }
+        
+        .btnCambiarColor {
+            background: linear-gradient(180deg,#8fbffc,#3b73d1);
+            color: #041b3a;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .btnCambiarColor:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(59,115,209,0.12); filter:brightness(1.02); }
+        .btnCambiarColor:active { transform: translateY(0); }
+
+
+        .btnEliminarHeladera {
+            background: linear-gradient(180deg,#ff9b9b,#e03b3b);
+            color: #1b0b0b;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        .btnEliminarHeladera:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(224,59,59,0.12); filter:brightness(0.98); }
+        .btnEliminarHeladera:active { transform: translateY(0); }
+
+        .btnCambiarNombre, .btnCambiarColor, .btnEliminarHeladera { margin-top: 0; }
 
         .nota::before {
             content: "Lista de Compras _______ _______ _______";
@@ -163,9 +336,140 @@
                 margin: 2%;
             }
         }
+
+        /* POPUPS */
+        .popup-crear,
+        .popup-editar {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(8,12,16,0.28), rgba(8,12,16,0.48));
+            z-index: 12000;
+            padding: 24px;
+        }
+
+        .popup-card {
+            width: 100%;
+            max-width: 520px;
+            background: linear-gradient(180deg,#ffffff,#fbfcfd);
+            border-radius: 14px;
+            box-shadow: 0 18px 60px rgba(10,18,30,0.25);
+            padding: 20px;
+            position: relative;
+            transform: translateY(0);
+            transition: transform 200ms ease, opacity 200ms ease;
+        }
+
+        .popup-card h2 { margin:0 0 12px 0; font-size:20px; color:#092032; }
+        .popup-card label { display:block; font-size:13px; color:#2b3a44; margin-top:8px; margin-bottom:6px; }
+        .popup-card input[type="text"],
+        .popup-card input[type="color"] {
+            width:100%;
+            padding:10px 12px;
+            border-radius:10px;
+            border:1px solid #e6edf3;
+            background: #fbfdff;
+            box-sizing: border-box;
+            font-size:14px;
+            color:#102026;
+            margin-bottom:10px;
+        }
+
+        .popup-close {
+            position:absolute;
+            right:12px;
+            top:12px;
+            background:transparent;
+            border:0;
+            font-size:20px;
+            line-height:1;
+            width:36px;
+            height:36px;
+            display:inline-grid;
+            place-items:center;
+            border-radius:9px;
+            cursor:pointer;
+            color:#4b5560;
+        }
+
+        .popup-close:hover { background: rgba(0,0,0,0.06); color:#0b1220; }
+
+        .popup-card .btns {
+            display:flex;
+            gap:10px;
+            justify-content:flex-end;
+            margin-top:8px;
+        }
+
+        .popup-contenido-crear,
+        .popup-contenido-editar {
+            background: #fff;
+            padding: 18px;
+            border-radius: 8px;
+            max-width: 420px;
+            width: 90%;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        /* cuando tienen la clase oculto se esconden */
+        .popup-crear.oculto,
+        .popup-editar.oculto {
+            display: none !important;
+        }
+
+        :root{
+            --btn-radius:12px;
+            --shadow-1: 0 6px 18px rgba(12,20,30,0.08);
+            --shadow-2: 0 12px 30px rgba(12,20,30,0.12);
+            --transition: 180ms cubic-bezier(.2,.9,.3,1);
+        }
+
+        /* responsive tweaks */
+        @@media (max-width:520px){
+            .btn { min-width: 110px; padding:10px 12px; }
+            .heladera-card { flex: 0 0 220px; }
+            .heladera-card .heladera { height: 320px; }
+            .paginaHeladeras { padding: 4%; }
+        }
+
+        /* Decoraciones y boton de crear*/
+
+        .panel-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .panel-actions .panel-btn {
+            min-width: 220px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 0;
+            box-shadow: 0 10px 24px rgba(8,12,20,0.08);
+            transition: transform .16s ease, box-shadow .16s ease;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .panel-actions .panel-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(8,12,20,0.12); }
+
+        .panel-btn--decorate { background: linear-gradient(180deg,#7fb6ff,#3b73d1); }
+        .panel-btn--create   { background: linear-gradient(180deg,#56cc7b,#2aa04a); }
+
+        .btn-deco  { all: unset; display:inline-block; }
+        .btn-crear { all: unset; display:inline-block; }
+  
 </style>
 
-<body>
+<div class="paginaHeladeras">
+    <div class="heladeraWrapper">
+    <div class="heladeraContenido">
 
     <h1>Heladeras Interactivas</h1>
     <p>Elige la heladera que quieras usar hoy</p>
@@ -179,35 +483,105 @@
                     bool eliminado = heladera.Eliminado;
 
                     @if (eliminado == false) {
-                        <div class="heladera" id="heladera-@contador">
-                            <section class="freezer">
-                            <div class="nota"></div>
-                            </section>
-                            <section class="heladeraAbajo"></section>
+                        <div class="heladera-card">
+                            <div class="heladera" id="heladera-@contador" data-nombre="@nombre" style="--hel-color:@(color);">
+                                <section class="freezer">
+                                <div class="nota"></div>
+                                </section>
+                                <section class="heladeraAbajo"></section>
+                            </div>
+
+                            <div class="heladera-info">
+                                <h2 class="nombre-heladera">@nombre</h2>
+                                <div class="btn-row">
+                                    <button class="btn btnCambiarNombre" id="btnCambiarNombreHeladera-@contador">Cambiar Nombre</button>
+                                    <button class="btn btnCambiarColor" id="btnCambiarColorHeladera-@contador">Cambiar Color</button>
+                                    <button class="btn btnEliminarHeladera" id="btnEliminarHeladera-@contador">Eliminar Heladera</button>
+                                </div>
+                            </div>
                         </div>
+
                         contador++;
                     }
                 }
             </div>
         <div class="controles">
             <button id="prev">⬅</button>
-            <span id="titulo">Heladera 1</span>
+            <span id="titulo">Heladera + @contador</span>
             <button id="next">➡</button>
         </div>
       </div>
 
     <div class="decoraciones-panel">
-        <button id="modoDecoracion">🎨 Agregar Decoración</button>
+        <div class="panel-actions">
+            <button class="panel-btn panel-btn--decorate" id="modoDecoracion"><span class="emoji">🎨</span> Agregar Decoración</button>
 
-        <div id="opcionesDecoracion" class="oculto">
-            <p>Elegí una forma:</p>
-            <button class="forma" data-tipo="estrella">⭐</button>
-            <button class="forma" data-tipo="triangulo">🔺</button>
-            <button class="forma" data-tipo="cuadrado">🟦</button>
-            <button class="forma" data-tipo="circulo">🔴</button>
-            <p>(Luego hacé clic en la heladera)</p>
+            <div id="opcionesDecoracion" class="oculto">
+                <p>Elegí una forma:</p>
+                <button class="forma" data-tipo="estrella">⭐</button>
+                <button class="forma" data-tipo="triangulo">🔺</button>
+                <button class="forma" data-tipo="cuadrado">🟦</button>
+                <button class="forma" data-tipo="circulo">🔴</button>
+                <p>(Luego hacé clic en la heladera)</p>
+            </div>
+
+            <button id="btnCrearHeladera" class="panel-btn panel-btn--create">➕ Nueva Heladera</button>
         </div>
     </div>
+
+    </div>
+    </div>
+</div>
+<!-- POPUP CAMBIAR NOMBRE -->
+<div id="popupCambiarNombre" class="popup-crear oculto">
+    <div class="popup-card popup-contenido-crear">
+        <button class="popup-close" id="closePopupCambiarNombre" aria-label="Cerrar">×</button>
+        <h2>Cambiar nombre</h2>
+
+        <label for="inputNuevoNombre">Nuevo nombre:</label>
+        <input type="text" id="inputNuevoNombre" placeholder="Ej: Heladera Cocina">
+
+        <div class="btns">
+            <button id="btnConfirmarCambioNombre" class="btn btn--primary btn--sm">Guardar</button>
+            <button id="btnCancelarCambioNombre" class="btn btn--sm">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP CAMBIAR COLOR -->
+<div id="popupCambiarColor" class="popup-crear oculto">
+    <div class="popup-card popup-contenido-crear">
+        <button class="popup-close" id="closePopupCambiarColor" aria-label="Cerrar">×</button>
+        <h2>Cambiar color</h2>
+
+        <label for="inputNuevoColor">Nuevo color:</label>
+        <input type="color" id="inputNuevoColor" value="#ffffff">
+
+        <div class="btns">
+            <button id="btnConfirmarCambioColor" class="btn btn--accent btn--sm">Guardar</button>
+            <button id="btnCancelarCambioColor" class="btn btn--sm">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP EDITAR -->
+<div id="popupEditarHeladera" class="popup-editar oculto">
+    <div class="popup-card popup-contenido-editar">
+        <button class="popup-close" id="closePopupEditar" aria-label="Cerrar">×</button>
+        <h2>Editar heladera</h2>
+
+        <label for="editarNombre">Nombre:</label>
+        <input type="text" id="editarNombre">
+
+        <label for="editarColor">Color:</label>
+        <input type="color" id="editarColor">
+
+        <div class="btns">
+            <button id="btnEditarGuardar" class="btn btn--primary btn--sm">Guardar</button>
+            <button id="btnEditarCancelar" class="btn btn--sm">Cancelar</button>
+        </div>
+    </div>
+</div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -284,7 +658,118 @@
                 }
             }
         });
+
+        // POPUPS DE EDITAR HELADERA
+
+        let heladeraSeleccionada = null;
+
+        // Abrir popups segun botón
+        document.addEventListener("click", e => {
+
+            // CAMBIAR NOMBRE
+            if (e.target.id.startsWith("btnCambiarNombreHeladera-")) {
+                heladeraSeleccionada = e.target.id.split("-")[1]; 
+                document.getElementById("popupCambiarNombre").classList.remove("oculto");
+            }
+
+            // CAMBIAR COLOR
+            if (e.target.id.startsWith("btnCambiarColorHeladera-")) {
+                heladeraSeleccionada = e.target.id.split("-")[1];
+                document.getElementById("popupCambiarColor").classList.remove("oculto");
+            }
+        });
+
+        // Confirmar cambios
+
+        // Guardar nuevo nombre
+        document.getElementById("btnConfirmarCambioNombre").addEventListener("click", () => {
+            const nuevo = document.getElementById("inputNuevoNombre").value.trim();
+
+            if (nuevo === "") return;
+
+            fetch(`/Heladeras/CambiarNombre`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nombre: nuevoNombre })
+            }).then(() => location.reload());
+        });
+
+        // Guardar nuevo color
+        document.getElementById("btnConfirmarCambioColor").addEventListener("click", () => {
+            const nuevoColor = document.getElementById("inputNuevoColor").value;
+
+            fetch("/Heladeras/CambiarColor", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `color=${encodeURIComponent(nuevoColor)}&nombreHeladera=${encodeURIComponent(nombreActual)}`
+            })
+            .then(() => location.reload());
+        });
+
+        // Cancelar popups
+        document.getElementById("btnCancelarCambioNombre").addEventListener("click", () => {
+            document.getElementById("popupCambiarNombre").classList.add("oculto");
+        });
+        document.getElementById("btnCancelarCambioColor").addEventListener("click", () => {
+            document.getElementById("popupCambiarColor").classList.add("oculto");
+        });
+
+        // cerrar popups con overlay click, close button y Esc
+        function initPopupClose(idOverlay, idCloseBtn){
+            const overlay = document.getElementById(idOverlay);
+            const btnClose = document.getElementById(idCloseBtn);
+            if(!overlay) return;
+            overlay.addEventListener('click', e => {
+            if(e.target === overlay) overlay.classList.add('oculto');
+            });
+            if(btnClose) btnClose.addEventListener('click', () => overlay.classList.add('oculto'));
+        }
+
+        initPopupClose('popupCambiarNombre','closePopupCambiarNombre');
+        initPopupClose('popupCambiarColor','closePopupCambiarColor');
+        initPopupClose('popupEditarHeladera','closePopupEditar');
+
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape'){
+            ['popupCambiarNombre','popupCambiarColor','popupEditarHeladera'].forEach(id=>{
+                const el = document.getElementById(id);
+                if(el && !el.classList.contains('oculto')) el.classList.add('oculto');
+            });
+            }
+        });
+
+        // función para cambiar de heladera y navegar a su página
+        function selectHeladera(nombre) {
+            if (!nombre) return;
+            // POST form-url-encoded para que el action reciba nombreHeladera
+            fetch('/Heladera/CambiarHeladera', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'nombreHeladera=' + encodeURIComponent(nombre)
+            })
+            .then(resp => resp.json())
+            .then(js => {
+            if (js && js.success) {
+                // redirigir a la vista que carga la heladera (CargarProductos -> MiHeladera)
+                window.location = '/Heladera/CargarProductos';
+            } else {
+                alert(js && js.message ? js.message : 'Error al cambiar de heladera');
+            }
+            })
+            .catch(err => {
+            console.error(err);
+            alert('Error de red. Intentá de nuevo.');
+            });
+        }
+
+        // delegación: click en .heladera -> seleccionar heladera
+        document.querySelectorAll('.heladera').forEach(h => {
+            h.addEventListener('click', (e) => {
+            // si tenés modoDecoracion y no querés seleccionar mientras decorás,
+            // añadí una comprobación aquí (p.ej. if(modoDecoracion) return;)
+            const nombre = h.dataset.nombre;
+            selectHeladera(nombre);
+            });
+        });
     </script>
-</body>
-</html>
 
