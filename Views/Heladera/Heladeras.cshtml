@@ -536,10 +536,12 @@
 <div id="popupCambiarNombre" class="popup-crear oculto">
     <div class="popup-card popup-contenido-crear">
         <button class="popup-close" id="closePopupCambiarNombre" aria-label="Cerrar">×</button>
+        <input type="hidden" id="nombreHeladeraNombreInput" name="nombreHeladera">
+
         <h2>Cambiar nombre</h2>
 
         <label for="inputNuevoNombre">Nuevo nombre:</label>
-        <input type="text" id="inputNuevoNombre" placeholder="Ej: Heladera Cocina">
+        <input type="text" id="inputNuevoNombre" placeholder="Ej: Heladera Cocina" required>
 
         <div class="btns">
             <button id="btnConfirmarCambioNombre" class="btn btn--primary btn--sm">Guardar</button>
@@ -552,33 +554,16 @@
 <div id="popupCambiarColor" class="popup-crear oculto">
     <div class="popup-card popup-contenido-crear">
         <button class="popup-close" id="closePopupCambiarColor" aria-label="Cerrar">×</button>
+        <input type="hidden" id="nombreHeladeraColorInput" name="nombreHeladera">
+
         <h2>Cambiar color</h2>
 
         <label for="inputNuevoColor">Nuevo color:</label>
-        <input type="color" id="inputNuevoColor" value="#ffffff">
+        <input type="color" id="inputNuevoColor" value="#ffffff" required>
 
         <div class="btns">
             <button id="btnConfirmarCambioColor" class="btn btn--accent btn--sm">Guardar</button>
             <button id="btnCancelarCambioColor" class="btn btn--sm">Cancelar</button>
-        </div>
-    </div>
-</div>
-
-<!-- POPUP EDITAR -->
-<div id="popupEditarHeladera" class="popup-editar oculto">
-    <div class="popup-card popup-contenido-editar">
-        <button class="popup-close" id="closePopupEditar" aria-label="Cerrar">×</button>
-        <h2>Editar heladera</h2>
-
-        <label for="editarNombre">Nombre:</label>
-        <input type="text" id="editarNombre">
-
-        <label for="editarColor">Color:</label>
-        <input type="color" id="editarColor">
-
-        <div class="btns">
-            <button id="btnEditarGuardar" class="btn btn--primary btn--sm">Guardar</button>
-            <button id="btnEditarCancelar" class="btn btn--sm">Cancelar</button>
         </div>
     </div>
 </div>
@@ -661,49 +646,34 @@
 
         // POPUPS DE EDITAR HELADERA
 
-        let heladeraSeleccionada = null;
-
-        // Abrir popups segun botón
-        document.addEventListener("click", e => {
-
-            // CAMBIAR NOMBRE
-            if (e.target.id.startsWith("btnCambiarNombreHeladera-")) {
-                heladeraSeleccionada = e.target.id.split("-")[1]; 
-                document.getElementById("popupCambiarNombre").classList.remove("oculto");
-            }
-
-            // CAMBIAR COLOR
-            if (e.target.id.startsWith("btnCambiarColorHeladera-")) {
-                heladeraSeleccionada = e.target.id.split("-")[1];
-                document.getElementById("popupCambiarColor").classList.remove("oculto");
-            }
-        });
-
-        // Confirmar cambios
-
         // Guardar nuevo nombre
         document.getElementById("btnConfirmarCambioNombre").addEventListener("click", () => {
-            const nuevo = document.getElementById("inputNuevoNombre").value.trim();
+            const nuevoNombre = document.getElementById("inputNuevoNombre").value.trim();
+            const nombreHeladera = document.getElementById("nombreHeladeraNombreInput").value;
 
-            if (nuevo === "") return;
+            console.log("Nuevo nombre:", nuevoNombre);
+            console.log("Nombre heladera original:", nombreHeladera);
 
-            fetch(`/Heladeras/CambiarNombre`, {
+            fetch("/Heladera/CambiarNombre", {  // <-- URL corregida
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ nombre: nuevoNombre })
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `nuevoNombre=${encodeURIComponent(nuevoNombre)}&nombreHeladera=${encodeURIComponent(nombreHeladera)}`
             }).then(() => location.reload());
         });
 
         // Guardar nuevo color
         document.getElementById("btnConfirmarCambioColor").addEventListener("click", () => {
             const nuevoColor = document.getElementById("inputNuevoColor").value;
+            const nombreOriginal = document.getElementById("nombreHeladeraColorInput").value;
 
-            fetch("/Heladeras/CambiarColor", {
+            console.log("Nuevo color:", nuevoColor);
+            console.log("Nombre heladera original:", nombreOriginal);
+
+            fetch("/Heladera/CambiarColor", {  // <-- URL corregida
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `color=${encodeURIComponent(nuevoColor)}&nombreHeladera=${encodeURIComponent(nombreActual)}`
-            })
-            .then(() => location.reload());
+                body: `color=${encodeURIComponent(nuevoColor)}&nombreHeladera=${encodeURIComponent(nombreOriginal)}`
+            }).then(() => location.reload());
         });
 
         // Cancelar popups
@@ -727,11 +697,10 @@
 
         initPopupClose('popupCambiarNombre','closePopupCambiarNombre');
         initPopupClose('popupCambiarColor','closePopupCambiarColor');
-        initPopupClose('popupEditarHeladera','closePopupEditar');
 
         document.addEventListener('keydown', (e) => {
             if(e.key === 'Escape'){
-            ['popupCambiarNombre','popupCambiarColor','popupEditarHeladera'].forEach(id=>{
+            ['popupCambiarNombre','popupCambiarColor'].forEach(id=>{
                 const el = document.getElementById(id);
                 if(el && !el.classList.contains('oculto')) el.classList.add('oculto');
             });
@@ -771,5 +740,30 @@
             selectHeladera(nombre);
             });
         });
+
+        // Los próximos son para que se pueda mandar el nombre de la heladera a los parámetros de HeladeraController
+
+        document.querySelectorAll(".btnCambiarNombre").forEach(btn => {
+            btn.addEventListener("click", function () {
+                const idx = this.id.split("-")[1];
+                const heladera = document.querySelector(`#heladera-${idx}`);
+                const nombreOriginal = heladera.dataset.nombre;
+                document.getElementById("nombreHeladeraNombreInput").value = nombreOriginal;
+                document.getElementById("popupCambiarNombre").classList.remove("oculto");
+            });
+        });
+
+        document.querySelectorAll(".btnCambiarColor").forEach(btn => {
+            btn.addEventListener("click", function () {
+                const idx = this.id.split("-")[1];
+                const heladera = document.querySelector(`#heladera-${idx}`);
+                const nombreOriginal = heladera.dataset.nombre;
+                document.getElementById("nombreHeladeraColorInput").value = nombreOriginal;
+                document.getElementById("popupCambiarColor").classList.remove("oculto");
+            });
+        });
+
     </script>
+
+
 
