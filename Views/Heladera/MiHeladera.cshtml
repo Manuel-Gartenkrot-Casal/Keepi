@@ -94,7 +94,7 @@
     
     @* CAMBIO: El botón ahora abre el modal *@
     <button type="button" class="agregarProductos" onclick="abrirModal()">+</button>
-    <button type="button" class="cambiarHeladera">Cambiar Heladera</button>
+    <button type="button" class="cambiarHeladera" id="btnDeCambiarHeladera">Cambiar Heladera</button>
 </div>
 
 @* --- MODAL DE AGREGAR PRODUCTO --- *@
@@ -261,6 +261,12 @@
             document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
         }
     });
+
+    // --- LÓGICA PARA CAMBIAR HELADERA ---
+    document.getElementById('btnDeCambiarHeladera').addEventListener('click', function() {
+        window.location.href = '@Url.Action("Heladeras", "Heladera")';
+    });
+    
 </script>
 
 <style>
@@ -358,6 +364,14 @@
 .dropdown-menu.show { display: block; }
 .dropdown-menu a { display: block; padding: 10px; color: #333; text-decoration: none; }
 .btn-eliminar { position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 18px; cursor: pointer; }
+
+.cambiarHeladera:hover {
+    background-color: #5aad38;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(108, 192, 74, 0.3);
+    cursor: pointer;
+}
+
 @@media (max-width: 768px) {
     .mi-heladera-container {
         flex-direction: column;
