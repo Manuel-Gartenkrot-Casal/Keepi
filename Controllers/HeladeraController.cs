@@ -87,41 +87,48 @@ public class HeladeraController : Controller
         return View("Heladeras");
     }
 
-
-    public IActionResult CambiarColor()
-    {
-        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
-        return View();
-    }
-
     [HttpPost]
     public IActionResult CambiarColor(string color, string nombreHeladera)
     {
-        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
+        Console.WriteLine("Entré a cambiar color");
+        int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+        if (idUsuario == null)
+        {
+            Console.WriteLine("Usuario no autenticado");
+            return RedirectToAction("Login", "Auth");
+        }
+        Heladera Heladera = BD.SeleccionarHeladeraByNombre(idUsuario.Value, nombreHeladera);
         if (Heladera != null)
         {
             Heladera.CambiarColor(color, Heladera.ID);
         }
-        return View();
-    }
-
-    public IActionResult CambiarNombre()
-    {
-        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
-        return View();
+        else {
+            Console.WriteLine("No se encontró la heladera para cambiar color");
+        }
+        return RedirectToAction("Heladeras");
     }
 
     [HttpPost]
     public IActionResult CambiarNombre(string nuevoNombre, string nombreHeladera)
     {
-        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
+        Console.WriteLine("Entré a cambiar nombre");
+        int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+        if (idUsuario == null)
+        {
+            Console.WriteLine("Usuario no autenticado");
+            return RedirectToAction("Login", "Auth");
+        }
 
         if (Heladera != null)
         {
             Heladera.CambiarNombre(nuevoNombre, Heladera.ID);
         }
+        else {
+            Console.WriteLine("No se encontró la heladera para cambiar nombre");
+        }
 
-        return View();
+        return RedirectToAction("Heladeras");
+
     }
 
     public IActionResult EliminarHeladera(string nombreHeladera, string username)
