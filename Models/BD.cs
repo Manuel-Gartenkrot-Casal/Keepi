@@ -477,5 +477,27 @@
             }
         }
 
+        public static void CambiarColorHeladera(int id, string color)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Execute(
+                    "CambiarColorHeladera",
+                    new { IdHeladera = id, Color = color },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
 
+        public static void CambiarNombreHeladera(int id, string nombre)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Execute(
+                    "CambiarNombreHeladera",
+                    new { IdHeladera = id, Nombre = nombre },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
     }
