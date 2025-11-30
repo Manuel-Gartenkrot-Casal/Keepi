@@ -14,11 +14,15 @@ public class Heladera {
         this.Nombre = Nombre ?? $"Heladera{ID}";
         this.Eliminado = false;
     }
-    public void CambiarColor(string color){
+    public void CambiarColor(string color, int id)
+    {
         Color = color;
+        BD.CambiarColorHeladera(id, color);
     }
-    public void CambiarNombre(string nombre){
+    public void CambiarNombre(string nombre, int id)
+    {
         Nombre = nombre;
+        BD.CambiarNombreHeladera(id, nombre);
     }
     public int EliminarHeladera(string nombreUsuario)
     {
@@ -35,4 +39,5 @@ public class Heladera {
         return resultado;
     }
 }
+
 
