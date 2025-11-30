@@ -367,484 +367,112 @@ section:nth-of-type(3) ul li span{
    MEDIA QUERY - MÓVIL (max-width: 768px)
    ============================================ */
 
-@media (max-width: 768px) {
-  /* BODY */
-  body {
-    padding-top: 80px;
-    overflow-x: hidden;
-  }
-
-  /* ========== HEADER ========== */
-  header {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding: 0 10px;
-  }
-
-  header section.layout {
-    min-height: 80px;
-    padding: 0 15px;
-    gap: 10px;
-  }
-
-  header .layout .grow9 a.logo img {
-    height: 40px;
-  }
-
-  header .layout .grow1 a.menu {
-    font-size: 24px;
-    padding: 5px;
-    margin-left: 0;
-  }
-  
-  header .layout .grow1 .notis img,
-  header .layout .grow1 .perfil img {
-    height: 32px;
-    width: 32px;
-    width: 4.5vh;
-  }
-
-  header .layout .grow1 a.notis,
-  header .layout .grow1 a.perfil {
-    margin-right: 0;
-  }
-
-  /* Menú lateral */
-  .menu-lateral {
-    width: 70%;
-    left: -70%;
-  }
-
-  /* ========== INDEX - PRIMERA SECCIÓN ========== */
-  .indexFondo {
-    width: 200%;
-    height: 80vh;
-    transform: rotate(10deg) translateY(-18%) translateX(-10%);
-  }
-
-  .index section:first-of-type {
-    padding-bottom: 8%;
-    margin-top: -12%;
-    padding-top: calc(12% + 10%);
-    min-height: auto;
-  }
-
-  .index h1 {
-    position: relative;
-    font-size: 8vw;
-    left: 0;
-    top: 0;
-    width: 90%;
-    text-align: center;
-    margin: 0 auto 4%;
-  }
-
-  .index section:first-of-type p {
-    position: relative;
-    left: 0;
-    top: 0;
-    width: 85%;
-    margin: 0 auto 5%;
-    text-align: center;
-    font-size: 4vw;
-    color: #ffffff;
-  }
-
-  .index section img {
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 60%;
-    max-width: 35%;
-    margin: 5% auto;
-    display: block;
-  }
-
-  .index section:first-of-type div {
-    position: relative;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3%;
-    margin-top: 4%;
-  }
-
-  .index div a {
-    position: relative;
-    left: 0 !important;
-    width: 75%;
-    max-width: 75%;
-    font-size: 3.8vw;
-    padding: 3.5% 0;
-    border-width: 0.4vw;
-  }
-
-  /* ========== SECCIONES GENERALES ========== */
-  .index section {
-    padding-top: 8%;
-    padding-bottom: 8%;
-  }
-
-  .index h2 {
-    font-size: 6.5vw;
-    margin-bottom: 3%;
-  }
-
-  .index section p {
-    width: 85%;
-    font-size: 4vw;
-    justify-self: center;
-  }
-
-  /* ========== SECCIÓN PROBLEMÁTICA ========== */
-  .index section > div {
-    flex-direction: column;
-    width: 90%;
-    gap: 3%;
-    margin-top: 5%;
-  }
-
-  .index section > div > div {
-    width: 85%;
-    max-width: 85%;
-    padding: 4%;
-    border-radius: 4%;
-  }
-
-  section h3 {
-    font-size: 8vw;
-  }
-
-  /* ========== SECCIÓN SOLUCIÓN ========== */
-  section:nth-of-type(3) ul {
-    flex-direction: column;
-    width: 90%;
-    gap: 3%;
-    margin-top: 5%;
-  }
-
-  section:nth-of-type(3) ul li {
-    width: 85%;
-    max-width: 85%;
-    padding: 4%;
-    padding-bottom: 5%;
-    border-radius: 4%;
-  }
-
-  section:nth-of-type(3) ul li span {
-    font-size: 7.5vw;
-  }
-
-  section:nth-of-type(3) ul li p {
-    font-size: 3.8vw;
-  }
-
-  /* ========== LOGIN ========== */
-  .login section {
-    width: 85%;
-    max-width: 85%;
-    margin-top: 6%;
-    margin-bottom: 6%;
-    padding: 5%;
-    border-radius: 5%;
-  }
-
-  .login h2 {
-    font-size: 6vw;
-    margin-bottom: 4%;
-  }
-
-  .login form {
-    width: 90%;
-  }
-
-  .login input {
-    width: 100%;
-    padding: 3%;
-    font-size: 3.8vw;
-    border-radius: 5%;
-  }
-
-  .login .btn {
-    padding: 3%;
-    font-size: 3.8vw;
-    border-radius: 5%;
-  }
-
-  .login .btn-primary {
-    width: 60%;
-    margin-top: 4%;
-  }
-
-  /* ========== CHATBOT ========== */
-  .chat-container {
-    width: 95%;
-    max-width: 95%;
-    height: 70vh;
-    margin-top: 3%;
-    margin-bottom: 6%;
-    border-radius: 2%;
-  }
-
-  .chat-messages {
-    padding: 3%;
-  }
-
-  .message {
-    max-width: 80%;
-    font-size: 3.8vw;
-    padding: 2.5% 3.5%;
-    margin-bottom: 2.5%;
-    border-radius: 4%;
-  }
-
-  .message.user {
-    max-width: 75%;
-    border-radius: 4% 4% 1% 4%;
-  }
-
-  .message.bot {
-    border-radius: 4% 4% 4% 1%;
-  }
-
-  .input-container {
-    padding: 2.5% 3%;
-    gap: 2%;
-  }
-
-  .input-container input {
-    padding: 3% 3.5%;
-    font-size: 4vw;
-    border-radius: 2%;
-  }
-
-  .input-container button {
-    padding: 3% 4.5%;
-    font-size: 3.5vw;
-    border-radius: 2%;
-  }
-
-  /* ========== MI HELADERA ========== */
-  .mi-heladera-container {
-    height: auto;
-    min-height: 70vh;
-    padding: 3%;
-  }
-
-  .productos-scroll-container {
-    width: 95%;
-    max-width: 95%;
-    max-height: 70vh;
-    padding: 3%;
-    border-radius: 4%;
-  }
-
-  .producto-card {
-    flex-direction: column;
-    align-items: center;
-    padding: 4%;
-    margin-bottom: 3.5%;
-    text-align: center;
-    border-radius: 4%;
-  }
-
-  .btn-eliminar {
-    top: 2%;
-    right: 2%;
-    width: 7%;
-    height: auto;
-    aspect-ratio: 1/1;
-    font-size: 4.5vw;
-  }
-
-  .producto-imagen {
-    width: 25%;
-    height: auto;
-    aspect-ratio: 1/1;
-    margin-bottom: 3%;
-    border-radius: 3%;
-  }
-
-  .producto-info {
-    width: 100%;
-    align-items: center;
-  }
-
-  .contenedor-nombre-dias {
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5%;
-    width: 100%;
-  }
-
-  .contenedor-nombre-fecha {
-    margin-right: 0;
-    text-align: center;
-  }
-
-  .producto-nombre {
-    font-size: 4.8vw;
-  }
-
-  .producto-fecha {
-    font-size: 3.5vw;
-  }
-
-  .producto-dias {
-    text-align: center;
-    font-size: 4vw;
-  }
-
-  .producto-progress {
-    width: 100%;
-  }
-
-  .progress-bar-container {
-    height: 1.2vh;
-    border-radius: 1vh;
-  }
-
-  .progress-bar {
-    border-radius: 1vh;
-  }
-
-  .producto-acciones {
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    gap: 2.5%;
-    margin-top: 3%;
-  }
-
-  .btn-abrir,
-  .btn-estado {
-    width: 48%;
-    padding: 2.5% 3%;
-    font-size: 3.5vw;
-    border-radius: 2%;
-    border-width: 0.4vw;
-  }
-
-  /* Botones flotantes heladera */
-  .agregarProductos {
-    width: 15%;
-    height: auto;
-    aspect-ratio: 1/1;
-    top: auto;
-    bottom: 15%;
-    right: 5%;
-    font-size: 6vw;
-    border-radius: 50%;
-  }
-
-  .cambiarHeladera {
-    width: 50%;
-    height: 6vh;
-    top: auto;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 3.5vw;
-    border-radius: 5%;
-  }
-
-  .buscadorHeladera {
-    width: 75%;
-    max-width: 75%;
-    height: 6vh;
-    top: 23%;
-    right: 50%;
-    transform: translateX(50%);
-    font-size: 3.5vw;
-    border-radius: 5%;
-  }
-
-  /* ========== HELADERA - LISTA PRODUCTOS ========== */
-  .Heladera {
-    padding: 3%;
-  }
-
-  .Heladera .productoEnHeladera {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 3.5%;
-    gap: 2%;
-    border-radius: 4%;
-  }
-
-  .Heladera .productoEnHeladera img {
-    width: 15%;
-    height: auto;
-    aspect-ratio: 1/1;
-    margin-bottom: 2%;
-    border-radius: 3%;
-  }
-
-  .Heladera .productoEnHeladera h1 {
-    font-size: 4vw;
-  }
-
-  .Heladera .productoEnHeladera progress {
-    width: 100%;
-    height: 0.8vh;
-    margin-top: 2%;
-    border-radius: 1vh;
-  }
-
-  .Heladera .productoEnHeladera span {
-    font-size: 2.8vw;
-    padding: 1% 2%;
-    margin-left: 0;
-    margin-top: 1.5%;
-    border-radius: 4vw;
-  }
-
-  /* ========== NOTIFICACIONES ========== */
-  .notificaciones-panel {
-    width: 75%;
-    max-width: 75%;
-    right: -75%;
-    padding: 4% 3%;
-    border-top-left-radius: 3%;
-    border-bottom-left-radius: 3%;
-  }
-
-  .notificaciones-panel.abierto {
-    right: 0;
-  }
-
-  .notificaciones-panel .cerrar-sidebar {
-    top: 2%;
-    left: 2%;
-    font-size: 5vw;
-  }
-
-  /* ========== FOOTER ========== */
-  footer {
-    margin-top: 6%;
-    padding: 4% 3%;
-  }
-
-  footer p {
-    font-size: 4vw;
-  }
-
-  /* ========== UTILIDADES ========== */
-  .sin-productos {
-    padding: 6%;
-    font-size: 4.2vw;
-  }
-
-  /* Eliminar espacios en blanco extras */
-  main {
-    min-height: auto;
-  }
-}
 
 /*FIN INDEX MEDIA QUERYS*/
 
+/* Carrusel Solución 16:9 */
+.carousel {
+  position: relative;
+  width: 85%;
+  max-width: 1080px;
+  margin: 2rem auto;
+  display: block; /* Evita que `.index section > div` fuerce flex */
+}
+
+.carousel-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f0efe6;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Mayor especificidad para anular `.index section > div > div` */
+.section-solution > .carousel > .carousel-viewport {
+  width: 100%;
+}
+
+.carousel-viewport::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* Fallback 16:9 si el navegador no soporta aspect-ratio */
+}
+
+.carousel-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.6);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+/* Anulación específica para evitar que la regla global 
+   `.index section img` afecte al carrusel */
+.section-solution .carousel-slide img {
+  position: static;
+  top: auto;
+  right: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    width: 94%;
+    margin: 1rem auto;
+  }
+  .carousel-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+}
+
 /* ==== SECCIÓN LA PROBLEMÁTICA ==== */
+
 .index section {
   background-color: white;
   color: #333;
@@ -1004,16 +632,169 @@ section h3 {
 }
 
 @media (max-width: 768px) {
+  /* ============================================
+   *  ESTILOS GENERALES PARA MÓVIL
+   * ============================================ */
+  body {
+    padding-top: 80px; /* Ajuste para el header más pequeño */
+  }
+
+  section {
+    padding: 15% 5%;
+  }
+
+  h2 {
+    font-size: 7vw;
+  }
+
+  p {
+    font-size: 4vw;
+    line-height: 1.5;
+  }
+
+  /* ============================================
+   *  HEADER
+   * ============================================ */
+  header section.layout {
+    min-height: 80px;
+    padding: 0 15px;
+  }
+
+  header .layout .grow9 a.logo img {
+    height: 45px;
+  }
+
+  header .layout .grow1 a.menu {
+    font-size: 28px;
+  }
+
+  header .layout .grow1 .notis img,
+  header .layout .grow1 .perfil img {
+    height: 35px;
+    width: 35px;
+  }
+
+  /* ============================================
+   *  SECCIÓN HERO (BIENVENIDA)
+   * ============================================ */
+  .indexFondo {
+    transform: rotate(10deg) translateY(-25%) translateX(-10%);
+  }
+
+  .index section:first-of-type {
+    padding-top: 25%;
+    padding-bottom: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .index h1 {
+    position: static;
+    font-size: 9vw;
+    width: 100%;
+    text-align: center;
+  }
+
+  .index section:first-of-type p {
+    position: static;
+    width: 90%;
+    text-align: center;
+    color: white;
+    font-size: 4.5vw;
+  }
+
+  .index section:first-of-type img {
+    display: none; /* Ocultamos la heladera en móvil para más claridad */
+  }
+
+  .index section:first-of-type div {
+    position: static;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .index div a {
+    position: static;
+    width: 80%;
+    max-width: 300px;
+    font-size: 4vw;
+    padding: 0.8rem 0;
+  }
+
+  /* ============================================
+   *  SECCIONES DE INFORMACIÓN (PROBLEMÁTICA Y SOLUCIÓN)
+   * ============================================ */
+  .section-problem, .section-solution {
+    text-align: center;
+  }
+
+  .section-desc {
+    width: 90%;
+    margin: 0 auto 10%;
+  }
+
+  .cards-container {
+    display: flex;
+    flex-direction: row; /* Asegura que los elementos estén en una fila */
+    overflow-x: auto;   /* Permite el scroll horizontal */
+    scroll-snap-type: x mandatory; /* Ajusta el scroll para que se detenga en cada tarjeta */
+    width: 100%;
+    gap: 1.5rem;
+    padding: 1rem 5%; /* Añade un poco de padding para que no empiece pegado al borde */
+    /* Ocultar la barra de scroll */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .cards-container::-webkit-scrollbar {
+      display: none; /* Chrome, Safari and Opera */
+  }
+
+  .info-card {
+    flex: 0 0 75%; /* Cada tarjeta ocupará el 75% del ancho del contenedor */
+    max-width: 300px;
+    scroll-snap-align: center; /* Centra la tarjeta al hacer scroll */
+    padding: 1.5rem;
+  }
+
+  .info-card h3 {
+    font-size: 10vw;
+  }
+
+  .info-card h4 {
+    font-size: 5vw;
+  }
+
+  .info-card p {
+    font-size: 3.8vw;
+  }
+
+  .solution-cards .info-card {
+    padding-bottom: 1.5rem;
+  }
+
+  .solution-cards .step-number {
+    font-size: 6vw;
+  }
+
+  /* ============================================
+   *  LOGIN
+   * ============================================ */
   .login section {
-    width: 85%;
+    width: 90%;
     max-width: 400px;
-    margin-top: 120px;
-    margin-bottom: 40px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 1.5rem;
   }
 
   .login h2 {
-    font-size: 6vw;
-    margin-bottom: 4%;
+    font-size: 7vw;
   }
 
   .login form {
@@ -1022,14 +803,14 @@ section h3 {
 
   .login input {
     width: 100%;
+    font-size: 4vw;
+    padding: 0.8rem;
   }
 
-  .login .btn-primary,
-  .login .btn-success,
-  .login .btn-outline-secondary,
-  .login .btn-link {
+  .login .btn {
     width: 100%;
-    max-width: 100%;
+    font-size: 4.2vw;
+    padding: 0.8rem;
   }
 }
 
@@ -4109,4 +3890,5 @@ main {
       width: 90%;
       max-width: 450px; /* Permitimos que sean más anchas en móvil también */
   }
+}
 }
