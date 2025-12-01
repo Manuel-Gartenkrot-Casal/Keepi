@@ -568,6 +568,42 @@
     </div>
 </div>
 
+<!-- POPUP ELIMINAR HELADERA -->
+<div id="popupEliminarHeladera" class="popup-crear oculto">
+    <div class="popup-card popup-contenido-crear">
+        <button class="popup-close" id="closePopupEliminarHeladera" aria-label="Cerrar">×</button>
+        <input type="hidden" id="nombreHeladeraEliminarInput" name="nombreHeladera">
+
+        <h2>¿Estás seguro de que querés eliminar esta Heladera?</h2>
+        <p style="color: #666; margin: 15px 0;">Esta acción no se puede deshacer.</p>
+
+        <div class="btns">
+            <button id="btnConfirmarEliminarHeladera" class="btn btn--accent btn--sm">Eliminar</button>
+            <button id="btnCancelarEliminarHeladera" class="btn btn--sm">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP CREAR HELADERA -->
+<div id="popupCrearHeladera" class="popup-crear oculto">
+    <div class="popup-card popup-contenido-crear">
+        <button class="popup-close" id="closePopupCrearHeladera" aria-label="Cerrar">×</button>
+
+        <h2>Crear nueva heladera</h2>
+
+        <label for="inputCrearNombre">Nombre de la heladera:</label>
+        <input type="text" id="inputCrearNombre" placeholder="Ej: Heladera Cocina" required>
+
+        <label for="inputCrearColor">Color:</label>
+        <input type="color" id="inputCrearColor" value="#ffffff" required>
+
+        <div class="btns">
+            <button id="btnConfirmarCrearHeladera" class="btn btn--primary btn--sm">Crear</button>
+            <button id="btnCancelarCrearHeladera" class="btn btn--sm">Cancelar</button>
+        </div>
+    </div>
+</div>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const heladerasContainer = document.getElementById("heladerasContainer");
@@ -700,7 +736,7 @@
 
         document.addEventListener('keydown', (e) => {
             if(e.key === 'Escape'){
-            ['popupCambiarNombre','popupCambiarColor'].forEach(id=>{
+            ['popupCambiarNombre','popupCambiarColor','popupEliminarHeladera', 'popupCrearHeladera'].forEach(id=>{
                 const el = document.getElementById(id);
                 if(el && !el.classList.contains('oculto')) el.classList.add('oculto');
             });
@@ -763,6 +799,95 @@
             });
         });
 
+        // Botón Eliminar Heladera
+        document.querySelectorAll(".btnEliminarHeladera").forEach(btn => {
+            btn.addEventListener("click", function () {
+                const idx = this.id.split("-")[1];
+                const heladera = document.querySelector(`#heladera-${idx}`);
+                const nombreOriginal = heladera.dataset.nombre;
+                document.getElementById("nombreHeladeraEliminarInput").value = nombreOriginal;
+                document.getElementById("popupEliminarHeladera").classList.remove("oculto");
+            });
+        });
+
+        // Confirmar eliminación de heladera
+        document.getElementById("btnConfirmarEliminarHeladera").addEventListener("click", () => {
+            const nombreHeladera = document.getElementById("nombreHeladeraEliminarInput").value;
+
+            if (!nombreHeladera) {
+                alert("Error: Nombre de heladera no especificado");
+                return;
+            }
+
+            fetch("/Heladera/EliminarHeladera", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `nombreHeladera=${encodeURIComponent(nombreHeladera)}`
+            }).then(resp => resp.json())
+              .then(data => {
+                  if (data.success) {
+                      location.reload();
+                  } else {
+                      alert(data.message || "Error al eliminar la heladera");
+                  }
+              })
+              .catch(err => {
+                  console.error(err);
+                  alert("Error de red");
+              });
+        });
+
+        // Cancelar eliminación
+        document.getElementById("btnCancelarEliminarHeladera").addEventListener("click", () => {
+            document.getElementById("popupEliminarHeladera").classList.add("oculto");
+        });
+
+        // Inicializar cierre del popup
+        initPopupClose('popupEliminarHeladera','closePopupEliminarHeladera');
+
+        // POPUP CREAR HELADERA
+
+        // ABRIR popup crear heladera
+document.getElementById("btnCrearHeladera").addEventListener("click", () => {
+    document.getElementById("popupCrearHeladera").classList.remove("oculto");
+});
+
+// CONFIRMAR creación
+document.getElementById("btnConfirmarCrearHeladera").addEventListener("click", () => {
+    const nombre = document.getElementById("inputCrearNombre").value.trim();
+    const color = document.getElementById("inputCrearColor").value;
+
+    if (!nombre) {
+        alert("Debés ingresar un nombre.");
+        return;
+    }
+
+    fetch("/Heladera/AgregarHeladera", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `nombre=${encodeURIComponent(nombre)}&color=${encodeURIComponent(color)}`
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            alert(data.message || "Error al crear la heladera");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Error de red");
+    });
+});
+
+// CANCELAR popup
+document.getElementById("btnCancelarCrearHeladera").addEventListener("click", () => {
+    document.getElementById("popupCrearHeladera").classList.add("oculto");
+});
+
+// CERRAR con overlay/click afuera + botón X + ESC
+initPopupClose("popupCrearHeladera", "closePopupCrearHeladera");
     </script>
 
 
