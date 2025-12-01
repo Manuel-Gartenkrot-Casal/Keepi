@@ -8,10 +8,8 @@
     var todosProductos = BD.GetAllProductos();
     var ColorHeladera = ViewBag.ColorHeladera;
     
-    // Serializamos la lista de productos para usarla en el buscador de JS
     var productosJson = Json.Serialize(ViewBag.ListaProductos);
 
-    // --- FUNCIÓN PARA HARDCODEAR IMÁGENES (C#) ---
     string GetImageForProduct(string nombre)
     {
         if (string.IsNullOrEmpty(nombre)) return "logokeepi.png";
@@ -34,7 +32,7 @@
 
 <div class="mi-heladera-container">
     
-    @* --- MENSAJES DE ERROR/EXITO (TempData) --- *@
+    @*  *@
     @if (TempData["Error"] != null)
     {
         <div id="alert-error" class="alert-box error" 
@@ -173,6 +171,7 @@
 </div>
 
 <script>
+
     // --- LÓGICA DEL BUSCADOR EN MODAL ---
     const productosBase = @Html.Raw(productosJson ?? "[]");
     const searchInput = document.getElementById('product-search');
@@ -330,11 +329,24 @@
     document.getElementById('btnDeCambiarHeladera').addEventListener('click', function() {
         window.location.href = '@Url.Action("Heladeras", "Heladera")';
     });
+
+const buscador = document.getElementById("busquedaProductos");
+
+buscador.addEventListener("input", function () {
+    const texto = buscador.value.toLowerCase().trim();
+    const cards = document.querySelectorAll(".producto-card");
+
+    cards.forEach(card => {
+        const nombre = card.querySelector(".producto-nombre").textContent.toLowerCase();
+
+        card.style.display = nombre.includes(texto) ? "flex" : "none";
+    });
+});
+
     
 </script>
 
 <style>
-/* --- ESTILOS DEL MODAL --- */
 .modal-overlay {
     display: none; /* Oculto por defecto */
     position: fixed;
