@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Keepi_DataBase]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Database [Keepi_DataBase]    Script Date: 30/11/2025 22:53:25 ******/
 CREATE DATABASE [Keepi_DataBase]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -73,16 +73,11 @@ ALTER DATABASE [Keepi_DataBase] SET TARGET_RECOVERY_TIME = 60 SECONDS
 GO
 ALTER DATABASE [Keepi_DataBase] SET DELAYED_DURABILITY = DISABLED 
 GO
-EXEC sys.sp_db_vardecimal_storage_format N'Keepi_DataBase', N'ON'
-GO
 ALTER DATABASE [Keepi_DataBase] SET QUERY_STORE = OFF
 GO
 USE [Keepi_DataBase]
 GO
-/****** Object:  User [alumno]    Script Date: 28/11/2025 08:25:32 ******/
-CREATE USER [alumno] FOR LOGIN [alumno] WITH DEFAULT_SCHEMA=[dbo]
-GO
-/****** Object:  Table [dbo].[Categoria]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Table [dbo].[Categoria]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +92,7 @@ CREATE TABLE [dbo].[Categoria](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Heladera]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Table [dbo].[Heladera]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,7 +108,7 @@ CREATE TABLE [dbo].[Heladera](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Notificacion]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Table [dbo].[Notificacion]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -130,7 +125,7 @@ CREATE TABLE [dbo].[Notificacion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Producto]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Table [dbo].[Producto]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +147,7 @@ CREATE TABLE [dbo].[Producto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductoXHeladera]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Table [dbo].[ProductoXHeladera]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -173,7 +168,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductoXReceta]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Table [dbo].[ProductoXReceta]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -189,7 +184,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Receta]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Table [dbo].[Receta]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -208,7 +203,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -226,7 +221,7 @@ CREATE TABLE [dbo].[Usuario](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UsuarioXHeladera]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  Table [dbo].[UsuarioXHeladera]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -243,161 +238,442 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 SET IDENTITY_INSERT [dbo].[Categoria] ON 
-
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (1, N'Lácteos', CAST(1.050 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (2, N'Bebidas', CAST(1.020 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (3, N'Carnes', CAST(1.070 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (4, N'Verduras', CAST(1.030 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (5, N'Frutas', CAST(1.040 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (6, N'Congelados', CAST(1.060 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (7, N'Panificados', CAST(1.045 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (8, N'Snacks', CAST(1.080 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (9, N'Salsas', CAST(1.035 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (10, N'Dulces', CAST(1.055 AS Decimal(6, 3)))
+GO
 SET IDENTITY_INSERT [dbo].[Categoria] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Heladera] ON 
-
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (1, N'Blanca', N'Mi Primera Heladera', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (2, N'Blanca', N'Heladera Country', 0)
+GO
+INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (1, N'#59ff00', N'dddd', 1)
+GO
+INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (2, N'#ffffff', N'dsaasddsaads', 1)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (3, N'Negra', N'Heladera Cocina Principal', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (4, N'Plateada', N'Heladera de Bebidas', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (5, N'Gris', N'Heladera del Quincho', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (6, N'Roja', N'MiniBar', 1)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (7, N'Azul', N'Heladera Oficina', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (8, N'Blanca', N'Heladera Familiar', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (9, N'Verde', N'Heladera Eco', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (10, N'Negra', N'Heladera Secundaria', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (11, N'Gris Oscuro', N'Heladera del Garage', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (12, N'Blanca', N'Heladera Invierno', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (16, N'rojo', N'tomas', 1)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (17, N'rojo', N'pepe', 1)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (18, N'rojo', N'lolo', 0)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (19, N'rojo', N'pepe', 1)
+GO
 INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (20, N'rojo', N'hola', 0)
+GO
+INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (21, N'#ce0d0d', N'Heladera Principal', 0)
+GO
+INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (22, N'#fd7e17', N'Heladera Novia', 0)
+GO
+INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (23, N'#fff70f', N'Heladera Sótano', 0)
+GO
+INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (24, N'#44ff00', N'Heladera Secundaria', 0)
+GO
+INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (25, N'#00eeff', N'Heladera Abuela', 0)
+GO
+INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (26, N'#002aff', N'Heladera Madre', 0)
+GO
+INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (27, N'#c600e0', N'Heladera Primo Gabriel', 0)
+GO
 SET IDENTITY_INSERT [dbo].[Heladera] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Producto] ON 
-
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (1, N'Leche entera', 10, 0, 1, CAST(0.020 AS Decimal(6, 3)), CAST(89.000 AS Decimal(6, 3)), CAST(4.800 AS Decimal(6, 3)), CAST(0.200 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (2, N'Yogur natural', 15, 1, 1, CAST(0.040 AS Decimal(6, 3)), CAST(80.000 AS Decimal(6, 3)), CAST(5.000 AS Decimal(6, 3)), CAST(0.100 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (3, N'Carne vacuna', 5, 0, 3, CAST(0.010 AS Decimal(6, 3)), CAST(60.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (4, N'Pollo fresco', 6, 0, 3, CAST(0.015 AS Decimal(6, 3)), CAST(65.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (5, N'Manzana', 20, 1, 5, CAST(0.030 AS Decimal(6, 3)), CAST(85.000 AS Decimal(6, 3)), CAST(10.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (6, N'Lechuga', 5, 0, 4, CAST(0.015 AS Decimal(6, 3)), CAST(93.000 AS Decimal(6, 3)), CAST(0.800 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (7, N'Coca-Cola', 120, 1, 2, CAST(0.100 AS Decimal(6, 3)), CAST(88.000 AS Decimal(6, 3)), CAST(10.000 AS Decimal(6, 3)), CAST(0.100 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (8, N'Cerveza', 180, 1, 2, CAST(0.050 AS Decimal(6, 3)), CAST(90.000 AS Decimal(6, 3)), CAST(3.000 AS Decimal(6, 3)), CAST(0.200 AS Decimal(6, 3)), CAST(4.500 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (9, N'Pan lactal', 7, 0, 7, CAST(0.010 AS Decimal(6, 3)), CAST(35.000 AS Decimal(6, 3)), CAST(5.500 AS Decimal(6, 3)), CAST(0.200 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
+GO
 INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (10, N'Queso cremoso', 25, 1, 1, CAST(0.020 AS Decimal(6, 3)), CAST(50.000 AS Decimal(6, 3)), CAST(1.000 AS Decimal(6, 3)), CAST(0.500 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
+GO
 SET IDENTITY_INSERT [dbo].[Producto] OFF
 GO
 SET IDENTITY_INSERT [dbo].[ProductoXHeladera] ON 
-
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (1, 1, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 0, 0, N'leche.jpg', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (2, 1, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 0, 0, N'yogur.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (1, 1, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 1, 0, N'leche.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (2, 1, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 1, 0, N'yogur.webp', NULL)
+GO
 INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (3, 2, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 0, 0, N'carne.jpg', NULL)
+GO
 INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (4, 3, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 0, 0, N'pollo.jpg', NULL)
+GO
 INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (5, 4, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 0, 0, N'manzana.jpeg', NULL)
+GO
 INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (6, 5, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 0, 1, N'lechuga.jpg', NULL)
+GO
 INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (7, 6, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 0, 0, N'cocacola.webp', NULL)
+GO
 INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (8, 7, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 0, 1, N'cerveza.jpg', NULL)
+GO
 INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (9, 8, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 0, 0, N'pan.webp', NULL)
+GO
 INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (10, 9, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 0, 0, N'queso.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (15, 1, 1, N'Leche la Serenisima', CAST(N'2025-12-04' AS Date), 1, 0, N'undefined', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (16, 1, 2, N'Yogur natural', CAST(N'2026-01-09' AS Date), 0, 0, N'undefined', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (19, 1, 1, N'Leche La Serenísima', CAST(N'2025-12-01' AS Date), 0, 0, N'undefined', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (41, 22, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 1, 0, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (42, 22, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 1, 0, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (43, 22, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 1, 0, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (44, 22, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 1, 0, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (45, 22, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 1, 0, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (46, 22, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (47, 22, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 1, 0, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (48, 22, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (49, 22, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 1, 0, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (50, 22, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 1, 0, NULL, NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (71, 22, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 1, 0, N'leche.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (72, 22, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 1, 0, N'yogur.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (73, 22, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 1, 0, N'carne.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (74, 22, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 1, 0, N'pollo.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (75, 22, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 1, 0, N'manzana.jpeg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (76, 22, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 1, 1, N'lechuga.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (77, 22, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 1, 0, N'cocacola.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (78, 22, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 1, 1, N'cerveza.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (79, 22, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 1, 0, N'pan.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (80, 22, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 1, 0, N'queso.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (81, 23, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 0, 0, N'leche.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (82, 23, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 0, 0, N'yogur.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (83, 23, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 0, 0, N'carne.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (84, 23, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 0, 0, N'pollo.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (85, 23, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 0, 0, N'manzana.jpeg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (86, 23, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 0, 1, N'lechuga.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (87, 23, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 0, 0, N'cocacola.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (88, 23, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 0, 1, N'cerveza.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (89, 23, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 0, 0, N'pan.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (90, 23, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 0, 0, N'queso.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (91, 24, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 0, 0, N'leche.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (92, 24, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 0, 0, N'yogur.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (93, 24, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 0, 0, N'carne.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (94, 24, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 0, 0, N'pollo.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (95, 24, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 0, 0, N'manzana.jpeg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (96, 24, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 0, 1, N'lechuga.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (97, 24, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 0, 0, N'cocacola.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (98, 24, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 0, 1, N'cerveza.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (99, 24, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 0, 0, N'pan.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (100, 24, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 0, 0, N'queso.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (101, 25, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 0, 0, N'leche.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (102, 25, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 0, 0, N'yogur.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (103, 25, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 0, 0, N'carne.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (104, 25, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 0, 0, N'pollo.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (105, 25, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 0, 0, N'manzana.jpeg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (106, 25, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 0, 1, N'lechuga.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (107, 25, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 0, 0, N'cocacola.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (108, 25, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 0, 1, N'cerveza.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (109, 25, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 0, 0, N'pan.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (110, 25, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 0, 0, N'queso.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (111, 26, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 0, 0, N'leche.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (112, 26, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 0, 0, N'yogur.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (113, 26, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 0, 0, N'carne.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (114, 26, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 0, 0, N'pollo.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (115, 26, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 0, 0, N'manzana.jpeg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (116, 26, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 0, 1, N'lechuga.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (117, 26, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 0, 0, N'cocacola.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (118, 26, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 0, 1, N'cerveza.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (119, 26, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 0, 0, N'pan.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (120, 26, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 0, 0, N'queso.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (121, 27, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 0, 0, N'leche.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (122, 27, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 0, 0, N'yogur.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (123, 27, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 0, 0, N'carne.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (124, 27, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 0, 0, N'pollo.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (125, 27, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 0, 0, N'manzana.jpeg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (126, 27, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 0, 1, N'lechuga.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (127, 27, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 0, 0, N'cocacola.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (128, 27, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 0, 1, N'cerveza.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (129, 27, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 0, 0, N'pan.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (130, 27, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 0, 0, N'queso.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (131, 21, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 0, 0, N'leche.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (132, 21, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 0, 0, N'yogur.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (133, 21, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 0, 0, N'carne.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (134, 21, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 0, 0, N'pollo.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (135, 21, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 0, 0, N'manzana.jpeg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (136, 21, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 0, 1, N'lechuga.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (137, 21, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 0, 0, N'cocacola.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (138, 21, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 0, 1, N'cerveza.jpg', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (139, 21, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 0, 0, N'pan.webp', NULL)
+GO
+INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (140, 21, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 0, 0, N'queso.webp', NULL)
+GO
 SET IDENTITY_INSERT [dbo].[ProductoXHeladera] OFF
 GO
 SET IDENTITY_INSERT [dbo].[ProductoXReceta] ON 
-
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (1, 1, 2, CAST(0.50 AS Decimal(10, 2)))
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (2, 3, 2, CAST(0.30 AS Decimal(10, 2)))
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (3, 4, 5, CAST(0.40 AS Decimal(10, 2)))
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (4, 6, 1, CAST(0.20 AS Decimal(10, 2)))
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (5, 5, 9, CAST(0.25 AS Decimal(10, 2)))
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (6, 7, 3, CAST(0.30 AS Decimal(10, 2)))
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (7, 10, 4, CAST(0.50 AS Decimal(10, 2)))
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (8, 9, 6, CAST(0.60 AS Decimal(10, 2)))
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (9, 3, 7, CAST(0.35 AS Decimal(10, 2)))
+GO
 INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (10, 2, 8, CAST(0.20 AS Decimal(10, 2)))
+GO
 SET IDENTITY_INSERT [dbo].[ProductoXReceta] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Receta] ON 
-
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (1, N'Ensalada César', 0, 15, 0, 2, N'Paso 1: Hervir dos huevos durante 10 minutos.
 Paso 2: Lavar y cortar la lechuga, el tomate y la cebolla.
 Paso 3: Abrir la lata de atún y escurrir.
 Paso 4: Pelar los huevos y cortarlos en cuartos.
 Paso 5: Mezclar todo en un bol y condimentar con sal, aceite, vinagre y salsa César a gusto.')
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (2, N'Milanesas con puré', 1, 40, 0, 4, N'Paso 1: Pelar papas, cortar en cubos y hervir con sal.
 Paso 2: Pasar los bifes de carne por huevo batido (con ajo y perejil) y luego por pan rallado.
 Paso 3: Freír las milanesas en aceite caliente o al horno hasta dorar.
 Paso 4: Colar las papas, agregar manteca y leche, y pisar hasta hacer puré.
 Paso 5: Servir las milanesas acompañadas del puré.')
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (3, N'Smoothie de frutas', 0, 10, 0, 2, N'Paso 1: Lavar bien las frutas elegidas (frutillas, bananas, duraznos).
 Paso 2: Cortarlas en trozos y colocarlas en la licuadora.
 Paso 3: Agregar leche, yogur o agua y hielo a gusto.
 Paso 4: Licuar hasta obtener una mezcla cremosa y homogénea.
 Paso 5: Servir inmediatamente en vaso alto.')
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (4, N'Tarta de jamón y queso', 0, 35, 0, 6, N'Paso 1: Forrar una tartera aceitada con una de las tapas de masa.
 Paso 2: Cortar el jamón y el queso en cubos o fetas.
 Paso 3: En un bol, batir 3 huevos con un poco de crema o queso crema, sal y pimienta.
 Paso 4: Mezclar el jamón y queso con el ligue de huevos y volcar sobre la masa.
 Paso 5: Hornear a 180°C durante 30 minutos o hasta que la masa esté dorada y el relleno firme.')
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (5, N'Pollo al horno', 0, 60, 0, 4, N'Paso 1: Lavar el pollo y colocarlo en una asadera.
 Paso 2: Pelar papas, batatas y cebollas, cortarlas en trozos grandes y rodear el pollo.
 Paso 3: Rociar todo con aceite, jugo de limón y condimentar con sal, orégano y provenzal.
 Paso 4: Llevar a horno medio/fuerte durante 60 a 90 minutos.
 Paso 5: Retirar cuando el pollo esté dorado y los jugos salgan claros.')
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (6, N'Pizza casera', 1, 45, 0, 3, N'Paso 1: Estirar el bollo de masa en una pizzera previamente aceitada.
 Paso 2: Cubrir con salsa de tomate condimentada.
 Paso 3: Llevar a horno fuerte 10 minutos (pre-pizza).
 Paso 4: Retirar, agregar abundante muzzarella y aceitunas.
 Paso 5: Volver al horno hasta que el queso se derrita y gratine.')
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (7, N'Empanadas de carne', 0, 50, 0, 12, N'Paso 1: Saltear cebolla y morrón picados en grasa o aceite.
 Paso 2: Agregar carne picada, sal, comino y pimentón. Cocinar hasta que la carne cambie de color.
 Paso 3: Retirar del fuego, agregar huevo duro picado y cebolla de verdeo. Enfriar el relleno.
 Paso 4: Rellenar los discos de empanada y hacer el repulgue.
 Paso 5: Hornear a fuego fuerte o freír en grasa hasta que la masa esté dorada.')
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (8, N'Flan con dulce de leche', 0, 70, 0, 8, N'Paso 1: Hacer un caramelo con azúcar en la flanera y dejar enfriar.
 Paso 2: En un bol, mezclar suavemente 5 huevos, 500cc de leche y 100g de azúcar (sin hacer espuma). Agrega vainilla.
 Paso 3: Verter la mezcla en la flanera acaramelada.
 Paso 4: Cocinar a baño maría en el horno (160°C) por aprox. 50-60 minutos.
 Paso 5: Dejar enfriar bien en heladera antes de desmoldar. Servir con dulce de leche.')
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (9, N'Ensalada de frutas', 1, 10, 0, 4, N'Paso 1: Lavar bien y pelar las frutas (naranja, manzana, banana, pera, durazno).
 Paso 2: Cortar todas las frutas en cubos pequeños del mismo tamaño.
 Paso 3: Colocar en un bol grande y agregar jugo de naranja natural y azúcar a gusto.
 Paso 4: Mezclar bien y dejar reposar en la heladera al menos 1 hora para que suelten sus jugos.')
+GO
 INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (10, N'Sándwich de pollo', 0, 20, 0, 1, N'Paso 1: Tostar ligeramente dos rebanadas de pan.
 Paso 2: Untar ambas partes con mayonesa o queso crema.
 Paso 3: Colocar hojas de lechuga fresca y rodajas de tomate.
 Paso 4: Agregar pechuga de pollo cocida (puede ser desmenuzada o en fetas) y una feta de queso.
 Paso 5: Cerrar el sándwich, cortar al medio y disfrutar.')
+GO
 SET IDENTITY_INSERT [dbo].[Receta] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Usuario] ON 
-
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (1, N'juanperez', N'Juan1234', N'Juan', N'Pérez', N'juan.perez@gmail.com')
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (2, N'maria.gomez', N'Maria2025', N'María', N'Gómez', N'maria.gomez@hotmail.com')
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (3, N'carlos_rojas', N'Carlos!987', N'Carlos', N'Rojas', N'carlos.rojas@yahoo.com')
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (4, N'lucia_flores', N'Lucia@25', N'Lucía', N'Flores', N'lucia.flores@gmail.com')
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (5, N'martin87', N'Mart1n#87', N'Martín', N'Fernández', N'martin.fernandez@outlook.com')
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (6, N'sofia.mendez', N'SofiMdz2025', N'Sofía', N'Méndez', N'sofia.mendez@gmail.com')
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (7, N'agustin_ort', N'AgusOrt!', N'Agustín', N'Ramírez', N'agustin.ramirez@escuelaort.edu.ar')
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (8, N'valentina', N'Valen#123', N'Valentina', N'López', N'valentina.lopez@gmail.com')
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (9, N'admin', N'AdminKeepi', N'Administrador', N'Keepi', N'admin@keepi.com')
+GO
 INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (10, N'tommy', N'Keepi2025', N'Tomás', N'Goldentul', N'tomas.goldentul@ort.edu.ar')
+GO
 SET IDENTITY_INSERT [dbo].[Usuario] OFF
 GO
 SET IDENTITY_INSERT [dbo].[UsuarioXHeladera] ON 
-
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (1, 1, 1, 1)
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (2, 1, 2, 0)
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (3, 2, 2, 1)
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (4, 3, 3, 1)
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (5, 4, 4, 1)
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (6, 5, 5, 1)
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (7, 6, 6, 1)
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (8, 7, 7, 1)
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (9, 8, 8, 1)
+GO
 INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (10, 9, 9, 1)
+GO
+INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (11, 1, 21, 1)
+GO
+INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (12, 1, 22, 1)
+GO
+INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (13, 1, 23, 1)
+GO
+INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (14, 1, 24, 1)
+GO
+INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (15, 1, 25, 1)
+GO
+INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (16, 1, 26, 1)
+GO
+INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (17, 1, 27, 1)
+GO
 SET IDENTITY_INSERT [dbo].[UsuarioXHeladera] OFF
 GO
 ALTER TABLE [dbo].[Heladera] ADD  CONSTRAINT [DF__Heladera__Elimin__6477ECF3]  DEFAULT ((0)) FOR [Eliminado]
@@ -470,7 +746,7 @@ ALTER TABLE [dbo].[ProductoXHeladera]  WITH CHECK ADD  CONSTRAINT [CK_ProductoXH
 GO
 ALTER TABLE [dbo].[ProductoXHeladera] CHECK CONSTRAINT [CK_ProductoXHeladera_Estado]
 GO
-/****** Object:  StoredProcedure [dbo].[BuscarHeladeraDeUsuario]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  StoredProcedure [dbo].[BuscarHeladeraDeUsuario]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -495,7 +771,7 @@ Begin
 	End Catch
 End
 GO
-/****** Object:  StoredProcedure [dbo].[buscarProducto]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  StoredProcedure [dbo].[buscarProducto]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -524,7 +800,7 @@ IF EXISTS (SELECT 1 FROM Producto WHERE Nombre = @Nombre)
     END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[CalcularFPromedioBase]    Script Date: 28/11/2025 08:25:32 ******/
+/****** Object:  StoredProcedure [dbo].[CalcularFPromedioBase]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -559,753 +835,7 @@ BEGIN
     SELECT @f_promedio_base AS f_promedio_base;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[CambiarEstadoProducto]    Script Date: 28/11/2025 08:25:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[CambiarEstadoProducto]
-    @NombreEspecifico VARCHAR(50),
-    @NuevoEstado VARCHAR(20)
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    BEGIN TRY
-        --Fijarse que el estado sea uno de los permitidos
-        IF @NuevoEstado NOT IN ('Alacena', 'Refrigerado', 'Congelado')
-        BEGIN
-            RAISERROR('Che, no podes hacer eso, solo para que sepas. El estado solo puede ser: Alacena, Refrigerado o Congelado.', 16, 1);
-            RETURN;
-        END;
-
-        --El producto tiene que existir
-        IF NOT EXISTS (SELECT 1 FROM ProductoXHeladera WHERE NombreEspecifico = @NombreEspecifico)
-        BEGIN
-            RAISERROR('El producto especificado no existe en éste universo por lo menos.', 16, 1);
-            RETURN;
-        END;
-
-        -- Actualizar estado
-        UPDATE ProductoXHeladera
-        SET Estado = @NuevoEstado
-        WHERE NombreEspecifico = @NombreEspecifico;
-
-        PRINT CONCAT('El estado del producto "', @NombreEspecifico, '" fue actualizado a "', @NuevoEstado, '" de forma gloriosa.');
-    END TRY
-
-    BEGIN CATCH
-        DECLARE @Msg NVARCHAR(4000) = ERROR_MESSAGE();
-        RAISERROR(@Msg, 16, 1);
-    END CATCH
-END;
-GO
-/****** Object:  StoredProcedure [dbo].[crearHeladera]    Script Date: 28/11/2025 08:25:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE procedure [dbo].[crearHeladera]
-@color varchar(50),
-@Nombre varchar(50)
-as 
-begin
-declare @resultado int
-BEGIN TRY
-BEGIN TRANSACTION
-if not exists (select 1 from Heladera where Nombre = @Nombre and Eliminado = 'false')
-	begin
-	insert into Heladera (Color, Nombre, Eliminado)
-	values (@color, @Nombre, 'false')
-	set @resultado = 1
-	end
-else
-	begin
-		set @resultado = -1
-	end
-COMMIT TRANSACTION;
-    SELECT @Resultado AS Resultado;
- 
-END TRY
-BEGIN CATCH
-if @@ROWCOUNT > 0
-ROLLBACK TRANSACTION
-        PRINT  @resultado;
-
-END CATCH
-end
-GO
-/****** Object:  StoredProcedure [dbo].[crearUsuario]    Script Date: 28/11/2025 08:25:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [dbo].[crearUsuario]
-@Username varchar(100),
-@Password varchar (100)
-as
-begin
-if exists (select 1 from Usuario where Username = @Username and Password = @Password)
-begin
-select '-1'
-end
-else
-begin
-insert into Usuario (Username, Password)
-values (@Username, @Password)
-select '1'
-end
-end
-GO
-/****** Object:  StoredProcedure [dbo].[eliminarHeladera]    Script Date: 28/11/2025 08:25:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [dbo].[eliminarHeladera]
-@nombre varchar(50)
-as
-begin
-declare @resultado int
-BEGIN TRY
-begin transaction
-if exists (select 1 from Heladera where Nombre = @nombre and Eliminado = 'false')
-	begin
-	update Heladera set Eliminado = 'true' where Nombre = @nombre
-	set @resultado = 1
-	end
-else
-	begin
-		set @resultado = -1
-	end
-COMMIT TRANSACTION;
-    SELECT @Resultado AS Resultado;
-
-END TRY
-BEGIN CATCH
-if @@ROWCOUNT >0
-rollback transaction;
-print @resultado
-END CATCH
-end
-GO
-/****** Object:  StoredProcedure [dbo].[eliminarProductoHeladera]    Script Date: 28/11/2025 08:25:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [dbo].[eliminarProductoHeladera]
-@idHeladera int,
-@idProducto int
-as
-begin
-declare @resultado int
-begin try
-begin transaction
-if exists (select 1 from ProductoXHeladera where IdProducto = @idProducto and IdHeladera = @idHeladera)
-begin
-update ProductoXHeladera set Eliminado = 1 where IdProducto = @idProducto and IdHeladera = @idHeladera
-set @resultado = 1
-end
-else
-begin
-set @resultado = -1
-end
-commit transaction
-select @resultado
-end try
-begin catch
-if @@ROWCOUNT >0
-rollback transaction;
-print @resultado
-end catch
-end
-GO
-/****** Object:  StoredProcedure [dbo].[getProductosByNombreHeladeraAndIdUsuario]    Script Date: 28/11/2025 08:25:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE PROCEDURE [dbo].[getProductosByNombreHeladeraAndIdUsuario]
-    @nombre VARCHAR(50),
-    @IdUsuario INT
-AS
-BEGIN
-    SELECT 
-        PH.Id,
-        PH.IdHeladera,
-        PH.IdProducto,
-        PH.NombreEspecifico,
-        PH.FechaVencimiento,
-        PH.Eliminado,
-        PH.Abierto,
-        PH.Foto,
-        P.Nombre AS NombreProducto,
-        UH.IdUsuario
-    FROM ProductoXHeladera PH 
-    INNER JOIN Heladera H ON H.Id = PH.IdHeladera 
-    INNER JOIN UsuarioXHeladera UH ON H.Id = UH.IdHeladera 
-    LEFT JOIN Producto P ON P.Id = PH.IdProducto
-    WHERE UH.IdUsuario = @IdUsuario 
-        AND H.Nombre = @nombre
-        AND (PH.Eliminado = 0 OR PH.Eliminado IS NULL)
-END
-GO
-/****** Object:  StoredProcedure [dbo].[SeleccionarHeladeraByNombre]    Script Date: 28/11/2025 08:25:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GOALTER DATABASE [Keepi_DataBase] SET COMPATIBILITY_LEVEL = 140
-GO
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [Keepi_DataBase].[dbo].[sp_fulltext_database] @action = 'enable'
-end
-GO
-ALTER DATABASE [Keepi_DataBase] SET ANSI_NULL_DEFAULT OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET ANSI_NULLS OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET ANSI_PADDING OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET ANSI_WARNINGS OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET ARITHABORT OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET AUTO_CLOSE OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET AUTO_SHRINK OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET AUTO_UPDATE_STATISTICS ON 
-GO
-ALTER DATABASE [Keepi_DataBase] SET CURSOR_CLOSE_ON_COMMIT OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET CURSOR_DEFAULT  GLOBAL 
-GO
-ALTER DATABASE [Keepi_DataBase] SET CONCAT_NULL_YIELDS_NULL OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET NUMERIC_ROUNDABORT OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET QUOTED_IDENTIFIER OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET RECURSIVE_TRIGGERS OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET  ENABLE_BROKER 
-GO
-ALTER DATABASE [Keepi_DataBase] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET DATE_CORRELATION_OPTIMIZATION OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET TRUSTWORTHY OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET ALLOW_SNAPSHOT_ISOLATION OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET PARAMETERIZATION SIMPLE 
-GO
-ALTER DATABASE [Keepi_DataBase] SET READ_COMMITTED_SNAPSHOT OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET HONOR_BROKER_PRIORITY OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET RECOVERY FULL 
-GO
-ALTER DATABASE [Keepi_DataBase] SET  MULTI_USER 
-GO
-ALTER DATABASE [Keepi_DataBase] SET PAGE_VERIFY CHECKSUM  
-GO
-ALTER DATABASE [Keepi_DataBase] SET DB_CHAINING OFF 
-GO
-ALTER DATABASE [Keepi_DataBase] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
-GO
-ALTER DATABASE [Keepi_DataBase] SET TARGET_RECOVERY_TIME = 60 SECONDS 
-GO
-ALTER DATABASE [Keepi_DataBase] SET DELAYED_DURABILITY = DISABLED 
-GO
-ALTER DATABASE [Keepi_DataBase] SET ACCELERATED_DATABASE_RECOVERY = OFF  
-GO
-ALTER DATABASE [Keepi_DataBase] SET QUERY_STORE = OFF
-GO
-USE [Keepi_DataBase]
-GO
-/****** Object:  Table [dbo].[Categoria]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Categoria](
-	[IdCategoria] [int] IDENTITY(1,1) NOT NULL,
-	[nombreCategoria] [varchar](50) NOT NULL,
-	[porcentajeDeCambio] [decimal](6, 3) NOT NULL,
- CONSTRAINT [PK_Categoria] PRIMARY KEY CLUSTERED 
-(
-	[IdCategoria] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Heladera]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Heladera](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Color] [varchar](50) NOT NULL,
-	[Nombre] [varchar](50) NOT NULL,
-	[Eliminado] [bit] NOT NULL,
- CONSTRAINT [PK__Heladera__3214EC075F9005F4] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Notificacion]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Notificacion](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Mensaje] [varchar](100) NOT NULL,
-	[FechaNotificacion] [date] NOT NULL,
-	[Leida] [bit] NOT NULL,
-	[IdProductoxHeladera] [int] NOT NULL,
- CONSTRAINT [PK_Notificacion] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Producto]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Producto](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Nombre] [varchar](50) NOT NULL,
-	[Duracion] [int] NOT NULL,
-	[Favorito] [bit] NOT NULL,
-	[IdCategoria] [int] NOT NULL,
-	[PorcAcidez] [decimal](6, 3) NOT NULL,
-	[PorcAgua] [decimal](6, 3) NOT NULL,
-	[PorcAzucar] [decimal](6, 3) NOT NULL,
-	[PorcConservantes] [decimal](6, 3) NOT NULL,
-	[PorcAlcohol] [decimal](6, 3) NOT NULL,
- CONSTRAINT [PK__Producto__3214EC076B2DFAD0] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[ProductoXHeladera]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[ProductoXHeladera](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[IdHeladera] [int] NOT NULL,
-	[IdProducto] [int] NOT NULL,
-	[NombreEspecifico] [varchar](50) NULL,
-	[FechaVencimiento] [date] NULL,
-	[Eliminado] [bit] NULL,
-	[Abierto] [bit] NULL,
-	[Foto] [varchar](50) NULL,
-	[Estado] [varchar](50) NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[ProductoXReceta]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[ProductoXReceta](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[IdProducto] [int] NOT NULL,
-	[IdReceta] [int] NOT NULL,
-	[CantidadNecesaria] [decimal](10, 2) NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Receta]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Receta](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Nombre] [varchar](50) NOT NULL,
-	[Favorito] [bit] NULL,
-	[Duracion] [int] NULL,
-	[Popularidad] [int] NULL,
-	[Raciones] [int] NULL,
-	[Instrucciones] [nvarchar](max) NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Usuario](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Username] [varchar](50) NOT NULL,
-	[Password] [varchar](100) NOT NULL,
-	[Nombre] [varchar](30) NOT NULL,
-	[Apellido] [varchar](50) NOT NULL,
-	[Email] [varchar](100) NOT NULL,
- CONSTRAINT [PK__Usuario__3214EC078C41C33D] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[UsuarioXHeladera]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[UsuarioXHeladera](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[IdUsuario] [int] NOT NULL,
-	[IdHeladera] [int] NOT NULL,
-	[EsDueño] [bit] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET IDENTITY_INSERT [dbo].[Categoria] ON 
-
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (1, N'Lácteos', CAST(1.050 AS Decimal(6, 3)))
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (2, N'Bebidas', CAST(1.020 AS Decimal(6, 3)))
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (3, N'Carnes', CAST(1.070 AS Decimal(6, 3)))
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (4, N'Verduras', CAST(1.030 AS Decimal(6, 3)))
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (5, N'Frutas', CAST(1.040 AS Decimal(6, 3)))
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (6, N'Congelados', CAST(1.060 AS Decimal(6, 3)))
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (7, N'Panificados', CAST(1.045 AS Decimal(6, 3)))
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (8, N'Snacks', CAST(1.080 AS Decimal(6, 3)))
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (9, N'Salsas', CAST(1.035 AS Decimal(6, 3)))
-INSERT [dbo].[Categoria] ([IdCategoria], [nombreCategoria], [porcentajeDeCambio]) VALUES (10, N'Dulces', CAST(1.055 AS Decimal(6, 3)))
-SET IDENTITY_INSERT [dbo].[Categoria] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Heladera] ON 
-
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (1, N'#ffffff', N'Mi Primera Heladera', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (2, N'#ffffff', N'Heladera Country', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (3, N'#333333', N'Heladera Cocina Principal', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (4, N'#e3e4e5', N'Heladera de Bebidas', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (5, N'#9e9e9e', N'Heladera del Quincho', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (6, N'#e03b3b', N'MiniBar', 1)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (7, N'#6fa8ff', N'Heladera Oficina', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (8, N'#ffffff', N'Heladera Familiar', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (9, N'#59ad44', N'Heladera Eco', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (10, N'#333333', N'Heladera Secundaria', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (11, N'#5a615c', N'Heladera del Garage', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (12, N'#ffffff', N'Heladera Invierno', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (16, N'#e03b3b', N'tomas', 1)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (17, N'#e03b3b', N'pepe', 1)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (18, N'#e03b3b', N'lolo', 0)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (19, N'#e03b3b', N'pepe', 1)
-INSERT [dbo].[Heladera] ([Id], [Color], [Nombre], [Eliminado]) VALUES (20, N'#e03b3b', N'hola', 0)
-SET IDENTITY_INSERT [dbo].[Heladera] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Producto] ON 
-
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (1, N'Leche entera', 10, 0, 1, CAST(0.020 AS Decimal(6, 3)), CAST(89.000 AS Decimal(6, 3)), CAST(4.800 AS Decimal(6, 3)), CAST(0.200 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (2, N'Yogur natural', 15, 1, 1, CAST(0.040 AS Decimal(6, 3)), CAST(80.000 AS Decimal(6, 3)), CAST(5.000 AS Decimal(6, 3)), CAST(0.100 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (3, N'Carne vacuna', 5, 0, 3, CAST(0.010 AS Decimal(6, 3)), CAST(60.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (4, N'Pollo fresco', 6, 0, 3, CAST(0.015 AS Decimal(6, 3)), CAST(65.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (5, N'Manzana', 20, 1, 5, CAST(0.030 AS Decimal(6, 3)), CAST(85.000 AS Decimal(6, 3)), CAST(10.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (6, N'Lechuga', 5, 0, 4, CAST(0.015 AS Decimal(6, 3)), CAST(93.000 AS Decimal(6, 3)), CAST(0.800 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (7, N'Coca-Cola', 120, 1, 2, CAST(0.100 AS Decimal(6, 3)), CAST(88.000 AS Decimal(6, 3)), CAST(10.000 AS Decimal(6, 3)), CAST(0.100 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (8, N'Cerveza', 180, 1, 2, CAST(0.050 AS Decimal(6, 3)), CAST(90.000 AS Decimal(6, 3)), CAST(3.000 AS Decimal(6, 3)), CAST(0.200 AS Decimal(6, 3)), CAST(4.500 AS Decimal(6, 3)))
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (9, N'Pan lactal', 7, 0, 7, CAST(0.010 AS Decimal(6, 3)), CAST(35.000 AS Decimal(6, 3)), CAST(5.500 AS Decimal(6, 3)), CAST(0.200 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
-INSERT [dbo].[Producto] ([Id], [Nombre], [Duracion], [Favorito], [IdCategoria], [PorcAcidez], [PorcAgua], [PorcAzucar], [PorcConservantes], [PorcAlcohol]) VALUES (10, N'Queso cremoso', 25, 1, 1, CAST(0.020 AS Decimal(6, 3)), CAST(50.000 AS Decimal(6, 3)), CAST(1.000 AS Decimal(6, 3)), CAST(0.500 AS Decimal(6, 3)), CAST(0.000 AS Decimal(6, 3)))
-SET IDENTITY_INSERT [dbo].[Producto] OFF
-GO
-SET IDENTITY_INSERT [dbo].[ProductoXHeladera] ON 
-
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (1, 1, 1, N'Leche La Serenísima', CAST(N'2025-10-25' AS Date), 0, 0, N'leche.jpg', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (2, 1, 2, N'Yogur Ser Natural', CAST(N'2025-10-30' AS Date), 0, 0, N'yogur.webp', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (3, 2, 3, N'Carne para milanesa', CAST(N'2025-10-20' AS Date), 0, 0, N'carne.jpg', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (4, 3, 4, N'Pechuga de pollo', CAST(N'2025-10-21' AS Date), 0, 0, N'pollo.jpg', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (5, 4, 5, N'Manzana roja', CAST(N'2025-10-28' AS Date), 0, 0, N'manzana.jpeg', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (6, 5, 6, N'Lechuga criolla', CAST(N'2025-10-18' AS Date), 0, 1, N'lechuga.jpg', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (7, 6, 7, N'Coca-Cola 1.5L', CAST(N'2026-01-01' AS Date), 0, 0, N'cocacola.webp', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (8, 7, 8, N'Cerveza Quilmes', CAST(N'2026-06-01' AS Date), 0, 1, N'cerveza.jpg', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (9, 8, 9, N'Pan Fargo', CAST(N'2025-10-19' AS Date), 0, 0, N'pan.webp', NULL)
-INSERT [dbo].[ProductoXHeladera] ([Id], [IdHeladera], [IdProducto], [NombreEspecifico], [FechaVencimiento], [Eliminado], [Abierto], [Foto], [Estado]) VALUES (10, 9, 10, N'Queso La Paulina', CAST(N'2025-11-05' AS Date), 0, 0, N'queso.webp', NULL)
-SET IDENTITY_INSERT [dbo].[ProductoXHeladera] OFF
-GO
-SET IDENTITY_INSERT [dbo].[ProductoXReceta] ON 
-
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (1, 1, 2, CAST(0.50 AS Decimal(10, 2)))
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (2, 3, 2, CAST(0.30 AS Decimal(10, 2)))
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (3, 4, 5, CAST(0.40 AS Decimal(10, 2)))
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (4, 6, 1, CAST(0.20 AS Decimal(10, 2)))
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (5, 5, 9, CAST(0.25 AS Decimal(10, 2)))
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (6, 7, 3, CAST(0.30 AS Decimal(10, 2)))
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (7, 10, 4, CAST(0.50 AS Decimal(10, 2)))
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (8, 9, 6, CAST(0.60 AS Decimal(10, 2)))
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (9, 3, 7, CAST(0.35 AS Decimal(10, 2)))
-INSERT [dbo].[ProductoXReceta] ([Id], [IdProducto], [IdReceta], [CantidadNecesaria]) VALUES (10, 2, 8, CAST(0.20 AS Decimal(10, 2)))
-SET IDENTITY_INSERT [dbo].[ProductoXReceta] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Receta] ON 
-
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (1, N'Ensalada César', 0, 15, 0, 2, N'Paso 1: Hervir dos huevos durante 10 minutos.
-Paso 2: Lavar y cortar la lechuga, el tomate y la cebolla.
-Paso 3: Abrir la lata de atún y escurrir.
-Paso 4: Pelar los huevos y cortarlos en cuartos.
-Paso 5: Mezclar todo en un bol y condimentar con sal, aceite, vinagre y salsa César a gusto.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (2, N'Milanesas con puré', 1, 40, 0, 4, N'Paso 1: Pelar papas, cortar en cubos y hervir con sal.
-Paso 2: Pasar los bifes de carne por huevo batido (con ajo y perejil) y luego por pan rallado.
-Paso 3: Freír las milanesas en aceite caliente o al horno hasta dorar.
-Paso 4: Colar las papas, agregar manteca y leche, y pisar hasta hacer puré.
-Paso 5: Servir las milanesas acompañadas del puré.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (3, N'Smoothie de frutas', 0, 10, 0, 2, N'Paso 1: Lavar bien las frutas elegidas (frutillas, bananas, duraznos).
-Paso 2: Cortarlas en trozos y colocarlas en la licuadora.
-Paso 3: Agregar leche, yogur o agua y hielo a gusto.
-Paso 4: Licuar hasta obtener una mezcla cremosa y homogénea.
-Paso 5: Servir inmediatamente en vaso alto.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (4, N'Tarta de jamón y queso', 0, 35, 0, 6, N'Paso 1: Forrar una tartera aceitada con una de las tapas de masa.
-Paso 2: Cortar el jamón y el queso en cubos o fetas.
-Paso 3: En un bol, batir 3 huevos con un poco de crema o queso crema, sal y pimienta.
-Paso 4: Mezclar el jamón y queso con el ligue de huevos y volcar sobre la masa.
-Paso 5: Hornear a 180°C durante 30 minutos o hasta que la masa esté dorada y el relleno firme.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (5, N'Pollo al horno', 0, 60, 0, 4, N'Paso 1: Lavar el pollo y colocarlo en una asadera.
-Paso 2: Pelar papas, batatas y cebollas, cortarlas en trozos grandes y rodear el pollo.
-Paso 3: Rociar todo con aceite, jugo de limón y condimentar con sal, orégano y provenzal.
-Paso 4: Llevar a horno medio/fuerte durante 60 a 90 minutos.
-Paso 5: Retirar cuando el pollo esté dorado y los jugos salgan claros.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (6, N'Pizza casera', 1, 45, 0, 3, N'Paso 1: Estirar el bollo de masa en una pizzera previamente aceitada.
-Paso 2: Cubrir con salsa de tomate condimentada.
-Paso 3: Llevar a horno fuerte 10 minutos (pre-pizza).
-Paso 4: Retirar, agregar abundante muzzarella y aceitunas.
-Paso 5: Volver al horno hasta que el queso se derrita y gratine.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (7, N'Empanadas de carne', 0, 50, 0, 12, N'Paso 1: Saltear cebolla y morrón picados en grasa o aceite.
-Paso 2: Agregar carne picada, sal, comino y pimentón. Cocinar hasta que la carne cambie de color.
-Paso 3: Retirar del fuego, agregar huevo duro picado y cebolla de verdeo. Enfriar el relleno.
-Paso 4: Rellenar los discos de empanada y hacer el repulgue.
-Paso 5: Hornear a fuego fuerte o freír en grasa hasta que la masa esté dorada.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (8, N'Flan con dulce de leche', 0, 70, 0, 8, N'Paso 1: Hacer un caramelo con azúcar en la flanera y dejar enfriar.
-Paso 2: En un bol, mezclar suavemente 5 huevos, 500cc de leche y 100g de azúcar (sin hacer espuma). Agrega vainilla.
-Paso 3: Verter la mezcla en la flanera acaramelada.
-Paso 4: Cocinar a baño maría en el horno (160°C) por aprox. 50-60 minutos.
-Paso 5: Dejar enfriar bien en heladera antes de desmoldar. Servir con dulce de leche.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (9, N'Ensalada de frutas', 1, 10, 0, 4, N'Paso 1: Lavar bien y pelar las frutas (naranja, manzana, banana, pera, durazno).
-Paso 2: Cortar todas las frutas en cubos pequeños del mismo tamaño.
-Paso 3: Colocar en un bol grande y agregar jugo de naranja natural y azúcar a gusto.
-Paso 4: Mezclar bien y dejar reposar en la heladera al menos 1 hora para que suelten sus jugos.')
-INSERT [dbo].[Receta] ([Id], [Nombre], [Favorito], [Duracion], [Popularidad], [Raciones], [Instrucciones]) VALUES (10, N'Sándwich de pollo', 0, 20, 0, 1, N'Paso 1: Tostar ligeramente dos rebanadas de pan.
-Paso 2: Untar ambas partes con mayonesa o queso crema.
-Paso 3: Colocar hojas de lechuga fresca y rodajas de tomate.
-Paso 4: Agregar pechuga de pollo cocida (puede ser desmenuzada o en fetas) y una feta de queso.
-Paso 5: Cerrar el sándwich, cortar al medio y disfrutar.')
-SET IDENTITY_INSERT [dbo].[Receta] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Usuario] ON 
-
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (1, N'juanperez', N'Juan1234', N'Juan', N'Pérez', N'juan.perez@gmail.com')
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (2, N'maria.gomez', N'Maria2025', N'María', N'Gómez', N'maria.gomez@hotmail.com')
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (3, N'carlos_rojas', N'Carlos!987', N'Carlos', N'Rojas', N'carlos.rojas@yahoo.com')
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (4, N'lucia_flores', N'Lucia@25', N'Lucía', N'Flores', N'lucia.flores@gmail.com')
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (5, N'martin87', N'Mart1n#87', N'Martín', N'Fernández', N'martin.fernandez@outlook.com')
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (6, N'sofia.mendez', N'SofiMdz2025', N'Sofía', N'Méndez', N'sofia.mendez@gmail.com')
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (7, N'agustin_ort', N'AgusOrt!', N'Agustín', N'Ramírez', N'agustin.ramirez@escuelaort.edu.ar')
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (8, N'valentina', N'Valen#123', N'Valentina', N'López', N'valentina.lopez@gmail.com')
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (9, N'admin', N'AdminKeepi', N'Administrador', N'Keepi', N'admin@keepi.com')
-INSERT [dbo].[Usuario] ([Id], [Username], [Password], [Nombre], [Apellido], [Email]) VALUES (10, N'tommy', N'Keepi2025', N'Tomás', N'Goldentul', N'tomas.goldentul@ort.edu.ar')
-SET IDENTITY_INSERT [dbo].[Usuario] OFF
-GO
-SET IDENTITY_INSERT [dbo].[UsuarioXHeladera] ON 
-
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (1, 1, 1, 1)
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (2, 1, 2, 0)
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (3, 2, 2, 1)
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (4, 3, 3, 1)
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (5, 4, 4, 1)
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (6, 5, 5, 1)
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (7, 6, 6, 1)
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (8, 7, 7, 1)
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (9, 8, 8, 1)
-INSERT [dbo].[UsuarioXHeladera] ([Id], [IdUsuario], [IdHeladera], [EsDueño]) VALUES (10, 9, 9, 1)
-SET IDENTITY_INSERT [dbo].[UsuarioXHeladera] OFF
-GO
-ALTER TABLE [dbo].[Heladera] ADD  CONSTRAINT [DF__Heladera__Elimin__6477ECF3]  DEFAULT ((0)) FOR [Eliminado]
-GO
-ALTER TABLE [dbo].[Producto] ADD  CONSTRAINT [DF__Producto__Favori__3F466844]  DEFAULT ((0)) FOR [Favorito]
-GO
-ALTER TABLE [dbo].[ProductoXHeladera] ADD  DEFAULT ((0)) FOR [Eliminado]
-GO
-ALTER TABLE [dbo].[ProductoXHeladera] ADD  DEFAULT ((0)) FOR [Abierto]
-GO
-ALTER TABLE [dbo].[Receta] ADD  DEFAULT ((0)) FOR [Favorito]
-GO
-ALTER TABLE [dbo].[UsuarioXHeladera] ADD  DEFAULT ((0)) FOR [EsDueño]
-GO
-ALTER TABLE [dbo].[Notificacion]  WITH CHECK ADD  CONSTRAINT [FK_Notificacion_ProductoXHeladera] FOREIGN KEY([IdProductoxHeladera])
-REFERENCES [dbo].[ProductoXHeladera] ([Id])
-GO
-ALTER TABLE [dbo].[Notificacion] CHECK CONSTRAINT [FK_Notificacion_ProductoXHeladera]
-GO
-ALTER TABLE [dbo].[Producto]  WITH CHECK ADD  CONSTRAINT [FK_Producto_Categoria] FOREIGN KEY([IdCategoria])
-REFERENCES [dbo].[Categoria] ([IdCategoria])
-ON UPDATE CASCADE
-ON DELETE CASCADE
-GO
-ALTER TABLE [dbo].[Producto] CHECK CONSTRAINT [FK_Producto_Categoria]
-GO
-ALTER TABLE [dbo].[ProductoXHeladera]  WITH CHECK ADD  CONSTRAINT [FK__ProductoX__IdHel__49C3F6B7] FOREIGN KEY([IdHeladera])
-REFERENCES [dbo].[Heladera] ([Id])
-ON UPDATE CASCADE
-ON DELETE CASCADE
-GO
-ALTER TABLE [dbo].[ProductoXHeladera] CHECK CONSTRAINT [FK__ProductoX__IdHel__49C3F6B7]
-GO
-ALTER TABLE [dbo].[ProductoXHeladera]  WITH CHECK ADD  CONSTRAINT [FK__ProductoX__IdPro__44FF419A] FOREIGN KEY([IdProducto])
-REFERENCES [dbo].[Producto] ([Id])
-ON UPDATE CASCADE
-ON DELETE CASCADE
-GO
-ALTER TABLE [dbo].[ProductoXHeladera] CHECK CONSTRAINT [FK__ProductoX__IdPro__44FF419A]
-GO
-ALTER TABLE [dbo].[ProductoXReceta]  WITH CHECK ADD  CONSTRAINT [FK__ProductoX__IdPro__4AB81AF0] FOREIGN KEY([IdProducto])
-REFERENCES [dbo].[Producto] ([Id])
-ON UPDATE CASCADE
-ON DELETE CASCADE
-GO
-ALTER TABLE [dbo].[ProductoXReceta] CHECK CONSTRAINT [FK__ProductoX__IdPro__4AB81AF0]
-GO
-ALTER TABLE [dbo].[ProductoXReceta]  WITH CHECK ADD  CONSTRAINT [FK__ProductoX__IdRec__4CA06362] FOREIGN KEY([IdReceta])
-REFERENCES [dbo].[Receta] ([Id])
-ON UPDATE CASCADE
-ON DELETE CASCADE
-GO
-ALTER TABLE [dbo].[ProductoXReceta] CHECK CONSTRAINT [FK__ProductoX__IdRec__4CA06362]
-GO
-ALTER TABLE [dbo].[UsuarioXHeladera]  WITH CHECK ADD  CONSTRAINT [FK__UsuarioXH__IdHel__4D94879B] FOREIGN KEY([IdHeladera])
-REFERENCES [dbo].[Heladera] ([Id])
-ON UPDATE CASCADE
-ON DELETE CASCADE
-GO
-ALTER TABLE [dbo].[UsuarioXHeladera] CHECK CONSTRAINT [FK__UsuarioXH__IdHel__4D94879B]
-GO
-ALTER TABLE [dbo].[UsuarioXHeladera]  WITH CHECK ADD  CONSTRAINT [FK__UsuarioXH__IdUsu__4E88ABD4] FOREIGN KEY([IdUsuario])
-REFERENCES [dbo].[Usuario] ([Id])
-ON UPDATE CASCADE
-ON DELETE CASCADE
-GO
-ALTER TABLE [dbo].[UsuarioXHeladera] CHECK CONSTRAINT [FK__UsuarioXH__IdUsu__4E88ABD4]
-GO
-ALTER TABLE [dbo].[ProductoXHeladera]  WITH CHECK ADD  CONSTRAINT [CK_ProductoXHeladera_Estado] CHECK  (([Estado]='Congelado' OR [Estado]='Refrigerado' OR [Estado]='Alacena'))
-GO
-ALTER TABLE [dbo].[ProductoXHeladera] CHECK CONSTRAINT [CK_ProductoXHeladera_Estado]
-GO
-/****** Object:  StoredProcedure [dbo].[BuscarHeladeraDeUsuario]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE Procedure [dbo].[BuscarHeladeraDeUsuario]
-@IDUsuario int
-As
-Begin
-	Begin Try
-		Begin Transaction;
-
-			SELECT h.* FROM Heladera h 
-			Inner Join UsuarioXHeladera uh on uh.IdHeladera = h.Id
-			Inner Join Usuario u on u.Id = uh.IdUsuario
-			WHERE u.Id = @IDUsuario;
-
-		Commit Transaction;
-	End Try
-	Begin Catch
-		Rollback Transaction;
-		Print 'Error en la búsqueda de heladera';
-	End Catch
-End
-GO
-/****** Object:  StoredProcedure [dbo].[buscarProducto]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[buscarProducto]
-@Nombre VARCHAR(50)
-AS
-BEGIN
-IF EXISTS (SELECT 1 FROM Producto WHERE Nombre = @Nombre)
-    BEGIN
-        SELECT * FROM Producto WHERE Nombre = @Nombre;
-    END
-    ELSE
-    BEGIN
-        SELECT
-            CAST(NULL AS INT) AS Id,
-            CAST(NULL AS VARCHAR(50)) AS Nombre,
-            CAST(NULL AS INT) AS Duracion,
-            CAST(NULL AS BIT) AS Favorito,
-            CAST(NULL AS INT) AS IdCategoria,
-            CAST(NULL AS DECIMAL(6,3)) AS PorcAcidez,
-            CAST(NULL AS DECIMAL(6,3)) AS PorcAgua,
-            CAST(NULL AS DECIMAL(6,3)) AS PorcAzucar,
-            CAST(NULL AS DECIMAL(6,3)) AS PorcConservantes,
-            CAST(NULL AS DECIMAL(6,3)) AS PorcAlcohol;
-    END
-END
-GO
-/****** Object:  StoredProcedure [dbo].[CalcularFPromedioBase]    Script Date: 30/11/2025 5:40:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[CalcularFPromedioBase]
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DECLARE @f_promedio_base DECIMAL(10,5);
-
-    SELECT @f_promedio_base = AVG(
-        CASE 
-            WHEN (0.05*productos.porcentaje_acidez 
-                  + 0.05*productos.porcentaje_agua 
-                  + 0.02*productos.porcentaje_azucar 
-                  - 0.03*productos.porcentaje_conservantes 
-                  - 0.01*productos.porcentaje_alcohol) < 0
-            THEN 0
-            ELSE (0.05*productos.porcentaje_acidez 
-                  + 0.05*productos.porcentaje_agua 
-                  + 0.02*productos.porcentaje_azucar 
-                  - 0.03*productos.porcentaje_conservantes 
-                  - 0.01*productos.porcentaje_alcohol)
-        END
-    )
-    FROM productosXHeladera
-    JOIN productos ON productosXHeladera.IdProducto = productos.Id
-    WHERE productosXHeladera.Abierto = 1 AND productosXHeladera.Eliminado = 0;
-
-    -- Devolver resultado
-    SELECT @f_promedio_base AS f_promedio_base;
-END
-GO
-/****** Object:  StoredProcedure [dbo].[CambiarColorHeladera]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[CambiarColorHeladera]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1320,7 +850,7 @@ BEGIN
     WHERE ID = @IdHeladera
 END
 GO
-/****** Object:  StoredProcedure [dbo].[CambiarEstadoProducto]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[CambiarEstadoProducto]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1361,7 +891,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[CambiarNombreHeladera]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[CambiarNombreHeladera]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1376,7 +906,7 @@ BEGIN
     WHERE ID = @IdHeladera
 END
 GO
-/****** Object:  StoredProcedure [dbo].[crearHeladera]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[crearHeladera]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1412,7 +942,7 @@ ROLLBACK TRANSACTION
 END CATCH
 end
 GO
-/****** Object:  StoredProcedure [dbo].[crearUsuario]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[crearUsuario]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1434,7 +964,7 @@ select '1'
 end
 end
 GO
-/****** Object:  StoredProcedure [dbo].[eliminarHeladera]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[eliminarHeladera]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1466,7 +996,7 @@ print @resultado
 END CATCH
 end
 GO
-/****** Object:  StoredProcedure [dbo].[eliminarProductoHeladera]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[eliminarProductoHeladera]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1498,7 +1028,7 @@ print @resultado
 end catch
 end
 GO
-/****** Object:  StoredProcedure [dbo].[getProductosByNombreHeladeraAndIdUsuario]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[getProductosByNombreHeladeraAndIdUsuario]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1529,7 +1059,7 @@ BEGIN
         AND (PH.Eliminado = 0 OR PH.Eliminado IS NULL)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SeleccionarHeladeraByNombre]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[SeleccionarHeladeraByNombre]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1544,7 +1074,7 @@ inner join UsuarioXHeladera UxH on UxH.IdHeladera = H.Id
 where UxH.IdUsuario = @IdUsuario and H.Nombre = @Nombre
 end
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AgregarProductoXHeladera]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AgregarProductoXHeladera]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1585,7 +1115,7 @@ BEGIN
            );
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetAllProductos]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetAllProductos]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1609,7 +1139,7 @@ BEGIN
      
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetHeladeraByUsuarioId]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetHeladeraByUsuarioId]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1639,7 +1169,7 @@ BEGIN
         UXH.IdUsuario = @IdUsuario;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetProductosByHeladeraId]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetProductosByHeladeraId]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1662,7 +1192,7 @@ BEGIN
         AND PXH.Eliminado = 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetProductosByRecetaId]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetProductosByRecetaId]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1690,7 +1220,7 @@ BEGIN
         PXR.IdReceta = @IdReceta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetRecetaById]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetRecetaById]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1717,7 +1247,7 @@ BEGIN
         ID = @IdReceta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GetRecetas]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetRecetas]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1744,7 +1274,7 @@ BEGIN
         Receta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_IncrementarPopularidadReceta]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[sp_IncrementarPopularidadReceta]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1768,7 +1298,7 @@ BEGIN
         ID = @IdReceta;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ToggleFavoritoReceta]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ToggleFavoritoReceta]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1786,7 +1316,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[TeoremaHevia]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[TeoremaHevia]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1862,7 +1392,7 @@ BEGIN CATCH
 END CATCH
 END
 GO
-/****** Object:  StoredProcedure [dbo].[traerNombresHeladerasById]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[traerNombresHeladerasById]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1876,7 +1406,7 @@ inner join UsuarioXHeladera UxH on H.Id = UxH.IdHeladera
 where UxH.IdUsuario = @IdUsuario
 end
 GO
-/****** Object:  StoredProcedure [dbo].[traerNotificacionesNoLeidas]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[traerNotificacionesNoLeidas]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1893,7 +1423,7 @@ BEGIN
     WHERE N.Leida = 0;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[verificarUsuario]    Script Date: 30/11/2025 5:40:45 ******/
+/****** Object:  StoredProcedure [dbo].[verificarUsuario]    Script Date: 30/11/2025 22:53:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1918,4 +1448,3 @@ USE [master]
 GO
 ALTER DATABASE [Keepi_DataBase] SET  READ_WRITE 
 GO
-
