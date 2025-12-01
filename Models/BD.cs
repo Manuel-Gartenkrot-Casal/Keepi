@@ -7,7 +7,7 @@
     public class BD
     {
         private static string _connectionString =
-        @"Server=localhost; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
+        @"Server=localhost\SQLEXPRESS; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
 
 
         public static double CalcularDuracionProducto(string producto, double D0, double acidez, double agua, double azucar, double conservantes, double alcohol, double porcentajeCambio, int diasAbiertos, double fPromedioBase)
@@ -94,28 +94,50 @@
 
                 resultado = connection.QueryFirstOrDefault<int>(
                     StoredProcedure,
+                    new { color = color, nombre = nombre },
                     commandType: CommandType.StoredProcedure
                 );
 
                 return resultado;
             }
         }
-        public static int borrarHeladera(string nombre, string username)
+        public static int borrarHeladera(string nombre)
         {
             int resultado = -1;
-            //modificar agregando que tambien se tenga que tener el username adecuado antes de borrar para no borrar la heladera de otro si tiene el mismo nombre
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string StoredProcedure = "eliminarHeladera";
 
                 resultado = connection.QueryFirstOrDefault<int>(
                     StoredProcedure,
+                    new { nombre = nombre },
                     commandType: CommandType.StoredProcedure
                 );
 
                 return resultado;
             }
         }
+
+        public static int GetIdHeladeraByNombre(string nombre)
+        {
+            int idHeladera = -1;
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT Id FROM Heladera WHERE Nombre = @nombre AND Eliminado = 0";
+                idHeladera = connection.QueryFirstOrDefault<int>(query, new { nombre = nombre });
+            }
+            return idHeladera;
+        }
+
+        public static void AsociarHeladeraAUsuario(int idUsuario, int idHeladera)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "INSERT INTO UsuarioXHeladera (IdUsuario, IdHeladera, EsDueño) VALUES (@idUsuario, @idHeladera, 1)";
+                connection.Execute(query, new { idUsuario = idUsuario, idHeladera = idHeladera });
+            }
+        }
+
         public static int crearUsuario(string usernameIngresado, string passwordIngresada)
         {
             int sePudo = -1;

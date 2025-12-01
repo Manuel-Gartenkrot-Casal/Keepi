@@ -26,7 +26,7 @@ public class Heladera {
     }
     public int EliminarHeladera(string nombreUsuario)
     {
-        int resultado = BD.borrarHeladera(Nombre, nombreUsuario);
+        int resultado = BD.borrarHeladera(Nombre);
         
         if (resultado == -1) 
         {
@@ -34,6 +34,20 @@ public class Heladera {
         }
         else {
             Eliminado = true;
+        }
+        
+        return resultado;
+    }
+
+    public int AgregarHeladera(string nombre, string color)
+    {
+        int resultado = BD.agregarHeladera(nombre, color);
+        
+        if (resultado == 1)
+        {
+            this.Nombre = nombre;
+            this.Color = color;
+            this.Eliminado = false;
         }
         
         return resultado;
