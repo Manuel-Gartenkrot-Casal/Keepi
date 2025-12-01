@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Manuel\\Desktop\\‎‎\\Keepi\\KeepiProg.csproj": {}
+    "C:\\Users\\Ku\\Downloads\\Keepi\\KeepiProg.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Manuel\\Desktop\\‎‎\\Keepi\\KeepiProg.csproj": {
+    "C:\\Users\\Ku\\Downloads\\Keepi\\KeepiProg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Manuel\\Desktop\\‎‎\\Keepi\\KeepiProg.csproj",
+        "projectUniqueName": "C:\\Users\\Ku\\Downloads\\Keepi\\KeepiProg.csproj",
         "projectName": "KeepiProg",
-        "projectPath": "C:\\Users\\Manuel\\Desktop\\‎‎\\Keepi\\KeepiProg.csproj",
-        "packagesPath": "C:\\Users\\Manuel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Manuel\\Desktop\\‎‎\\Keepi\\obj\\",
+        "projectPath": "C:\\Users\\Ku\\Downloads\\Keepi\\KeepiProg.csproj",
+        "packagesPath": "C:\\Users\\Ku\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ku\\Downloads\\Keepi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Manuel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ku\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,8 +37,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -80,24 +79,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -106,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

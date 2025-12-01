@@ -3856,39 +3856,92 @@ main {
 }
 
 /* Ajustes Responsive */
-@media (max-width: 768px) {
-    .cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .info-card {
-        width: 90%;
-        max-width: 350px;
-    }
-    
-    .section-problem h2, 
-    .section-solution h2 {
-        font-size: 2rem;
-    }
-}
-@media (max-width: 1200px) {
-  .info-card {
-      width: 45%; /* En pantallas medianas, que ocupen casi la mitad cada una */
-      min-width: 300px;
-  }
-}
-
-/* Ajuste para móviles (mantenemos el estilo anterior) */
-@media (max-width: 768px) {
-  .cards-container {
-      flex-direction: column;
-      align-items: center;
-  }
 
   .info-card {
       width: 90%;
       max-width: 450px; /* Permitimos que sean más anchas en móvil también */
   }
 }
+/* Agrega o modifica esto en wwwroot/css/style.css */
+.btn-chatbot {
+    /* Dimensiones fijas para el botón */
+    width: 60px !important;
+    height: 60px !important;
+    
+    /* Controlar el tamaño del texto/icono interno */
+    font-size: 24px !important; /* Ajusta este valor si quieres el icono más grande o chico */
+    line-height: 60px !important; /* Centrado vertical rápido */
+    
+    /* Asegurar que el contenido esté centrado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    
+    /* Evitar que el texto se desborde */
+    overflow: hidden;
 }
+/* --- INICIO FIX CHATBOT --- */
+
+/* 1. Clases para mostrar/ocultar según dispositivo (que faltaban) */
+.mobile-only { display: none !important; }
+.desktop-only { display: inline-block !important; }
+
+@media (max-width: 768px) {
+    .mobile-only { display: inline-block !important; }
+    .desktop-only { display: none !important; }
+}
+
+/* 2. Estilo base del botón (Píldora con texto normal para PC) */
+.chat-fab {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+    
+    background: linear-gradient(135deg, #59ad44, #4a8d38);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    
+    /* Configuración para TEXTO (PC) */
+    width: auto !important;       /* Deja que el ancho se adapte al texto */
+    height: 50px !important;      /* Altura fija cómoda */
+    padding: 0 20px !important;   /* Espacio a los costados del texto */
+    border-radius: 25px !important; /* Bordes redondeados (forma de pastilla) */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+/* Tamaño de letra NORMAL para el texto "Chatear con..." */
+.chat-fab .desktop-only {
+    font-size: 16px !important; 
+    font-weight: 600;
+    font-family: Verdana, sans-serif;
+}
+
+/* 3. Estilo específico para MÓVIL (Solo ícono redondo) */
+@media (max-width: 768px) {
+    .chat-fab {
+        width: 60px !important;   /* Ancho fijo redondo */
+        height: 60px !important;  /* Alto fijo redondo */
+        padding: 0 !important;    /* Sin padding */
+        border-radius: 50% !important; /* Círculo perfecto */
+    }
+
+    /* Tamaño GIGANTE solo para el emoji 💬 */
+    .chat-fab .mobile-only {
+        font-size: 30px !important;
+        line-height: 1;
+        margin-top: 2px; /* Pequeño ajuste visual para centrar el emoji */
+    }
+}
+
+.chat-fab:hover {
+    transform: scale(1.05);
+}
+/* --- FIN FIX CHATBOT --- */

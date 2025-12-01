@@ -10,6 +10,26 @@
     
     // Serializamos la lista de productos para usarla en el buscador de JS
     var productosJson = Json.Serialize(ViewBag.ListaProductos);
+
+    // --- FUNCIÓN PARA HARDCODEAR IMÁGENES (C#) ---
+    string GetImageForProduct(string nombre)
+    {
+        if (string.IsNullOrEmpty(nombre)) return "logokeepi.png";
+        string n = nombre.ToLower();
+
+        if (n.Contains("carne")) return "carne.jpg";
+        if (n.Contains("cerveza")) return "cerveza.jpg";
+        if (n.Contains("coca")) return "cocacola.webp";
+        if (n.Contains("leche")) return "leche.jpg";
+        if (n.Contains("lechuga")) return "lechuga.jpg";
+        if (n.Contains("manzana")) return "manzana.jpeg";
+        if (n.Contains("pan")) return "pan.webp";
+        if (n.Contains("pollo")) return "pollo.jpg";
+        if (n.Contains("queso")) return "queso.webp";
+        if (n.Contains("yogur")) return "yogur.webp";
+        
+        return "logokeepi.png"; // Imagen por defecto
+    }
 }
 
 <div class="mi-heladera-container">
@@ -17,11 +37,29 @@
     @* --- MENSAJES DE ERROR/EXITO (TempData) --- *@
     @if (TempData["Error"] != null)
     {
-        <div class="alert-box error">@TempData["Error"]</div>
+        <div id="alert-error" class="alert-box error" 
+             style="position: fixed; top: 110px; right: 20px; z-index: 9999; min-width: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            @TempData["Error"]
+        </div>
+        <script>
+            setTimeout(function() {
+                var el = document.getElementById('alert-error');
+                if(el) { el.style.transition='opacity 0.5s'; el.style.opacity='0'; setTimeout(()=>el.remove(), 500); }
+            }, 4000);
+        </script>
     }
     @if (TempData["Success"] != null)
     {
-        <div class="alert-box success">@TempData["Success"]</div>
+        <div id="alert-success" class="alert-box success" 
+             style="position: fixed; top: 110px; right: 20px; z-index: 9999; min-width: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            @TempData["Success"]
+        </div>
+        <script>
+            setTimeout(function() {
+                var el = document.getElementById('alert-success');
+                if(el) { el.style.transition='opacity 0.5s'; el.style.opacity='0'; setTimeout(()=>el.remove(), 500); }
+            }, 3000);
+        </script>
     }
 
     <div class="productos-scroll-container">
@@ -36,11 +74,14 @@
                 var fechaCarga = producto.FechaVencimiento.AddDays(-duracionTotal);
                 if (fechaCarga > DateTime.Now) fechaCarga = DateTime.Now;
 
+                // Calculamos la imagen aquí mismo usando la función hardcodeada
+                string imagenFinal = GetImageForProduct(producto.NombreEspecifico);
+
                 <div class="producto-card" data-producto-id="@producto.ID" data-producto-base-id="@producto.IdProducto">
                     <button class="btn-eliminar" onclick="eliminarProducto(@producto.ID, @producto.IdProducto)" title="Eliminar producto">✕</button>
                     
                     <div class="producto-imagen">
-                        <img src="@Url.Content($"~/imagenes/Productos/{producto.Foto}")" alt="@producto.NombreEspecifico" onerror="this.src='/imagenes/logokeepi.png'" />
+                        <img src="@Url.Content($"~/imagenes/Productos/{imagenFinal}")" alt="@producto.NombreEspecifico" onerror="this.src='/imagenes/logokeepi.png'" />
                     </div>
                     
                     <div class="producto-info">
@@ -142,6 +183,25 @@
     const fotoInput = document.getElementById('foto-hidden');
     const fechaInput = document.getElementById('fechaVencimiento');
 
+    // --- FUNCIÓN HARDCODEADA EN JS PARA PREVISUALIZAR IMAGEN ---
+    function getImageJS(nombre) {
+        if (!nombre) return null;
+        let n = nombre.toLowerCase();
+        
+        if (n.includes("carne")) return "carne.jpg";
+        if (n.includes("cerveza")) return "cerveza.jpg";
+        if (n.includes("coca")) return "cocacola.webp";
+        if (n.includes("leche")) return "leche.jpg";
+        if (n.includes("lechuga")) return "lechuga.jpg";
+        if (n.includes("manzana")) return "manzana.jpeg";
+        if (n.includes("pan")) return "pan.webp";
+        if (n.includes("pollo")) return "pollo.jpg";
+        if (n.includes("queso")) return "queso.webp";
+        if (n.includes("yogur")) return "yogur.webp";
+        
+        return null; // O devolver null si no hay coincidencia
+    }
+
     // Configurar fecha mínima hoy
     fechaInput.min = new Date().toISOString().split("T")[0];
 
@@ -169,14 +229,18 @@
 
         if (selectedProduct) {
             idProductoInput.value = selectedProduct.id;
-            fotoInput.value = selectedProduct.foto; 
-            nombreEspInput.value = selectedProduct.nombre; 
+            nombreEspInput.value = selectedProduct.nombre;
             
-            if(selectedProduct.foto){
-                productImage.src = "/imagenes/Productos/" + selectedProduct.foto;
+            // Usamos la lógica hardcodeada para la preview
+            const imagenManual = getImageJS(selectedProduct.nombre);
+            
+            if (imagenManual) {
+                fotoInput.value = imagenManual;
+                productImage.src = "/imagenes/Productos/" + imagenManual;
                 productImage.style.display = 'block';
             } else {
-                 productImage.style.display = 'none';
+                fotoInput.value = "";
+                productImage.style.display = 'none';
             }
         } else {
             productImage.style.display = 'none';

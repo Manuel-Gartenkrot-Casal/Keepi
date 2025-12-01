@@ -1,147 +1,163 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\Keepi_DataBase.sql",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\Keepi_DataBase.sql",
       "PackagePath": "staticwebassets\\Keepi_DataBase.sql"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\css\\style.css",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\FondoHeladera.png",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\FondoHeladera.png",
       "PackagePath": "staticwebassets\\imagenes\\FondoHeladera.png"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Lupa.png",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Lupa.png",
       "PackagePath": "staticwebassets\\imagenes\\Lupa.png"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Notis.png",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Notis.png",
       "PackagePath": "staticwebassets\\imagenes\\Notis.png"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Perfil.png",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Paso1Carrusel.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paso1Carrusel.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Paso2Carrusel.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paso2Carrusel.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Paso3Carrusel.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paso3Carrusel.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Paso4Carrusel.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paso4Carrusel.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Perfil.png",
       "PackagePath": "staticwebassets\\imagenes\\Perfil.png"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\carne.jpg",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\carne.jpg",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\carne.jpg"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cerveza.jpg",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cerveza.jpg",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\cerveza.jpg"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cocacola.webp",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\cocacola.webp",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\cocacola.webp"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\leche.jpg",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\leche.jpg",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\leche.jpg"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\lechuga.jpg",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\lechuga.jpg",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\lechuga.jpg"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\manzana.jpeg",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\manzana.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\manzana.jpeg"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pan.webp",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pan.webp",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\pan.webp"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pollo.jpg",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\pollo.jpg",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\pollo.jpg"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\queso.webp",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\queso.webp",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\queso.webp"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\yogur.webp",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\Productos\\yogur.webp",
       "PackagePath": "staticwebassets\\imagenes\\Productos\\yogur.webp"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\apple.svg",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\apple.svg",
       "PackagePath": "staticwebassets\\imagenes\\apple.svg"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\fotodeperfil.webp",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\fotodeperfil.webp",
       "PackagePath": "staticwebassets\\imagenes\\fotodeperfil.webp"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\google.webp",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\google.webp",
       "PackagePath": "staticwebassets\\imagenes\\google.webp"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\heladera.png",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\heladera.png",
       "PackagePath": "staticwebassets\\imagenes\\heladera.png"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\logokeepi.png",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\logokeepi.png",
       "PackagePath": "staticwebassets\\imagenes\\logokeepi.png"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\microsoft.png",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\imagenes\\microsoft.png",
       "PackagePath": "staticwebassets\\imagenes\\microsoft.png"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\Ku\\Downloads\\Keepi\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
