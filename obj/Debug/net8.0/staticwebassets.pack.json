@@ -105,6 +105,14 @@
       "PackagePath": "staticwebassets\\imagenes\\heladera.png"
     },
     {
+      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\keepi.png",
+      "PackagePath": "staticwebassets\\imagenes\\keepi.png"
+    },
+    {
+      "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\keepi2.png",
+      "PackagePath": "staticwebassets\\imagenes\\keepi2.png"
+    },
+    {
       "Id": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\logokeepi.png",
       "PackagePath": "staticwebassets\\imagenes\\logokeepi.png"
     },
