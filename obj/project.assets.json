@@ -2985,24 +2985,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ku\\.nuget\\packages\\": {}
+    "C:\\Users\\48792944\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ku\\Downloads\\Keepi\\KeepiProg.csproj",
+      "projectUniqueName": "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj",
       "projectName": "KeepiProg",
-      "projectPath": "C:\\Users\\Ku\\Downloads\\Keepi\\KeepiProg.csproj",
-      "packagesPath": "C:\\Users\\Ku\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ku\\Downloads\\Keepi\\obj\\",
+      "projectPath": "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj",
+      "packagesPath": "C:\\Users\\48792944\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\48792944\\Downloads\\Keepi\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Ku\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\48792944\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3070,7 +3077,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
