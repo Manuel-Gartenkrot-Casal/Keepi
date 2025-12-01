@@ -2985,55 +2985,23 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\48792944\\.nuget\\packages\\": {},
-=======
-<<<<<<< HEAD
-    "C:\\Users\\49194194\\.nuget\\packages\\": {},
-=======
-    "C:\\Users\\49319223\\.nuget\\packages\\": {},
->>>>>>> 97be043c8edc9dd23376722b462b619565e80ffe
->>>>>>> ceeaa865d1bb57d3af4210673cd7bd70a4b8c579
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj",
       "projectName": "KeepiProg",
       "projectPath": "C:\\Users\\48792944\\Downloads\\Keepi\\KeepiProg.csproj",
       "packagesPath": "C:\\Users\\48792944\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\48792944\\Downloads\\Keepi\\obj\\",
-=======
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\49194194\\Downloads\\Keepi\\KeepiProg.csproj",
-      "projectName": "KeepiProg",
-      "projectPath": "C:\\Users\\49194194\\Downloads\\Keepi\\KeepiProg.csproj",
-      "packagesPath": "C:\\Users\\49194194\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\49194194\\Downloads\\Keepi\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\49319223\\Downloads\\Keepi\\KeepiProg.csproj",
-      "projectName": "KeepiProg",
-      "projectPath": "C:\\Users\\49319223\\Downloads\\Keepi\\KeepiProg.csproj",
-      "packagesPath": "C:\\Users\\49319223\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\49319223\\Downloads\\Keepi\\obj\\",
->>>>>>> 97be043c8edc9dd23376722b462b619565e80ffe
->>>>>>> ceeaa865d1bb57d3af4210673cd7bd70a4b8c579
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
         "C:\\Users\\48792944\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-<<<<<<< HEAD
-        "C:\\Users\\49194194\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-        "C:\\Users\\49319223\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 97be043c8edc9dd23376722b462b619565e80ffe
->>>>>>> ceeaa865d1bb57d3af4210673cd7bd70a4b8c579
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
