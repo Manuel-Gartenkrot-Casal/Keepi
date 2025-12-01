@@ -1,10 +1,14 @@
 {
   "Version": 1,
 <<<<<<< HEAD
+  "Hash": "JPJvHPES/Xz6Psp2hzcDukmDxeQXNbnBUbfa9Uuk+IQ=",
+=======
+<<<<<<< HEAD
   "Hash": "DN76oUYJgajrffZgmOSZufoBhCU+Y3btDCVFARLfkmo=",
 =======
   "Hash": "Bf+jT8AD6GHWmta86Os0BvsOLnJ3lNxqfUZnSU7R90A=",
 >>>>>>> 425f9b9aaa8ed74793882305fc6ad8eb9448e58e
+>>>>>>> 6a2077b9ed50e9da7053aec66ec717a9733845b3
   "Source": "KeepiProg",
   "BasePath": "_content/KeepiProg",
   "Mode": "Default",
@@ -227,11 +231,52 @@
     },
     {
 <<<<<<< HEAD
+      "Identity": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\keepi.png",
+      "SourceId": "KeepiProg",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\",
+      "BasePath": "_content/KeepiProg",
+      "RelativePath": "imagenes/keepi.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\keepi.png"
+    },
+    {
+      "Identity": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\keepi2.png",
+      "SourceId": "KeepiProg",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\",
+      "BasePath": "_content/KeepiProg",
+      "RelativePath": "imagenes/keepi2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\keepi2.png"
+    },
+    {
+=======
+<<<<<<< HEAD
       "Identity": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\imagenes\\logokeepi.png",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\48792944\\Downloads\\Keepi\\wwwroot\\",
 =======
+>>>>>>> 6a2077b9ed50e9da7053aec66ec717a9733845b3
       "Identity": "C:\\Users\\49319223\\Downloads\\Keepi\\wwwroot\\imagenes\\logokeepi.png",
       "SourceId": "KeepiProg",
       "SourceType": "Discovered",
