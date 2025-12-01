@@ -209,12 +209,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Usuario](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Username] [varchar](50) NOT NULL,
-	[Password] [varchar](100) NOT NULL,
-	[Nombre] [varchar](30) NOT NULL,
-	[Apellido] [varchar](50) NOT NULL,
-	[Email] [varchar](100) NOT NULL,
+	[Id] [int] IDENTITY(1,1)  NOT NULL,
+	[Username] [varchar](50)  NULL,
+	[Password] [varchar](100)  NULL,
+	[Nombre] [varchar](30)  NULL,
+	[Apellido] [varchar](50)  NULL,
+	[Email] [varchar](100)  NULL,
  CONSTRAINT [PK__Usuario__3214EC078C41C33D] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

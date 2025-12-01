@@ -121,6 +121,26 @@
     </script>
 }
 <style>
+*,
+*::before,
+*::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    scroll-behavior: auto !important;
+}
+
+*:hover,
+*:focus,
+*:active {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
 .social-login {
     text-align: center;
     margin-top: 20px;
@@ -138,23 +158,14 @@
     margin: 0 8px;
     padding: 0;
     cursor: pointer;
-
-    transition: none !important;
-    animation: none !important;
-
     outline: none !important;
     box-shadow: none !important;
-
     -webkit-tap-highlight-color: transparent !important;
 }
 
 .social-buttons img {
     width: 42px;
     height: 42px;
-
-    transition: none !important;
-    animation: none !important;
-    transform: none !important;
 }
 
 .social-buttons button:hover,
@@ -163,20 +174,10 @@
 .social-buttons img:hover,
 .social-buttons img:focus,
 .social-buttons img:active {
-    transition: none !important;
-    animation: none !important;
-    transform: none !important;
     outline: none !important;
     box-shadow: none !important;
+    transform: none !important;
 }
-
-* {
-    animation: none !important;
-    transition: none !important;
-}
-
-
-
-
 
 </style>
+
