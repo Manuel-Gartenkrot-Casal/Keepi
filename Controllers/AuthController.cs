@@ -86,4 +86,8 @@ public IActionResult Registrarse(string Username, string Password, string Name, 
         return RedirectToAction("Login");
     }
 }
+public IActionResult cerrarSesion(){
+    HttpContext.Session.Clear();
+    return RedirectToAction("login");
+}
 }
