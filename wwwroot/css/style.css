@@ -1,10 +1,19 @@
 /*Final del header*/
 
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: url(../montserrat/Montserrat-Bold.ttf);
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url(../montserrat/Montserrat-Regular.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Verdana!important;
+  font-family: "Montserrat"!important;
 }
 
 body {
