@@ -7,7 +7,11 @@
     public class BD
     {
         private static string _connectionString =
+<<<<<<< HEAD
         @"Server=localhost\; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
+=======
+        @"Server=localhost; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
+>>>>>>> 97be043c8edc9dd23376722b462b619565e80ffe
 
 
         public static double CalcularDuracionProducto(string producto, double D0, double acidez, double agua, double azucar, double conservantes, double alcohol, double porcentajeCambio, int diasAbiertos, double fPromedioBase)
