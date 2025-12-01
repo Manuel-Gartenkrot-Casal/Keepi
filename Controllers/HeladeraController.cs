@@ -119,6 +119,7 @@ public class HeladeraController : Controller
             return RedirectToAction("Login", "Auth");
         }
 
+        Heladera Heladera = BD.SeleccionarHeladeraByNombre(idUsuario.Value, nombreHeladera);
         if (Heladera != null)
         {
             Heladera.CambiarNombre(nuevoNombre, Heladera.ID);
@@ -131,26 +132,52 @@ public class HeladeraController : Controller
 
     }
 
-    public IActionResult EliminarHeladera(string nombreHeladera, string username)
+    [HttpPost]
+    public IActionResult EliminarHeladera(string nombreHeladera)
     {
-
-        Heladera Heladera = Objeto.StringToObject<Heladera>(HttpContext.Session.GetString("nombreHeladera"));
-
-        int resultado = Heladera.EliminarHeladera(username);
-
-        if (resultado == -1)
+        try
         {
+            string user = HttpContext.Session.GetString("usuario");
+            if (user == null)
+            {
+                return Json(new { success = false, message = "Sesión expirada" });
+            }
 
-            Console.WriteLine("No se pudo borrar");
-            ViewBag.mensajeEliminar = "No se pudo borrar";
+            Usuario usuario = Objeto.StringToObject<Usuario>(user);
+            if (usuario == null)
+            {
+                return Json(new { success = false, message = "Error al obtener usuario" });
+            }
+
+            if (string.IsNullOrEmpty(nombreHeladera))
+            {
+                return Json(new { success = false, message = "Nombre de heladera no especificado" });
+            }
+
+            Heladera heladera = BD.SeleccionarHeladeraByNombre(usuario.ID, nombreHeladera);
+            if (heladera == null)
+            {
+                return Json(new { success = false, message = "Heladera no encontrada" });
+            }
+
+            int resultado = heladera.EliminarHeladera(usuario.Username);
+
+            if (resultado == -1)
+            {
+                Console.WriteLine("No se pudo borrar heladera: " + nombreHeladera);
+                return Json(new { success = false, message = "No se pudo eliminar la heladera" });
+            }
+            else
+            {
+                Console.WriteLine("Se borró correctamente: " + nombreHeladera);
+                return Json(new { success = true, message = "Heladera eliminada correctamente" });
+            }
         }
-        else
+        catch (Exception ex)
         {
-            Console.WriteLine("Se borró correctamente");
-            ViewBag.mensajeEliminar = "Se borró correctamente";
+            Console.WriteLine($"Error en EliminarHeladera: {ex.Message}");
+            return Json(new { success = false, message = "Error al eliminar la heladera: " + ex.Message });
         }
-
-        return View("MiHeladera");
     }
 
 public IActionResult CargarProductos()
@@ -308,5 +335,59 @@ public IActionResult CargarProductos()
             return Json(new { success = false, message = "Error al cambiar heladera" });
         }
     }
+
+    [HttpPost]
+    public IActionResult AgregarHeladera(string nombre, string color)
+    {
+        try
+        {
+            string user = HttpContext.Session.GetString("usuario");
+            if (user == null)
+            {
+                return Json(new { success = false, message = "Sesión expirada" });
+            }
+
+            Usuario usuario = Objeto.StringToObject<Usuario>(user);
+            if (usuario == null)
+            {
+                return Json(new { success = false, message = "Error al obtener usuario" });
+            }
+
+            if (string.IsNullOrEmpty(nombre))
+            {
+                return Json(new { success = false, message = "El nombre de la heladera es requerido" });
+            }
+
+            Heladera heladera = new Heladera();
+            int resultado = heladera.AgregarHeladera(nombre, color);
+
+            if (resultado == -1)
+            {
+                Console.WriteLine($"No se pudo crear heladera: {nombre}");
+                return Json(new { success = false, message = "No se pudo crear la heladera. Es posible que ya exista una con ese nombre." });
+            }
+            else
+            {
+                // Asociar la heladera al usuario
+                int idHeladera = BD.GetIdHeladeraByNombre(nombre);
+                if (idHeladera > 0)
+                {
+                    BD.AsociarHeladeraAUsuario(usuario.ID, idHeladera);
+                    Console.WriteLine($"Heladera creada correctamente: {nombre}");
+                    return Json(new { success = true, message = "Heladera creada correctamente" });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Error al asociar la heladera al usuario" });
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error en AgregarHeladera: {ex.Message}");
+            return Json(new { success = false, message = "Error al crear la heladera: " + ex.Message });
+        }
+    }
 }
+
 
