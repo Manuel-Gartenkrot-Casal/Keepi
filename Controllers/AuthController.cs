@@ -49,49 +49,41 @@ public class AuthController : Controller
         }
     }
     
-    [HttpPost]
-    public IActionResult Registrarse(string Username, string Password)
+   [HttpPost]
+public IActionResult Registrarse(string Username, string Password, string Name, string Ape, string Email)
+{
+    if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Email))
     {
-        if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
-        {
-            TempData["Error"] = "Usuario y contraseña son requeridos";
-            return RedirectToAction("Login");
-        }
-
-        try
-        {
-            int sePudo = BD.crearUsuario(Username, Password);
-            if (sePudo == 1)
-            {
-                Usuario user = BD.verificarUsuario(Username, Password);
-                if (user != null)
-                {
-                    Console.WriteLine($"[AuthController] Registro exitoso - Usuario ID: {user.ID}, Username: {user.Username}");
-                    HttpContext.Session.SetString("usuario", Objeto.ObjectToString(user));
-                    HttpContext.Session.SetInt32("IdUsuario", user.ID);
-                    return RedirectToAction("InicializarHeladera", "Heladera");
-                }
-                else
-                {
-                    TempData["Error"] = "Error al crear el usuario";
-                    return RedirectToAction("Login");
-                }
-            }
-            else
-            {
-                TempData["Error"] = "Usuario ya existente";
-                return RedirectToAction("Login");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"[AuthController] Error en Registrarse: {ex.Message}");
-            TempData["Error"] = "Error al registrar usuario. Intente nuevamente.";
-            return RedirectToAction("Login");
-        }
-    }
-    public IActionResult cerrarSesion(){
-        HttpContext.Session.Clear();
+        TempData["ErrorRegistro"] = "Todos los campos son obligatorios"; // Usar ErrorRegistro para que el script reabra el form
         return RedirectToAction("Login");
     }
+
+    try
+    {
+        // Llamamos al método actualizado pasando Name como nombre y Ape como apellido
+        int sePudo = BD.crearUsuario(Username, Password, Name, Ape, Email);
+        
+        if (sePudo == 1)
+        {
+            Usuario user = BD.verificarUsuario(Username, Password);
+            if (user != null)
+            {
+                Console.WriteLine($"[AuthController] Registro exitoso - Usuario ID: {user.ID}");
+                string usuarioJson = Objeto.ObjectToString(user);
+                HttpContext.Session.SetString("usuario", usuarioJson);
+                HttpContext.Session.SetInt32("IdUsuario", user.ID);
+                return RedirectToAction("InicializarHeladera", "Heladera");
+            }
+        }
+        
+        TempData["ErrorRegistro"] = "El usuario ya existe o hubo un error.";
+        return RedirectToAction("Login");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"[AuthController] Error en Registrarse: {ex.Message}");
+        TempData["ErrorRegistro"] = "Error interno al registrar usuario.";
+        return RedirectToAction("Login");
+    }
+}
 }

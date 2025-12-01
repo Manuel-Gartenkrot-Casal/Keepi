@@ -7,7 +7,7 @@
     public class BD
     {
         private static string _connectionString =
-        @"Server=localhost\SQLEXPRESS; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
+        @"Server=localhost\; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
 
 
         public static double CalcularDuracionProducto(string producto, double D0, double acidez, double agua, double azucar, double conservantes, double alcohol, double porcentajeCambio, int diasAbiertos, double fPromedioBase)
@@ -138,16 +138,27 @@
             }
         }
 
-        public static int crearUsuario(string usernameIngresado, string passwordIngresada)
-        {
-            int sePudo = -1;
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                string StoredProcedure = "crearUsuario";
-                sePudo = connection.Query<int>(StoredProcedure, new { Username = usernameIngresado, Password = passwordIngresada }, commandType: CommandType.StoredProcedure).FirstOrDefault();
-            }
-            return sePudo;
-        }
+public static int crearUsuario(string username, string password, string nombre, string apellido, string email)
+{
+    int sePudo = -1;
+    using (SqlConnection connection = new SqlConnection(_connectionString))
+    {
+        string StoredProcedure = "crearUsuario";
+        // Pasamos todos los parámetros necesarios
+        sePudo = connection.QueryFirstOrDefault<int>(
+            StoredProcedure, 
+            new { 
+                Username = username, 
+                Password = password,
+                Nombre = nombre,
+                Apellido = apellido,
+                Email = email
+            }, 
+            commandType: CommandType.StoredProcedure
+        );
+    }
+    return sePudo;
+}
         // --- MÉTODOS PARA RECETAS (PEGAR DENTRO DE LA CLASE BD) ---
 
         public static List<Receta> GetAllRecetas()
