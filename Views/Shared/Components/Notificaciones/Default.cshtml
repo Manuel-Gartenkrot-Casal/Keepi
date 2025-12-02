@@ -62,6 +62,98 @@
         transition: all 0.2s ease;
         border-left: 4px solid transparent !important;
     }
+
+    /*Cada notificación */
+
+    /* Notificación individual */
+    .notificacion-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        margin: 10px 15px;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #fff;
+        transition: background-color 0.2s, opacity 0.2s;
+        color: white;
+    }
+
+    /* Hover para resaltar */
+    .notificacion-item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Notificación leída */
+    .notificacion-item.leida {
+        opacity: 0.5; /* desvanecida */
+    }
+
+    /* Contenedor de fecha y botones */
+    .lado-derecho-notificacion {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+    }
+
+    /* Fecha */
+    .lado-derecho-notificacion small {
+        font-size: 0.8rem;
+        color: #eee;
+    }
+
+    /* Botones */
+    .lado-derecho-notificacion button {
+        background-color: rgba(0, 0, 0, 0.3);
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        cursor: pointer;
+        transition: background-color 0.2s, transform 0.1s;
+    }
+
+    /* Hover de los botones */
+    .lado-derecho-notificacion button:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: scale(1.05);
+    }
+
+    /* Botón de recetas */
+    .lado-derecho-notificacion button.recetas {
+        background-color: #4336f5ff; /* azul */
+    }
+
+    .lado-derecho-notificacion button.recetas:hover {
+        background-color: #3329c0ff;
+    }
+
+    /* Botón de leer */
+    .lado-derecho-notificacion button.leer {
+        background-color: #4CAF50; /* verde */
+    }
+
+    .lado-derecho-notificacion button.leer:hover {
+        background-color: #45a049;
+    }
+
+    /* Botón de borrar */
+    .lado-derecho-notificacion button.borrar {
+        background-color: #f44336; /* rojo */
+    }
+
+    .lado-derecho-notificacion button.borrar:hover {
+        background-color: #d32f2f;
+    }
+
+    /* Mensaje */
+    .notificacion-item p {
+        margin: 0;
+        font-size: 0.9rem;
+        flex: 1;
+    }
 </style>
 
 <div class="notificaciones-panel" id="panel">
@@ -70,14 +162,30 @@
         <h2>Notificaciones</h2>
         <button class="cerrar-sidebar" id="btnCerrarPanel">×</button>
     </div>
-    <ul>
+
+    <ul class="notificaciones-list">
         @if (Model != null && Model.Any())
         {
-            foreach (Notificacion n in Model)
+            foreach (var n in Model)
             {
-                <li class="notificacion-item">
+                <li id="noti-@n.ID" class="notificacion-item @(n.Leida ? "leida" : "")" data-id="@n.ID">
                     <p>@n.Mensaje</p>
-                    <small>@n.FechaNotificacion.ToString("dd/MM/yyyy HH:mm")</small>
+                    <section class="lado-derecho-notificacion acciones">
+                        <small>@n.FechaNotificacion.ToString("dd/MM/yyyy")</small>
+
+                        <form asp-controller="Recetas" asp-action="Index" method="get" style="display:inline;">
+                            <button type="submit" class="recetas">Ir a recetas</button>
+                        </form>
+
+                        @if (!n.Leida)
+                        {
+                            <button class="leer">Marcar como leída</button>
+                        }
+
+                        <button class="borrar">Eliminar</button>
+
+                        
+                    </section>
                 </li>
             }
         }
@@ -88,3 +196,53 @@
     </ul>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    document.querySelectorAll('.notificacion-item .borrar').forEach(btn => {
+        btn.addEventListener('click', e => {
+            let li = e.target.closest('.notificacion-item');
+            borrarNotificacion(li.dataset.id);
+        });
+    });
+
+    document.querySelectorAll('.notificacion-item .leer').forEach(btn => {
+        btn.addEventListener('click', e => {
+            let li = e.target.closest('.notificacion-item');
+            marcarComoLeida(li.dataset.id);
+        });
+    });
+
+    function borrarNotificacion(id) {
+        fetch('/Notificaciones/BorrarNotificacion', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `ID=${id}`
+        }).then(res => {
+            if (res.ok) {
+                document.getElementById('noti-' + id).remove();
+            } else {
+                alert('No se pudo borrar la notificación');
+            }
+        });
+    }
+
+
+    function marcarComoLeida(id) {
+        fetch('/Notificaciones/MarcarNotificacionComoLeida', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `ID=${id}`
+        }).then(res => {
+            if (res.ok) {
+                let noti = document.getElementById('noti-' + id);
+                noti.classList.add('leida');
+                let acciones = noti.querySelector('.acciones');
+                acciones.querySelectorAll('.leer').forEach(b => b.remove());
+            } else {
+                alert('No se pudo marcar como leída');
+            }
+        });
+    }
+});
+</script>
