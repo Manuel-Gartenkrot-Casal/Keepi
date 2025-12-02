@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;        // ← ViewComponent, IViewComponentResult
 using Keepi.Services;                  // ← INotificacionService
 using System;                          // Opcional, pero común
+using Microsoft.AspNetCore.Http;   // ← Sessions
 
 public class NotificacionesViewComponent : ViewComponent
 {
@@ -15,13 +16,13 @@ public class NotificacionesViewComponent : ViewComponent
     {
         int? usuarioId = HttpContext.Session.GetInt32("IdUsuario");
 
-        if (usuarioId == null || usuarioId < 0) {
+        if (usuarioId == null || usuarioId < 0)
+        {
             Console.WriteLine("Sesión no iniciada");
-            return Content(""); // Despues lo arreglo, tiene que mandar una advertencia
-        }  
-        else {
-            var notificaciones = _service.ObtenerNotificacionesDelUsuario(usuarioId.Value);
-            return View("Default", notificaciones);
+            return Content(""); 
         }
+
+        var notificaciones = _service.ObtenerNotificacionesDelUsuario(usuarioId.Value);
+        return View(notificaciones);
     }
 }
