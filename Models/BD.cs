@@ -7,8 +7,8 @@
     public class BD
     {
         private static string _connectionString =
-        @"Server=localhost; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
 
+        @"Server=localhost\SQLEXPRESS; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
 
 
         public static double CalcularDuracionProducto(string producto, double D0, double acidez, double agua, double azucar, double conservantes, double alcohol, double porcentajeCambio, int diasAbiertos, double fPromedioBase)
@@ -537,7 +537,7 @@ public static int crearUsuario(string username, string password, string nombre, 
 
         //Notis: Todavía no están en la BD:
 
-        public static int CrearNoti(string Mensaje, string FechaNotificacion) //Devuelve el ID
+        public static int CrearNoti(string Mensaje, DateTime FechaNotificacion) //Devuelve el ID
         {
             int ID = -1;
 
@@ -545,7 +545,7 @@ public static int crearUsuario(string username, string password, string nombre, 
             {
                 string StoredProcedure = "crearNotificacion"; //No existe todavía
 
-                resultado = connection.QueryFirstOrDefault<int>(
+                ID = connection.QueryFirstOrDefault<int>(
                     StoredProcedure,
                     new { Mensaje = Mensaje, FechaNotificacion = FechaNotificacion },
                     commandType: CommandType.StoredProcedure
@@ -597,14 +597,49 @@ public static int crearUsuario(string username, string password, string nombre, 
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                noti = connection.Query<string>(
+                noti = connection.QueryFirstOrDefault<Notificacion>(
                     storedProcedure,
                     new { ID = ID },
                     commandType: CommandType.StoredProcedure
-                ).ToList();
+                );
             }
 
             return noti;
         }
+
+        public static ProductoXHeladera TraerProductoXHeladeraByID(int ID) {
+
+            ProductoXHeladera pXh;
+            string storedProcedure = "TraerProductoXHeladeraByID";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                pXh = connection.QueryFirstOrDefault<ProductoXHeladera>(
+                    storedProcedure,
+                    new { ID = ID },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+
+            return pXh;
+        }
+
+        public static Producto TraerProductoByID(int ID) {
+
+            Producto producto;
+            string storedProcedure = "TraerProductoByID";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                producto = connection.QueryFirstOrDefault<Producto>(
+                    storedProcedure,
+                    new { ID = ID },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+
+            return producto;
+        }
     }
+
 
