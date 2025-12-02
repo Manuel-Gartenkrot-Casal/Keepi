@@ -16,6 +16,12 @@ public class NotificacionesController : Controller {
         _logger = logger;
     }
 
+    public IActionResult Panel()
+    {
+        TempData["Error"] = "Para ver notificaciones debe iniciar sesión";
+        return RedirectToAction("Login", "Auth");
+    }
+
     public IActionResult CrearNotificacion(int idProductoXHeladera) { 
         
         ProductoXHeladera pXh = BD.TraerProductoXHeladeraByID(idProductoXHeladera);
