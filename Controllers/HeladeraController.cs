@@ -37,9 +37,47 @@ public class HeladeraController : Controller
             if (nombresHeladeras == null || nombresHeladeras.Count == 0)
             {
                 Console.WriteLine($"[HeladeraController] Usuario {idUsuario} no tiene heladeras");
-                TempData["Error"] = "No tienes heladeras creadas. Por favor, crea una heladera primero.";
-                // TODO: Redirigir a una página para crear heladera
-                return RedirectToAction("Index", "Home");
+
+                //Se crea una heladera automática SIN requerir 'nombre'
+                TempData["Error"] = "No tenías heladeras creadas. Se te creó una heladera automática.";
+
+                try
+                {
+                    string user = HttpContext.Session.GetString("usuario");
+                    if (user == null)
+                        return Json(new { success = false, message = "Sesión expirada" });
+
+                    Usuario usuario = Objeto.StringToObject<Usuario>(user);
+                    if (usuario == null)
+                        return Json(new { success = false, message = "Error al obtener usuario" });
+
+                    // Crear heladera automática
+                    Heladera heladera = new Heladera();
+                    int resultado = heladera.AgregarHeladera("Mi Primera Heladera", "#ffffff");
+
+                    if (resultado == -1)
+                    {
+                        Console.WriteLine("No se pudo crear heladera automática");
+                        return Json(new { success = false, message = "No se pudo crear la heladera automática." });
+                    }
+
+                    // Obtener ID
+                    int idHeladera = BD.GetIdHeladeraByNombre("Mi Primera Heladera");
+                    if (idHeladera <= 0)
+                        return Json(new { success = false, message = "Error al obtener ID de la heladera automática" });
+
+                    // Asociar al usuario
+                    BD.AsociarHeladeraAUsuario(usuario.ID, idHeladera);
+
+                    Console.WriteLine("Heladera automática creada correctamente");
+
+                    return Json(new { success = true, message = "Heladera automática creada correctamente" });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error en AgregarHeladera: {ex.Message}");
+                    return Json(new { success = false, message = "Error al crear la heladera automática: " + ex.Message });
+                }
             }
             
             // Establecer la primera heladera como la heladera actual
