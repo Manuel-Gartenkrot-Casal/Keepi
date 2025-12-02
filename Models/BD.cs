@@ -535,9 +535,9 @@ public static int crearUsuario(string username, string password, string nombre, 
             }
         }
 
-        //Notis: Todavía no están en la BD:
+        //Notis: Ya incorporadas en la BD:
 
-        public static int CrearNoti(string Mensaje, DateTime FechaNotificacion) //Devuelve el ID
+        public static int CrearNoti(string Mensaje, DateTime FechaNotificacion, int IdProductoXHeladera) //Devuelve el ID
         {
             int ID = -1;
 
@@ -547,9 +547,14 @@ public static int crearUsuario(string username, string password, string nombre, 
 
                 ID = connection.QueryFirstOrDefault<int>(
                     StoredProcedure,
-                    new { Mensaje = Mensaje, FechaNotificacion = FechaNotificacion },
+                    new { Mensaje = Mensaje, FechaNotificacion = FechaNotificacion, IdProductoXHeladera = IdProductoXHeladera },
                     commandType: CommandType.StoredProcedure
                 );
+
+                if (ID == null)
+                {
+                    ID = -1;
+                }
 
                 return ID;
             }
@@ -560,7 +565,7 @@ public static int crearUsuario(string username, string password, string nombre, 
             int resultado = -1;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string StoredProcedure = "borrarNotificacion"; //No existe todavía
+                string StoredProcedure = "borrarNotificacion"; 
 
                 resultado = connection.QueryFirstOrDefault<int>(
                     StoredProcedure,
@@ -578,7 +583,7 @@ public static int crearUsuario(string username, string password, string nombre, 
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string StoredProcedure = "marcarNotiComoLeida"; //No existe todavía
+                string StoredProcedure = "marcarNotiComoLeida"; 
 
                 resultado = connection.QueryFirstOrDefault<int>(
                     StoredProcedure,
@@ -593,7 +598,7 @@ public static int crearUsuario(string username, string password, string nombre, 
         public static Notificacion traerNotificacionById(int ID)
         {
             Notificacion noti;
-            string storedProcedure = "traerNotiById"; //Fijarse si existe en BD
+            string storedProcedure = "traerNotiById"; 
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
