@@ -35,7 +35,7 @@ namespace Keepi.Services
                             Inner Join Heladera h ON ph.IdHeladera = h.Id
                             Inner Join UsuarioXHeladera uh On h.Id = uh.IdHeladera
                             Inner Join Usuario u ON uh.IdUsuario = u.Id
-                            Where u.Id = @UsuarioId
+                            Where u.Id = @UsuarioId AND n.Borrada = 0
                             Order By n.FechaNotificacion Desc";
 
                 return connection.Query<Notificacion>(sql, new { UsuarioId = usuarioId }).ToList();
