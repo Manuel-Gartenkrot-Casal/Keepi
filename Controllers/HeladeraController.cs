@@ -43,17 +43,9 @@ public class HeladeraController : Controller
 
                 try
                 {
-                    string user = HttpContext.Session.GetString("usuario");
-                    if (user == null)
-                        return Json(new { success = false, message = "Sesión expirada" });
-
-                    Usuario usuario = Objeto.StringToObject<Usuario>(user);
-                    if (usuario == null)
-                        return Json(new { success = false, message = "Error al obtener usuario" });
-
                     // Crear heladera automática
-                    Heladera heladera = new Heladera();
-                    int resultado = heladera.AgregarHeladera("Mi Primera Heladera", "#ffffff");
+                    Heladera heladeraNueva = new Heladera();
+                    int resultado = heladeraNueva.AgregarHeladera("Mi Primera Heladera", "#ffffff");
 
                     if (resultado == -1)
                     {
