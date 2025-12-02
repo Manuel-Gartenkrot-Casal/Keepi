@@ -24,6 +24,9 @@ builder.Services.AddScoped<IChatService, ChatService>();
 // NotificacionService
 builder.Services.AddScoped<INotificacionService, NotificacionService>();
 
+//Register NotificacionBackgroundService
+builder.Services.AddHostedService<NotificacionBackgroundService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
