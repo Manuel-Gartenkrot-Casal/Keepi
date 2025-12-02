@@ -15,7 +15,7 @@ public class NotificacionesController : Controller {
         _logger = logger;
     }
 
-    /* public IActionResult CrearNotificacion(string nombreProducto) { //el nombreProducto siendo NombreEsp
+    public IActionResult CrearNotificacion(string nombreProducto) { //el nombreProducto siendo NombreEsp
         
         ProductoXHeladera product = Objeto.StringToObject<ProductoXHeladera>(HttpContext.Session.GetString("ID")); //Guarden los productos con ID porque son y todos distintos (porque tienen distinta heladera por ejemplo)
         
@@ -36,10 +36,54 @@ public class NotificacionesController : Controller {
         if (!string.IsNullOrEmpty(mensajes)) 
         {  
             ViewBag.mensaje = mensaje;
-            Notificacion.CrearNoti(mensaje);
+            DateOnly hoy = DateOnly.FromDateTime(DateTime.Now);
+            int resultado = Notificacion.CrearNotificacion(mensaje, hoy);
+        }
+
+        if (resultado == -1) {
+            Console.WriteLine("No se pudo crear la notificacion");
         }
 
         string returnUrl = Request.Headers["Referer"].ToString(); //Ésto sirve para volver a página anterior
         return RedirectToAction(returnUrl);
-    }*/
+    }
+
+    public IActionResult BorrarNotificacion(int ID) {
+
+        Notificacion noti = traerNotificacionById(ID);
+
+        if (noti != null) {
+            resultado = noti.BorrarNotificacion();
+        }
+        else {
+            Console.WriteLine("No se encontro la notificacion");
+        }
+
+        if (resultado == -1) {
+            Console.WriteLine("No se pudo borrar la notificacion");
+        }
+
+        string returnUrl = Request.Headers["Referer"].ToString(); //Ésto sirve para volver a página anterior
+        return RedirectToAction(returnUrl);
+    }
+
+    public IActionResult MarcarNotificacionComoLeida(int ID) {
+
+        Notificacion noti = traerNotificacionById(ID);
+
+        if (noti != null) {
+            resultado = noti.NotiLeida();
+        }
+        else {
+            Console.WriteLine("No se encontro la notificacion");
+        }
+
+        if (resultado == -1) {
+            Console.WriteLine("No se pudo marcar la notificacion como leída");
+        }
+
+        string returnUrl = Request.Headers["Referer"].ToString(); //Ésto sirve para volver a página anterior
+        return RedirectToAction(returnUrl);
+    }
 }
+
