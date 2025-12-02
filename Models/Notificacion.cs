@@ -9,8 +9,40 @@ public class Notificacion{
         this.Mensaje = Mensaje;
         this.FechaNotificacion = FechaNotificacion;
         this.Leida = false;
+        this.Borrada = false; //Nueva propiedad
     }
     public void NotiLeida(){
-        Leida = true;
+        int resultado = BD.MarcarNotiComoLeida(ID);
+
+        if (resultado == 1) {
+            Leida = true;
+        }
+
+        return resultado;
+    }
+
+    public int CrearNotificacion(string Mensaje, DateTime FechaNotificacion) {
+        
+        int ID = BD.CrearNoti(Mensaje, FechaNotificacion); //Se pasa ID como resultado para ponerlo
+        
+        if (ID != -1) {
+            this.ID = ID;
+            this.Mensaje = Mensaje;
+            this.FechaNotificacion = FechaNotificacion;
+            Leida = false;
+            Borrada = false;
+        }
+
+        return ID;
+    }
+
+    public int BorrarNotificacion() {
+        int resultado = BD.BorrarNoti(ID);
+
+        if (resultado == 1) {
+            Borrada = true; //Incluir en la lógica
+        }
+
+        return resultado;
     }
 }
