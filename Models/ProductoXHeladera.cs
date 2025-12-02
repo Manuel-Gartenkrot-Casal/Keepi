@@ -14,11 +14,13 @@ public class ProductoXHeladera {
     public ProductoXHeladera() {
     }
     
-    public ProductoXHeladera(int ID, int IdHeladera, int IdUsuario, string NombreEspecifico, DateTime FechaVencimiento, bool Eliminado, bool Abierto, string Foto) {
+    public ProductoXHeladera(int ID, int IdHeladera, int IdProducto, int idUsuario, string NombreEspecifico, string NombreProducto, DateTime FechaVencimiento, bool Eliminado, bool Abierto, string Foto) {
         this.ID = ID;
         this.IdHeladera = IdHeladera;
+        this.IdProducto = IdProducto;
         this.IdUsuario = IdUsuario;
         this.NombreEspecifico = NombreEspecifico;
+        this.NombreProducto = NombreProducto;
         this.FechaVencimiento = FechaVencimiento;  
         this.Eliminado = Eliminado;
         this.Abierto = Abierto;
@@ -61,14 +63,14 @@ public class ProductoXHeladera {
         if (diasRestantes < 0) return duracionTotal;
         return duracionTotal - diasRestantes;
     }
-    /*public double CalcularPorcentajeRestante() //Para barra de progreso, otros calculos como notificaciones
+    public double CalcularPorcentajeRestante() //Para barra de progreso, otros calculos como notificaciones
     {
-        Producto productoBase = Objeto.StringToObject<Producto>(HttpContext.Session.GetString("IdProducto"));
+        Producto productoBase = BD.TraerProductoByID(IdProducto);
         int DiasBase = productoBase.Duracion;
         int DiasRestantes = ObtenerDiasRestantes();
         double porcentaje = ((double)DiasRestantes / DiasBase) * 100;
         return porcentaje;
-    }*/
+    }
     public void ProductoVencido() { //hacer para que se pueda vencer el producto y cambiar el mensaje de quedan x dias por Producto Vencido en caso de que el usuario no elija descartar el producto
 
     }
