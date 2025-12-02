@@ -20,7 +20,6 @@ public class ProductoXHeladera {
         this.IdProducto = IdProducto;
         this.IdUsuario = IdUsuario;
         this.NombreEspecifico = NombreEspecifico;
-        this.NombreProducto = NombreProducto;
         this.FechaVencimiento = FechaVencimiento;  
         this.Eliminado = Eliminado;
         this.Abierto = Abierto;
