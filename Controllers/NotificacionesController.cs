@@ -42,7 +42,7 @@ public class NotificacionesController : Controller {
             ViewBag.mensaje = mensaje;
             DateTime hoy = DateTime.Now.Date;
             Notificacion noti = new Notificacion();
-            resultado = noti.CrearNotificacion(mensaje, hoy);
+            resultado = noti.CrearNotificacion(mensaje, hoy, idProductoXHeladera);
         }
 
         if (resultado == -1) {
