@@ -534,4 +534,77 @@ public static int crearUsuario(string username, string password, string nombre, 
                 );
             }
         }
+
+        //Notis: Todavía no están en la BD:
+
+        public static int CrearNoti(string Mensaje, string FechaNotificacion) //Devuelve el ID
+        {
+            int ID = -1;
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string StoredProcedure = "crearNotificacion"; //No existe todavía
+
+                resultado = connection.QueryFirstOrDefault<int>(
+                    StoredProcedure,
+                    new { Mensaje = Mensaje, FechaNotificacion = FechaNotificacion },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return ID;
+            }
+        }
+
+        public static int BorrarNoti(int ID)
+        {
+            int resultado = -1;
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string StoredProcedure = "borrarNotificacion"; //No existe todavía
+
+                resultado = connection.QueryFirstOrDefault<int>(
+                    StoredProcedure,
+                    new { ID = ID },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return resultado;
+            }
+        }
+
+        public static int MarcarNotiComoLeida(int ID) {
+
+            int resultado = -1;
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string StoredProcedure = "marcarNotiComoLeida"; //No existe todavía
+
+                resultado = connection.QueryFirstOrDefault<int>(
+                    StoredProcedure,
+                    new { ID = ID },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return resultado;
+            }
+        }
+
+        public static Notificacion traerNotificacionById(int ID)
+        {
+            Notificacion noti;
+            string storedProcedure = "traerNotiById"; //Fijarse si existe en BD
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                noti = connection.Query<string>(
+                    storedProcedure,
+                    new { ID = ID },
+                    commandType: CommandType.StoredProcedure
+                ).ToList();
+            }
+
+            return noti;
+        }
     }
+
