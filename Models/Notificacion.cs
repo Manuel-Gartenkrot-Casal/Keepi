@@ -3,7 +3,11 @@ public class Notificacion{
     public string Mensaje{get; set;}
     public DateTime FechaNotificacion{get;set;}
     public bool Leida{get;set;}
+    public bool Borrada{get;set;} //Nueva propiedad
     
+    public Notificacion(){
+    }
+
     public Notificacion(int ID, string Mensaje, DateTime FechaNotificacion){
         this.ID = ID;
         this.Mensaje = Mensaje;
@@ -11,7 +15,8 @@ public class Notificacion{
         this.Leida = false;
         this.Borrada = false; //Nueva propiedad
     }
-    public void NotiLeida(){
+    
+    public int NotiLeida(){
         int resultado = BD.MarcarNotiComoLeida(ID);
 
         if (resultado == 1) {
