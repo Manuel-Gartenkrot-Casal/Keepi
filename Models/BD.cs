@@ -8,7 +8,7 @@
     {
         private static string _connectionString =
 
-        @"Server=localhost\SQLEXPRESS; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
+        @"Server=localhost; Database=Keepi_DataBase; Trusted_Connection=True; TrustServerCertificate=True;";
 
 
         public static double CalcularDuracionProducto(string producto, double D0, double acidez, double agua, double azucar, double conservantes, double alcohol, double porcentajeCambio, int diasAbiertos, double fPromedioBase)
