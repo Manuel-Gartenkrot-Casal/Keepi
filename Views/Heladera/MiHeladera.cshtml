@@ -107,11 +107,16 @@
                                     @(producto.Abierto ? "✓ Abierto" : "Abrir")
                                 </button>
                                 <div class="dropdown-estado">
-                                    <button class="btn-estado" onclick="toggleDropdown(@producto.ID)" title="Cambiar estado">Estado ▼</button>
+                                    <button class="btn-estado" onclick="toggleDropdown(@producto.ID)" title="Cambiar estado">
+                                        @{
+                                            var textoEstado = string.IsNullOrEmpty(producto.Estado) ? "Estado" : producto.Estado;
+                                        }
+                                        @textoEstado ▼
+                                    </button>
                                     <div class="dropdown-menu" id="dropdown-@producto.ID">
-                                        <a href="#" onclick="cambiarEstado(@producto.ID, 'alacena'); return false;">Alacena</a>
-                                        <a href="#" onclick="cambiarEstado(@producto.ID, 'refrigerado'); return false;">Refrigerado</a>
-                                        <a href="#" onclick="cambiarEstado(@producto.ID, 'congelado'); return false;">Congelado</a>
+                                        <a href="#" onclick="cambiarEstado(@producto.ID, 'Alacena'); return false;">Alacena</a>
+                                        <a href="#" onclick="cambiarEstado(@producto.ID, 'Refrigerado'); return false;">Refrigerado</a>
+                                        <a href="#" onclick="cambiarEstado(@producto.ID, 'Congelado'); return false;">Congelado</a>
                                     </div>
                                 </div>
                             </div>

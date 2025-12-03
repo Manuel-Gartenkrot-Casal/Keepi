@@ -254,7 +254,8 @@ public static int crearUsuario(string username, string password, string nombre, 
                         FechaVencimiento = rowDict.ContainsKey("FechaVencimiento") && rowDict["FechaVencimiento"] != null ? Convert.ToDateTime(rowDict["FechaVencimiento"]) : DateTime.MinValue,
                         Eliminado = rowDict.ContainsKey("Eliminado") && rowDict["Eliminado"] != null ? Convert.ToBoolean(rowDict["Eliminado"]) : false,
                         Abierto = rowDict.ContainsKey("Abierto") && rowDict["Abierto"] != null ? Convert.ToBoolean(rowDict["Abierto"]) : false,
-                        Foto = rowDict.ContainsKey("Foto") && rowDict["Foto"] != null ? rowDict["Foto"].ToString() : string.Empty
+                        Foto = rowDict.ContainsKey("Foto") && rowDict["Foto"] != null ? rowDict["Foto"].ToString() : string.Empty,
+                        Estado = rowDict.ContainsKey("Estado") && rowDict["Estado"] != null ? rowDict["Estado"].ToString() : null
                     };
                     // Intentar obtener IdUsuario si está en el resultado (puede venir del JOIN con UsuarioXHeladera)
                     if (rowDict.ContainsKey("IdUsuario") && rowDict["IdUsuario"] != null)

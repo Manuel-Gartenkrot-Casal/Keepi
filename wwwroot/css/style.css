@@ -1131,6 +1131,8 @@ color:#5f5f5f;
 
 .dropdown-menu.show {
   display: block;
+  position: absolute;
+  z-index: 10000;
 }
 
 .dropdown-menu a {

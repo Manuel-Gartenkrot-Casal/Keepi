@@ -92,11 +92,13 @@
         });
 
         // Cerrar menú al hacer clic en overlay
-        overlay.addEventListener('click', () => {
-            menuLateral.classList.remove('active');
-            panel.classList.remove('active');
-            overlay.classList.remove('active');
-        });
+overlay.addEventListener('click', () => {
+    menuLateral.classList.remove('active');
+    if (panel) {
+        panel.classList.remove('active');
+    }
+    overlay.classList.remove('active');
+});
 
         // Cerrar menú al hacer clic en un enlace
         const menuLinks = document.querySelectorAll('.menu-lateral nav a');
