@@ -37,11 +37,7 @@
         <nav>
             <a href="/Home/Index"><span>🏠</span> Inicio</a>
             <a href="/Heladera/Heladeras"><span>⬜</span> Heladeras</a>
-<<<<<<< HEAD
-            <a href="/Recetas"><span>🍽️</span> Recetas</a>
-            <a href="/Home/ListaDeSuper"><span>🛒</span> Favoritos</a>
-=======
->>>>>>> c2c653ec70b18e8accac6784bc65fdd3ef57d755
+             <a href="/Recetas"><span>🍽️</span> Recetas</a>
             <a href="/Chat/ChatBot"><span>💬</span> Mr. Keep</a>
         </nav>
     </div>
@@ -141,27 +137,41 @@
     <footer>
         <p>© @DateTime.Now.Year Keepi — Don't Waste It, Keepi.</p>
     </footer>
-<div id="chat-widget" class="chat-widget">
+@{
+    var usuarioSesion = Context.Session.GetInt32("IdUsuario");
+}
 
-    <div class="chat-widget-header">
-    
-        <span>💬 Mr. Keep</span>
-        <button id="close-chat-widget" aria-label="Cerrar chat">×</button>
-    </div>
-    <div id="chat-widget-messages" class="chat-widget-messages"></div>
-    <div class="chat-widget-input-area">
-        <input type="text" id="chat-widget-input" placeholder="Escribe tu mensaje..." maxlength="1000" aria-label="Mensaje">
-        <button id="chat-widget-send" aria-label="Enviar mensaje">
-            <span class="desktop-only">➤</span>
-            <span class="mobile-only">➤</span>
-        </button>
-    </div>
-</div>
+@if (usuarioSesion != null)
+{
+    <div id="chat-widget" class="chat-widget">
+        <div class="chat-widget-header">
+            <span>💬 Mr. Keep</span>
+            <button id="close-chat-widget" aria-label="Cerrar chat">×</button>
+        </div>
 
-<button id="chat-fab" class="chat-fab" aria-label="Abrir chat">
-    <span class="desktop-only">💬</span>
-    <span class="mobile-only">💬</span>
-</button>
+        <div id="chat-widget-messages" class="chat-widget-messages"></div>
+
+        <div class="chat-widget-input-area">
+            <input type="text" id="chat-widget-input" placeholder="Escribe tu mensaje..." maxlength="1000" aria-label="Mensaje">
+            <button id="chat-widget-send" aria-label="Enviar mensaje">➤</button>
+        </div>
+    </div>
+
+    <!-- BOTÓN ÚNICO DEL CHAT -->
+    <button id="chat-fab" class="chat-fab" aria-label="Abrir chat">
+        💬
+    </button>
+}
+else
+{
+    <style>
+        #chat-widget,
+        #chat-fab {
+            display: none !important;
+        }
+    </style>
+}
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script>
