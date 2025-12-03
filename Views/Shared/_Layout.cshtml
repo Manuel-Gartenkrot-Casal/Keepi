@@ -39,6 +39,7 @@
             <a href="/Heladera/CargarProductos"><span>❄️</span> Mi Heladera</a>
             <a href="/Recetas"><span>🍽️</span> Recetas</a>
             <a href="/Heladera/Heladeras"><span>⬜</span> Heladeras</a>
+            <a href="/Home/ListaDeSuper"><span>🛒</span> Favoritos</a>
             <a href="/Chat/ChatBot"><span>💬</span> Mr. Keep</a>
         </nav>
     </div>
@@ -49,6 +50,19 @@
 
     <!-- Header -->
     <header>
+        @{
+            // Obtener el string de sesión
+            string user = Context.Session.GetString("usuario"); // o ViewContext.HttpContext.Session.GetString("usuario")
+            Usuario usuario = null;
+            string nombreDeUsuario = "SinSesion";
+
+            if (!string.IsNullOrEmpty(user))
+            {
+                usuario = Objeto.StringToObject<Usuario>(user);
+                nombreDeUsuario = usuario.Username;
+            }
+        }
+
         <section class="layout">
             <div class="grow1">
                 <a class="menu" href="#" id="btnMenu">☰</a>
@@ -62,6 +76,9 @@
                 <a class="notis" href="/Notificaciones/Panel">
                     <img src="~/imagenes/Notis.png" alt="Notificaciones" id="btnNoti">
                 </a>
+                @if (nombreDeUsuario != "SinSesion") {
+                    <p class="nombreDeUsuarioHeader">@nombreDeUsuario</p>
+                }
                 <a class="perfil" href="/Home/Perfil">
                     <img src="~/imagenes/Perfil.png" alt="Perfil">
                 </a>
@@ -212,6 +229,7 @@ overlay.addEventListener('click', () => {
 </body>
 
 </html>
+
 
 
 
