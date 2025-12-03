@@ -39,7 +39,7 @@ public class HeladeraController : Controller
                 Console.WriteLine($"[HeladeraController] Usuario {idUsuario} no tiene heladeras");
 
                 //Se crea una heladera automática SIN requerir 'nombre'
-                TempData["Error"] = "No tenías heladeras creadas. Se te creó una heladera automática.";
+                Console.WriteLine("No tenías heladeras creadas. Se te creó una heladera automática. Puedes volver a tu cuenta");
 
                 try
                 {
