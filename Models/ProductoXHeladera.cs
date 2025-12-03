@@ -10,11 +10,12 @@ public class ProductoXHeladera {
     public bool Eliminado {get;set;}
     public bool Abierto {get;set;}
     public string Foto {get;set;}
+    public string Estado {get;set;}
     
     public ProductoXHeladera() {
     }
     
-    public ProductoXHeladera(int ID, int IdHeladera, int IdProducto, int idUsuario, string NombreEspecifico, string NombreProducto, DateTime FechaVencimiento, bool Eliminado, bool Abierto, string Foto) {
+    public ProductoXHeladera(int ID, int IdHeladera, int IdProducto, int idUsuario, string NombreEspecifico, string NombreProducto, DateTime FechaVencimiento, bool Eliminado, bool Abierto, string Foto, string Estado) {
         this.ID = ID;
         this.IdHeladera = IdHeladera;
         this.IdProducto = IdProducto;
@@ -25,6 +26,7 @@ public class ProductoXHeladera {
         this.Eliminado = Eliminado;
         this.Abierto = Abierto;
         this.Foto = Foto;
+        this.Estado = Estado;
     }
     public int ObtenerDiasRestantes()
     {

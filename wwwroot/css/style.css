@@ -1131,6 +1131,8 @@ color:#5f5f5f;
 
 .dropdown-menu.show {
   display: block;
+  position: absolute;
+  z-index: 10000;
 }
 
 .dropdown-menu a {
@@ -3890,66 +3892,227 @@ main {
     overflow: hidden;
 }
 /* --- INICIO FIX CHATBOT --- */
+/* =========================================
+   ESTILOS CHATBOT (CIRCULAR Y ANIMADO)
+   ========================================= */
 
-/* 1. Clases para mostrar/ocultar según dispositivo (que faltaban) */
-.mobile-only { display: none !important; }
-.desktop-only { display: inline-block !important; }
-
-@media (max-width: 768px) {
-    .mobile-only { display: inline-block !important; }
-    .desktop-only { display: none !important; }
-}
-
-/* 2. Estilo base del botón (Píldora con texto normal para PC) */
+/* 1. Botón Flotante (Circular) */
 .chat-fab {
-    position: fixed !important;
-    bottom: 20px !important;
-    right: 20px !important;
-    z-index: 9999 !important;
-    
-    background: linear-gradient(135deg, #59ad44, #4a8d38);
-    color: white;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    cursor: pointer;
-    
-    /* Configuración para TEXTO (PC) */
-    width: auto !important;       /* Deja que el ancho se adapte al texto */
-    height: 50px !important;      /* Altura fija cómoda */
-    padding: 0 20px !important;   /* Espacio a los costados del texto */
-    border-radius: 25px !important; /* Bordes redondeados (forma de pastilla) */
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 70px !important;  /* Tamaño fijo grande */
+  height: 70px !important; /* Altura igual al ancho para ser círculo */
+  
+  background: linear-gradient(135deg, #59ad44, #3a7d28); /* Degradado llamativo */
+  color: white;
+  border: none;
+  border-radius: 50% !important; /* Círculo perfecto */
+  
+  /* Sombra resplandeciente (Glow) */
+  box-shadow: 0 0 20px rgba(89, 173, 68, 0.6); 
+  
+  cursor: pointer;
+  z-index: 9999;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  transition: all 0.3s ease;
+  
+  /* Animación constante para llamar la atención */
+  animation: pulse-green 2s infinite;
 }
 
-/* Tamaño de letra NORMAL para el texto "Chatear con..." */
-.chat-fab .desktop-only {
-    font-size: 16px !important; 
-    font-weight: 600;
-    font-family: Verdana, sans-serif;
-}
+/* Ocultar texto si existe, mostrar solo el icono de burbuja */
+.chat-fab .desktop-only { display: none !important; } 
+.chat-fab .mobile-only { display: block !important; font-size: 35px !important; }
+/* Si usas el mismo icono para ambos, esto asegura que se vea bien */
 
-/* 3. Estilo específico para MÓVIL (Solo ícono redondo) */
-@media (max-width: 768px) {
-    .chat-fab {
-        width: 60px !important;   /* Ancho fijo redondo */
-        height: 60px !important;  /* Alto fijo redondo */
-        padding: 0 !important;    /* Sin padding */
-        border-radius: 50% !important; /* Círculo perfecto */
-    }
-
-    /* Tamaño GIGANTE solo para el emoji 💬 */
-    .chat-fab .mobile-only {
-        font-size: 30px !important;
-        line-height: 1;
-        margin-top: 2px; /* Pequeño ajuste visual para centrar el emoji */
-    }
-}
-
+/* 3. Efecto al pasar el mouse (Hover) */
 .chat-fab:hover {
-    transform: scale(1.05);
+  transform: scale(1.15) rotate(5deg); /* Crece y gira un poco */
+  background: linear-gradient(135deg, #6fd155, #4a8d38);
+  box-shadow: 0 0 30px rgba(89, 173, 68, 0.8);
+  animation: none; /* Detiene el pulso al hacer hover */
 }
+<<<<<<< HEAD
+
+/* 4. Definición de la Animación (Latido/Pulso) */
+@keyframes pulse-green {
+  0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(89, 173, 68, 0.7);
+  }
+  70% {
+      transform: scale(1.05); /* Crece un poquito */
+      box-shadow: 0 0 0 15px rgba(89, 173, 68, 0); /* Onda expansiva */
+  }
+  100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(89, 173, 68, 0);
+  }
+}
+
+/* =========================================
+ WIDGET DEL CHAT (VENTANA)
+ ========================================= */
+.chat-widget {
+  position: fixed;
+  bottom: 110px; /* Un poco más arriba del botón */
+  right: 30px;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  display: none; 
+  flex-direction: column;
+  z-index: 9999;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  
+  /* Animación de entrada */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.chat-widget.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cabecera del Widget */
+.chat-widget-header {
+  background: linear-gradient(135deg, #59ad44, #cfd518);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.chat-widget-header button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Área de mensajes */
+.chat-widget-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Mensajes */
+.chat-widget-messages .message {
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 80%;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.chat-widget-messages .message.user {
+  background-color: #59ad44;
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-widget-messages .message.bot {
+  background-color: #e9ecef;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+/* Input Área */
+.chat-widget-input-area {
+  padding: 15px;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 10px;
+  background: white;
+}
+
+.chat-widget-input-area input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.chat-widget-input-area input:focus {
+  border-color: #59ad44;
+}
+
+.chat-widget-input-area button {
+  background: #59ad44;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: background 0.2s;
+}
+
+.chat-widget-input-area button:hover {
+  background: #4a8d38;
+}
+
+/* Responsive Móvil */
+@media (max-width: 480px) {
+  .chat-widget {
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      border-radius: 0;
+  }
+  .chat-fab {
+      width: 60px !important;
+      height: 60px !important;
+      bottom: 20px;
+      right: 20px;
+  }
+}
+=======
 /* --- FIN FIX CHATBOT --- */
+
+/* --- Comienzo de Nombre de Usuario del Header --- */
+
+.nombreDeUsuarioHeader {
+  color: white;
+  text-shadow: 4px 4px 8px rgba(160, 160, 160, 0.5);
+  border-radius: 10px;
+  text-align: center;
+  margin-right: 1%;
+  font-size: 130%;
+  padding: 2%;
+}
+
+/* --- Final de Nombre de Usuario del Header --- */
+
+
+>>>>>>> b18897328a0ea075c3f322a376fa6dc10b9a5dbc
