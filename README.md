@@ -21,6 +21,15 @@
 
 ---
 
+## ¿Cómo lo ejecuto?
+
+- Abrir el proyecto en un editor de código
+- Ejecutar el archivo SQL que se encuentra en WWWROOT
+- Dotnet run
+- Disfrute la experiencia
+
+---
+
 ## 🚀 Funcionalidades Principales
 
 - Gestión de productos reutilizables
