@@ -3953,3 +3953,19 @@ main {
     transform: scale(1.05);
 }
 /* --- FIN FIX CHATBOT --- */
+
+/* --- Comienzo de Nombre de Usuario del Header --- */
+
+.nombreDeUsuarioHeader {
+  color: white;
+  text-shadow: 4px 4px 8px rgba(160, 160, 160, 0.5);
+  border-radius: 10px;
+  text-align: center;
+  margin-right: 1%;
+  font-size: 130%;
+  padding: 2%;
+}
+
+/* --- Final de Nombre de Usuario del Header --- */
+
+
