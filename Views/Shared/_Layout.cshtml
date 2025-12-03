@@ -29,16 +29,27 @@
     <div class="overlay" id="overlay"></div>
 
     <!-- Menú Lateral -->
+    @{
+    var usuarioSesion = Context.Session.GetInt32("IdUsuario");
+}
+
     <div class="menu-lateral" id="menuLateral">
         <div class="menu-lateral-header">
             <h2>Menú</h2>
             <button class="btn-cerrar" id="btnCerrar">×</button>
         </div>
         <nav>
+        @if (usuarioSesion != null)
+{
             <a href="/Home/Index"><span>🏠</span> Inicio</a>
             <a href="/Heladera/Heladeras"><span>⬜</span> Heladeras</a>
              <a href="/Recetas"><span>🍽️</span> Recetas</a>
             <a href="/Chat/ChatBot"><span>💬</span> Mr. Keep</a>
+}
+else{
+                <a href="/Home/Index"><span>🏠</span> Inicio</a>
+
+}
         </nav>
     </div>
 
@@ -137,9 +148,6 @@
     <footer>
         <p>© @DateTime.Now.Year Keepi — Don't Waste It, Keepi.</p>
     </footer>
-@{
-    var usuarioSesion = Context.Session.GetInt32("IdUsuario");
-}
 
 @if (usuarioSesion != null)
 {
