@@ -36,8 +36,10 @@
         </div>
         <nav>
             <a href="/Home/Index"><span>🏠</span> Inicio</a>
+            <a href="/Heladera/CargarProductos"><span>❄️</span> Mi Heladera</a>
+            <a href="/Recetas"><span>🍽️</span> Recetas</a>
             <a href="/Heladera/Heladeras"><span>⬜</span> Heladeras</a>
-             <a href="/Recetas"><span>🍽️</span> Recetas</a>
+            <a href="/Home/ListaDeSuper"><span>🛒</span> Favoritos</a>
             <a href="/Chat/ChatBot"><span>💬</span> Mr. Keep</a>
         </nav>
     </div>
@@ -48,6 +50,19 @@
 
     <!-- Header -->
     <header>
+        @{
+            // Obtener el string de sesión
+            string user = Context.Session.GetString("usuario"); // o ViewContext.HttpContext.Session.GetString("usuario")
+            Usuario usuario = null;
+            string nombreDeUsuario = "SinSesion";
+
+            if (!string.IsNullOrEmpty(user))
+            {
+                usuario = Objeto.StringToObject<Usuario>(user);
+                nombreDeUsuario = usuario.Username;
+            }
+        }
+
         <section class="layout">
             <div class="grow1">
                 <a class="menu" href="#" id="btnMenu">☰</a>
@@ -61,6 +76,9 @@
                 <a class="notis" href="/Notificaciones/Panel">
                     <img src="~/imagenes/Notis.png" alt="Notificaciones" id="btnNoti">
                 </a>
+                @if (nombreDeUsuario != "SinSesion") {
+                    <p class="nombreDeUsuarioHeader">@nombreDeUsuario</p>
+                }
                 <a class="perfil" href="/Home/Perfil">
                     <img src="~/imagenes/Perfil.png" alt="Perfil">
                 </a>
@@ -137,41 +155,27 @@
     <footer>
         <p>© @DateTime.Now.Year Keepi — Don't Waste It, Keepi.</p>
     </footer>
-@{
-    var usuarioSesion = Context.Session.GetInt32("IdUsuario");
-}
+<div id="chat-widget" class="chat-widget">
 
-@if (usuarioSesion != null)
-{
-    <div id="chat-widget" class="chat-widget">
-        <div class="chat-widget-header">
-            <span>💬 Mr. Keep</span>
-            <button id="close-chat-widget" aria-label="Cerrar chat">×</button>
-        </div>
-
-        <div id="chat-widget-messages" class="chat-widget-messages"></div>
-
-        <div class="chat-widget-input-area">
-            <input type="text" id="chat-widget-input" placeholder="Escribe tu mensaje..." maxlength="1000" aria-label="Mensaje">
-            <button id="chat-widget-send" aria-label="Enviar mensaje">➤</button>
-        </div>
+    <div class="chat-widget-header">
+    
+        <span>💬 Mr. Keep</span>
+        <button id="close-chat-widget" aria-label="Cerrar chat">×</button>
     </div>
+    <div id="chat-widget-messages" class="chat-widget-messages"></div>
+    <div class="chat-widget-input-area">
+        <input type="text" id="chat-widget-input" placeholder="Escribe tu mensaje..." maxlength="1000" aria-label="Mensaje">
+        <button id="chat-widget-send" aria-label="Enviar mensaje">
+            <span class="desktop-only">➤</span>
+            <span class="mobile-only">➤</span>
+        </button>
+    </div>
+</div>
 
-    <!-- BOTÓN ÚNICO DEL CHAT -->
-    <button id="chat-fab" class="chat-fab" aria-label="Abrir chat">
-        💬
-    </button>
-}
-else
-{
-    <style>
-        #chat-widget,
-        #chat-fab {
-            display: none !important;
-        }
-    </style>
-}
-
+<button id="chat-fab" class="chat-fab" aria-label="Abrir chat">
+    <span class="desktop-only">💬</span>
+    <span class="mobile-only">💬</span>
+</button>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script>
@@ -223,6 +227,7 @@ else
 </body>
 
 </html>
+
 
 
 

@@ -3935,6 +3935,7 @@ main {
   box-shadow: 0 0 30px rgba(89, 173, 68, 0.8);
   animation: none; /* Detiene el pulso al hacer hover */
 }
+<<<<<<< HEAD
 
 /* 4. Definición de la Animación (Latido/Pulso) */
 @keyframes pulse-green {
@@ -4094,3 +4095,22 @@ main {
       right: 20px;
   }
 }
+=======
+/* --- FIN FIX CHATBOT --- */
+
+/* --- Comienzo de Nombre de Usuario del Header --- */
+
+.nombreDeUsuarioHeader {
+  color: white;
+  text-shadow: 4px 4px 8px rgba(160, 160, 160, 0.5);
+  border-radius: 10px;
+  text-align: center;
+  margin-right: 1%;
+  font-size: 130%;
+  padding: 2%;
+}
+
+/* --- Final de Nombre de Usuario del Header --- */
+
+
+>>>>>>> b18897328a0ea075c3f322a376fa6dc10b9a5dbc
