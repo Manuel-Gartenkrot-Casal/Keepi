@@ -3,90 +3,177 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="login">
-<section>
-<h2 id="pageTitle">Iniciar sesión</h2>
+<style>
+    /* 1. BOTÓN OJO INTEGRADO (Dentro del Input) */
+    .password-wrapper {
+        position: relative;
+    }
+    .password-wrapper input {
+        padding-right: 45px; /* Espacio para que el texto no toque el ojo */
+    }
+    .btn-eye-overlay {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%); /* Centrado vertical exacto */
+        background: none;
+        border: none;
+        padding: 0;
+        color: #6c757d;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+    }
+    .btn-eye-overlay:hover { color: #343a40; }
+    .btn-eye-overlay:focus { outline: none; }
 
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger">@TempData["Error"]</div>
-}
+    /* 2. HELADERA VERDE PASTO */
+    .h-widget-wrapper {
+        position: relative;
+        padding: 20px;
+        /* Esto asegura que la heladera esté centrada en su columna */
+        display: flex;
+        justify-content: center;
+    }
 
-<form id="loginForm" asp-controller="Auth" asp-action="verificarCuenta" method="post" class="mb-3">
-    @Html.AntiForgeryToken()
-    <div class="form-group mb-2">
-        <label for="Username">Usuario</label>
-        <input type="text" name="Username" id="Username" class="form-control" required />
-    </div>
-    <div class="form-group mb-2">
-        <label for="Password">Contraseña</label>
-        <input type="password" name="Password" id="Password" class="form-control" required />
-    </div>
-    <button type="submit" class="btn btn-primary">Entrar</button>
-</form>
+    .h-cuerpo {
+        width: 140px;
+        height: 240px;
+        background-color: #66bb6a; /* Verde Pasto */
+        border: 4px solid #2e7d32; /* Borde Oscuro */
+        border-radius: 20px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
 
-<button id="toggleBtn" class="btn btn-outline-secondary mb-3">Registrarse</button>
+    .h-cuerpo::after { /* Linea puerta */
+        content: ''; position: absolute; top: 70px; left: 0;
+        width: 100%; height: 4px; background-color: #2e7d32;
+    }
 
-@if (TempData["ErrorRegistro"] != null)
-{
-    <div id="registroError" class="alert alert-danger" style="display:none;">@TempData["ErrorRegistro"]</div>
-}
+    .h-ojos {
+        position: absolute; top: 30px; left: 50%;
+        transform: translateX(-50%); display: flex; gap: 15px; 
+        z-index: 1; /* Ojos al fondo */
+    }
+    .h-ojo { width: 14px; height: 14px; background-color: black; border-radius: 50%; }
 
-<form id="registerForm" asp-controller="Auth" asp-action="Registrarse" method="post" style="display:none;">
-    @Html.AntiForgeryToken()
-    <div class="form-group mb-2">
-        <label for="RegUsername">Usuario</label>
-        <input type="text" name="Username" id="RegUsername" class="form-control" required />
-    </div>
-    <div class="form-group mb-2">
-        <label for="RegPassword">Contraseña</label>
-        <input type="password" name="Password" id="RegPassword" class="form-control" required />
-    </div>
-    <div class="form-group mb-2">
-        <label for="RegName">Nombre</label>
-        <input type="text" name="Name" id="RegName" class="form-control" required />
-    </div>
-     <div class="form-group mb-2">
-        <label for="RegApe">Apellido</label>
-        <input type="text" name="Ape" id="RegApe" class="form-control" required />
-    </div>
-       <div class="form-group mb-2">
-        <label for="RegEmail">Email</label>
-<input type="text" name="Email" id="RegEmail" class="form-control" required />
-    </div>
-    <button type="submit" class="btn btn-success">Crear cuenta</button>
-    <button type="button" id="backBtn" class="btn btn-link">Volver a iniciar sesión</button>
-</form>
-<div class="social-login">
-    <p>O continua con:</p>
+    .h-manija {
+        position: absolute; top: 90px; right: 15px;
+        width: 10px; height: 50px; background-color: #fff; border-radius: 5px;
+    }
 
-    <div class="social-buttons">
+    /* BRAZOS (LARGOS Y ANGULO CORREGIDO) */
+    .h-brazo {
+        position: absolute; 
+        top: 90px; 
+        width: 28px; 
+        height: 115px; /* Largo suficiente */
+        background-color: #66bb6a; /* Verde */
+        border: 4px solid #2e7d32; 
+        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 10; /* Encima de los ojos */
+    }
+    
+    .h-brazo.izq { left: -18px; transform-origin: top right; }
+    .h-brazo.der { right: -18px; transform-origin: top left; }
 
-        <button onclick="window.open('https://accounts.google.com', '_blank')">
-            <img src="~/imagenes/google.webp" alt="Google">
-        </button>
+    /* ANIMACIONES */
+    .h-cuerpo.tapar-ojos .h-brazo.izq { transform: rotate(-155deg); }
+    .h-cuerpo.tapar-ojos .h-brazo.der { transform: rotate(155deg); }
+    .h-cuerpo.tapar-ojos.espiar .h-brazo.der { transform: rotate(40deg); }
+    
+</style>
 
-        <button onclick="window.open('https://login.microsoftonline.com', '_blank')">
-            <img src="~/imagenes/microsoft.png" alt="Microsoft">
-        </button>
+<div class="container mt-4">
+    <div class="row align-items-center">
+        
+        <div class="col-md-6 col-lg-5 offset-lg-1">
+            <div class="login shadow-sm p-4 bg-white rounded">
+                <section>
+                    <h2 id="pageTitle" class="text-center mb-4">Iniciar sesión</h2>
 
-       <button onclick="window.open('https://appleid.apple.com/', '_blank')">
-    <img src="~/imagenes/apple.svg" alt="Apple">
-</button>
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger">@TempData["Error"]</div>
+                    }
 
+                    <form id="loginForm" asp-controller="Auth" asp-action="verificarCuenta" method="post" class="mb-3">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group mb-3">
+                            <label for="Username" class="form-label">Usuario</label>
+                            <input type="text" name="Username" id="Username" class="form-control" required />
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label for="Password" class="form-label">Contraseña</label>
+                            
+                            <div class="password-wrapper">
+                                <input type="password" name="Password" id="Password" class="form-control" required />
+                                <button type="button" class="btn-eye-overlay" id="toggleLoginPass">
+                                    <svg id="iconOpen" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg>
+                                    <svg id="iconClosed" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="display:none;"><path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/><path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/><path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/></svg>
+                                </button>
+                            </div>
+
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+
+                    <button id="toggleBtn" class="btn btn-outline-secondary mb-3 w-100">Registrarse</button>
+
+                    @if (TempData["ErrorRegistro"] != null)
+                    {
+                        <div id="registroError" class="alert alert-danger" style="display:none;">@TempData["ErrorRegistro"]</div>
+                    }
+
+                    <form id="registerForm" asp-controller="Auth" asp-action="Registrarse" method="post" style="display:none;">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group mb-2"><label for="RegUsername">Usuario</label><input type="text" name="Username" id="RegUsername" class="form-control" required /></div>
+                        <div class="form-group mb-2"><label for="RegPassword">Contraseña</label><input type="password" name="Password" id="RegPassword" class="form-control" required /></div>
+                        <div class="form-group mb-2"><label for="RegName">Nombre</label><input type="text" name="Name" id="RegName" class="form-control" required /></div>
+                        <div class="form-group mb-2"><label for="RegApe">Apellido</label><input type="text" name="Ape" id="RegApe" class="form-control" required /></div>
+                        <div class="form-group mb-2"><label for="RegEmail">Email</label><input type="text" name="Email" id="RegEmail" class="form-control" required /></div>
+                        <button type="submit" class="btn btn-success w-100 mt-3">Crear cuenta</button>
+                        <button type="button" id="backBtn" class="btn btn-link w-100">Volver a iniciar sesión</button>
+                    </form>
+
+                    <div class="social-login mt-4 text-center">
+                        <p class="text-muted small">O continua con:</p>
+                        <div class="social-buttons d-flex justify-content-center gap-2">
+                            <button type="button" class="btn p-0 border-0" onclick="window.open('https://accounts.google.com', '_blank')"><img src="~/imagenes/google.webp" alt="Google" width="42"></button>
+                            <button type="button" class="btn p-0 border-0" onclick="window.open('https://login.microsoftonline.com', '_blank')"><img src="~/imagenes/microsoft.png" alt="Microsoft" width="42"></button>
+                            <button type="button" class="btn p-0 border-0" onclick="window.open('https://appleid.apple.com/', '_blank')"><img src="~/imagenes/apple.svg" alt="Apple" width="42"></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-5 d-none d-md-flex justify-content-center">
+            <div class="h-widget-wrapper">
+                <div class="h-cuerpo" id="personaje">
+                    <div class="h-ojos">
+                        <div class="h-ojo"></div>
+                        <div class="h-ojo"></div>
+                    </div>
+                    <div class="h-manija"></div>
+                    <div class="h-brazo izq"></div>
+                    <div class="h-brazo der"></div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
-
-
-
-</section>  
-</div>
-
 
 @section Scripts {
     <script>
         (function () {
+            // Variables
             var toggleBtn = document.getElementById('toggleBtn');
             var backBtn = document.getElementById('backBtn');
             var loginForm = document.getElementById('loginForm');
@@ -94,90 +181,43 @@
             var pageTitle = document.getElementById('pageTitle');
             var registroError = document.getElementById('registroError');
 
+            const passInput = document.getElementById('Password');
+            const togglePassBtn = document.getElementById('toggleLoginPass');
+            const iconOpen = document.getElementById('iconOpen');
+            const iconClosed = document.getElementById('iconClosed');
+            const personaje = document.getElementById('personaje');
+
+            // Login Logic
             function showRegister() {
-                loginForm.style.display = 'none';
-                registerForm.style.display = 'block';
-                toggleBtn.style.display = 'none';
-                pageTitle.textContent = 'Registrarse';
+                loginForm.style.display = 'none'; registerForm.style.display = 'block'; toggleBtn.style.display = 'none'; pageTitle.textContent = 'Registrarse';
                 if (registroError) registroError.style.display = 'block';
             }
-
             function showLogin() {
-                loginForm.style.display = 'block';
-                registerForm.style.display = 'none';
-                toggleBtn.style.display = 'inline-block';
-                pageTitle.textContent = 'Iniciar sesión';
+                loginForm.style.display = 'block'; registerForm.style.display = 'none'; toggleBtn.style.display = 'inline-block'; pageTitle.textContent = 'Iniciar sesión';
                 if (registroError) registroError.style.display = 'none';
             }
+            if(toggleBtn) toggleBtn.addEventListener('click', showRegister);
+            if(backBtn) backBtn.addEventListener('click', showLogin);
+            if (registroError && registroError.textContent.trim().length > 0) showRegister();
 
-            toggleBtn.addEventListener('click', showRegister);
-            if (backBtn) backBtn.addEventListener('click', showLogin);
+            // Heladera Logic
+            if (passInput && personaje) {
+                passInput.addEventListener('focus', () => personaje.classList.add('tapar-ojos'));
+                passInput.addEventListener('blur', () => { personaje.classList.remove('tapar-ojos'); personaje.classList.remove('espiar'); });
+            }
 
-            // Si el servidor dejó un mensaje de error de registro, abrir registro directamente
-            if (registroError && registroError.textContent.trim().length > 0) {
-                showRegister();
+            if (togglePassBtn && passInput) {
+                togglePassBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (passInput.type === 'password') {
+                        passInput.type = 'text'; iconOpen.style.display = 'none'; iconClosed.style.display = 'block';
+                        personaje.classList.add('espiar');
+                    } else {
+                        passInput.type = 'password'; iconOpen.style.display = 'block'; iconClosed.style.display = 'none';
+                        personaje.classList.remove('espiar');
+                    }
+                });
             }
         })();
     </script>
 }
-<style>
-*,
-*::before,
-*::after {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-    scroll-behavior: auto !important;
-}
-
-*:hover,
-*:focus,
-*:active {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-
-.social-login {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.social-login p {
-    font-size: 12px;
-    margin-bottom: 8px;
-    color: #666;
-}
-
-.social-buttons button {
-    background: none;
-    border: none;
-    margin: 0 8px;
-    padding: 0;
-    cursor: pointer;
-    outline: none !important;
-    box-shadow: none !important;
-    -webkit-tap-highlight-color: transparent !important;
-}
-
-.social-buttons img {
-    width: 42px;
-    height: 42px;
-}
-
-.social-buttons button:hover,
-.social-buttons button:focus,
-.social-buttons button:active,
-.social-buttons img:hover,
-.social-buttons img:focus,
-.social-buttons img:active {
-    outline: none !important;
-    box-shadow: none !important;
-    transform: none !important;
-}
-
-</style>
-
