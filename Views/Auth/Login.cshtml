@@ -84,7 +84,12 @@
     .h-cuerpo.tapar-ojos .h-brazo.izq { transform: rotate(-155deg); }
     .h-cuerpo.tapar-ojos .h-brazo.der { transform: rotate(155deg); }
     .h-cuerpo.tapar-ojos.espiar .h-brazo.der { transform: rotate(40deg); }
-    
+    .social-buttons {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
 </style>
 
 <div class="container mt-4">
@@ -140,15 +145,6 @@
                         <button type="submit" class="btn btn-success w-100 mt-3">Crear cuenta</button>
                         <button type="button" id="backBtn" class="btn btn-link w-100">Volver a iniciar sesión</button>
                     </form>
-
-                    <div class="social-login mt-4 text-center">
-                        <p class="text-muted small">O continua con:</p>
-                        <div class="social-buttons d-flex justify-content-center gap-2">
-                            <button type="button" class="btn p-0 border-0" onclick="window.open('https://accounts.google.com', '_blank')"><img src="~/imagenes/google.webp" alt="Google" width="42"></button>
-                            <button type="button" class="btn p-0 border-0" onclick="window.open('https://login.microsoftonline.com', '_blank')"><img src="~/imagenes/microsoft.png" alt="Microsoft" width="42"></button>
-                            <button type="button" class="btn p-0 border-0" onclick="window.open('https://appleid.apple.com/', '_blank')"><img src="~/imagenes/apple.svg" alt="Apple" width="42"></button>
-                        </div>
-                    </div>
                 </section>
             </div>
         </div>
