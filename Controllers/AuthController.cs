@@ -39,7 +39,7 @@ public class AuthController : Controller
             HttpContext.Session.SetString("usuario", usuario);
             HttpContext.Session.SetInt32("IdUsuario", user.ID);
             
-            return RedirectToAction("InicializarHeladera", "Heladera");
+            return RedirectToAction("Heladeras", "Heladera");
         }
         catch (Exception ex)
         {

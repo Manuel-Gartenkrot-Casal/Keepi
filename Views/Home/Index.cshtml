@@ -13,7 +13,7 @@
         @if (Context.Session.GetString("usuario") != null)
         {
             <a href="@Url.Action("ChatBot", "Chat")" class="cta">Hablá con Mr. Keep</a>
-            <a href="@Url.Action("InicializarHeladera", "Heladera")">Probar</a>
+            <a href="@Url.Action("Heladeras", "Heladera")">Probar</a>
         }
         else
         {
